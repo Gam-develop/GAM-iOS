@@ -132,3 +132,4 @@ xcuserdata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 GAM/GAM.xcodeproj/project.xcworkspace/xcuserdata/jungbin.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate

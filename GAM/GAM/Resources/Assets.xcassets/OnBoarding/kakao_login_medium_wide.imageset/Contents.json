@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "property1MagazineActiveOn.svg",
+      "filename" : "btnLoginKakao.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "btnLoginKakao@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "btnLoginKakao@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

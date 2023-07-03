@@ -32,4 +32,10 @@ extension String {
             }.resume()
         }
     }
+    
+    func size(OfFont font: UIFont) -> CGSize {
+        let size = (self as NSString).size(withAttributes: [.font: font])
+        let buffer = 0.2 // 이게 없으면 UILabel이 잘려보이는 현상이 존재
+        return CGSize(width: size.width + buffer, height: size.height)
+    }
 }

@@ -14,6 +14,7 @@
 		FFA706EC2A4F39EB003DF6A0 /* LookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EB2A4F39EB003DF6A0 /* LookViewController.swift */; };
 		FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */; };
 		FFA706F02A4F4033003DF6A0 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */; };
+		FFA706F22A5271E9003DF6A0 /* Colorsets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */; };
 		FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */; };
 		FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */; };
 		FFA94CC12A4EF8CE009B034F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA94CC02A4EF8CE009B034F /* Assets.xcassets */; };
@@ -50,7 +51,6 @@
 		FFA94D122A4F1C2F009B034F /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFA94D0E2A4F1C2F009B034F /* Pretendard-SemiBold.ttf */; };
 		FFA94D132A4F1C2F009B034F /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFA94D0F2A4F1C2F009B034F /* Pretendard-Bold.ttf */; };
 		FFA94D142A4F1C2F009B034F /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFA94D102A4F1C2F009B034F /* Pretendard-Regular.ttf */; };
-		FFA94D162A4F1C42009B034F /* Colorsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94D152A4F1C42009B034F /* Colorsets.swift */; };
 		FFA94D1A2A4F1D2D009B034F /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94D192A4F1D2D009B034F /* APIConstants.swift */; };
 		FFA94D1C2A4F1D3B009B034F /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94D1B2A4F1D3B009B034F /* NetworkResult.swift */; };
 		FFA94D1E2A4F1D4C009B034F /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94D1D2A4F1D4C009B034F /* BaseAPI.swift */; };
@@ -71,6 +71,7 @@
 		FFA706EB2A4F39EB003DF6A0 /* LookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookViewController.swift; sourceTree = "<group>"; };
 		FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colorsets.xcassets; sourceTree = "<group>"; };
 		FFA94CB42A4EF8CD009B034F /* GAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		FFA94D0E2A4F1C2F009B034F /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
 		FFA94D0F2A4F1C2F009B034F /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
 		FFA94D102A4F1C2F009B034F /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
-		FFA94D152A4F1C42009B034F /* Colorsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colorsets.swift; sourceTree = "<group>"; };
 		FFA94D192A4F1D2D009B034F /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		FFA94D1B2A4F1D3B009B034F /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		FFA94D1D2A4F1D4C009B034F /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 			children = (
 				FFA94D0C2A4F1C12009B034F /* Fonts */,
 				FFA94CC02A4EF8CE009B034F /* Assets.xcassets */,
-				FFA94D152A4F1C42009B034F /* Colorsets.swift */,
+				FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -465,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA94D122A4F1C2F009B034F /* Pretendard-SemiBold.ttf in Resources */,
+				FFA706F22A5271E9003DF6A0 /* Colorsets.xcassets in Resources */,
 				FFA94D132A4F1C2F009B034F /* Pretendard-Bold.ttf in Resources */,
 				FFA94D142A4F1C2F009B034F /* Pretendard-Regular.ttf in Resources */,
 				FFA94CC42A4EF8CE009B034F /* LaunchScreen.storyboard in Resources */,
@@ -490,7 +491,6 @@
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
 				FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
-				FFA94D162A4F1C42009B034F /* Colorsets.swift in Sources */,
 				FFA706F02A4F4033003DF6A0 /* LabelViewController.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
 				FFA94D032A4F1B6C009B034F /* UITabBar+.swift in Sources */,

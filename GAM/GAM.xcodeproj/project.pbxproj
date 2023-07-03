@@ -15,6 +15,7 @@
 		FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */; };
 		FFA706F02A4F4033003DF6A0 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */; };
 		FFA706F22A5271E9003DF6A0 /* Colorsets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */; };
+		FFA706F52A5274A1003DF6A0 /* GamActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */; };
 		FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */; };
 		FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */; };
 		FFA94CC12A4EF8CE009B034F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA94CC02A4EF8CE009B034F /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colorsets.xcassets; sourceTree = "<group>"; };
+		FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamActivityIndicatorView.swift; sourceTree = "<group>"; };
 		FFA94CB42A4EF8CD009B034F /* GAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 				FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */,
 			);
 			path = PagingTab;
+			sourceTree = "<group>";
+		};
+		FFA706F32A52748D003DF6A0 /* ActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */,
+			);
+			path = ActivityIndicatorView;
 			sourceTree = "<group>";
 		};
 		FFA94CAB2A4EF8CD009B034F = {
@@ -333,6 +343,7 @@
 		FFA94D252A4F1E34009B034F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FFA706F32A52748D003DF6A0 /* ActivityIndicatorView */,
 				FFA706E12A4F301A003DF6A0 /* PagingTab */,
 				FFA94D282A4F1E4E009B034F /* TabBarController */,
 			);
@@ -520,6 +531,7 @@
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,
 				FFA94CF52A4F1AE2009B034F /* String+.swift in Sources */,
+				FFA706F52A5274A1003DF6A0 /* GamActivityIndicatorView.swift in Sources */,
 				FFA94CF32A4F1AD6009B034F /* UIButton+.swift in Sources */,
 				FFA94D082A4F1BAC009B034F /* UserInfo.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,

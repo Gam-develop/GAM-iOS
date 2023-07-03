@@ -56,7 +56,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         homeTab.tabBarItem.tag = 0
         
         let magazineTab: UIViewController  = self.makeTabVC(
-            vc: BaseNavigationController(rootViewController: HomeViewController()),
+            vc: BaseNavigationController(rootViewController: MagazineViewController()),
             tabBarTitle: Text.magazineTitle,
             tabBarImg: Text.magazineIconName,
             tabBarSelectedImg: Text.magazineIconName + Text.selected

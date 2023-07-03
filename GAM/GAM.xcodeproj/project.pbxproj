@@ -11,7 +11,7 @@
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
 		FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */; };
 		FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */; };
-		FFA706EC2A4F39EB003DF6A0 /* LookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EB2A4F39EB003DF6A0 /* LookViewController.swift */; };
+		FFA706EC2A4F39EB003DF6A0 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EB2A4F39EB003DF6A0 /* DiscoverViewController.swift */; };
 		FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */; };
 		FFA706F02A4F4033003DF6A0 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */; };
 		FFA706F22A5271E9003DF6A0 /* Colorsets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */; };
@@ -68,7 +68,7 @@
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
 		FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
-		FFA706EB2A4F39EB003DF6A0 /* LookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookViewController.swift; sourceTree = "<group>"; };
+		FFA706EB2A4F39EB003DF6A0 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colorsets.xcassets; sourceTree = "<group>"; };
@@ -143,12 +143,12 @@
 			path = Magazine;
 			sourceTree = "<group>";
 		};
-		FFA706DF2A4F2F6C003DF6A0 /* Look */ = {
+		FFA706DF2A4F2F6C003DF6A0 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				FFA706EB2A4F39EB003DF6A0 /* LookViewController.swift */,
+				FFA706EB2A4F39EB003DF6A0 /* DiscoverViewController.swift */,
 			);
-			path = Look;
+			path = Discover;
 			sourceTree = "<group>";
 		};
 		FFA706E02A4F2F72003DF6A0 /* Mypage */ = {
@@ -353,7 +353,7 @@
 				FFA94D2A2A4F1E7B009B034F /* SignIn */,
 				FFA94D2D2A4F1E9D009B034F /* Home */,
 				FFA706DE2A4F2F65003DF6A0 /* Magazine */,
-				FFA706DF2A4F2F6C003DF6A0 /* Look */,
+				FFA706DF2A4F2F6C003DF6A0 /* Discover */,
 				FFA706E02A4F2F72003DF6A0 /* Mypage */,
 				FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */,
 			);
@@ -495,7 +495,7 @@
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
 				FFA94D032A4F1B6C009B034F /* UITabBar+.swift in Sources */,
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
-				FFA706EC2A4F39EB003DF6A0 /* LookViewController.swift in Sources */,
+				FFA706EC2A4F39EB003DF6A0 /* DiscoverViewController.swift in Sources */,
 				FFA94CE32A4F1543009B034F /* Bundle+.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFA94CFF2A4F1B53009B034F /* UIImage+.swift in Sources */,

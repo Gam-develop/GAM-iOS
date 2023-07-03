@@ -14,8 +14,8 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         static let homeIconName = "homeTabIcon"
         static let magazineTitle = "매거진"
         static let magazineIconName = "magazineTabIcon"
-        static let lookTitle = "둘러보기"
-        static let lookIconName = "lookTabIcon"
+        static let discoverTitle = "둘러보기"
+        static let discoverIconName = "discoverTabIcon"
         static let mypageTitle = "마이"
         static let mypageIconName = "mypageTabIcon"
         static let selected = "Selected"
@@ -63,13 +63,13 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         )
         magazineTab.tabBarItem.tag = 1
         
-        let lookTab: UIViewController  = self.makeTabVC(
+        let discoverTab: UIViewController  = self.makeTabVC(
             vc: BaseNavigationController(rootViewController: HomeViewController()),
-            tabBarTitle: Text.lookTitle,
-            tabBarImg: Text.lookIconName,
-            tabBarSelectedImg: Text.lookIconName + Text.selected
+            tabBarTitle: Text.discoverTitle,
+            tabBarImg: Text.discoverIconName,
+            tabBarSelectedImg: Text.discoverIconName + Text.selected
         )
-        lookTab.tabBarItem.tag = 2
+        discoverTab.tabBarItem.tag = 2
         
         let mypageTab: UIViewController = self.makeTabVC(
             vc: BaseNavigationController(rootViewController: HomeViewController()),
@@ -79,7 +79,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         )
         mypageTab.tabBarItem.tag = 3
         
-        let tabs = [homeTab, magazineTab, lookTab, mypageTab]
+        let tabs = [homeTab, magazineTab, discoverTab, mypageTab]
         self.setViewControllers(tabs, animated: true)
     }
     

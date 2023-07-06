@@ -56,7 +56,6 @@ final class SignUpTextField: UITextField {
         self.textColor = .gamBlack
         self.backgroundColor = .clear
         self.addRightPadding(30)
-        self.autocorrectionType = .no
     }
     
     private func setPlaceholder() {

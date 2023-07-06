@@ -24,7 +24,7 @@ final class SignUpUsernameViewController: BaseViewController {
     // MARK: UIComponents
     
     private let progressBarView: GamProgressBarView = GamProgressBarView()
-
+    
     private let questionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
@@ -81,6 +81,7 @@ final class SignUpUsernameViewController: BaseViewController {
         self.progressBarView.setProgress(step: .first)
         self.setTextField()
         self.checkEnterNickNameLimit()
+        self.setDoneButtonAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,6 +144,13 @@ final class SignUpUsernameViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func setDoneButtonAction() {
+        let signUpTagViewController: SignUpTagViewController = SignUpTagViewController()
+        self.doneButton.setAction { [weak self] in
+            self?.navigationController?.pushViewController(signUpTagViewController, animated: true)
+        }
     }
     
     func addKeyboardObserver() {

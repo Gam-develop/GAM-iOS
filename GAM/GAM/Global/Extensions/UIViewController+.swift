@@ -99,4 +99,34 @@ extension UIViewController {
         alertViewController.addAction(okAction)
         self.present(alertViewController, animated: true, completion: completion)
     }
+    
+    func addKeyboardObserver(willShow: Selector, willHide: Selector) {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: willShow,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+          self,
+          selector: willHide,
+          name: UIResponder.keyboardWillHideNotification,
+          object: nil
+        )
+    }
+    
+    func removeKeyboardObserver() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nibName
+        )
+        
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nibName
+        )
+    }
 }

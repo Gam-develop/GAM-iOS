@@ -87,7 +87,7 @@ final class SignUpUsernameViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.addKeyboardObserver()
+        self.addKeyboardObserver(willShow: #selector(self.keyboardWillShow(_:)), willHide: #selector(self.keyboardWillHide(_:)))
         self.textField.becomeFirstResponder()
     }
     
@@ -149,38 +149,9 @@ final class SignUpUsernameViewController: BaseViewController {
     private func setDoneButtonAction() {
         let signUpTagViewController: SignUpTagViewController = SignUpTagViewController()
         self.doneButton.setAction { [weak self] in
+            SignUpInfo.shared.username = self?.textField.text
             self?.navigationController?.pushViewController(signUpTagViewController, animated: true)
         }
-    }
-    
-    func addKeyboardObserver() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.keyboardWillShow(_:)),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-          self,
-          selector: #selector(self.keyboardWillHide(_:)),
-          name: UIResponder.keyboardWillHideNotification,
-          object: nil
-        )
-    }
-    
-    func removeKeyboardObserver() {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIResponder.keyboardWillShowNotification,
-            object: nibName
-        )
-        
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIResponder.keyboardWillHideNotification,
-            object: nibName
-        )
     }
     
     @objc
@@ -188,7 +159,9 @@ final class SignUpUsernameViewController: BaseViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             self.keyboardHeight = keyboardRectangle.height
-            self.doneButton.frame.origin.y -= keyboardHeight - 30
+            self.doneButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(self.keyboardHeight + 30)
+            }
         }
     }
     
@@ -197,7 +170,9 @@ final class SignUpUsernameViewController: BaseViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             self.keyboardHeight = keyboardRectangle.height
-            self.doneButton.frame.origin.y += keyboardHeight - 30
+            self.doneButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(52)
+            }
         }
     }
 }
@@ -238,7 +213,7 @@ extension SignUpUsernameViewController {
         
         self.doneButton.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(18)
+            make.bottom.equalToSuperview().inset(52)
             make.height.equalTo(48)
         }
     }

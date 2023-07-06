@@ -16,6 +16,10 @@
 		FFA706F02A4F4033003DF6A0 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */; };
 		FFA706F22A5271E9003DF6A0 /* Colorsets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */; };
 		FFA706F52A5274A1003DF6A0 /* GamActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */; };
+		FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706F72A528130003DF6A0 /* SignUpUsernameViewController.swift */; };
+		FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706FA2A52827E003DF6A0 /* GamProgressBarView.swift */; };
+		FFA706FE2A528830003DF6A0 /* SignUpTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706FD2A528830003DF6A0 /* SignUpTextField.swift */; };
+		FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707002A532B5B003DF6A0 /* GamFullButton.swift */; };
 		FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */; };
 		FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */; };
 		FFA94CC12A4EF8CE009B034F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA94CC02A4EF8CE009B034F /* Assets.xcassets */; };
@@ -74,6 +78,10 @@
 		FFA706EF2A4F4033003DF6A0 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colorsets.xcassets; sourceTree = "<group>"; };
 		FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamActivityIndicatorView.swift; sourceTree = "<group>"; };
+		FFA706F72A528130003DF6A0 /* SignUpUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameViewController.swift; sourceTree = "<group>"; };
+		FFA706FA2A52827E003DF6A0 /* GamProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamProgressBarView.swift; sourceTree = "<group>"; };
+		FFA706FD2A528830003DF6A0 /* SignUpTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTextField.swift; sourceTree = "<group>"; };
+		FFA707002A532B5B003DF6A0 /* GamFullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamFullButton.swift; sourceTree = "<group>"; };
 		FFA94CB42A4EF8CD009B034F /* GAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +184,38 @@
 				FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */,
 			);
 			path = ActivityIndicatorView;
+			sourceTree = "<group>";
+		};
+		FFA706F62A527862003DF6A0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FFA706F72A528130003DF6A0 /* SignUpUsernameViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		FFA706F92A52825B003DF6A0 /* ProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				FFA706FA2A52827E003DF6A0 /* GamProgressBarView.swift */,
+			);
+			path = ProgressBar;
+			sourceTree = "<group>";
+		};
+		FFA706FC2A52881B003DF6A0 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				FFA706FD2A528830003DF6A0 /* SignUpTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		FFA706FF2A532B4D003DF6A0 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				FFA707002A532B5B003DF6A0 /* GamFullButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		FFA94CAB2A4EF8CD009B034F = {
@@ -343,6 +383,9 @@
 		FFA94D252A4F1E34009B034F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FFA706FF2A532B4D003DF6A0 /* Button */,
+				FFA706FC2A52881B003DF6A0 /* TextField */,
+				FFA706F92A52825B003DF6A0 /* ProgressBar */,
 				FFA706F32A52748D003DF6A0 /* ActivityIndicatorView */,
 				FFA706E12A4F301A003DF6A0 /* PagingTab */,
 				FFA94D282A4F1E4E009B034F /* TabBarController */,
@@ -361,6 +404,7 @@
 		FFA94D292A4F1E6B009B034F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FFA706F62A527862003DF6A0 /* SignUp */,
 				FFA94D2A2A4F1E7B009B034F /* SignIn */,
 				FFA94D2D2A4F1E9D009B034F /* Home */,
 				FFA706DE2A4F2F65003DF6A0 /* Magazine */,
@@ -494,6 +538,7 @@
 			files = (
 				FFA94CE52A4F182D009B034F /* UIViewController+.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
+				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */,
@@ -501,18 +546,21 @@
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
 				FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */,
+				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
 				FFA706F02A4F4033003DF6A0 /* LabelViewController.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
 				FFA94D032A4F1B6C009B034F /* UITabBar+.swift in Sources */,
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* DiscoverViewController.swift in Sources */,
+				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
 				FFA94CE32A4F1543009B034F /* Bundle+.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFA94CFF2A4F1B53009B034F /* UIImage+.swift in Sources */,
 				FFA94D1C2A4F1D3B009B034F /* NetworkResult.swift in Sources */,
 				FFA94CD02A4F0881009B034F /* SendUpdateDelegate.swift in Sources */,
 				FFA94CDA2A4F092E009B034F /* BaseViewController.swift in Sources */,
+				FFA706FE2A528830003DF6A0 /* SignUpTextField.swift in Sources */,
 				FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */,
 				FFA94CEB2A4F1AA4009B034F /* UITableView+.swift in Sources */,
 				FFA94CFB2A4F1B3B009B034F /* UIImageView+.swift in Sources */,

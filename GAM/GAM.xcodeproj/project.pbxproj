@@ -23,6 +23,7 @@
 		FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707022A5712C0003DF6A0 /* SignUpTagViewController.swift */; };
 		FFA707072A57186C003DF6A0 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707062A57186C003DF6A0 /* SignUpInfo.swift */; };
 		FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707092A572E63003DF6A0 /* GamNavigationView.swift */; };
+		FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7070B2A584FC3003DF6A0 /* Tag.swift */; };
 		FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */; };
 		FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */; };
 		FFA94CC12A4EF8CE009B034F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA94CC02A4EF8CE009B034F /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		FFA707022A5712C0003DF6A0 /* SignUpTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTagViewController.swift; sourceTree = "<group>"; };
 		FFA707062A57186C003DF6A0 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 		FFA707092A572E63003DF6A0 /* GamNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamNavigationView.swift; sourceTree = "<group>"; };
+		FFA7070B2A584FC3003DF6A0 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		FFA94CB42A4EF8CD009B034F /* GAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				FFA94D072A4F1BAC009B034F /* UserInfo.swift */,
 				FFA94D092A4F1BC4009B034F /* ImageCacheManager.swift */,
 				FFA707062A57186C003DF6A0 /* SignUpInfo.swift */,
+				FFA7070B2A584FC3003DF6A0 /* Tag.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */,
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
+				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
 				FFA706F02A4F4033003DF6A0 /* LabelViewController.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
 				FFA94D032A4F1B6C009B034F /* UITabBar+.swift in Sources */,

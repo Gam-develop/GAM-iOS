@@ -116,6 +116,7 @@ final class SignUpUsernameViewController: BaseViewController {
                         self.textField.setUnderlineColor(isCorrect: true)
                         self.infoLabel.isHidden = true
                         self.doneButton.isEnabled = true
+                        SignUpInfo.shared.username = changedText
                     } else {
                         self.textField.setUnderlineColor(isCorrect: false)
                         self.infoLabel.isHidden = false
@@ -147,10 +148,8 @@ final class SignUpUsernameViewController: BaseViewController {
     }
     
     private func setDoneButtonAction() {
-        let signUpTagViewController: SignUpTagViewController = SignUpTagViewController()
         self.doneButton.setAction { [weak self] in
-            SignUpInfo.shared.username = self?.textField.text
-            self?.navigationController?.pushViewController(signUpTagViewController, animated: true)
+            self?.navigationController?.pushViewController(SignUpTagViewController(), animated: true)
         }
     }
     

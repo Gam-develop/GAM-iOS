@@ -28,19 +28,19 @@ final class GamProgressBarView: UIView {
     
     private let progressView1: UIView = {
         let view = UIView()
-        view.backgroundColor = .gamGray1
+        view.backgroundColor = .gamBlack
         return view
     }()
     
     private let progressView2: UIView = {
         let view = UIView()
-        view.backgroundColor = .gamGray1
+        view.backgroundColor = .gamBlack
         return view
     }()
     
     private let progressView3: UIView = {
         let view = UIView()
-        view.backgroundColor = .gamGray1
+        view.backgroundColor = .gamBlack
         return view
     }()
     
@@ -59,17 +59,12 @@ final class GamProgressBarView: UIView {
     func setProgress(step: Step) {
         switch step {
         case .first:
-            self.progressView1.backgroundColor = .gamBlack
             self.progressView2.backgroundColor = .gamGray1
             self.progressView3.backgroundColor = .gamGray1
         case .second:
-            self.progressView1.backgroundColor = .gamGray1
-            self.progressView2.backgroundColor = .gamBlack
             self.progressView3.backgroundColor = .gamGray1
         case .third:
-            self.progressView1.backgroundColor = .gamGray1
-            self.progressView2.backgroundColor = .gamGray1
-            self.progressView3.backgroundColor = .gamBlack
+            break
         }
         
         self.setLayout()

@@ -18,7 +18,7 @@ final class SignUpUsernameViewController: BaseViewController {
 닉네임은 무엇인감?
 """
         static let wrongUsername = "한글, 영문, 숫자만 입력 가능합니다."
-        static let done = "입력완료"
+        static let done = "입력 완료"
     }
     
     // MARK: UIComponents
@@ -159,7 +159,7 @@ final class SignUpUsernameViewController: BaseViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             self.keyboardHeight = keyboardRectangle.height
             self.doneButton.snp.updateConstraints { make in
-                make.bottom.equalToSuperview().inset(self.keyboardHeight + 30)
+                make.bottom.equalToSuperview().inset(self.keyboardHeight + 16)
             }
         }
     }

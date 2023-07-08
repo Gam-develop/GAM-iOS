@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 extension UIViewController {
     
@@ -128,5 +129,12 @@ extension UIViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nibName
         )
+    }
+    
+    func openSafariInApp(url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .pageSheet
+        
+        self.present(safariViewController, animated: true)
     }
 }

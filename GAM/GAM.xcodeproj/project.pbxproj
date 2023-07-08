@@ -28,6 +28,7 @@
 		FFA707122A5852C1003DF6A0 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707112A5852C1003DF6A0 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		FFA707152A58533F003DF6A0 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707142A58533F003DF6A0 /* TagCollectionViewCell.swift */; };
 		FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707162A585BCD003DF6A0 /* SignUpInfoViewController.swift */; };
+		FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA707182A59A390003DF6A0 /* Adjusted+.swift */; };
 		FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */; };
 		FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */; };
 		FFA94CC12A4EF8CE009B034F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA94CC02A4EF8CE009B034F /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		FFA707112A5852C1003DF6A0 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		FFA707142A58533F003DF6A0 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFA707162A585BCD003DF6A0 /* SignUpInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfoViewController.swift; sourceTree = "<group>"; };
+		FFA707182A59A390003DF6A0 /* Adjusted+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+.swift"; sourceTree = "<group>"; };
 		FFA94CB42A4EF8CD009B034F /* GAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA94CB72A4EF8CD009B034F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFA94CB92A4EF8CD009B034F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				FFA94D002A4F1B61009B034F /* UINavigationController+.swift */,
 				FFA94D022A4F1B6C009B034F /* UITabBar+.swift */,
 				FFA94D042A4F1B77009B034F /* CALayer+.swift */,
+				FFA707182A59A390003DF6A0 /* Adjusted+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				FFA94D1A2A4F1D2D009B034F /* APIConstants.swift in Sources */,
 				FFA94CF12A4F1ACA009B034F /* UIView+.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
+				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
 				FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */,
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,

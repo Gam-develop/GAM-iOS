@@ -94,6 +94,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         self.tabBar.standardAppearance.backgroundColor = .white
         UITabBar.clearShadow()
         self.tabBar.layer.applyShadow(color: UIColor.lightGray, alpha: 0.2, x: 0, y: -9, blur: 18)
+        self.modalPresentationStyle = .fullScreen
     }
     
     func hideTabBar() {

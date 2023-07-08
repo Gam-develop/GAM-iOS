@@ -10,6 +10,7 @@ import UIKit.UIImage
 extension UIImage {
     
     static let kakaoLoginMediumWide: UIImage = UIImage(named: "kakao_login_medium_wide") ?? UIImage()
+    static let appleLogin: UIImage = (UIImage(named: "apple_login") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     static let gamLogoKorean: UIImage = UIImage(named: "gamLogoKorean") ?? UIImage()
     static let textFieldClear: UIImage = (UIImage(named: "textFieldClear") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     static let chevronLeft: UIImage = (UIImage(named: "typeChevronLeft") ?? UIImage()).withRenderingMode(.alwaysOriginal)

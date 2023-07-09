@@ -113,7 +113,7 @@ final class SignUpInfoViewController: BaseViewController {
             .subscribe(onNext: { changedText in
                 self.countLabel.text = "\(changedText.count)/20"
                 if changedText.count > 0 {
-                    let regex = "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9]{0,20}"
+                    let regex = "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9\\s]{0,20}"
                     if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
                         self.textField.setUnderlineColor(isCorrect: true)
                         self.infoLabel.isHidden = true

@@ -141,8 +141,9 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debugPrint("selected \(indexPath.row)")
         tableView.deselectRow(at: indexPath, animated: true)
+        let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController()
+        self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
     }
 }
 

@@ -12,7 +12,7 @@ final class GamNavigationView: UIView {
     
     enum NavigationType {
         case back
-//        case backTitleShare
+        case backTitleShare
 //        case backTitleSave
 //        case search
 //        case searchFilter
@@ -25,25 +25,15 @@ final class GamNavigationView: UIView {
     
     // MARK: Properties
     
-//    private lazy var titleLabel: UILabel = {
-//        let label: UILabel = UILabel()
-//        label.font = .sb18
-//        label.textColor = .sfBlack100
-//        label.textAlignment = .center
-//        return label
-//    }()
-//
-//    private lazy var logoImageView: UIImageView = {
-//        let imageView: UIImageView = UIImageView()
-//        imageView.image = UIImage(named: Text.logoImageName)
-//        return imageView
-//    }()
+    private lazy var centerTitleLabel: UILabel = UILabel()
     
     lazy var backButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setImage(.chevronLeft, for: .normal)
         return button
     }()
+    
+    lazy var shareButton: ShareButton = ShareButton(type: .system)
     
 //    lazy var notificationButton: UIButton = {
 //        let button: UIButton = UIButton(type: .system)
@@ -97,6 +87,7 @@ final class GamNavigationView: UIView {
         
         switch type {
         case .back: self.setBackLayout()
+        case .backTitleShare: self.setBackTitleShareLayout()
         }
     }
     
@@ -107,9 +98,10 @@ final class GamNavigationView: UIView {
     
     // MARK: Methods
     
-//    func setTitle(_ text: String) {
-//        self.titleLabel.text = text
-//    }
+    func setCenterTitle(_ text: String) {
+        self.centerTitleLabel.setTextWithStyle(to: text, style: .headline2SemiBold, color: .gamBlack)
+        self.centerTitleLabel.textAlignment = .center
+    }
 }
 
 // MARK: - UI
@@ -117,8 +109,22 @@ final class GamNavigationView: UIView {
 extension GamNavigationView {
     private func setDefaultLayout() {
         self.snp.makeConstraints { make in
-            make.height.equalTo(44)
+            make.height.equalTo(54)
         }
+    }
+    
+    private func setBackLayout() {
+        self.addSubviews([backButton])
+        
+        self.setLeftButtonLayout(button: self.backButton)
+    }
+    
+    private func setBackTitleShareLayout() {
+        self.addSubviews([backButton, centerTitleLabel, shareButton])
+        
+        self.setLeftButtonLayout(button: self.backButton)
+        self.setRightButtonLayout(button: self.shareButton)
+        self.setCenterTitleLabelLayout()
     }
     
 //    private func setHomeLayout() {
@@ -164,12 +170,6 @@ extension GamNavigationView {
 //        }
 //    }
     
-    private func setBackLayout() {
-        self.addSubviews([backButton])
-        
-        self.setLeftButtonLayout(button: self.backButton)
-    }
-    
 //    private func setCloseLayout() {
 //        self.addSubviews([closeButton])
 //
@@ -213,7 +213,7 @@ extension GamNavigationView {
     
     private func setRightButtonLayout(button: UIButton) {
         button.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.bottom.equalToSuperview()
             make.trailing.equalToSuperview().inset(4)
             make.width.height.equalTo(44)
         }
@@ -221,16 +221,18 @@ extension GamNavigationView {
     
     private func setLeftButtonLayout(button: UIButton) {
         button.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.bottom.equalToSuperview()
             make.leading.equalToSuperview().inset(4)
             make.width.height.equalTo(44)
         }
     }
     
-//    private func setTitleLabelLayout() {
-//        self.titleLabel.snp.makeConstraints { make in
-//            make.centerX.centerY.equalToSuperview()
-//            make.width.equalToSuperview().multipliedBy(0.72266)
-//        }
-//    }
+    private func setCenterTitleLabelLayout() {
+        self.centerTitleLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(6)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(33)
+            make.width.equalToSuperview().multipliedBy(0.68)
+        }
+    }
 }

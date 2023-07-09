@@ -90,6 +90,8 @@
 		FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF85D2A5A89D900C731A3 /* TagEntity.swift */; };
 		FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF85F2A5A98BD00C731A3 /* PopularDesignerEntity.swift */; };
 		FFCDF8622A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8612A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift */; };
+		FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8632A5AB9FE00C731A3 /* MagazineDetailViewController.swift */; };
+		FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8652A5ABBEA00C731A3 /* ShareButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +172,8 @@
 		FFCDF85D2A5A89D900C731A3 /* TagEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		FFCDF85F2A5A98BD00C731A3 /* PopularDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerEntity.swift; sourceTree = "<group>"; };
 		FFCDF8612A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerCollectionViewCell.swift; sourceTree = "<group>"; };
+		FFCDF8632A5AB9FE00C731A3 /* MagazineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDetailViewController.swift; sourceTree = "<group>"; };
+		FFCDF8652A5ABBEA00C731A3 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +267,7 @@
 			children = (
 				FFA707002A532B5B003DF6A0 /* GamFullButton.swift */,
 				FFCDF8582A5A817700C731A3 /* ScrapButton.swift */,
+				FFCDF8652A5ABBEA00C731A3 /* ShareButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA94CCB2A4EFAE5009B034F /* HomeViewController.swift */,
+				FFCDF8632A5AB9FE00C731A3 /* MagazineDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -730,10 +736,12 @@
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
 				FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */,
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
+				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
 				FFA94CDC2A4F0966009B034F /* BaseNavigationController.swift in Sources */,
 				FFA94D272A4F1E4A009B034F /* GamTabBarController.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
+				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,

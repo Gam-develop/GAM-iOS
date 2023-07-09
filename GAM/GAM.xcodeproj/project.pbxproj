@@ -204,6 +204,7 @@
 		FFA706DE2A4F2F65003DF6A0 /* Magazine */ = {
 			isa = PBXGroup;
 			children = (
+				FFCDF8632A5AB9FE00C731A3 /* MagazineDetailViewController.swift */,
 				FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */,
 				FFCDF8692A5AF84D00C731A3 /* MagazineDiscoverViewController.swift */,
 			);
@@ -533,7 +534,6 @@
 			isa = PBXGroup;
 			children = (
 				FFA94CCB2A4EFAE5009B034F /* HomeViewController.swift */,
-				FFCDF8632A5AB9FE00C731A3 /* MagazineDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

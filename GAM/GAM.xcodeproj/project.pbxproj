@@ -95,6 +95,8 @@
 		FFCDF86A2A5AF84D00C731A3 /* MagazineDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8692A5AF84D00C731A3 /* MagazineDiscoverViewController.swift */; };
 		FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF86B2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift */; };
 		FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF86E2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift */; };
+		FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8702A5B198200C731A3 /* MagazineScrapViewController.swift */; };
+		FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,6 +182,8 @@
 		FFCDF8692A5AF84D00C731A3 /* MagazineDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDiscoverViewController.swift; sourceTree = "<group>"; };
 		FFCDF86B2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMagazineTableHeaderView.swift; sourceTree = "<group>"; };
 		FFCDF86E2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMagazineTableHeaderView.swift; sourceTree = "<group>"; };
+		FFCDF8702A5B198200C731A3 /* MagazineScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineScrapViewController.swift; sourceTree = "<group>"; };
+		FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineScrapTableHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,7 @@
 				FFCDF8632A5AB9FE00C731A3 /* MagazineDetailViewController.swift */,
 				FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */,
 				FFCDF8692A5AF84D00C731A3 /* MagazineDiscoverViewController.swift */,
+				FFCDF8702A5B198200C731A3 /* MagazineScrapViewController.swift */,
 			);
 			path = Magazine;
 			sourceTree = "<group>";
@@ -605,6 +610,7 @@
 			children = (
 				FFCDF86B2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift */,
 				FFCDF86E2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift */,
+				FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */,
 			);
 			path = TableViewHeaderFooterView;
 			sourceTree = "<group>";
@@ -709,6 +715,7 @@
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
+				FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
@@ -733,6 +740,7 @@
 				FFA94D1C2A4F1D3B009B034F /* NetworkResult.swift in Sources */,
 				FFA94CD02A4F0881009B034F /* SendUpdateDelegate.swift in Sources */,
 				FFA94CDA2A4F092E009B034F /* BaseViewController.swift in Sources */,
+				FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */,
 				FFA706FE2A528830003DF6A0 /* SignUpTextField.swift in Sources */,
 				FFA707122A5852C1003DF6A0 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */,

@@ -72,7 +72,7 @@ final class MagazineViewController: BaseViewController {
         
         self.contentViewControllers = [
             MagazineDiscoverViewController(superViewController: self),
-            MagazineDiscoverViewController(superViewController: self)
+            MagazineScrapViewController(superViewController: self)
         ]
         
         self.addChild(pageViewController)

@@ -15,4 +15,8 @@ struct TagEntity {
         self.id = id
         self.name = name
     }
+    
+    public static func == (lhs: TagEntity, rhs: TagEntity) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

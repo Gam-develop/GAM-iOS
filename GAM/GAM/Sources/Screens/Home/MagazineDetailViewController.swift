@@ -48,6 +48,7 @@ final class MagazineDetailViewController: BaseViewController {
         
         self.setLayout()
         self.setWebView()
+        self.setShareButtonAction()
     }
     
     // MARK: Methods
@@ -59,9 +60,21 @@ final class MagazineDetailViewController: BaseViewController {
         let request = URLRequest(url: url)
         self.webView.load(request)
     }
+    
+    private func setShareButtonAction() {
+        self.navigationView.shareButton.setAction { [weak self] in
+            guard let self = self else { return }
+            var objectsToShare: [String] = [self.url]
+            
+            let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+    }
 }
 
-// MARK: -
+// MARK: - WKNavigationDelegate
 
 extension MagazineDetailViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {

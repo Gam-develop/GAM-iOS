@@ -31,4 +31,8 @@ extension UIColor {
     @nonobjc class var gamWhite: UIColor {
         return UIColor(white: 1.0, alpha: 1.0)
     }
+    
+    @nonobjc class var gamRed: UIColor {
+        return UIColor(red: 221.0 / 255.0, green: 82.0 / 255.0, blue: 87.0 / 255.0, alpha: 1.0)
+    }
 }

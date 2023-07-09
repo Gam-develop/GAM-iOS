@@ -84,7 +84,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
     }
     
     private func setTabBarItemStyle() {
-        self.tabBar.tintColor = .black
+        self.tabBar.tintColor = .gamBlack
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10)], for: .normal)
         self.tabBar.layer.cornerRadius = tabBar.frame.height * 0.35
         self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -94,6 +94,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         self.tabBar.standardAppearance.backgroundColor = .white
         UITabBar.clearShadow()
         self.tabBar.layer.applyShadow(color: UIColor.lightGray, alpha: 0.2, x: 0, y: -9, blur: 18)
+        self.modalPresentationStyle = .fullScreen
     }
     
     func hideTabBar() {

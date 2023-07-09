@@ -52,6 +52,7 @@ final class MagazineViewController: BaseViewController {
         self.setUpViews()
         self.setLayout()
         self.bindTabHeader()
+        self.setSearchButtonAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +79,12 @@ final class MagazineViewController: BaseViewController {
         self.addChild(pageViewController)
         self.pageViewController.didMove(toParent: self)
         self.pageViewController.setViewControllers([contentViewControllers[0]], direction: .forward, animated: false)
+    }
+    
+    private func setSearchButtonAction() {
+        self.navigationView.searchButton.setAction { [weak self] in
+            self?.navigationController?.pushViewController(SearchViewController(searchType: .magazine), animated: true)
+        }
     }
 }
 

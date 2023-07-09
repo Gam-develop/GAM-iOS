@@ -46,6 +46,7 @@ final class MagazineDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setBackButtonAction(self.navigationView.backButton)
         self.setLayout()
         self.setWebView()
         self.setShareButtonAction()

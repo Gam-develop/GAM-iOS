@@ -27,13 +27,3 @@ final class Tag {
         .init(id: 12, name: "캐릭터 디자인")
     ]
 }
-
-struct TagEntity {
-    let id: Int
-    let name: String
-    
-    init(id: Int, name: String) {
-        self.id = id
-        self.name = name
-    }
-}

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import KakaoSDKUser
 
 final class SignInViewController: BaseViewController {
     
@@ -53,6 +54,7 @@ final class SignInViewController: BaseViewController {
         self.setUI()
         self.setLayout()
         self.setKakaoButtonAction()
+        self.setAppleButtonAction()
         self.setPrivacyPolicyLabelTapRecognizer()
     }
     
@@ -64,9 +66,27 @@ final class SignInViewController: BaseViewController {
     
     private func setKakaoButtonAction() {
         self.kakaoButton.setAction { [weak self] in
-            let signUpUsernameViewController: SignUpUsernameViewController = SignUpUsernameViewController()
-            signUpUsernameViewController.modalPresentationStyle = .fullScreen
-            self?.present(signUpUsernameViewController, animated: true)
+            if UserApi.isKakaoTalkLoginAvailable() {
+                UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                    if let error = error {
+                        print(error)
+                    }
+                    else {
+                        print("loginWithKakaoTalk() success.")
+                        self?.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+                    }
+                }
+            } else {
+                UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                    if let error = error {
+                        print(error)
+                    }
+                    else {
+                        print("loginWithKakaoAccount() success.")
+                        self?.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+                    }
+                }
+            }
         }
     }
     
@@ -77,6 +97,19 @@ final class SignInViewController: BaseViewController {
             action: #selector(privacyPolicyLabelTapped)
         )
         self.infoLabel.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func setAppleButtonAction() {
+//        self.appleButton.setAction { [weak self] in
+//            let appleIDProvider = ASAuthorizationAppleIDProvider()
+//            let request = appleIDProvider.createRequest()
+//            request.requestedScopes = [.fullName, .email]
+//
+//            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+//            authorizationController.delegate = self
+//            authorizationController.presentationContextProvider = self
+//            authorizationController.performRequests()
+//        }
     }
     
     @objc private func privacyPolicyLabelTapped(_ sender: UITapGestureRecognizer) {

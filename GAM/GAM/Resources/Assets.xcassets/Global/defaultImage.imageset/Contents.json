@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "textFieldClear.svg",
+      "filename" : "defaultImage.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "defaultImage 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "defaultImage 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

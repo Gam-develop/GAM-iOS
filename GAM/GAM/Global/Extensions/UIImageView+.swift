@@ -40,7 +40,7 @@ extension UIImageView {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.setImageColor(color: UIColor.gray)
+                        self.image = .defaultImageBlack
                     }
                 }
             }.resume()

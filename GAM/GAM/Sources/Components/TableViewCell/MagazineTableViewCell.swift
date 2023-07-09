@@ -11,12 +11,10 @@ final class MagazineTableViewCell: UITableViewCell {
     
     // MARK: UIComponents
     
-    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImage)
+    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImageBlack)
     
     private let titleLabel: UILabel = {
         let label: UILabel = UILabel()
-        label.font = .caption3Medium
-        label.textColor = .gamBlack
         label.numberOfLines = 3
         return label
     }()
@@ -78,8 +76,8 @@ final class MagazineTableViewCell: UITableViewCell {
     }
     
     func setData(data: MagazineEntity) {
-        self.thumbnailImageView.image = data.thumbnailImage
-        self.titleLabel.text = data.title
+        self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
+        self.titleLabel.setTextWithStyle(to: data.title, style: .caption3Medium, color: .gamBlack)
         self.authorLabel.text = data.author
         self.visibilityCountLabel.text = "\(data.visibilityCount)"
         self.scrapButton.isSelected = data.isScrap

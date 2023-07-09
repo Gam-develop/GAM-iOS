@@ -26,4 +26,18 @@ final class Tag {
         .init(id: 11, name: "공간 디자인"),
         .init(id: 12, name: "캐릭터 디자인")
     ]
+    
+    func mapTags(_ ids: [Int]) -> [TagEntity] {
+        return tags.filter { ids.contains($0.id) }
+    }
+    
+    func tagsString(_ tags: [TagEntity]) -> String {
+        var result: String = ""
+        
+        _ = tags.map({ tag in
+            result.append("# \(tag.name) ")
+        })
+        
+        return result.trimmingCharacters(in: .whitespaces)
+    }
 }

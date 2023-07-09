@@ -97,6 +97,7 @@
 		FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF86E2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift */; };
 		FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8702A5B198200C731A3 /* MagazineScrapViewController.swift */; };
 		FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */; };
+		FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +185,7 @@
 		FFCDF86E2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMagazineTableHeaderView.swift; sourceTree = "<group>"; };
 		FFCDF8702A5B198200C731A3 /* MagazineScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineScrapViewController.swift; sourceTree = "<group>"; };
 		FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineScrapTableHeaderView.swift; sourceTree = "<group>"; };
+		FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +519,7 @@
 		FFA94D292A4F1E6B009B034F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FFCDF8742A5B1E0300C731A3 /* Search */,
 				FFA706F62A527862003DF6A0 /* SignUp */,
 				FFA94D2A2A4F1E7B009B034F /* SignIn */,
 				FFA94D2D2A4F1E9D009B034F /* Home */,
@@ -613,6 +616,14 @@
 				FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */,
 			);
 			path = TableViewHeaderFooterView;
+			sourceTree = "<group>";
+		};
+		FFCDF8742A5B1E0300C731A3 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,6 +743,7 @@
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* DiscoverViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
+				FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */,
 				FFCDF8622A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift in Sources */,

@@ -133,3 +133,6 @@ xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 GAM/GAM.xcodeproj/project.xcworkspace/xcuserdata/jungbin.xcuserdatad/UserInterfaceState.xcuserstate
 *.xcuserstate
+GAM/GAM/Supports/Shared.xcconfig
+GAM/GAM/Supports/Release.xcconfig
+GAM/GAM/Supports/Debug.xcconfig

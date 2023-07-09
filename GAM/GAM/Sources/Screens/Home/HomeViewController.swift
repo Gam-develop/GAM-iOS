@@ -51,9 +51,9 @@ final class HomeViewController: BaseViewController {
     // MARK: Properties
     
     private var magazines: [MagazineEntity] = [
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "www.naver.com", visibilityCount: 13),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "www.daum.com", visibilityCount: 1234),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "www.naver.com", visibilityCount: 1)
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 13),
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "https://www.daum.net", visibilityCount: 1234),
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
     ].shuffled()
     
     private var designers: [PopularDesignerEntity] = [
@@ -142,7 +142,7 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController()
+        let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazines[indexPath.row].url)
         self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
     }
 }

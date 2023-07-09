@@ -57,10 +57,10 @@ final class HomeViewController: BaseViewController {
     ].shuffled()
     
     private var designers: [PopularDesignerEntity] = [
-        PopularDesignerEntity(id: 0, thumbnailImageURL: "", name: "최가연", tags: [0, 1, 2], isScrap: true, visibilityCount: 12),
-        PopularDesignerEntity(id: 1, thumbnailImageURL: "", name: "박경은", tags: [3], isScrap: false, visibilityCount: 12),
-        PopularDesignerEntity(id: 2, thumbnailImageURL: "", name: "원종화", tags: [5, 7], isScrap: true, visibilityCount: 12),
-        PopularDesignerEntity(id: 3, thumbnailImageURL: "", name: "정정빈", tags: [2], isScrap: false, visibilityCount: 12),
+        PopularDesignerEntity(id: 0, thumbnailImageURL: "", name: "최가연", tags: [0, 1, 2], isScrap: true, visibilityCount: 1234),
+        PopularDesignerEntity(id: 1, thumbnailImageURL: "", name: "박경은", tags: [3], isScrap: false, visibilityCount: 2),
+        PopularDesignerEntity(id: 2, thumbnailImageURL: "", name: "원종화", tags: [5, 7], isScrap: true, visibilityCount: 22),
+        PopularDesignerEntity(id: 3, thumbnailImageURL: "", name: "정정빈", tags: [2], isScrap: false, visibilityCount: 132),
         PopularDesignerEntity(id: 4, thumbnailImageURL: "", name: "최가희", tags: [9, 10], isScrap: true, visibilityCount: 12)
     ].shuffled()
     

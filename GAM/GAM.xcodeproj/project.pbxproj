@@ -45,7 +45,6 @@
 		FFA94CDC2A4F0966009B034F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CDB2A4F0966009B034F /* BaseNavigationController.swift */; };
 		FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CDE2A4F099C009B034F /* UIColor+.swift */; };
 		FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CE02A4F09B0009B034F /* UIFont+.swift */; };
-		FFA94CE32A4F1543009B034F /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CE22A4F1543009B034F /* Bundle+.swift */; };
 		FFA94CE52A4F182D009B034F /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CE42A4F182D009B034F /* UIViewController+.swift */; };
 		FFA94CE72A4F1845009B034F /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CE62A4F1845009B034F /* UILabel+.swift */; };
 		FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA94CE82A4F1A94009B034F /* UICollectionView+.swift */; };
@@ -79,6 +78,10 @@
 		FFA94D352A4F1FF5009B034F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D342A4F1FF5009B034F /* RxCocoa */; };
 		FFA94D372A4F1FF5009B034F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D362A4F1FF5009B034F /* RxSwift */; };
 		FFA94D3A2A4F2167009B034F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D392A4F2167009B034F /* Moya */; };
+		FFCDF84A2A5A4A2500C731A3 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */; };
+		FFCDF84B2A5A4A2500C731A3 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */; };
+		FFCDF84C2A5A4A2500C731A3 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */; };
+		FFCDF84E2A5A4AB300C731A3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF84D2A5A4AB300C731A3 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,7 +121,6 @@
 		FFA94CDB2A4F0966009B034F /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		FFA94CDE2A4F099C009B034F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		FFA94CE02A4F09B0009B034F /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
-		FFA94CE22A4F1543009B034F /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		FFA94CE42A4F182D009B034F /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		FFA94CE62A4F1845009B034F /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		FFA94CE82A4F1A94009B034F /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
@@ -148,6 +150,10 @@
 		FFA94D222A4F1D84009B034F /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		FFA94D262A4F1E4A009B034F /* GamTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamTabBarController.swift; sourceTree = "<group>"; };
 		FFA94D2B2A4F1E93009B034F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		FFCDF84D2A5A4AB300C731A3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +301,7 @@
 		FFA94CB62A4EF8CD009B034F /* GAM */ = {
 			isa = PBXGroup;
 			children = (
+				FFCDF8462A5A4A0800C731A3 /* Supports */,
 				FFA94CCD2A4F084D009B034F /* Global */,
 				FFA94D172A4F1D05009B034F /* Network */,
 				FFA94D242A4F1E29009B034F /* Sources */,
@@ -349,7 +356,6 @@
 			children = (
 				FFA94CDE2A4F099C009B034F /* UIColor+.swift */,
 				FFA94CE02A4F09B0009B034F /* UIFont+.swift */,
-				FFA94CE22A4F1543009B034F /* Bundle+.swift */,
 				FFA94CE42A4F182D009B034F /* UIViewController+.swift */,
 				FFA94CE62A4F1845009B034F /* UILabel+.swift */,
 				FFA94CE82A4F1A94009B034F /* UICollectionView+.swift */,
@@ -513,6 +519,17 @@
 			path = Plists;
 			sourceTree = "<group>";
 		};
+		FFCDF8462A5A4A0800C731A3 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */,
+				FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */,
+				FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */,
+				FFCDF84D2A5A4AB300C731A3 /* Environment.swift */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -591,10 +608,13 @@
 				FFA94D122A4F1C2F009B034F /* Pretendard-SemiBold.ttf in Resources */,
 				FFA706F22A5271E9003DF6A0 /* Colorsets.xcassets in Resources */,
 				FFA94D132A4F1C2F009B034F /* Pretendard-Bold.ttf in Resources */,
+				FFCDF84B2A5A4A2500C731A3 /* Release.xcconfig in Resources */,
 				FFA94D142A4F1C2F009B034F /* Pretendard-Regular.ttf in Resources */,
 				FFA94CC42A4EF8CE009B034F /* LaunchScreen.storyboard in Resources */,
+				FFCDF84C2A5A4A2500C731A3 /* Shared.xcconfig in Resources */,
 				FFA94CC12A4EF8CE009B034F /* Assets.xcassets in Resources */,
 				FFA94D112A4F1C2F009B034F /* Pretendard-Medium.ttf in Resources */,
+				FFCDF84A2A5A4A2500C731A3 /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +645,6 @@
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* DiscoverViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
-				FFA94CE32A4F1543009B034F /* Bundle+.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFA94CFF2A4F1B53009B034F /* UIImage+.swift in Sources */,
 				FFA94D1C2A4F1D3B009B034F /* NetworkResult.swift in Sources */,
@@ -636,6 +655,7 @@
 				FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */,
 				FFA94CEB2A4F1AA4009B034F /* UITableView+.swift in Sources */,
 				FFA94CFB2A4F1B3B009B034F /* UIImageView+.swift in Sources */,
+				FFCDF84E2A5A4AB300C731A3 /* Environment.swift in Sources */,
 				FFA94CD32A4F08D4009B034F /* ClassName.swift in Sources */,
 				FFA94CD72A4F0902009B034F /* UserDefaultsManager.swift in Sources */,
 				FFA707152A58533F003DF6A0 /* TagCollectionViewCell.swift in Sources */,
@@ -681,6 +701,7 @@
 /* Begin XCBuildConfiguration section */
 		FFA94CC62A4EF8CE009B034F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -741,6 +762,7 @@
 		};
 		FFA94CC72A4EF8CE009B034F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -795,6 +817,7 @@
 		};
 		FFA94CC92A4EF8CE009B034F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -803,11 +826,12 @@
 				DEVELOPMENT_TEAM = N4RT4KGQK9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GAM/Plists/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GAM;
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -824,6 +848,7 @@
 		};
 		FFA94CCA2A4EF8CE009B034F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -832,11 +857,12 @@
 				DEVELOPMENT_TEAM = N4RT4KGQK9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GAM/Plists/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GAM;
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

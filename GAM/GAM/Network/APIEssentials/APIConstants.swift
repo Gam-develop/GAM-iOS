@@ -8,5 +8,5 @@
 import Foundation
 
 struct APIConstants {
-    static let baseURL = Bundle.main.baseURL
+    static let baseURL = Environment.BASE_URL
 }

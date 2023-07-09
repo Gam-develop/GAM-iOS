@@ -78,6 +78,12 @@ final class MagazineDiscoverViewController: BaseViewController {
         self.tableView.register(AllMagazineTableHeaderView.self, forHeaderFooterViewReuseIdentifier: AllMagazineTableHeaderView.className)
         self.tableView.register(cell: MagazineTableViewCell.self)
     }
+    
+    @objc
+    private func pushMagazineDetailViewController(_ sender: UITapGestureRecognizer) {
+        let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazines[0].url)
+        self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -123,6 +129,7 @@ extension MagazineDiscoverViewController: UITableViewDataSource {
                 guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecentMagazineTableHeaderView.className) as? RecentMagazineTableHeaderView
                 else { return UIView() }
                 view.setData(data: self.magazines[0])
+                view.setAction(target: self, action: #selector(self.pushMagazineDetailViewController(_:)))
                 return view
                 
             case .all:
@@ -136,7 +143,8 @@ extension MagazineDiscoverViewController: UITableViewDataSource {
 
 extension MagazineDiscoverViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debugPrint("select", indexPath)
+        let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazines[indexPath.row].url)
+        self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

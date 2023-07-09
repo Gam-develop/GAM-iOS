@@ -1,5 +1,5 @@
 //
-//  ShareButton.swift
+//  SearchButton.swift
 //  GAM
 //
 //  Created by Jungbin on 2023/07/09.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ShareButton: UIButton {
+final class SearchButton: UIButton {
     
     // MARK: Initializer
     
@@ -25,6 +25,6 @@ final class ShareButton: UIButton {
     
     private func setUI() {
         self.tintColor = .clear
-        self.setImage(.icnShare, for: .normal)
+        self.setImage(.icnSearch, for: .normal)
     }
 }

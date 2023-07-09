@@ -18,9 +18,9 @@ struct HeaderItemType {
 
 final class PagingTabHeaderView: UIView {
     
-    fileprivate enum Metric {
-        static let interItemSpacing = 12.0
-        static let underlineViewHeight = 4.0
+    fileprivate enum Number {
+        static let interItemSpacing = 16.0
+        static let underlineViewHeight = 2.0
         static let underlineViewTopSpacing = 6.0
         static let collectionViewBottomSpacing = underlineViewHeight + underlineViewTopSpacing
         static let duration = 0.2
@@ -42,13 +42,13 @@ final class PagingTabHeaderView: UIView {
     fileprivate let collectionViewLayout: UICollectionViewFlowLayout = {
         let collectionViewLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        collectionViewLayout.minimumInteritemSpacing = Metric.interItemSpacing
+        collectionViewLayout.minimumInteritemSpacing = Number.interItemSpacing
         return collectionViewLayout
     }()
     
     fileprivate let underlineView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = .gamBlack
         return view
     }()
     
@@ -78,7 +78,7 @@ final class PagingTabHeaderView: UIView {
         
         self.collectionView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(Metric.collectionViewBottomSpacing)
+            $0.bottom.equalToSuperview().inset(Number.collectionViewBottomSpacing)
         }
     }
     
@@ -95,13 +95,13 @@ final class PagingTabHeaderView: UIView {
     }
     
     fileprivate func itemSize(index: Int) -> CGSize {
-        return self.items[index].title.size(OfFont: .systemFont(ofSize: 18))
+        return self.items[index].title.size(OfFont: .headline1SemiBold)
     }
 }
 
 extension PagingTabHeaderView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+        return self.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -110,13 +110,13 @@ extension PagingTabHeaderView: UICollectionViewDataSource {
         else { return UICollectionViewCell() }
         
         Observable
-            .just(items[indexPath.item])
+            .just(self.items[indexPath.item])
             .bind(to: cell.rx.prepare)
             .disposed(by: cell.disposeBag)
         
         cell.rx.onTap
             .mapTo(indexPath.item)
-            .bind(to: selectedPublish.asObserver())
+            .bind(to: self.selectedPublish.asObserver())
             .disposed(by: cell.disposeBag)
         
         return cell
@@ -124,58 +124,56 @@ extension PagingTabHeaderView: UICollectionViewDataSource {
 }
 
 extension PagingTabHeaderView: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        itemSize(index: indexPath.item)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return itemSize(index: indexPath.item)
     }
 }
 
 extension Reactive where Base: PagingTabHeaderView {
     var onIndexSelected: Observable<Int> {
-        base.selectedPublish.asObservable()
+        self.base.selectedPublish.asObservable()
     }
     
     var setItems: Binder<[HeaderItemType]> {
-        Binder(base) { base, items in
+        Binder(self.base) { base, items in
             base.items = items
             base.collectionView.reloadData()
         }
     }
     
     var updateCells: Binder<[UpdateHeaderItemType]> {
-        Binder(base) { base, items in
+        Binder(self.base) { base, items in
             items.forEach { ind, item in
                 base.items[ind] = item
+                if ind == 0 {
+                    base.items[1].isSelected = false
+                } else {
+                    base.items[0].isSelected = false
+                }
             }
-            let indexPaths = items.map { ind, item in IndexPath(item: ind, section: 0) }
-            UIView.performWithoutAnimation {
-                base.collectionView.reloadItems(at: indexPaths)
-            }
+            base.collectionView.reloadData()
         }
     }
     
     var updateUnderline: Binder<Int> {
-        Binder(base) { base, index in
+        Binder(self.base) { base, index in
             let indexPath = IndexPath(item: index, section: 0)
             guard let cell = base.collectionView.cellForItem(at: indexPath) else { return }
             base.underlineView.snp.remakeConstraints {
-                $0.left.right.equalTo(cell)
-                $0.bottom.equalTo(cell).offset(PagingTabHeaderView.Metric.underlineViewTopSpacing)
-                $0.height.equalTo(PagingTabHeaderView.Metric.underlineViewHeight)
+                $0.left.right.equalTo(cell).inset(-1)
+                $0.bottom.equalTo(cell).offset(PagingTabHeaderView.Number.underlineViewTopSpacing)
+                $0.height.equalTo(PagingTabHeaderView.Number.underlineViewHeight)
             }
-            UIView.animate(withDuration: PagingTabHeaderView.Metric.duration, delay: 0, animations: base.layoutIfNeeded)
+            UIView.animate(withDuration: PagingTabHeaderView.Number.duration, delay: 0, animations: base.layoutIfNeeded)
         }
     }
     
     private func updateCellLayout(_ cell: UICollectionViewCell) {
-        base.underlineView.snp.remakeConstraints {
+        self.base.underlineView.snp.remakeConstraints {
             $0.left.right.equalTo(cell)
-            $0.bottom.equalTo(cell).offset(PagingTabHeaderView.Metric.underlineViewTopSpacing)
-            $0.height.equalTo(PagingTabHeaderView.Metric.underlineViewHeight)
+            $0.bottom.equalTo(cell).offset(PagingTabHeaderView.Number.underlineViewTopSpacing)
+            $0.height.equalTo(PagingTabHeaderView.Number.underlineViewHeight)
         }
-        UIView.animate(withDuration: PagingTabHeaderView.Metric.duration, delay: 0, animations: base.layoutIfNeeded)
+        UIView.animate(withDuration: PagingTabHeaderView.Number.duration, delay: 0, animations: self.base.layoutIfNeeded)
     }
 }

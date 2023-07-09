@@ -88,6 +88,8 @@
 		FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8582A5A817700C731A3 /* ScrapButton.swift */; };
 		FFCDF85C2A5A89D000C731A3 /* MagazineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF85B2A5A89D000C731A3 /* MagazineEntity.swift */; };
 		FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF85D2A5A89D900C731A3 /* TagEntity.swift */; };
+		FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF85F2A5A98BD00C731A3 /* PopularDesignerEntity.swift */; };
+		FFCDF8622A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8612A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +168,8 @@
 		FFCDF8582A5A817700C731A3 /* ScrapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapButton.swift; sourceTree = "<group>"; };
 		FFCDF85B2A5A89D000C731A3 /* MagazineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineEntity.swift; sourceTree = "<group>"; };
 		FFCDF85D2A5A89D900C731A3 /* TagEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
+		FFCDF85F2A5A98BD00C731A3 /* PopularDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerEntity.swift; sourceTree = "<group>"; };
+		FFCDF8612A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA707142A58533F003DF6A0 /* TagCollectionViewCell.swift */,
+				FFCDF8612A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 			children = (
 				FFCDF85B2A5A89D000C731A3 /* MagazineEntity.swift */,
 				FFCDF85D2A5A89D900C731A3 /* TagEntity.swift */,
+				FFCDF85F2A5A98BD00C731A3 /* PopularDesignerEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -682,6 +688,7 @@
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */,
+				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
 				FFA94D2C2A4F1E93009B034F /* SignInViewController.swift in Sources */,
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
@@ -696,6 +703,7 @@
 				FFA706EC2A4F39EB003DF6A0 /* DiscoverViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
+				FFCDF8622A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift in Sources */,
 				FFCDF8572A5A7E9800C731A3 /* MagazineTableViewCell.swift in Sources */,
 				FFA94CFF2A4F1B53009B034F /* UIImage+.swift in Sources */,
 				FFA94D1C2A4F1D3B009B034F /* NetworkResult.swift in Sources */,

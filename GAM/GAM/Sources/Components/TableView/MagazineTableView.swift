@@ -46,8 +46,7 @@ final class MagazineTableView: UITableView {
         case .normal:
             self.register(cell: MagazineTableViewCell.self)
         case .noScrap:
-            // TODO: Search Magazine TableViewCell 개발 후 변경
-            self.register(cell: MagazineTableViewCell.self)
+            self.register(cell: NoScrapMagazineTableViewCell.self)
         }
     }
 }

@@ -99,6 +99,9 @@
 		FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */; };
 		FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */; };
 		FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8772A5BC0FD00C731A3 /* GamSearchTextField.swift */; };
+		FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8792A5BE49600C731A3 /* RecentSearchEntity.swift */; };
+		FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */; };
+		FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +191,9 @@
 		FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineScrapTableHeaderView.swift; sourceTree = "<group>"; };
 		FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FFCDF8772A5BC0FD00C731A3 /* GamSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamSearchTextField.swift; sourceTree = "<group>"; };
+		FFCDF8792A5BE49600C731A3 /* RecentSearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchEntity.swift; sourceTree = "<group>"; };
+		FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
+		FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoScrapMagazineTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -597,6 +603,8 @@
 			isa = PBXGroup;
 			children = (
 				FFCDF8562A5A7E9800C731A3 /* MagazineTableViewCell.swift */,
+				FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */,
+				FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -607,6 +615,7 @@
 				FFCDF85B2A5A89D000C731A3 /* MagazineEntity.swift */,
 				FFCDF85D2A5A89D900C731A3 /* TagEntity.swift */,
 				FFCDF85F2A5A98BD00C731A3 /* PopularDesignerEntity.swift */,
+				FFCDF8792A5BE49600C731A3 /* RecentSearchEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -748,6 +757,7 @@
 				FFA706EC2A4F39EB003DF6A0 /* BrowseViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
 				FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */,
+				FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */,
 				FFCDF8622A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift in Sources */,
@@ -772,6 +782,7 @@
 				FFA94D232A4F1D84009B034F /* NetworkLoggerPlugin.swift in Sources */,
 				FFA707072A57186C003DF6A0 /* SignUpInfo.swift in Sources */,
 				FFA94D1A2A4F1D2D009B034F /* APIConstants.swift in Sources */,
+				FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */,
 				FFA94CF12A4F1ACA009B034F /* UIView+.swift in Sources */,
 				FFCDF85C2A5A89D000C731A3 /* MagazineEntity.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
@@ -796,6 +807,7 @@
 				FFCDF86A2A5AF84D00C731A3 /* MagazineDiscoverViewController.swift in Sources */,
 				FFA7070F2A585194003DF6A0 /* TagCollectionView.swift in Sources */,
 				FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */,
+				FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseAPI.swift in Sources */,
 			);

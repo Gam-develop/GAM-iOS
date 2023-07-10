@@ -24,6 +24,11 @@ final class SearchViewController: BaseViewController {
         static let recentClear = "전체 삭제"
     }
     
+    enum Number {
+        static let magazineCellHeight = 140.0
+        static let magazineCellSpacing = 18.0
+    }
+    
     // MARK: UIComponents
     
     private let navigationView: GamNavigationView = GamNavigationView(type: .back)
@@ -52,13 +57,26 @@ final class SearchViewController: BaseViewController {
         return tableView
     }()
     
+    private let magazineSearchResultTableView: MagazineTableView = MagazineTableView(cellType: .noScrap)
+    
     // MARK: Properties
     
     private var searchType: SearchType = .magazine
     private var recentSearchDataSource: UITableViewDiffableDataSource<Section, RecentSearchEntity>!
     private var recentSearchSnapshot: NSDiffableDataSourceSnapshot<Section, RecentSearchEntity>!
     
+    var magazineSearchResultDataSource: UITableViewDiffableDataSource<Section, MagazineEntity>!
+    var magazineSearchResultSnapshot: NSDiffableDataSourceSnapshot<Section, MagazineEntity>!
+    
     private var recentSearchData: [RecentSearchEntity] = []
+    private var magazineSearchResultData: [MagazineEntity] = [
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 13),
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "https://www.daum.net", visibilityCount: 1234),
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 17),
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 2),
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 3),
+        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
+    ]
     
     // MARK: Initializer
     
@@ -84,6 +102,12 @@ final class SearchViewController: BaseViewController {
         self.fetchRecentSearchData()
         self.setRecentSearchTableView()
         self.setRecentSearchSnapshot()
+        switch self.searchType {
+        case .magazine :
+            self.magazineSearchResultTableView.isHidden = true
+            self.setMagazineSearchResultLayout()
+        case .portfolio: break
+        }
     }
     
     // MARK: Methods
@@ -138,11 +162,56 @@ extension SearchViewController {
     }
 }
 
+// MARK: - Magazine Search
+
+extension SearchViewController {
+    private func setMagazineSearchResultTableView(keyword: String) {
+        self.magazineSearchResultTableView.backgroundColor = .gamGray1
+        self.magazineSearchResultTableView.delegate = self
+        
+        self.magazineSearchResultDataSource = UITableViewDiffableDataSource<Section, MagazineEntity>(
+            tableView: self.magazineSearchResultTableView,
+            cellProvider: { tableView, indexPath, _ in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: NoScrapMagazineTableViewCell.className,
+                    for: indexPath
+                ) as? NoScrapMagazineTableViewCell else { return UITableViewCell() }
+                cell.setData(data: self.magazineSearchResultData[indexPath.row], keyword: keyword)
+                return cell
+            })
+        self.magazineSearchResultDataSource.defaultRowAnimation = .automatic
+        self.magazineSearchResultTableView.dataSource = self.magazineSearchResultDataSource
+    }
+    
+    private func setMagazineSearchResultSnapshot() {
+        self.magazineSearchResultSnapshot = NSDiffableDataSourceSnapshot<Section, MagazineEntity>()
+        self.magazineSearchResultSnapshot.appendSections([.recent])
+        self.magazineSearchResultSnapshot.appendItems(self.magazineSearchResultData)
+        self.magazineSearchResultDataSource.apply(self.magazineSearchResultSnapshot)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.recentSearchTableView {
+            debugPrint("recent")
+        } else if tableView == self.magazineSearchResultTableView {
+            let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazineSearchResultData[indexPath.row].url)
+            self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
+        }
+    }
+}
+
 // MARK: - UITextFieldDelegate
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let keyword = textField.text?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
+            self.magazineSearchResultTableView.isHidden = false
+            self.setMagazineSearchResultTableView(keyword: keyword)
+            self.setMagazineSearchResultSnapshot()
             
             self.recentSearchData.reverse()
             
@@ -194,5 +263,13 @@ extension SearchViewController {
             make.left.right.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
+    
+    private func setMagazineSearchResultLayout() {
+        self.view.addSubviews([magazineSearchResultTableView])
+        
+        self.magazineSearchResultTableView.snp.makeConstraints { make in
+            make.top.equalTo(self.searchTextField.snp.bottom).offset(27)
+            make.left.right.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
 }

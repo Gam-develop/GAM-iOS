@@ -13,8 +13,8 @@ final class GamNavigationView: UIView {
     enum NavigationType {
         case back
         case backTitleShare
+        case search
 //        case backTitleSave
-//        case search
 //        case searchFilter
 //        case profile
     }
@@ -34,6 +34,7 @@ final class GamNavigationView: UIView {
     }()
     
     lazy var shareButton: ShareButton = ShareButton(type: .system)
+    lazy var searchButton: SearchButton = SearchButton(type: .system)
     
 //    lazy var notificationButton: UIButton = {
 //        let button: UIButton = UIButton(type: .system)
@@ -88,6 +89,7 @@ final class GamNavigationView: UIView {
         switch type {
         case .back: self.setBackLayout()
         case .backTitleShare: self.setBackTitleShareLayout()
+        case .search: self.setSearchLayout()
         }
     }
     
@@ -125,6 +127,12 @@ extension GamNavigationView {
         self.setLeftButtonLayout(button: self.backButton)
         self.setRightButtonLayout(button: self.shareButton)
         self.setCenterTitleLabelLayout()
+    }
+    
+    private func setSearchLayout() {
+        self.addSubviews([searchButton])
+        
+        self.setRightButtonLayout(button: self.searchButton)
     }
     
 //    private func setHomeLayout() {

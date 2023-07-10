@@ -11,47 +11,54 @@ import RxSwift
 
 final class MagazineViewController: BaseViewController {
     
-    private enum Metric {
-        static let headerHeight = 56.0
-        static let headerViewHorizontalInset = 12.0
-        static let horizontalInset = 20.0
-        static let pageHeight = UIScreen.main.bounds.width * 1.3
+    private enum Number {
+        static let headerHeight = 42.0
+        static let headerViewHorizontalInset = 20.0
     }
     
     // MARK: UIComponents
     
-    private let tabHeaderView = PagingTabHeaderView()
-    private let scrollView = UIScrollView()
+    private let navigationView: GamNavigationView = GamNavigationView(type: .search)
+    private let tabHeaderView: PagingTabHeaderView = PagingTabHeaderView()
+    private let scrollView: UIScrollView = UIScrollView()
+    
     private let stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
         stackView.axis = .vertical
         return stackView
     }()
+    
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
     // MARK: Properties
     
     private let disposeBag: DisposeBag = DisposeBag()
+    
     private var items = ["발견", "스크랩"]
         .enumerated()
         .map { index, str in HeaderItemType(title: str, isSelected: index == 0) }
+    
     private var lastSelectedIndex: Int {
         items.firstIndex(where: { $0.isSelected }) ?? 0
     }
+    
     fileprivate var contentViewControllers = [UIViewController]()
+    
+    // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setViewControllers()
-        setUpViews()
+        self.setUpViews()
         self.setLayout()
         self.bindTabHeader()
+        self.setSearchButtonAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabHeaderView.collectionView.reloadData()
+        
+        self.tabHeaderView.collectionView.reloadData()
         self.bindTabHeader()
         
         DispatchQueue.main.async {
@@ -59,23 +66,25 @@ final class MagazineViewController: BaseViewController {
         }
     }
     
-    private func setViewControllers() {
-        items
-            .map(\.title)
-            .forEach { title in
-                let vc = LabelViewController()
-                vc.titleText = title
-                contentViewControllers.append(vc)
-            }
-    }
+    // MARK: Methods
     
     private func setUpViews() {
-//        pageViewController.dataSource = self
         self.pageViewController.delegate = self
+        
+        self.contentViewControllers = [
+            MagazineDiscoverViewController(superViewController: self),
+            MagazineScrapViewController(superViewController: self)
+        ]
         
         self.addChild(pageViewController)
         self.pageViewController.didMove(toParent: self)
         self.pageViewController.setViewControllers([contentViewControllers[0]], direction: .forward, animated: false)
+    }
+    
+    private func setSearchButtonAction() {
+        self.navigationView.searchButton.setAction { [weak self] in
+            self?.navigationController?.pushViewController(SearchViewController(searchType: .magazine), animated: true)
+        }
     }
 }
 
@@ -83,39 +92,44 @@ final class MagazineViewController: BaseViewController {
 
 extension MagazineViewController {
     private func setLayout() {
-        self.view.addSubviews([tabHeaderView, scrollView])
+        self.view.addSubviews([navigationView, tabHeaderView, scrollView])
         self.scrollView.addSubview(stackView)
         self.stackView.addArrangedSubview(pageViewController.view)
         
-        self.tabHeaderView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.left.right.equalToSuperview().inset(Metric.headerViewHorizontalInset)
-            $0.height.equalTo(Metric.headerHeight)
+        self.navigationView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
         }
         
-        self.scrollView.snp.makeConstraints {
-            $0.top.equalTo(tabHeaderView.snp.bottom)
-            $0.left.right.equalToSuperview().inset(Metric.horizontalInset)
-            $0.bottom.equalToSuperview()
+        self.tabHeaderView.snp.makeConstraints { make in
+            make.top.equalTo(self.navigationView.snp.bottom)
+            make.left.right.equalToSuperview().inset(Number.headerViewHorizontalInset)
+            make.height.equalTo(Number.headerHeight)
         }
         
-        self.stackView.snp.makeConstraints {
-            $0.edges.width.equalToSuperview()
+        self.scrollView.snp.makeConstraints { make in
+            make.top.equalTo(self.tabHeaderView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
-        // height 지정 필수
-        self.pageViewController.view.snp.makeConstraints {
-            $0.height.equalTo(Metric.pageHeight)
+        
+        self.stackView.snp.makeConstraints { make in
+            make.edges.width.equalToSuperview()
+        }
+        
+        self.pageViewController.view.snp.makeConstraints { make in
+            make.height.equalTo((self.view.safeAreaLayoutGuide.layoutFrame.height) - (54 + Number.headerHeight)).priority(.high)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
     
     private func bindTabHeader() {
-        
         Observable
-            .just(items)
-            .bind(to: tabHeaderView.rx.setItems)
+            .just(self.items)
+            .bind(to: self.tabHeaderView.rx.setItems)
             .disposed(by: disposeBag)
         
-        tabHeaderView.rx.onIndexSelected
+        self.tabHeaderView.rx.onIndexSelected
             .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .bind(with: self) { ss, newSelectedIndex in
@@ -126,62 +140,43 @@ extension MagazineViewController {
     }
     
     private func updateTapHeaderCell(_ index: Int) {
-        debugPrint(#function)
-//        debugPrint(index, self.lastSelectedIndex)
-//        let lastSelectedIndex = lastSelectedIndex
-        guard index != lastSelectedIndex else {
-            debugPrint("last")
-            return
-            
-        }
-        debugPrint(#function)
-        items[lastSelectedIndex].isSelected = false
-        items[index].isSelected = true
+        guard index != self.lastSelectedIndex else { return }
+        self.items[self.lastSelectedIndex].isSelected = false
+        self.items[index].isSelected = true
         
         let updateHeaderItemTypes = [
-            UpdateHeaderItemType(lastSelectedIndex, items[lastSelectedIndex]),
+            UpdateHeaderItemType(self.lastSelectedIndex, items[self.lastSelectedIndex]),
             UpdateHeaderItemType(index, items[index])
         ]
         
-        tabHeaderView.rx.updateUnderline.onNext(index)
+        self.tabHeaderView.rx.updateUnderline.onNext(index)
         
         Observable
             .just(updateHeaderItemTypes)
             .take(1)
             .filter { !$0.isEmpty }
-            .bind(to: tabHeaderView.rx.updateCells)
+            .bind(to: self.tabHeaderView.rx.updateCells)
             .disposed(by: disposeBag)
     }
     
     private func updatePageView(_ index: Int) {
-        let viewController = contentViewControllers[index]
-        let direction = lastSelectedIndex < index ? UIPageViewController.NavigationDirection.forward : .reverse
+        let viewController = self.contentViewControllers[index]
+        let direction = self.lastSelectedIndex < index ? UIPageViewController.NavigationDirection.forward : .reverse
         self.pageViewController.setViewControllers([viewController], direction: direction, animated: true)
     }
 }
 
+// MARK: - UIPageViewControllerDelegate
+
 extension MagazineViewController: UIPageViewControllerDelegate {
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        didFinishAnimating finished: Bool,
-        previousViewControllers: [UIViewController],
-        transitionCompleted completed: Bool
-    ) {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard completed else { return }
-        updateTabIndex()
+        self.updateTabIndex()
     }
     
     private func updateTabIndex() {
-        guard
-            let vc = (pageViewController.viewControllers?.first as? LabelViewController),
-            let id = vc.id,
-            let currentIndex = items.firstIndex(where: { id == $0.title })
+        guard let currentIndex = self.items.firstIndex(where: { $0.isSelected })
         else { return }
-        
-        updateTapHeaderCell(currentIndex)
+        self.updateTapHeaderCell(currentIndex)
     }
-}
-
-var randomColor: UIColor {
-    UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
 }

@@ -1,14 +1,14 @@
 //
-//  MagazineTableViewCell.swift
+//  NoScrapMagazineTableViewCell.swift
 //  GAM
 //
-//  Created by Jungbin on 2023/07/09.
+//  Created by Jungbin on 2023/07/10.
 //
 
 import UIKit
 import SnapKit
 
-final class MagazineTableViewCell: UITableViewCell {
+final class NoScrapMagazineTableViewCell: UITableViewCell {
     
     // MARK: UIComponents
     
@@ -70,22 +70,30 @@ final class MagazineTableViewCell: UITableViewCell {
     }
     
     private func setUI() {
+        self.scrapButton.isHidden = true
         self.backgroundColor = .clear
         self.contentView.backgroundColor = .gamWhite
         self.contentView.makeRounded(cornerRadius: 10)
         self.selectionStyle = .none
     }
     
-    func setData(data: MagazineEntity) {
+    func setData(data: MagazineEntity, keyword: String) {
         self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
         self.titleLabel.setTextWithStyle(to: data.title, style: .caption3Medium, color: .gamBlack)
         self.authorLabel.text = data.author
         self.visibilityCountLabel.text = "\(data.visibilityCount)"
         self.scrapButton.isSelected = data.isScrap
+        
+        self.highlightKeyword(keyword: keyword)
+    }
+    
+    private func highlightKeyword(keyword: String) {
+        self.titleLabel.setFontColor(to: keyword, font: .caption3Medium, color: .gamRed)
+        self.authorLabel.setFontColor(to: keyword, font: .caption1Regular, color: .gamRed)
     }
 }
 
-extension MagazineTableViewCell {
+extension NoScrapMagazineTableViewCell {
     private func setLayout() {
         self.visibilityStackView.addArrangedSubviews([visibilityImageView, visibilityCountLabel])
         self.contentView.addSubviews([thumbnailImageView, scrapButton, titleLabel, authorLabel, visibilityStackView])

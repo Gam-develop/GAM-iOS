@@ -46,6 +46,7 @@ final class MagazineDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setBackButtonAction(self.navigationView.backButton)
         self.setLayout()
         self.setWebView()
         self.setShareButtonAction()
@@ -64,7 +65,7 @@ final class MagazineDetailViewController: BaseViewController {
     private func setShareButtonAction() {
         self.navigationView.shareButton.setAction { [weak self] in
             guard let self = self else { return }
-            var objectsToShare: [String] = [self.url]
+            let objectsToShare: [String] = [self.url]
             
             let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view

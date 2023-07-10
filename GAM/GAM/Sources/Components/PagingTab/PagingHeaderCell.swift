@@ -17,9 +17,9 @@ final class PagingHeaderCell: UICollectionViewCell {
     
     fileprivate let titleButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
-        button.setTitleColor(.lightGray, for: .normal)
-        button.setTitleColor(.black, for: .highlighted)
-        button.setTitleColor(.black, for: .selected)
+        button.setTitleColor(.gamGray3, for: .normal)
+        button.setTitleColor(.gamBlack, for: .highlighted)
+        button.setTitleColor(.gamBlack, for: .selected)
         button.tintColor = .clear
         return button
     }()
@@ -63,6 +63,7 @@ extension Reactive where Base: PagingHeaderCell {
         Binder(base) { base, itemType in
             base.titleButton.setTitle(itemType?.title, for: .normal)
             base.titleButton.setTitle(itemType?.title, for: .selected)
+            base.titleButton.titleLabel?.font = .headline1SemiBold
             base.titleButton.isSelected = itemType?.isSelected ?? false
         }
     }

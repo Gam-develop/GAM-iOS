@@ -105,4 +105,9 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    
+    public func setAction(target: Any, action: Selector) {
+        let recognizer = UITapGestureRecognizer(target: target, action: action)
+        self.addGestureRecognizer(recognizer)
+    }
 }

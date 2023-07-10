@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MagazineEntity {
+struct MagazineEntity: Hashable {
     let id: Int
     let thumbnailImageURL: String
     let title: String

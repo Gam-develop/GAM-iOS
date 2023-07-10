@@ -138,7 +138,7 @@ extension SearchViewController {
     }
     
     private func setRecentSearchTableView() {
-        self.recentSearchTableView.delegate = self
+//        self.recentSearchTableView.delegate = self
         
         self.recentSearchDataSource = UITableViewDiffableDataSource<Section, RecentSearchEntity>(
             tableView: self.recentSearchTableView,
@@ -148,6 +148,20 @@ extension SearchViewController {
                     for: indexPath
                 ) as? RecentSearchTableViewCell else { return UITableViewCell() }
                 cell.setData(data: self.recentSearchData[indexPath.row])
+                
+                let recognizer = RecentSearchTapGestureRecognizer(target: self, action: #selector(self.recentSearchKeywordTapped(_:)))
+                cell.contentView.removeGestureRecognizer(recognizer)
+                recognizer.keyword = self.recentSearchData[indexPath.row].title
+                cell.contentView.addGestureRecognizer(recognizer)
+                
+                cell.removeButton.removeTarget(nil, action: nil, for: .allTouchEvents)
+                cell.removeButton.setAction { [weak self] in
+                    self?.recentSearchData.remove(at: indexPath.row)
+                    RecentSearchEntity.setUserDefaults(data: self?.recentSearchData.reversed() ?? [], forKey: .recentSearch)
+                    self?.fetchRecentSearchData()
+                    self?.setRecentSearchSnapshot()
+                }
+                
                 return cell
             })
         self.recentSearchDataSource.defaultRowAnimation = .automatic
@@ -159,6 +173,13 @@ extension SearchViewController {
         self.recentSearchSnapshot.appendSections([.recent])
         self.recentSearchSnapshot.appendItems(self.recentSearchData)
         self.recentSearchDataSource.apply(self.recentSearchSnapshot)
+    }
+    
+    @objc
+    private func recentSearchKeywordTapped(_ sender: RecentSearchTapGestureRecognizer) {
+        self.searchTextField.endEditing(true)
+        self.searchTextField.text = sender.keyword
+        self.searchMagazine(keyword: sender.keyword)
     }
 }
 
@@ -189,26 +210,9 @@ extension SearchViewController {
         self.magazineSearchResultSnapshot.appendItems(self.magazineSearchResultData)
         self.magazineSearchResultDataSource.apply(self.magazineSearchResultSnapshot)
     }
-}
-
-// MARK: - UITableViewDelegate
-
-extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.recentSearchTableView {
-            debugPrint("recent")
-        } else if tableView == self.magazineSearchResultTableView {
-            let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazineSearchResultData[indexPath.row].url)
-            self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
-        }
-    }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension SearchViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let keyword = textField.text?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
+    
+    private func searchMagazine(keyword: String?) {
+        if let keyword = keyword?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
             self.magazineSearchResultTableView.isHidden = false
             self.setMagazineSearchResultTableView(keyword: keyword)
             self.setMagazineSearchResultSnapshot()
@@ -227,6 +231,25 @@ extension SearchViewController: UITextFieldDelegate {
         
         self.fetchRecentSearchData()
         self.setRecentSearchSnapshot()
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.magazineSearchResultTableView {
+            let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazineSearchResultData[indexPath.row].url)
+            self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchMagazine(keyword: textField.text)
         return true
     }
 }

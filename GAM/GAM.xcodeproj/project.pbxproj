@@ -102,6 +102,7 @@
 		FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8792A5BE49600C731A3 /* RecentSearchEntity.swift */; };
 		FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */; };
 		FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */; };
+		FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +195,7 @@
 		FFCDF8792A5BE49600C731A3 /* RecentSearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchEntity.swift; sourceTree = "<group>"; };
 		FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
 		FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoScrapMagazineTableViewCell.swift; sourceTree = "<group>"; };
+		FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTapGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -634,6 +636,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */,
+				FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
+				FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */,
 				FFA94D2C2A4F1E93009B034F /* SignInViewController.swift in Sources */,
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,

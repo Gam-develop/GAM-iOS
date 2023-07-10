@@ -21,7 +21,6 @@ struct RecentSearchEntity: Hashable, Codable {
         
         if let encoded = try? encoder.encode(data) {
             UserDefaults.standard.setValue(encoded, forKey: forKey.rawValue)
-            debugPrint("encoded", encoded)
         }
     }
     
@@ -29,7 +28,6 @@ struct RecentSearchEntity: Hashable, Codable {
         if let savedData = UserDefaults.standard.object(forKey: forKey.rawValue) as? Data {
             let decoder = JSONDecoder()
             if let savedObject = try? decoder.decode([RecentSearchEntity].self, from: savedData) {
-                debugPrint("saved object", savedObject)
                 return savedObject
             } else { return nil }
         } else {

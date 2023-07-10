@@ -51,6 +51,7 @@ final class RecentSearchTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .gamWhite
         self.contentView.makeRounded(cornerRadius: 36 / 2)
         self.selectionStyle = .none
+        self.contentView.isUserInteractionEnabled = true
     }
     
     func setData(data: RecentSearchEntity) {

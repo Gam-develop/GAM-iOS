@@ -98,6 +98,7 @@
 		FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8702A5B198200C731A3 /* MagazineScrapViewController.swift */; };
 		FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */; };
 		FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */; };
+		FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8772A5BC0FD00C731A3 /* GamSearchTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +187,7 @@
 		FFCDF8702A5B198200C731A3 /* MagazineScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineScrapViewController.swift; sourceTree = "<group>"; };
 		FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineScrapTableHeaderView.swift; sourceTree = "<group>"; };
 		FFCDF8752A5B1E2F00C731A3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FFCDF8772A5BC0FD00C731A3 /* GamSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamSearchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA706FD2A528830003DF6A0 /* SignUpTextField.swift */,
+				FFCDF8772A5BC0FD00C731A3 /* GamSearchTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
+				FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */,
 				FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */,

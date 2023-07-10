@@ -90,6 +90,7 @@ extension UILabel {
             paragraphStyle.lineSpacing = style.pointSize * 0.48
         }
         
+        paragraphStyle.lineBreakMode = .byTruncatingTail
         attributedString.addAttribute(
             .paragraphStyle,
             value: paragraphStyle,

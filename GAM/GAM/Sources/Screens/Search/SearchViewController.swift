@@ -138,8 +138,6 @@ extension SearchViewController {
     }
     
     private func setRecentSearchTableView() {
-//        self.recentSearchTableView.delegate = self
-        
         self.recentSearchDataSource = UITableViewDiffableDataSource<Section, RecentSearchEntity>(
             tableView: self.recentSearchTableView,
             cellProvider: { tableView, indexPath, _ in
@@ -159,6 +157,7 @@ extension SearchViewController {
                     self?.recentSearchData.remove(at: indexPath.row)
                     RecentSearchEntity.setUserDefaults(data: self?.recentSearchData.reversed() ?? [], forKey: .recentSearch)
                     self?.fetchRecentSearchData()
+                    self?.setRecentSearchTableView()
                     self?.setRecentSearchSnapshot()
                 }
                 

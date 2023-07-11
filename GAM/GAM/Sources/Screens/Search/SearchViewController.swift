@@ -138,8 +138,6 @@ extension SearchViewController {
     }
     
     private func setRecentSearchTableView() {
-//        self.recentSearchTableView.delegate = self
-        
         self.recentSearchDataSource = UITableViewDiffableDataSource<Section, RecentSearchEntity>(
             tableView: self.recentSearchTableView,
             cellProvider: { tableView, indexPath, _ in
@@ -159,6 +157,7 @@ extension SearchViewController {
                     self?.recentSearchData.remove(at: indexPath.row)
                     RecentSearchEntity.setUserDefaults(data: self?.recentSearchData.reversed() ?? [], forKey: .recentSearch)
                     self?.fetchRecentSearchData()
+                    self?.setRecentSearchTableView()
                     self?.setRecentSearchSnapshot()
                 }
                 
@@ -217,19 +216,22 @@ extension SearchViewController {
             self.setMagazineSearchResultTableView(keyword: keyword)
             self.setMagazineSearchResultSnapshot()
             
+            if self.recentSearchData.count >= 8 {
+                self.recentSearchData.removeLast()
+            }
+            
             self.recentSearchData.reverse()
-            
-            /// 중복 제거
-            
             if let duplicatedIndex = self.recentSearchData.firstIndex(where: { $0.title == keyword }) {
                 self.recentSearchData.remove(at: duplicatedIndex)
             }
             
+
             self.recentSearchData.append(RecentSearchEntity(id: Date().hashValue, title: keyword))
             RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentSearch)
         }
         
         self.fetchRecentSearchData()
+        self.setRecentSearchTableView()
         self.setRecentSearchSnapshot()
     }
 }

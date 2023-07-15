@@ -14,8 +14,8 @@ final class GamNavigationView: UIView {
         case back
         case backTitleShare
         case search
+        case searchFilter
 //        case backTitleSave
-//        case searchFilter
 //        case profile
     }
     
@@ -35,6 +35,7 @@ final class GamNavigationView: UIView {
     
     lazy var shareButton: ShareButton = ShareButton(type: .system)
     lazy var searchButton: SearchButton = SearchButton(type: .system)
+    lazy var filterButton: FilterButton = FilterButton(type: .system)
     
 //    lazy var notificationButton: UIButton = {
 //        let button: UIButton = UIButton(type: .system)
@@ -59,18 +60,6 @@ final class GamNavigationView: UIView {
 //        button.setImage(UIImage(named: Text.moreButtonIamgeName), for: .normal)
 //        return button
 //    }()
-//
-//    lazy var searchBarButton: UIButton = {
-//        let button = SnapfitSearchBarButton(type: .system)
-//        return button
-//    }()
-//
-//    lazy var searchTextField: SnapfitSearchTextField = {
-//        let textField: SnapfitSearchTextField = SnapfitSearchTextField()
-//        textField.placeholder = "분위기, 작가 등을 검색해 보세요."
-//        return textField
-//    }()
-//
 //    lazy var saveButton: UIButton = {
 //        let button: UIButton = UIButton(type: .system)
 //        button.setTitle(Text.saveText, for: .normal)
@@ -90,6 +79,7 @@ final class GamNavigationView: UIView {
         case .back: self.setBackLayout()
         case .backTitleShare: self.setBackTitleShareLayout()
         case .search: self.setSearchLayout()
+        case .searchFilter: self.setSearchFilterLayout()
         }
     }
     
@@ -135,18 +125,17 @@ extension GamNavigationView {
         self.setRightButtonLayout(button: self.searchButton)
     }
     
-//    private func setHomeLayout() {
-//        self.addSubviews([logoImageView, notificationButton])
-//
-//        self.logoImageView.snp.makeConstraints { make in
-//            make.top.bottom.equalToSuperview().inset(8)
-//            make.leading.equalTo(22)
-//            make.width.equalTo(108)
-//        }
-//
-//        self.setRightButtonLayout(button: self.notificationButton)
-//    }
-//
+    private func setSearchFilterLayout() {
+        self.addSubviews([searchButton, filterButton])
+        
+        self.setRightButtonLayout(button: self.searchButton)
+        self.filterButton.snp.makeConstraints { make in
+            make.centerY.equalTo(self.searchButton)
+            make.width.height.equalTo(44)
+            make.trailing.equalTo(self.searchButton.snp.leading)
+        }
+    }
+    
 //    private func setBackTitleLayout() {
 //        self.addSubviews([backButton, titleLabel])
 //
@@ -182,27 +171,6 @@ extension GamNavigationView {
 //        self.addSubviews([closeButton])
 //
 //        self.setLeftButtonLayout(button: self.closeButton)
-//    }
-//
-//    private func setBackLikeMoreLayout() {
-//        self.addSubviews([backButton, moreButton, likeButton])
-//
-//        self.setLeftButtonLayout(button: self.backButton)
-//        self.setRightButtonLayout(button: self.moreButton)
-//
-//        self.likeButton.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.trailing.equalTo(self.moreButton.snp.leading).offset(8)
-//            make.width.height.equalTo(44)
-//        }
-//    }
-//
-//    private func backTitleMoreLayout() {
-//        self.addSubviews([backButton, titleLabel, moreButton])
-//
-//        self.setLeftButtonLayout(button: self.backButton)
-//        self.setTitleLabelLayout()
-//        self.setRightButtonLayout(button: self.moreButton)
 //    }
 //
 //    private func setCloseSaveLayout() {

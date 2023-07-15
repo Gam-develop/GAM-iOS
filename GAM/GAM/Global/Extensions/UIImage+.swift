@@ -33,6 +33,10 @@ extension UIImage {
     
     static let icnSearch: UIImage = (UIImage(named: "icnSearch") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let icnFilterBlack: UIImage = (UIImage(named: "icnFilterBlack") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let icnFilterGray: UIImage = (UIImage(named: "icnFilterGray") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     static let icnSmallX: UIImage = (UIImage(named: "icnSmallX") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     func resizeWithWidth(width: CGFloat) -> UIImage? {

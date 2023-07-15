@@ -103,6 +103,7 @@
 		FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */; };
 		FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */; };
 		FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */; };
+		FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8812A60E55D00C731A3 /* FilterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +197,7 @@
 		FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
 		FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoScrapMagazineTableViewCell.swift; sourceTree = "<group>"; };
 		FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		FFCDF8812A60E55D00C731A3 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 				FFCDF8582A5A817700C731A3 /* ScrapButton.swift */,
 				FFCDF8652A5ABBEA00C731A3 /* ShareButton.swift */,
 				FFCDF8672A5AF37D00C731A3 /* SearchButton.swift */,
+				FFCDF8812A60E55D00C731A3 /* FilterButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
 				FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */,
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
+				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
 				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,

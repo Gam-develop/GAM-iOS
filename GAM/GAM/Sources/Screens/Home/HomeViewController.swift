@@ -127,7 +127,7 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.setData(data: self.designers[indexPath.row])
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
-            if let bool = self?.magazines[indexPath.row].isScrap {
+            if let bool = self?.designers[indexPath.row].isScrap {
                 debugPrint("스크랩 request")
                 self?.magazines[indexPath.row].isScrap = !bool
                 cell.scrapButton.isSelected = !bool

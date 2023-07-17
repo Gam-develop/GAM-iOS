@@ -29,6 +29,8 @@ extension UIImage {
     
     static let visibilityBlack: UIImage = (UIImage(named: "visibility_black") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let visibilityGray: UIImage = (UIImage(named: "visibilityGray") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     static let icnShare: UIImage = (UIImage(named: "icnShare") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let icnSearch: UIImage = (UIImage(named: "icnSearch") ?? UIImage()).withRenderingMode(.alwaysOriginal)

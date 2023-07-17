@@ -35,7 +35,7 @@ final class Tag {
         var result: String = ""
         
         _ = tags.map({ tag in
-            result.append("# \(tag.name) ")
+            result.append("#\(tag.name) ")
         })
         
         return result.trimmingCharacters(in: .whitespaces)

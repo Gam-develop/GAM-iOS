@@ -108,6 +108,7 @@
 		FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */; };
 		FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8812A60E55D00C731A3 /* FilterButton.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
+		FFF605C52A657F5D00A1EEC6 /* UserPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C42A657F5D00A1EEC6 /* UserPortfolioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,6 +207,7 @@
 		FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		FFCDF8812A60E55D00C731A3 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
+		FFF605C42A657F5D00A1EEC6 /* UserPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortfolioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -544,6 +546,7 @@
 		FFA94D292A4F1E6B009B034F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FFF605C32A657F3700A1EEC6 /* Portfolio */,
 				FFCDF8742A5B1E0300C731A3 /* Search */,
 				FFA706F62A527862003DF6A0 /* SignUp */,
 				FFA94D2A2A4F1E7B009B034F /* SignIn */,
@@ -654,6 +657,14 @@
 				FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		FFF605C32A657F3700A1EEC6 /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				FFF605C42A657F5D00A1EEC6 /* UserPortfolioViewController.swift */,
+			);
+			path = Portfolio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -823,6 +834,7 @@
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,
+				FFF605C52A657F5D00A1EEC6 /* UserPortfolioViewController.swift in Sources */,
 				FFA94CF52A4F1AE2009B034F /* String+.swift in Sources */,
 				FFCDF8512A5A78CC00C731A3 /* MagazineTableView.swift in Sources */,
 				FFA706F52A5274A1003DF6A0 /* GamActivityIndicatorView.swift in Sources */,

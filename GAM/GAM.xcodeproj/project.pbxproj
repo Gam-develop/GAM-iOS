@@ -10,6 +10,8 @@
 		FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */; };
 		FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */; };
 		FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */; };
+		FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA60E2A6D862300482841 /* BrowseScrapCollectionViewCell.swift */; };
+		FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
 		FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */; };
@@ -109,12 +111,15 @@
 		FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8812A60E55D00C731A3 /* FilterButton.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C52A657F5D00A1EEC6 /* UserPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C42A657F5D00A1EEC6 /* UserPortfolioViewController.swift */; };
+		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverViewController.swift; sourceTree = "<group>"; };
 		FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapViewController.swift; sourceTree = "<group>"; };
 		FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
+		FF0FA60E2A6D862300482841 /* BrowseScrapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionViewCell.swift; sourceTree = "<group>"; };
+		FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerScrapEntity.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
 		FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +213,7 @@
 		FFCDF8812A60E55D00C731A3 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C42A657F5D00A1EEC6 /* UserPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortfolioViewController.swift; sourceTree = "<group>"; };
+		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +350,7 @@
 				FFA707142A58533F003DF6A0 /* TagCollectionViewCell.swift */,
 				FFCDF8612A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift */,
 				FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */,
+				FF0FA60E2A6D862300482841 /* BrowseScrapCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -517,6 +524,7 @@
 		FFA94D252A4F1E34009B034F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FFF605C62A65807E00A1EEC6 /* CollectionReusableView */,
 				FFA707082A572E52003DF6A0 /* View */,
 				FFCDF84F2A5A78C200C731A3 /* TableView */,
 				FFCDF8552A5A7E8500C731A3 /* TableViewCell */,
@@ -636,6 +644,7 @@
 				FFCDF85F2A5A98BD00C731A3 /* PopularDesignerEntity.swift */,
 				FFCDF8792A5BE49600C731A3 /* RecentSearchEntity.swift */,
 				FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */,
+				FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -665,6 +674,14 @@
 				FFF605C42A657F5D00A1EEC6 /* UserPortfolioViewController.swift */,
 			);
 			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		FFF605C62A65807E00A1EEC6 /* CollectionReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */,
+			);
+			path = CollectionReusableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -787,6 +804,7 @@
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* BrowseViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
+				FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */,
 				FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */,
 				FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
@@ -826,11 +844,13 @@
 				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
 				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
+				FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,
 				FFA94CDC2A4F0966009B034F /* BaseNavigationController.swift in Sources */,
 				FFA94D272A4F1E4A009B034F /* GamTabBarController.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
+				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,

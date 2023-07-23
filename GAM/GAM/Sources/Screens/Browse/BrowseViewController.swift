@@ -163,6 +163,11 @@ extension BrowseViewController {
         let viewController = self.contentViewControllers[index]
         let direction = self.lastSelectedIndex < index ? UIPageViewController.NavigationDirection.forward : .reverse
         self.pageViewController.setViewControllers([viewController], direction: direction, animated: true)
+        if index == 0 {
+            self.navigationView.filterButton.isHidden = false
+        } else {
+            self.navigationView.filterButton.isHidden = true
+        }
     }
 }
 

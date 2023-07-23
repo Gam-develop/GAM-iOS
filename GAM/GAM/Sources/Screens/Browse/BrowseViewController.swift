@@ -53,6 +53,7 @@ final class BrowseViewController: BaseViewController {
         self.setLayout()
         self.bindTabHeader()
         self.setSearchButtonAction()
+        self.setFilterButtonAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +85,13 @@ final class BrowseViewController: BaseViewController {
     private func setSearchButtonAction() {
         self.navigationView.searchButton.setAction { [weak self] in
             self?.navigationController?.pushViewController(SearchViewController(searchType: .portfolio), animated: true)
+        }
+    }
+    
+    private func setFilterButtonAction() {
+        let filterViewController: FilterViewController = FilterViewController()
+        self.navigationView.filterButton.setAction { [weak self] in
+            self?.present(filterViewController, animated: true)
         }
     }
 }

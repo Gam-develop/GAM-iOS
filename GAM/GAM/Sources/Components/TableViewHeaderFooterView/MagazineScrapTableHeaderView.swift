@@ -48,7 +48,7 @@ final class MagazineScrapTableHeaderView: UITableViewHeaderFooterView {
         
         self.titleLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(11)
-            make.left.equalToSuperview().inset(22)
+            make.left.equalToSuperview().inset(20)
         }
         
         self.scrapCountLabel.snp.makeConstraints { make in

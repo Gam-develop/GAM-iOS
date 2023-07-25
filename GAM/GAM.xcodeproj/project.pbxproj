@@ -84,6 +84,7 @@
 		FFA94D352A4F1FF5009B034F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D342A4F1FF5009B034F /* RxCocoa */; };
 		FFA94D372A4F1FF5009B034F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D362A4F1FF5009B034F /* RxSwift */; };
 		FFA94D3A2A4F2167009B034F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D392A4F2167009B034F /* Moya */; };
+		FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */; };
 		FFCDF84A2A5A4A2500C731A3 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */; };
 		FFCDF84B2A5A4A2500C731A3 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */; };
 		FFCDF84C2A5A4A2500C731A3 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */; };
@@ -188,6 +189,7 @@
 		FFA94D222A4F1D84009B034F /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		FFA94D262A4F1E4A009B034F /* GamTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamTabBarController.swift; sourceTree = "<group>"; };
 		FFA94D2B2A4F1E93009B034F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamSingleLineLabel.swift; sourceTree = "<group>"; };
 		FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -627,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCDF8532A5A7BEE00C731A3 /* Headline1Label.swift */,
+				FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -873,6 +876,7 @@
 				FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */,
 				FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
+				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,13 +10,13 @@ import SnapKit
 
 final class SignUpTagViewController: BaseViewController {
     
-    enum Text {
+    private enum Text {
         static let question = "님,\n\n어떤 분야에서\n활동 중인감?"
         static let guide = "최대 3개 선택"
         static let done = "선택 완료"
     }
     
-    enum Number {
+    private enum Number {
         static let cellHorizontalSpacing: CGFloat = 16 * 2
         static let cellHeight = 30
     }
@@ -52,10 +52,6 @@ final class SignUpTagViewController: BaseViewController {
         button.isEnabled = false
         return button
     }()
-    
-    // MARK: Properties
-    
-    private let tags: [TagEntity] = Tag.shared.tags
     
     // MARK: View Life Cycle
     
@@ -101,14 +97,14 @@ final class SignUpTagViewController: BaseViewController {
 
 extension SignUpTagViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.tags.count
+        return Tag.shared.tags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.className, for: indexPath) as? TagCollectionViewCell
         else { return UICollectionViewCell() }
         
-        cell.setData(data: self.tags[indexPath.row].name)
+        cell.setData(data: Tag.shared.tags[indexPath.row].name)
         return cell
     }
 }
@@ -118,7 +114,7 @@ extension SignUpTagViewController: UICollectionViewDataSource {
 extension SignUpTagViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sizingCell: TagCollectionViewCell = TagCollectionViewCell()
-        sizingCell.setData(data: self.tags[indexPath.row].name)
+        sizingCell.setData(data: Tag.shared.tags[indexPath.row].name)
         sizingCell.contentLabel.sizeToFit()
         
         let cellWidth = sizingCell.contentLabel.frame.width + Number.cellHorizontalSpacing

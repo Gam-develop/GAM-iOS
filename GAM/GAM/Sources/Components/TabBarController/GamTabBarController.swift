@@ -72,7 +72,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         browseTab.tabBarItem.tag = 2
         
         let mypageTab: UIViewController = self.makeTabVC(
-            vc: BaseNavigationController(rootViewController: MypageViewController()),
+            vc: BaseNavigationController(rootViewController: MyViewController()),
             tabBarTitle: Text.mypageTitle,
             tabBarImg: Text.mypageIconName,
             tabBarSelectedImg: Text.mypageIconName + Text.selected

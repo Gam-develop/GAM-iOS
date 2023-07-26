@@ -15,6 +15,7 @@ final class GamNavigationView: UIView {
         case backTitleShare
         case search
         case searchFilter
+        case backUsernameScrapMore
 //        case backTitleSave
 //        case profile
     }
@@ -36,6 +37,16 @@ final class GamNavigationView: UIView {
     lazy var shareButton: ShareButton = ShareButton(type: .system)
     lazy var searchButton: SearchButton = SearchButton(type: .system)
     lazy var filterButton: FilterButton = FilterButton(type: .system)
+    lazy var moreButton: MoreDefaultButton = MoreDefaultButton(type: .system)
+    lazy var scrapButton: ScrapButton = ScrapButton(type: .system)
+    
+    lazy var headline2Label: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .headline2SemiBold)
+    
+    lazy var underlineView: UIView = {
+        let view: UIView = UIView()
+        view.backgroundColor = .gamGray2
+        return view
+    }()
     
 //    lazy var notificationButton: UIButton = {
 //        let button: UIButton = UIButton(type: .system)
@@ -80,6 +91,7 @@ final class GamNavigationView: UIView {
         case .backTitleShare: self.setBackTitleShareLayout()
         case .search: self.setSearchLayout()
         case .searchFilter: self.setSearchFilterLayout()
+        case .backUsernameScrapMore: self.setBackUsernameScrapMoreLayout()
         }
     }
     
@@ -136,56 +148,26 @@ extension GamNavigationView {
         }
     }
     
-//    private func setBackTitleLayout() {
-//        self.addSubviews([backButton, titleLabel])
-//
-//        self.setLeftButtonLayout(button: self.backButton)
-//        self.setTitleLabelLayout()
-//    }
-//
-//    private func setBackSearchButtonLayout() {
-//        self.addSubviews([backButton, searchBarButton])
-//
-//        self.setLeftButtonLayout(button: self.backButton)
-//        self.searchBarButton.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.left.equalTo(self.backButton.snp.right)
-//            make.right.equalToSuperview().inset(8)
-//            make.height.equalTo(40)
-//        }
-//    }
-//
-//    private func setBackSearchLayout() {
-//        self.addSubviews([backButton, searchTextField])
-//
-//        self.setLeftButtonLayout(button: self.backButton)
-//        self.searchTextField.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.left.equalTo(self.backButton.snp.right)
-//            make.right.equalToSuperview().inset(8)
-//            make.height.equalTo(40)
-//        }
-//    }
-    
-//    private func setCloseLayout() {
-//        self.addSubviews([closeButton])
-//
-//        self.setLeftButtonLayout(button: self.closeButton)
-//    }
-//
-//    private func setCloseSaveLayout() {
-//        self.addSubviews([closeButton, saveButton])
-//
-//        self.setLeftButtonLayout(button: self.closeButton)
-//        self.setRightButtonLayout(button: self.saveButton)
-//    }
-//
-//    private func setBackSaveLayout() {
-//        self.addSubviews([backButton, saveButton])
-//
-//        self.setLeftButtonLayout(button: self.backButton)
-//        self.setRightButtonLayout(button: self.saveButton)
-//    }
+    private func setBackUsernameScrapMoreLayout() {
+        self.addSubviews([backButton, headline2Label, moreButton, scrapButton, underlineView])
+        
+        self.setLeftButtonLayout(button: self.backButton)
+        self.headline2Label.snp.makeConstraints { make in
+            make.centerY.equalTo(self.backButton)
+            make.left.equalTo(self.backButton.snp.right).offset(4)
+        }
+        self.setRightButtonLayout(button: self.moreButton)
+        self.scrapButton.snp.makeConstraints { make in
+            make.centerY.equalTo(self.moreButton)
+            make.width.height.equalTo(44)
+            make.trailing.equalTo(self.moreButton.snp.leading)
+        }
+        self.underlineView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+    }
     
     private func setRightButtonLayout(button: UIButton) {
         button.snp.makeConstraints { make in

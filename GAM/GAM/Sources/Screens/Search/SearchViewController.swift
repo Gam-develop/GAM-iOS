@@ -58,6 +58,7 @@ final class SearchViewController: BaseViewController {
     }()
     
     private let magazineSearchResultTableView: MagazineTableView = MagazineTableView(cellType: .noScrap)
+    private let portfolioSearchResultTableView: MagazineTableView = MagazineTableView(cellType: .noScrap)
     
     // MARK: Properties
     
@@ -67,6 +68,8 @@ final class SearchViewController: BaseViewController {
     
     var magazineSearchResultDataSource: UITableViewDiffableDataSource<Section, MagazineEntity>!
     var magazineSearchResultSnapshot: NSDiffableDataSourceSnapshot<Section, MagazineEntity>!
+    var portfolioSearchResultDataSource: UITableViewDiffableDataSource<Section, PortfolioSearchEntity>!
+    var portfolioSearchResultSnapshot: NSDiffableDataSourceSnapshot<Section, PortfolioSearchEntity>!
     
     private var recentSearchData: [RecentSearchEntity] = []
     private var magazineSearchResultData: [MagazineEntity] = [
@@ -76,6 +79,10 @@ final class SearchViewController: BaseViewController {
         MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 2),
         MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 3),
         MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
+    ]
+    private var portfolioSearchResultData: [PortfolioSearchEntity] = [
+        .init(id: 0, thumbnailImageURL: "", title: "L’ESPACE", author: "최가연", visibilityCount: 1200),
+        .init(id: 0, thumbnailImageURL: "", title: "SPACE Tour", author: "space", visibilityCount: 12020)
     ]
     
     // MARK: Initializer
@@ -106,7 +113,9 @@ final class SearchViewController: BaseViewController {
         case .magazine :
             self.magazineSearchResultTableView.isHidden = true
             self.setMagazineSearchResultLayout()
-        case .portfolio: break
+        case .portfolio:
+            self.portfolioSearchResultTableView.isHidden = true
+            self.setPortfolioSearchResultLayout()
         }
     }
     
@@ -118,7 +127,7 @@ final class SearchViewController: BaseViewController {
     
     private func setRecentClearButtonAction() {
         self.recentClearButton.setAction { [weak self] in
-            RecentSearchEntity.setUserDefaults(data: [], forKey: UserDefaults.Keys.recentSearch)
+            RecentSearchEntity.setUserDefaults(data: [], forKey: self?.searchType == .magazine ? .recentMagazineSearch : .recentPortfolioSearch)
             self?.fetchRecentSearchData()
             self?.setRecentSearchSnapshot()
         }
@@ -129,10 +138,10 @@ final class SearchViewController: BaseViewController {
 
 extension SearchViewController {
     private func fetchRecentSearchData() {
-        if let localData = RecentSearchEntity.getUserDefaults(forKey: .recentSearch) {
+        if let localData = RecentSearchEntity.getUserDefaults(forKey: self.searchType == .magazine ? .recentMagazineSearch : .recentPortfolioSearch) {
             self.recentSearchData = localData.reversed()
         } else {
-            RecentSearchEntity.setUserDefaults(data: [], forKey: .recentSearch)
+            RecentSearchEntity.setUserDefaults(data: [], forKey: self.searchType == .magazine ? .recentMagazineSearch : .recentPortfolioSearch)
             self.fetchRecentSearchData()
         }
     }
@@ -155,7 +164,7 @@ extension SearchViewController {
                 cell.removeButton.removeTarget(nil, action: nil, for: .allTouchEvents)
                 cell.removeButton.setAction { [weak self] in
                     self?.recentSearchData.remove(at: indexPath.row)
-                    RecentSearchEntity.setUserDefaults(data: self?.recentSearchData.reversed() ?? [], forKey: .recentSearch)
+                    RecentSearchEntity.setUserDefaults(data: self?.recentSearchData.reversed() ?? [], forKey: self?.searchType == .magazine ? .recentMagazineSearch : .recentPortfolioSearch)
                     self?.fetchRecentSearchData()
                     self?.setRecentSearchTableView()
                     self?.setRecentSearchSnapshot()
@@ -178,7 +187,12 @@ extension SearchViewController {
     private func recentSearchKeywordTapped(_ sender: RecentSearchTapGestureRecognizer) {
         self.searchTextField.endEditing(true)
         self.searchTextField.text = sender.keyword
-        self.searchMagazine(keyword: sender.keyword)
+        switch self.searchType {
+        case .magazine:
+            self.searchMagazine(keyword: sender.keyword)
+        case .portfolio:
+            self.searchPortfolio(keyword: sender.keyword)
+        }
     }
 }
 
@@ -225,9 +239,61 @@ extension SearchViewController {
                 self.recentSearchData.remove(at: duplicatedIndex)
             }
             
-
             self.recentSearchData.append(RecentSearchEntity(id: Date().hashValue, title: keyword))
-            RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentSearch)
+            RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentMagazineSearch)
+        }
+        
+        self.fetchRecentSearchData()
+        self.setRecentSearchTableView()
+        self.setRecentSearchSnapshot()
+    }
+}
+
+// MARK: - Portfolio Search
+
+extension SearchViewController {
+    private func setPortfolioSearchResultTableView(keyword: String) {
+        self.portfolioSearchResultTableView.backgroundColor = .gamGray1
+        self.portfolioSearchResultTableView.delegate = self
+        
+        self.portfolioSearchResultDataSource = UITableViewDiffableDataSource<Section, PortfolioSearchEntity>(
+            tableView: self.portfolioSearchResultTableView,
+            cellProvider: { tableView, indexPath, _ in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: NoScrapMagazineTableViewCell.className,
+                    for: indexPath
+                ) as? NoScrapMagazineTableViewCell else { return UITableViewCell() }
+                cell.setData(data: self.portfolioSearchResultData[indexPath.row], keyword: keyword)
+                return cell
+            })
+        self.portfolioSearchResultDataSource.defaultRowAnimation = .automatic
+        self.portfolioSearchResultTableView.dataSource = self.portfolioSearchResultDataSource
+    }
+    
+    private func setPortfolioSearchResultSnapshot() {
+        self.portfolioSearchResultSnapshot = NSDiffableDataSourceSnapshot<Section, PortfolioSearchEntity>()
+        self.portfolioSearchResultSnapshot.appendSections([.recent])
+        self.portfolioSearchResultSnapshot.appendItems(self.portfolioSearchResultData)
+        self.portfolioSearchResultDataSource.apply(self.portfolioSearchResultSnapshot)
+    }
+    
+    private func searchPortfolio(keyword: String?) {
+        if let keyword = keyword?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
+            self.portfolioSearchResultTableView.isHidden = false
+            self.setPortfolioSearchResultTableView(keyword: keyword)
+            self.setPortfolioSearchResultSnapshot()
+            
+            if self.recentSearchData.count >= 8 {
+                self.recentSearchData.removeLast()
+            }
+            
+            self.recentSearchData.reverse()
+            if let duplicatedIndex = self.recentSearchData.firstIndex(where: { $0.title == keyword }) {
+                self.recentSearchData.remove(at: duplicatedIndex)
+            }
+            
+            self.recentSearchData.append(RecentSearchEntity(id: Date().hashValue, title: keyword))
+            RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentPortfolioSearch)
         }
         
         self.fetchRecentSearchData()
@@ -243,6 +309,9 @@ extension SearchViewController: UITableViewDelegate {
         if tableView == self.magazineSearchResultTableView {
             let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazineSearchResultData[indexPath.row].url)
             self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
+        } else {
+            let portfolioDetailViewController: BaseViewController = BaseViewController()
+            self.navigationController?.pushViewController(portfolioDetailViewController, animated: true)
         }
     }
 }
@@ -251,7 +320,10 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.searchMagazine(keyword: textField.text)
+        switch self.searchType {
+        case .magazine: self.searchMagazine(keyword: textField.text)
+        case .portfolio: self.searchPortfolio(keyword: textField.text)
+        }
         return true
     }
 }
@@ -293,6 +365,15 @@ extension SearchViewController {
         self.view.addSubviews([magazineSearchResultTableView])
         
         self.magazineSearchResultTableView.snp.makeConstraints { make in
+            make.top.equalTo(self.searchTextField.snp.bottom).offset(27)
+            make.left.right.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
+    }
+    
+    private func setPortfolioSearchResultLayout() {
+        self.view.addSubviews([portfolioSearchResultTableView])
+        
+        self.portfolioSearchResultTableView.snp.makeConstraints { make in
             make.top.equalTo(self.searchTextField.snp.bottom).offset(27)
             make.left.right.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }

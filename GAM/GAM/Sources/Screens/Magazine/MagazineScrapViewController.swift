@@ -10,7 +10,7 @@ import SnapKit
 
 final class MagazineScrapViewController: BaseViewController {
     
-    enum Number {
+    private enum Number {
         static let headerHeight = 52.0
         static let magazineCellHeight = 140.0
         static let magazineCellSpacing = 18.0

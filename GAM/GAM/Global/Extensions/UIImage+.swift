@@ -29,11 +29,19 @@ extension UIImage {
     
     static let visibilityBlack: UIImage = (UIImage(named: "visibility_black") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let visibilityGray: UIImage = (UIImage(named: "visibilityGray") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     static let icnShare: UIImage = (UIImage(named: "icnShare") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let icnSearch: UIImage = (UIImage(named: "icnSearch") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let icnFilterBlack: UIImage = (UIImage(named: "icnFilterBlack") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let icnFilterGray: UIImage = (UIImage(named: "icnFilterGray") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     static let icnSmallX: UIImage = (UIImage(named: "icnSmallX") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let icnModalX: UIImage = (UIImage(named: "icnModalX") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     func resizeWithWidth(width: CGFloat) -> UIImage? {
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))

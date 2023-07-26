@@ -64,7 +64,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         magazineTab.tabBarItem.tag = 1
         
         let browseTab: UIViewController  = self.makeTabVC(
-            vc: BaseNavigationController(rootViewController: HomeViewController()),
+            vc: BaseNavigationController(rootViewController: BrowseViewController()),
             tabBarTitle: Text.browseTitle,
             tabBarImg: Text.browseIconName,
             tabBarSelectedImg: Text.browseIconName + Text.selected
@@ -72,7 +72,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         browseTab.tabBarItem.tag = 2
         
         let mypageTab: UIViewController = self.makeTabVC(
-            vc: BaseNavigationController(rootViewController: HomeViewController()),
+            vc: BaseNavigationController(rootViewController: MypageViewController()),
             tabBarTitle: Text.mypageTitle,
             tabBarImg: Text.mypageIconName,
             tabBarSelectedImg: Text.mypageIconName + Text.selected

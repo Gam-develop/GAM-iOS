@@ -1,14 +1,14 @@
 //
-//  MypageViewController.swift
+//  UserPortfolioViewController.swift
 //  GAM
 //
-//  Created by Jungbin on 2023/07/01.
+//  Created by Jungbin on 2023/07/17.
 //
 
 import UIKit
 import SnapKit
 
-final class MypageViewController: BaseViewController {
+final class UserPortfolioViewController: BaseViewController {
     
     // MARK: UIComponents
     
@@ -25,7 +25,7 @@ final class MypageViewController: BaseViewController {
 
 // MARK: - UI
 
-extension MypageViewController {
+extension UserPortfolioViewController {
     private func setLayout() {
         self.view.addSubviews([])
     }

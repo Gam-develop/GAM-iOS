@@ -9,6 +9,14 @@ import UIKit
 
 final class GamFullButton: UIButton {
     
+    // MARK: Properties
+    
+    override var isEnabled: Bool {
+        didSet {
+            self.layer.borderWidth = isEnabled ? 0 : 1
+        }
+    }
+    
     // MARK: Initializer
     
     override init(frame: CGRect) {
@@ -28,7 +36,13 @@ final class GamFullButton: UIButton {
         self.setBackgroundColor(.gamGray1, for: .disabled)
         self.setTitleColor(.gamWhite, for: .normal)
         self.setTitleColor(.gamGray2, for: .disabled)
-        
         self.makeRounded(cornerRadius: 5)
+        self.layer.borderColor = UIColor.gamGray2.cgColor
+    }
+    
+    override func setTitle(_ title: String?, for state: UIControl.State) {
+        super.setTitle(title, for: state)
+        
+        self.titleLabel?.font = .body4Bold
     }
 }

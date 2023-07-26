@@ -1,14 +1,14 @@
 //
-//  MagazineScrapTableHeaderView.swift
+//  BrowseScrapCollectionHeaderView.swift
 //  GAM
 //
-//  Created by Jungbin on 2023/07/10.
+//  Created by Jungbin on 2023/07/17.
 //
 
 import UIKit
 import SnapKit
 
-final class MagazineScrapTableHeaderView: UITableViewHeaderFooterView {
+final class BrowseScrapCollectionHeaderView: UICollectionReusableView {
     
     // MARK: UIComponents
     
@@ -22,8 +22,8 @@ final class MagazineScrapTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: Initializer
     
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         self.setUI()
         self.setLayout()
@@ -40,7 +40,7 @@ final class MagazineScrapTableHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setUI() {
-        self.backgroundView?.backgroundColor = .clear
+        self.backgroundColor = .clear
     }
     
     private func setLayout() {
@@ -48,7 +48,7 @@ final class MagazineScrapTableHeaderView: UITableViewHeaderFooterView {
         
         self.titleLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(11)
-            make.left.equalToSuperview().inset(20)
+            make.left.equalToSuperview()
         }
         
         self.scrapCountLabel.snp.makeConstraints { make in

@@ -21,7 +21,7 @@ final class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         attributes?.forEach { layoutAttribute in
             guard layoutAttribute.representedElementCategory == .cell else { return }
             if layoutAttribute.frame.origin.y >= maxY {
-                leftMargin = 15.0
+                leftMargin = 20.0
             }
             layoutAttribute.frame.origin.x = leftMargin
             leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing

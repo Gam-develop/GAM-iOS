@@ -1,19 +1,20 @@
 //
-//  SignUpTagViewController.swift
+//  FilterViewController.swift
 //  GAM
 //
-//  Created by Jungbin on 2023/07/07.
+//  Created by Jungbin on 2023/07/24.
 //
 
 import UIKit
 import SnapKit
 
-final class SignUpTagViewController: BaseViewController {
+final class FilterViewController: BaseViewController {
     
     private enum Text {
-        static let question = "님,\n\n어떤 분야에서\n활동 중인감?"
-        static let guide = "최대 3개 선택"
-        static let done = "선택 완료"
+        static let title = "필터"
+        static let subTitle = "활동 분야"
+        static let heading = "최대 3개 선택"
+        static let done = "적용"
     }
     
     private enum Number {
@@ -23,46 +24,45 @@ final class SignUpTagViewController: BaseViewController {
     
     // MARK: UIComponents
     
-    private let progressBarView: GamProgressBarView = GamProgressBarView()
-    private let navigationView: GamNavigationView = GamNavigationView(type: .back)
+    private let titleLabel: Headline1Label = Headline1Label(text: Text.title)
     
-    private let questionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 4
-        label.font = .headline4Bold
-        label.textColor = .gamBlack
-        label.textAlignment = .left
-        return label
+    private let closeButton: UIButton = {
+        let button: UIButton = UIButton(type: .system)
+        button.setImage(.icnModalX, for: .normal)
+        return button
     }()
     
-    private let guideLabel: UILabel = {
-        let label = UILabel()
-        label.text = Text.guide
-        label.font = .caption2Regular
-        label.textColor = .gamGray3
-        label.textAlignment = .left
-        return label
-    }()
+    private let subTitleLabel: GamSingleLineLabel = GamSingleLineLabel(
+        text: Text.subTitle,
+        font: .subhead3SemiBold
+    )
+    
+    private let headingLabel: GamSingleLineLabel = GamSingleLineLabel(
+        text: Text.heading,
+        font: .caption2Regular,
+        color: .gamGray3
+    )
     
     private let tagCollectionView: TagCollectionView = TagCollectionView(frame: .zero, collectionViewLayout: .init())
     
     private let doneButton: GamFullButton = {
         let button: GamFullButton = GamFullButton(type: .system)
         button.setTitle(Text.done, for: .normal)
-        button.isEnabled = false
         return button
     }()
+    
+    // MARK: Properties
+    
+    var sendUpdateDelegate: SendUpdateDelegate?
     
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setUI()
         self.setLayout()
-        self.progressBarView.setProgress(step: .second)
-        self.setUsername()
-        self.setBackButtonAction(self.navigationView.backButton)
+        self.setUI()
+        self.setCloseButtonAction()
         self.setTagCollectionView()
         self.setDoneButtonAction()
     }
@@ -73,9 +73,10 @@ final class SignUpTagViewController: BaseViewController {
         self.view.backgroundColor = .gamWhite
     }
     
-    private func setUsername() {
-        self.questionLabel.text = "\(SignUpInfo.shared.username ?? "")님,\n\n어떤 분야에서\n활동 중인감?"
-        self.questionLabel.sizeToFit()
+    private func setCloseButtonAction() {
+        self.closeButton.setAction { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
     
     private func setTagCollectionView() {
@@ -85,17 +86,19 @@ final class SignUpTagViewController: BaseViewController {
     
     private func setDoneButtonAction() {
         self.doneButton.setAction { [weak self] in
-            SignUpInfo.shared.tags = self?.tagCollectionView.indexPathsForSelectedItems?.map({ indexPath in
+            let selectedTagsInt = self?.tagCollectionView.indexPathsForSelectedItems?.map({ indexPath in
                 indexPath.row + 1
             })
-            self?.navigationController?.pushViewController(SignUpInfoViewController(), animated: true)
+            let selectedTags = Tag.shared.mapTags(selectedTagsInt ?? [])
+            self?.sendUpdateDelegate?.sendUpdate(data: selectedTags)
+            self?.dismiss(animated: true)
         }
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension SignUpTagViewController: UICollectionViewDataSource {
+extension FilterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Tag.shared.tags.count
     }
@@ -111,7 +114,7 @@ extension SignUpTagViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension SignUpTagViewController: UICollectionViewDelegateFlowLayout {
+extension FilterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sizingCell: TagCollectionViewCell = TagCollectionViewCell()
         sizingCell.setData(data: Tag.shared.tags[indexPath.row].name)
@@ -138,41 +141,40 @@ extension SignUpTagViewController: UICollectionViewDelegateFlowLayout {
         if let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionViewCell {
             cell.isSelected = false
         }
-        
-        self.doneButton.isEnabled = self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 > 0
     }
 }
 
 // MARK: - UI
 
-extension SignUpTagViewController {
+extension FilterViewController {
     private func setLayout() {
-        self.view.addSubviews([progressBarView, navigationView, questionLabel, guideLabel, tagCollectionView, doneButton])
+        self.view.addSubviews([titleLabel, closeButton, subTitleLabel, headingLabel, tagCollectionView, doneButton])
         
-        self.progressBarView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(14)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(2)
-        }
-        
-        self.navigationView.snp.makeConstraints { make in
-            make.top.equalTo(self.progressBarView.snp.bottom).offset(14)
-            make.horizontalEdges.equalToSuperview()
-        }
-        
-        self.questionLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.progressBarView.snp.bottom).offset(75)
+        self.titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(37)
             make.left.right.equalToSuperview().inset(20)
+            make.height.equalTo(30)
         }
         
-        self.guideLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.questionLabel.snp.bottom).offset(8)
-            make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(20)
+        self.closeButton.snp.makeConstraints { make in
+            make.top.right.equalToSuperview().inset(9)
+            make.width.height.equalTo(44)
+        }
+        
+        self.subTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(30)
+            make.left.right.equalTo(self.titleLabel)
+            make.height.equalTo(27)
+        }
+        
+        self.headingLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.subTitleLabel.snp.bottom).offset(4)
+            make.left.right.equalTo(self.titleLabel)
+            make.height.equalTo(21)
         }
         
         self.tagCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(self.guideLabel.snp.bottom).offset(56)
+            make.top.equalTo(self.headingLabel.snp.bottom).offset(30)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(156)
         }

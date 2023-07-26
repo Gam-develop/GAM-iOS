@@ -87,6 +87,15 @@ final class NoScrapMagazineTableViewCell: UITableViewCell {
         self.highlightKeyword(keyword: keyword)
     }
     
+    func setData(data: PortfolioSearchEntity, keyword: String) {
+        self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
+        self.titleLabel.setTextWithStyle(to: data.title, style: .caption3Medium, color: .gamBlack)
+        self.authorLabel.text = data.author
+        self.visibilityCountLabel.text = "\(data.visibilityCount)"
+        
+        self.highlightKeyword(keyword: keyword)
+    }
+    
     private func highlightKeyword(keyword: String) {
         self.titleLabel.setFontColor(to: keyword, font: .caption3Medium, color: .gamRed)
         self.authorLabel.setFontColor(to: keyword, font: .caption1Regular, color: .gamRed)

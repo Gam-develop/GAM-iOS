@@ -44,6 +44,8 @@ final class BrowseViewController: BaseViewController {
     
     fileprivate var contentViewControllers = [UIViewController]()
     
+    private var selectedFilterTagView: SelectedFilterTagView = SelectedFilterTagView()
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -90,9 +92,23 @@ final class BrowseViewController: BaseViewController {
     
     private func setFilterButtonAction() {
         let filterViewController: FilterViewController = FilterViewController()
+        filterViewController.sendUpdateDelegate = self
+        
         self.navigationView.filterButton.setAction { [weak self] in
             self?.present(filterViewController, animated: true)
         }
+    }
+}
+
+// MARK: - SendUpdateDelegate
+
+extension BrowseViewController: SendUpdateDelegate {
+    func sendUpdate(data: Any?) {
+        guard let selectedTags: [TagEntity] = data as? [TagEntity]
+        else { return }
+        
+        self.selectedFilterTagView.setTag(tags: selectedTags)
+        self.navigationView.filterButton.isSelected = selectedTags.count != 0
     }
 }
 
@@ -128,6 +144,14 @@ extension BrowseViewController {
         self.pageViewController.view.snp.makeConstraints { make in
             make.height.equalTo((self.view.safeAreaLayoutGuide.layoutFrame.height) - (54 + Number.headerHeight)).priority(.high)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
+        
+        self.view.addSubview(selectedFilterTagView)
+        
+        self.selectedFilterTagView.snp.makeConstraints { make in
+            make.centerY.equalTo(self.navigationView.filterButton)
+            make.right.equalTo(self.navigationView.filterButton.snp.left).offset(-4)
+            make.height.equalTo(36)
         }
     }
     

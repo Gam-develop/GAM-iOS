@@ -48,9 +48,12 @@ final class FilterViewController: BaseViewController {
     private let doneButton: GamFullButton = {
         let button: GamFullButton = GamFullButton(type: .system)
         button.setTitle(Text.done, for: .normal)
-        button.isEnabled = false
         return button
     }()
+    
+    // MARK: Properties
+    
+    var sendUpdateDelegate: SendUpdateDelegate?
     
     // MARK: View Life Cycle
     
@@ -83,9 +86,11 @@ final class FilterViewController: BaseViewController {
     
     private func setDoneButtonAction() {
         self.doneButton.setAction { [weak self] in
-//            SignUpInfo.shared.tags = self?.tagCollectionView.indexPathsForSelectedItems?.map({ indexPath in
-//                indexPath.row + 1
-//            })
+            let selectedTagsInt = self?.tagCollectionView.indexPathsForSelectedItems?.map({ indexPath in
+                indexPath.row + 1
+            })
+            let selectedTags = Tag.shared.mapTags(selectedTagsInt ?? [])
+            self?.sendUpdateDelegate?.sendUpdate(data: selectedTags)
             self?.dismiss(animated: true)
         }
     }
@@ -136,8 +141,6 @@ extension FilterViewController: UICollectionViewDelegateFlowLayout {
         if let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionViewCell {
             cell.isSelected = false
         }
-        
-        self.doneButton.isEnabled = self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 > 0
     }
 }
 

@@ -85,6 +85,7 @@
 		FFA94D372A4F1FF5009B034F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D362A4F1FF5009B034F /* RxSwift */; };
 		FFA94D3A2A4F2167009B034F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D392A4F2167009B034F /* Moya */; };
 		FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */; };
+		FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */; };
 		FFCDF84A2A5A4A2500C731A3 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */; };
 		FFCDF84B2A5A4A2500C731A3 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */; };
 		FFCDF84C2A5A4A2500C731A3 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */; };
@@ -190,6 +191,7 @@
 		FFA94D262A4F1E4A009B034F /* GamTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamTabBarController.swift; sourceTree = "<group>"; };
 		FFA94D2B2A4F1E93009B034F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamSingleLineLabel.swift; sourceTree = "<group>"; };
+		FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFilterTagView.swift; sourceTree = "<group>"; };
 		FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA707092A572E63003DF6A0 /* GamNavigationView.swift */,
+				FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
 				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
+				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
 				FFA94D032A4F1B6C009B034F /* UITabBar+.swift in Sources */,
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,

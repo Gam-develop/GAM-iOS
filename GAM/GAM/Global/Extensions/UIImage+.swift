@@ -43,6 +43,8 @@ extension UIImage {
     
     static let icnModalX: UIImage = (UIImage(named: "icnModalX") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let icnMoreDefault: UIImage = (UIImage(named: "icnMoreDefault") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     func resizeWithWidth(width: CGFloat) -> UIImage? {
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
         imageView.contentMode = .scaleAspectFit

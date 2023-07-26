@@ -19,7 +19,7 @@
 		FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */; };
 		FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */; };
 		FFA706EC2A4F39EB003DF6A0 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706EB2A4F39EB003DF6A0 /* BrowseViewController.swift */; };
-		FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */; };
+		FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */; };
 		FFA706F22A5271E9003DF6A0 /* Colorsets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */; };
 		FFA706F52A5274A1003DF6A0 /* GamActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */; };
 		FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706F72A528130003DF6A0 /* SignUpUsernameViewController.swift */; };
@@ -86,6 +86,7 @@
 		FFA94D3A2A4F2167009B034F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = FFA94D392A4F2167009B034F /* Moya */; };
 		FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */; };
 		FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */; };
+		FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733802A710B6C008B5054 /* UserViewController.swift */; };
 		FFCDF84A2A5A4A2500C731A3 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */; };
 		FFCDF84B2A5A4A2500C731A3 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */; };
 		FFCDF84C2A5A4A2500C731A3 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */; };
@@ -130,7 +131,7 @@
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
 		FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
 		FFA706EB2A4F39EB003DF6A0 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
-		FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
+		FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		FFA706F12A5271E9003DF6A0 /* Colorsets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colorsets.xcassets; sourceTree = "<group>"; };
 		FFA706F42A5274A1003DF6A0 /* GamActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamActivityIndicatorView.swift; sourceTree = "<group>"; };
 		FFA706F72A528130003DF6A0 /* SignUpUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 		FFA94D2B2A4F1E93009B034F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamSingleLineLabel.swift; sourceTree = "<group>"; };
 		FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFilterTagView.swift; sourceTree = "<group>"; };
+		FFC733802A710B6C008B5054 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -265,12 +267,12 @@
 			path = Browse;
 			sourceTree = "<group>";
 		};
-		FFA706E02A4F2F72003DF6A0 /* Mypage */ = {
+		FFA706E02A4F2F72003DF6A0 /* My */ = {
 			isa = PBXGroup;
 			children = (
-				FFA706ED2A4F39F3003DF6A0 /* MypageViewController.swift */,
+				FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */,
 			);
-			path = Mypage;
+			path = My;
 			sourceTree = "<group>";
 		};
 		FFA706E12A4F301A003DF6A0 /* PagingTab */ = {
@@ -564,6 +566,7 @@
 		FFA94D292A4F1E6B009B034F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FFC7337F2A710B67008B5054 /* User */,
 				FFF605C32A657F3700A1EEC6 /* Portfolio */,
 				FFCDF8742A5B1E0300C731A3 /* Search */,
 				FFA706F62A527862003DF6A0 /* SignUp */,
@@ -571,7 +574,7 @@
 				FFA94D2D2A4F1E9D009B034F /* Home */,
 				FFA706DE2A4F2F65003DF6A0 /* Magazine */,
 				FFA706DF2A4F2F6C003DF6A0 /* Browse */,
-				FFA706E02A4F2F72003DF6A0 /* Mypage */,
+				FFA706E02A4F2F72003DF6A0 /* My */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -607,6 +610,14 @@
 				FFA94CC52A4EF8CE009B034F /* Info.plist */,
 			);
 			path = Plists;
+			sourceTree = "<group>";
+		};
+		FFC7337F2A710B67008B5054 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				FFC733802A710B6C008B5054 /* UserViewController.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		FFCDF8462A5A4A0800C731A3 /* Supports */ = {
@@ -801,7 +812,7 @@
 				FF0FA6132A6D976900482841 /* PortfolioSearchEntity.swift in Sources */,
 				FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
-				FFA706EE2A4F39F3003DF6A0 /* MypageViewController.swift in Sources */,
+				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
 				FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */,
@@ -880,6 +891,7 @@
 				FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */,
 				FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
+				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
 				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseAPI.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  MypageViewController.swift
+//  MyViewController.swift
 //  GAM
 //
 //  Created by Jungbin on 2023/07/01.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MypageViewController: BaseViewController {
+final class MyViewController: BaseViewController {
     
     // MARK: UIComponents
     
@@ -25,7 +25,7 @@ final class MypageViewController: BaseViewController {
 
 // MARK: - UI
 
-extension MypageViewController {
+extension MyViewController {
     private func setLayout() {
         self.view.addSubviews([])
     }

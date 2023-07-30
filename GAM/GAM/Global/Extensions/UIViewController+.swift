@@ -131,10 +131,14 @@ extension UIViewController {
         )
     }
     
-    func openSafariInApp(url: URL) {
-        let safariViewController = SFSafariViewController(url: url)
-        safariViewController.modalPresentationStyle = .pageSheet
-        
-        self.present(safariViewController, animated: true)
+    func openSafariInApp(url: String) {
+        if let url = URL(string: url) {
+            let safariViewController = SFSafariViewController(url: url)
+            safariViewController.modalPresentationStyle = .pageSheet
+            
+            self.present(safariViewController, animated: true)
+        } else {
+            debugPrint(#function, "URL String is not available.")
+        }
     }
 }

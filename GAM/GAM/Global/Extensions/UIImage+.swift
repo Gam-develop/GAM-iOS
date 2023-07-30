@@ -45,6 +45,18 @@ extension UIImage {
     
     static let icnMoreDefault: UIImage = (UIImage(named: "icnMoreDefault") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let behanceOff: UIImage = (UIImage(named: "behanceOff") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let behanceOn: UIImage = (UIImage(named: "behanceOn") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let instagramOff: UIImage = (UIImage(named: "instagramOff") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let instagramOn: UIImage = (UIImage(named: "instagramOn") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let notionOff: UIImage = (UIImage(named: "notionOff") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let notionOn: UIImage = (UIImage(named: "notionOn") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     func resizeWithWidth(width: CGFloat) -> UIImage? {
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
         imageView.contentMode = .scaleAspectFit

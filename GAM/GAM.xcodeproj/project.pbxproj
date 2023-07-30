@@ -93,6 +93,9 @@
 		FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733882A716845008B5054 /* UserPortfolioEntity.swift */; };
 		FFC7338B2A7170F5008B5054 /* WorkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338A2A7170F5008B5054 /* WorkEntity.swift */; };
 		FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338C2A7171A3008B5054 /* UserProfileEntity.swift */; };
+		FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */; };
+		FFC733912A717C81008B5054 /* RepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733902A717C81008B5054 /* RepView.swift */; };
+		FFC733932A76AAD0008B5054 /* PortfolioTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733922A76AAD0008B5054 /* PortfolioTableFooterView.swift */; };
 		FFCDF84A2A5A4A2500C731A3 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */; };
 		FFCDF84B2A5A4A2500C731A3 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */; };
 		FFCDF84C2A5A4A2500C731A3 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */; };
@@ -205,6 +208,9 @@
 		FFC733882A716845008B5054 /* UserPortfolioEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortfolioEntity.swift; sourceTree = "<group>"; };
 		FFC7338A2A7170F5008B5054 /* WorkEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkEntity.swift; sourceTree = "<group>"; };
 		FFC7338C2A7171A3008B5054 /* UserProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEntity.swift; sourceTree = "<group>"; };
+		FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
+		FFC733902A717C81008B5054 /* RepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepView.swift; sourceTree = "<group>"; };
+		FFC733922A76AAD0008B5054 /* PortfolioTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableFooterView.swift; sourceTree = "<group>"; };
 		FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -347,6 +353,7 @@
 			children = (
 				FFA707092A572E63003DF6A0 /* GamNavigationView.swift */,
 				FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */,
+				FFC733902A717C81008B5054 /* RepView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -666,6 +673,7 @@
 				FFCDF8562A5A7E9800C731A3 /* MagazineTableViewCell.swift */,
 				FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */,
 				FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */,
+				FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -693,6 +701,7 @@
 				FFCDF86B2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift */,
 				FFCDF86E2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift */,
 				FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */,
+				FFC733922A76AAD0008B5054 /* PortfolioTableFooterView.swift */,
 			);
 			path = TableViewHeaderFooterView;
 			sourceTree = "<group>";
@@ -862,6 +871,7 @@
 				FFCDF84E2A5A4AB300C731A3 /* Environment.swift in Sources */,
 				FFA94CD32A4F08D4009B034F /* ClassName.swift in Sources */,
 				FFC733832A71120B008B5054 /* MoreDefaultButton.swift in Sources */,
+				FFC733932A76AAD0008B5054 /* PortfolioTableFooterView.swift in Sources */,
 				FFA94CD72A4F0902009B034F /* UserDefaultsManager.swift in Sources */,
 				FFA707152A58533F003DF6A0 /* TagCollectionViewCell.swift in Sources */,
 				FFA94CFD2A4F1B49009B034F /* Notification+Name+.swift in Sources */,
@@ -880,6 +890,7 @@
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
 				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
 				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
+				FFC733912A717C81008B5054 /* RepView.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
 				FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,
@@ -903,6 +914,7 @@
 				FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */,
 				FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
+				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
 				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
 				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseAPI.swift in Sources */,

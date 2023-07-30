@@ -53,6 +53,7 @@ final class UserViewController: BaseViewController {
         self.setLayout()
         self.bindTabHeader()
         self.setScrapButtonAction()
+        self.fetchUserInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +87,24 @@ final class UserViewController: BaseViewController {
             // TODO: scrap request
             self?.navigationView.scrapButton.isSelected.toggle()
         }
+    }
+}
+
+// MARK: - Network
+
+extension UserViewController {
+    
+    private func fetchUserInfo() {
+        self.getUserPortfolio()
+        self.getUserProfile()
+    }
+    
+    private func getUserPortfolio() {
+        
+    }
+    
+    private func getUserProfile() {
+        
     }
 }
 

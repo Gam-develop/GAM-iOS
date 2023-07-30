@@ -32,12 +32,7 @@ final class BrowseDiscoverCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let titleLabel: UILabel = {
-        let label: UILabel = UILabel()
-        label.font = .headline2SemiBold
-        label.textColor = .gamBlack
-        return label
-    }()
+    private let titleLabel: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .headline2SemiBold)
     
     private let authorLabel: UILabel = {
         let label: UILabel = UILabel()

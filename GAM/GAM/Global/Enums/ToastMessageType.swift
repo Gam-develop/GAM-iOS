@@ -8,7 +8,7 @@
 import Foundation
 
 enum ToastMessageType {
-    case completedPaste
+    case completedCopy
     case completedUserBlock
     case completedUserReport
     case completedRemove
@@ -18,7 +18,7 @@ extension ToastMessageType {
     
     var text: String {
         switch self {
-        case .completedPaste:
+        case .completedCopy:
             return "✉️ 복사했어요"
         case .completedUserBlock:
             return "🚫 차단되었어요"

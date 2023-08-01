@@ -146,6 +146,7 @@ extension BaseViewController {
                 style: .default,
                 handler: { _ in
                     UIPasteboard.general.string = email
+                    self.showToastMessage(type: .completedCopy)
                 }
             )
         )

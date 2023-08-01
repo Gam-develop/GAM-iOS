@@ -82,42 +82,8 @@ final class UserProfileViewController: BaseViewController {
         self.tagCollectionView.reloadData()
         self.emailButton.isEnabled = !profile.email.isEmpty
         self.emailButton.setAction { [weak self] in
-            if (self?.profile.email) != nil {
-                let actionSheet: UIAlertController = UIAlertController(
-                    title: nil,
-                    message: self?.profile.email,
-                    preferredStyle: .actionSheet
-                )
-                
-                actionSheet.addAction(
-                    UIAlertAction(
-                        title: "복사하기",
-                        style: .default,
-                        handler: { _ in
-                            UIPasteboard.general.string = self?.profile.email
-                        }
-                    )
-                )
-                
-                actionSheet.addAction(
-                    UIAlertAction(
-                        title: "이메일 보내기",
-                        style: .default,
-                        handler: { _ in
-                            self?.superViewController?.openMailAppToUserEmail(email: self?.profile.email ?? "")
-                        }
-                    )
-                )
-                
-                actionSheet.addAction(
-                    UIAlertAction(
-                        title: "취소",
-                        style: .cancel,
-                        handler: nil
-                    )
-                )
-                
-                self?.superViewController?.present(actionSheet, animated: true, completion: nil)
+            if let email = self?.profile.email {
+                self?.superViewController?.openUserContactEmailActionSheet(email: email)
             }
         }
     }

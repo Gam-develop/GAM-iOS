@@ -79,6 +79,83 @@ extension BaseViewController {
             self?.navigationController?.popViewController(animated: true)
         }
     }
+    
+    func openUserBlockReportActionSheet(username: String, userID: Int) {
+        let actionSheet: UIAlertController = UIAlertController(
+            title: nil,
+            message: "\(username) 님",
+            preferredStyle: .actionSheet
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "차단하기",
+                style: .default,
+                handler: { _ in
+                    debugPrint("user Blocked 구현해랏")
+                    self.navigationController?.popViewController(animated: true)
+                }
+            )
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "신고하기",
+                style: .destructive,
+                handler: { _ in
+                    debugPrint("user Reported 구현해랏")
+                }
+            )
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "취소",
+                style: .cancel,
+                handler: nil
+            )
+        )
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func openUserContactEmailActionSheet(email: String) {
+        let actionSheet: UIAlertController = UIAlertController(
+            title: nil,
+            message: email,
+            preferredStyle: .actionSheet
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "복사하기",
+                style: .default,
+                handler: { _ in
+                    UIPasteboard.general.string = email
+                }
+            )
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "이메일 보내기",
+                style: .default,
+                handler: { _ in
+                    self.openMailAppToUserEmail(email: email)
+                }
+            )
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "취소",
+                style: .cancel,
+                handler: nil
+            )
+        )
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
 }
 
 // MARK: - MFMailComposeViewControllerDelegate

@@ -10,10 +10,6 @@ enum Message {
     case unabledMailApp
     case completedSendContactMail
     case failedSendContactMail
-    case completedPaste
-    case completedUserBlock
-    case completedUserReport
-    case completedRemove
 }
 
 extension Message {
@@ -34,14 +30,6 @@ extension Message {
             
         case .failedSendContactMail:
             return "메일 전송에 실패하였습니다. 다시 시도해 주세요."
-        case .completedPaste:
-            return "✉️ 복사했어요"
-        case .completedUserBlock:
-            return "🚫 차단되었어요"
-        case .completedUserReport:
-            return "🚨 신고되었어요"
-        case .completedRemove:
-            return "🗑️ 삭제되었어요"
         }
     }
 }

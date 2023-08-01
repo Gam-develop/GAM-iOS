@@ -100,8 +100,8 @@ extension BaseViewController {
 """,
                         okTitle: "차단") { _ in
                             // TODO: block user
-                            debugPrint("user Blocked 구현해랏")
                             self.navigationController?.popViewController(animated: true)
+                            self.navigationController?.topViewController?.showToastMessage(type: .completedUserBlock)
                         }
                 }
             )
@@ -116,7 +116,7 @@ extension BaseViewController {
                         title: "\(username) 님을 신고합니다.",
                         okTitle: "신고") { _ in
                             // TODO: report user
-                            debugPrint("user Reported 구현해랏")
+                            self.showToastMessage(type: .completedUserReport)
                         }
                 }
             )

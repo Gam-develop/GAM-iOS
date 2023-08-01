@@ -126,6 +126,7 @@
 		FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */; };
 		FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */; };
 		FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8812A60E55D00C731A3 /* FilterButton.swift */; };
+		FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -244,6 +245,7 @@
 		FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoScrapMagazineTableViewCell.swift; sourceTree = "<group>"; };
 		FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		FFCDF8812A60E55D00C731A3 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageType.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -427,6 +429,7 @@
 		FFA94CCD2A4F084D009B034F /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				FFD9DAF52A7966840085B965 /* Enums */,
 				FFA94CCE2A4F0869009B034F /* Protocols */,
 				FFA94CD12A4F08C6009B034F /* Utils */,
 				FFA94CD82A4F091C009B034F /* Bases */,
@@ -724,6 +727,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		FFD9DAF52A7966840085B965 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		FFF605C62A65807E00A1EEC6 /* CollectionReusableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,6 +921,7 @@
 				FFA94D272A4F1E4A009B034F /* GamTabBarController.swift in Sources */,
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
+				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,

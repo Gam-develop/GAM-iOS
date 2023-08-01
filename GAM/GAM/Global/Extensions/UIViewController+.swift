@@ -142,4 +142,50 @@ extension UIViewController {
             debugPrint(#function, "URL String is not available.")
         }
     }
+    
+    // MARK: - toast message 띄우기
+    ///- parameters:
+    ///   - message: 화면에 보여질 메시지
+    func showToastMessage(type: ToastMessageType) {
+        let toastLabel: GamSingleLineLabel = {
+            let label: GamSingleLineLabel = GamSingleLineLabel(text: type.text, font: .caption3Medium, color: .gamWhite)
+            label.textAlignment = .center
+            label.backgroundColor = .gamBlack
+            label.alpha = 0.0
+            label.layer.cornerRadius = 35 / 2
+            label.clipsToBounds = true
+            return label
+        }()
+        
+        let sizingWidth = toastLabel.frame.width + 60
+        
+        let frame = CGRect(
+            x: self.view.frame.size.width / 2 - sizingWidth / 2,
+            y: 48.adjustedH,
+            width: sizingWidth,
+            height: 35
+        )
+        
+        toastLabel.frame = frame
+        
+        self.view.addSubview(toastLabel)
+        
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0.0,
+            options: [.curveEaseInOut],
+            animations: {
+            toastLabel.alpha = 1.0
+        }, completion: { _ in
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 1.5,
+                options: .curveEaseInOut,
+                animations: {
+                toastLabel.alpha = 0.0
+            }, completion:  { _ in
+                toastLabel.removeFromSuperview()
+            })
+        })
+    }
 }

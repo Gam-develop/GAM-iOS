@@ -72,7 +72,7 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         browseTab.tabBarItem.tag = 2
         
         let mypageTab: UIViewController = self.makeTabVC(
-            vc: BaseNavigationController(rootViewController: MypageViewController()),
+            vc: BaseNavigationController(rootViewController: MyViewController()),
             tabBarTitle: Text.mypageTitle,
             tabBarImg: Text.mypageIconName,
             tabBarSelectedImg: Text.mypageIconName + Text.selected
@@ -94,6 +94,8 @@ final class GamTabBarController: UITabBarController, UITabBarControllerDelegate 
         self.tabBar.standardAppearance.backgroundColor = .white
         UITabBar.clearShadow()
         self.tabBar.layer.applyShadow(color: UIColor.lightGray, alpha: 0.2, x: 0, y: -9, blur: 18)
+        self.tabBar.layer.shadowPath = UIBezierPath(roundedRect: self.tabBar.bounds, cornerRadius: self.tabBar.layer.cornerRadius).cgPath
+
         self.modalPresentationStyle = .fullScreen
     }
     

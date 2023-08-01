@@ -1,14 +1,14 @@
 //
-//  TagCollectionViewCell.swift
+//  UnselectableTagCollectionViewCell.swift
 //  GAM
 //
-//  Created by Jungbin on 2023/07/07.
+//  Created by Jungbin on 2023/08/01.
 //
 
 import UIKit
 import SnapKit
 
-final class TagCollectionViewCell: UICollectionViewCell {
+final class UnselectableTagCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     
@@ -19,18 +19,6 @@ final class TagCollectionViewCell: UICollectionViewCell {
         label.textColor = .gamBlack
         return label
     }()
-    
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                contentView.backgroundColor = .gamBlack
-                contentLabel.textColor = .gamWhite
-            } else {
-                contentView.backgroundColor = .clear
-                contentLabel.textColor = .gamBlack
-            }
-        }
-    }
     
     // MARK: Initializer
     
@@ -56,10 +44,8 @@ final class TagCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUI() {
-        self.contentView.backgroundColor = .clear
+        self.contentView.backgroundColor = .gamWhite
         self.contentView.makeRounded(cornerRadius: 4)
-        self.contentView.layer.borderWidth = 1
-        self.contentView.layer.borderColor = UIColor.gamBlack.cgColor
     }
     
     func setData(data: String) {

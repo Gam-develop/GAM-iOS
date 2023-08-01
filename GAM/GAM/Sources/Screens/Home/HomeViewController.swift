@@ -167,6 +167,11 @@ extension HomeViewController {
             make.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
         
+        self.contentView.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.centerX.top.bottom.equalToSuperview()
+        }
+        
         self.magazineTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(26)
             make.horizontalEdges.equalToSuperview().inset(22)
@@ -190,11 +195,6 @@ extension HomeViewController {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(Number.designerCellHeight)
             make.bottom.equalToSuperview().inset(29)
-        }
-        
-        self.contentView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.centerX.top.bottom.equalToSuperview()
         }
     }
 }

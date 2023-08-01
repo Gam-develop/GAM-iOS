@@ -117,16 +117,12 @@ final class SignInViewController: BaseViewController {
         
         if let calaulatedTermsRect = self.infoLabel.boundingRectForCharacterRange(subText: Text.terms),
            calaulatedTermsRect.contains(point) {
-            if let url = URL(string: "https://www.daum.net") {
-                self.openSafariInApp(url: url)
-            }
+            self.openSafariInApp(url: "https://www.daum.net")
         }
         
         if let privacyPolicyRect = self.infoLabel.boundingRectForCharacterRange(subText: Text.privacyPolicy),
            privacyPolicyRect.contains(point) {
-            if let url = URL(string: "https://www.naver.com") {
-                self.openSafariInApp(url: url)
-            }
+            self.openSafariInApp(url: "https://www.naver.com")
         }
     }
 }

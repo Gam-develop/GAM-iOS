@@ -57,6 +57,10 @@ extension UIImage {
     
     static let notionOn: UIImage = (UIImage(named: "notionOn") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let emailOff: UIImage = (UIImage(named: "emailOff") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let emailOn: UIImage = (UIImage(named: "emailOn") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     func resizeWithWidth(width: CGFloat) -> UIImage? {
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
         imageView.contentMode = .scaleAspectFit

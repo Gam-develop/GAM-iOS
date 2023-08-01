@@ -96,6 +96,9 @@
 		FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */; };
 		FFC733912A717C81008B5054 /* RepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733902A717C81008B5054 /* RepView.swift */; };
 		FFC733932A76AAD0008B5054 /* PortfolioTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733922A76AAD0008B5054 /* PortfolioTableFooterView.swift */; };
+		FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733942A78EA8A008B5054 /* ProfileInfoView.swift */; };
+		FFC733972A78FE90008B5054 /* UnselectableTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733962A78FE90008B5054 /* UnselectableTagCollectionViewCell.swift */; };
+		FFC733992A79002E008B5054 /* GamContactButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733982A79002E008B5054 /* GamContactButton.swift */; };
 		FFCDF84A2A5A4A2500C731A3 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */; };
 		FFCDF84B2A5A4A2500C731A3 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */; };
 		FFCDF84C2A5A4A2500C731A3 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */; };
@@ -211,6 +214,9 @@
 		FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FFC733902A717C81008B5054 /* RepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepView.swift; sourceTree = "<group>"; };
 		FFC733922A76AAD0008B5054 /* PortfolioTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableFooterView.swift; sourceTree = "<group>"; };
+		FFC733942A78EA8A008B5054 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		FFC733962A78FE90008B5054 /* UnselectableTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnselectableTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		FFC733982A79002E008B5054 /* GamContactButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamContactButton.swift; sourceTree = "<group>"; };
 		FFCDF8472A5A4A2500C731A3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		FFCDF8482A5A4A2500C731A3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FFCDF8492A5A4A2500C731A3 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 				FFCDF8672A5AF37D00C731A3 /* SearchButton.swift */,
 				FFCDF8812A60E55D00C731A3 /* FilterButton.swift */,
 				FFC733822A71120B008B5054 /* MoreDefaultButton.swift */,
+				FFC733982A79002E008B5054 /* GamContactButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -354,6 +361,7 @@
 				FFA707092A572E63003DF6A0 /* GamNavigationView.swift */,
 				FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */,
 				FFC733902A717C81008B5054 /* RepView.swift */,
+				FFC733942A78EA8A008B5054 /* ProfileInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -377,6 +385,7 @@
 		FFA707132A585333003DF6A0 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				FFC733962A78FE90008B5054 /* UnselectableTagCollectionViewCell.swift */,
 				FFA707142A58533F003DF6A0 /* TagCollectionViewCell.swift */,
 				FFCDF8612A5A9EE500C731A3 /* PopularDesignerCollectionViewCell.swift */,
 				FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */,
@@ -821,6 +830,7 @@
 				FFA94CE52A4F182D009B034F /* UIViewController+.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
+				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */,
@@ -832,6 +842,7 @@
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
 				FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */,
+				FFC733992A79002E008B5054 /* GamContactButton.swift in Sources */,
 				FFA94D2C2A4F1E93009B034F /* SignInViewController.swift in Sources */,
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
@@ -847,6 +858,7 @@
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* BrowseViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
+				FFC733972A78FE90008B5054 /* UnselectableTagCollectionViewCell.swift in Sources */,
 				FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */,
 				FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */,
 				FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */,

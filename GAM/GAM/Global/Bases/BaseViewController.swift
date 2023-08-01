@@ -92,8 +92,17 @@ extension BaseViewController {
                 title: "차단하기",
                 style: .default,
                 handler: { _ in
-                    debugPrint("user Blocked 구현해랏")
-                    self.navigationController?.popViewController(animated: true)
+                    self.makeAlertWithCancel(
+                        title: "\(username) 님을 차단합니다.",
+                        message: """
+\(username) 님의 포트폴리오 및
+프로필을 더이상 볼 수 없습니다.
+""",
+                        okTitle: "차단") { _ in
+                            // TODO: block user
+                            debugPrint("user Blocked 구현해랏")
+                            self.navigationController?.popViewController(animated: true)
+                        }
                 }
             )
         )
@@ -103,7 +112,12 @@ extension BaseViewController {
                 title: "신고하기",
                 style: .destructive,
                 handler: { _ in
-                    debugPrint("user Reported 구현해랏")
+                    self.makeAlertWithCancel(
+                        title: "\(username) 님을 신고합니다.",
+                        okTitle: "신고") { _ in
+                            // TODO: report user
+                            debugPrint("user Reported 구현해랏")
+                        }
                 }
             )
         )

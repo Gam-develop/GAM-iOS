@@ -61,6 +61,7 @@ extension UIViewController {
     
     /// 확인 버튼 1개, 취소 버튼 1개 Alert 메서드
     func makeAlertWithCancel(
+        title : String, message : String? = nil,
         okTitle: String, okStyle: UIAlertAction.Style = .default,
         cancelTitle: String = "취소",
         okAction : ((UIAlertAction) -> Void)?, cancelAction : ((UIAlertAction) -> Void)? = nil,
@@ -71,8 +72,8 @@ extension UIViewController {
         generator.impactOccurred()
         
         let alertViewController = UIAlertController(
-            title: nil, message: nil,
-            preferredStyle: .actionSheet
+            title: title, message: message,
+            preferredStyle: .alert
         )
         
         let okAction = UIAlertAction(title: okTitle, style: okStyle, handler: okAction)

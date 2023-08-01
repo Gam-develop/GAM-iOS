@@ -139,6 +139,7 @@ extension UserProfileViewController {
         self.infoTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(26)
             make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(27)
         }
         
         self.profileInfoView.snp.makeConstraints { make in

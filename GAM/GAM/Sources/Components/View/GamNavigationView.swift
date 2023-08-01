@@ -106,6 +106,10 @@ final class GamNavigationView: UIView {
         self.centerTitleLabel.setTextWithStyle(to: text, style: .headline2SemiBold, color: .gamBlack)
         self.centerTitleLabel.textAlignment = .center
     }
+    
+    func setLeftTitle(_ text: String) {
+        self.headline2Label.text = text
+    }
 }
 
 // MARK: - UI

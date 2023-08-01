@@ -21,26 +21,9 @@ final class PortfolioTableFooterView: UITableViewHeaderFooterView {
         return stackView
     }()
     
-    let behanceButton: UIButton = {
-        let button: UIButton = UIButton(type: .system)
-        button.setImage(.behanceOn, for: .normal)
-        button.setImage(.behanceOff, for: .disabled)
-        return button
-    }()
-    
-    let instagramButton: UIButton = {
-        let button: UIButton = UIButton(type: .system)
-        button.setImage(.instagramOn, for: .normal)
-        button.setImage(.instagramOff, for: .disabled)
-        return button
-    }()
-    
-    let notionButton: UIButton = {
-        let button: UIButton = UIButton(type: .system)
-        button.setImage(.notionOn, for: .normal)
-        button.setImage(.notionOff, for: .disabled)
-        return button
-    }()
+    let behanceButton: GamContactButton = GamContactButton(contactType: .behance)
+    let instagramButton: GamContactButton = GamContactButton(contactType: .instagram)
+    let notionButton: GamContactButton = GamContactButton(contactType: .notion)
     
     // MARK: Initializer
     

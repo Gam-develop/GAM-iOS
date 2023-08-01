@@ -70,6 +70,7 @@ final class UserViewController: BaseViewController {
         self.bindTabHeader()
         self.setScrapButtonAction()
         self.fetchUserInfo()
+        self.setUserBlockReportActionSheet()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +103,15 @@ final class UserViewController: BaseViewController {
         self.navigationView.scrapButton.setAction { [weak self] in
             // TODO: scrap request
             self?.navigationView.scrapButton.isSelected.toggle()
+        }
+    }
+    
+    private func setUserBlockReportActionSheet() {
+        self.navigationView.moreButton.setAction { [weak self] in
+            self?.openUserBlockReportActionSheet(
+                username: self?.profile.name ?? "",
+                userID: self?.profile.userID ?? -1
+            )
         }
     }
 }

@@ -43,6 +43,22 @@ final class UserViewController: BaseViewController {
     }
     
     fileprivate var contentViewControllers = [UIViewController]()
+    private var profile: UserProfileEntity = UserProfileEntity(
+        userID: 1,
+        name: "정정빈",
+        isScrap: true,
+        info: "사용자의 행복을 추구하는 디자이너",
+        infoDetail:
+"""
+안녕하세요! 저는 삶을 다채롭게 만드는 브랜드 디자이너
+입니다.
+
+
+
+창의성, 미적 감각을 바탕으로 제품과 경험을 통해사람들의 삶을 더 아름답고 풍요롭게 만들어 나가고 있습니다. 브랜드의 가치와 메시지를 시각적으로 전달하여 고객들의 인상을 주는 것을 목표로 하고 있습니다.
+""",
+        tags: [1, 4],
+        email: "must4rdev@gmail.com")
     
     // MARK: View Life Cycle
     
@@ -104,7 +120,11 @@ extension UserViewController {
     }
     
     private func getUserProfile() {
-        
+        if let userProfileViewController = self.contentViewControllers[1] as? UserProfileViewController {
+            userProfileViewController.setData(profile: self.profile)
+        }
+        self.navigationView.setLeftTitle(self.profile.name)
+        self.navigationView.scrapButton.isSelected = self.profile.isScrap
     }
 }
 

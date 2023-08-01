@@ -26,7 +26,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
                 contentView.backgroundColor = .gamBlack
                 contentLabel.textColor = .gamWhite
             } else {
-                contentView.backgroundColor = .gamWhite
+                contentView.backgroundColor = .clear
                 contentLabel.textColor = .gamBlack
             }
         }

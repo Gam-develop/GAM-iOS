@@ -22,7 +22,7 @@ final class PortfolioTableViewCell: UITableViewCell {
         return view
     }()
     
-    private let detailLabel: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .caption3Medium)
+    private let detailLabel: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .caption2Regular)
     
     let repView: RepView = RepView()
     

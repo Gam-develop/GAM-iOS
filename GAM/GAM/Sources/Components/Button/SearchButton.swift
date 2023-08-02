@@ -24,7 +24,6 @@ final class SearchButton: UIButton {
     // MARK: Methods
     
     private func setUI() {
-        self.tintColor = .clear
         self.setImage(.icnSearch, for: .normal)
     }
 }

@@ -24,7 +24,6 @@ final class ShareButton: UIButton {
     // MARK: Methods
     
     private func setUI() {
-        self.tintColor = .clear
         self.setImage(.icnShare, for: .normal)
     }
 }

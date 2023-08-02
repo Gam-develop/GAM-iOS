@@ -32,6 +32,8 @@ final class UserPortfolioViewController: BaseViewController {
         return tableView
     }()
     
+    private let emptyView: GamEmptyView = GamEmptyView(type: .userProject)
+    
     // MARK: Properties
     
     private var superViewController: UserViewController?
@@ -43,11 +45,13 @@ final class UserPortfolioViewController: BaseViewController {
         works: [
             .init(id: 1, thumbnailImageURL: "", title: "L’ESPACE", detail: ""),
             .init(id: 2, thumbnailImageURL: "", title: "L’ESPACE", detail: "학교에서는 받는 교육 외에, 교외 팀플을 통해서 학교에서 받는 교육과 스타일을 깨고자 외부에서 프로젝트를."),
-            .init(id: 3, thumbnailImageURL: "", title: "열두글자열두글자열두글자", detail: ""),
-            .init(id: 3, thumbnailImageURL: "", title: "열두글자열두글자열두글자", detail: "오십글자오십글자오십글자오십글자오십글자오십글자오십글자오십글자오십글자오십글자오십글자오십글자오끝"),
-            .init(id: 1, thumbnailImageURL: "", title: "L’ESPACE", detail: "")
+            .init(id: 3, thumbnailImageURL: "", title: "열두글자열두글자열두글자", detail: "")
         ]
-    )
+    ) {
+        didSet {
+            self.emptyView.isHidden = !self.portfolio.works.isEmpty
+        }
+    }
     
     // MARK: Initializer
     
@@ -95,29 +99,33 @@ extension UserPortfolioViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: PortfolioTableFooterView.className) as? PortfolioTableFooterView
-        else { return UIView() }
-        view.setTitle(title: Text.goPortfolioTitle)
-        
-        view.setButtonState(
-            behance: self.portfolio.behanceURL,
-            instagram: self.portfolio.instagramURL,
-            notion: self.portfolio.notionURL
-        )
-        
-        view.behanceButton.setAction {
-            self.openSafariInApp(url: self.portfolio.behanceURL)
+        if self.portfolio.works.count == 0 {
+            return nil
+        } else {
+            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: PortfolioTableFooterView.className) as? PortfolioTableFooterView
+            else { return UIView() }
+            view.setTitle(title: Text.goPortfolioTitle)
+            
+            view.setButtonState(
+                behance: self.portfolio.behanceURL,
+                instagram: self.portfolio.instagramURL,
+                notion: self.portfolio.notionURL
+            )
+            
+            view.behanceButton.setAction {
+                self.openSafariInApp(url: self.portfolio.behanceURL)
+            }
+            
+            view.instagramButton.setAction {
+                self.openSafariInApp(url: self.portfolio.instagramURL)
+            }
+            
+            view.notionButton.setAction {
+                self.openSafariInApp(url: self.portfolio.notionURL)
+            }
+            
+            return view
         }
-        
-        view.instagramButton.setAction {
-            self.openSafariInApp(url: self.portfolio.instagramURL)
-        }
-        
-        view.notionButton.setAction {
-            self.openSafariInApp(url: self.portfolio.notionURL)
-        }
-        
-        return view
     }
 }
 
@@ -133,12 +141,18 @@ extension UserPortfolioViewController: UITableViewDelegate {
 
 extension UserPortfolioViewController {
     private func setLayout() {
-        self.view.addSubviews([portfolioTableView])
+        self.view.addSubviews([portfolioTableView, emptyView])
         
         self.portfolioTableView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+        
+        self.emptyView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(48)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(279)
         }
     }
 }

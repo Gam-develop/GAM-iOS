@@ -33,7 +33,7 @@ final class MyPortfolioViewController: BaseViewController {
         return tableView
     }()
     
-    private let emptyView: GamEmptyView = GamEmptyView(type: .project)
+    private let emptyView: GamEmptyView = GamEmptyView(type: .myProject)
     
     // MARK: Properties
     

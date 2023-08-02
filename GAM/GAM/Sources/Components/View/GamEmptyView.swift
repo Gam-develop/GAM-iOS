@@ -10,12 +10,14 @@ import UIKit
 final class GamEmptyView: UIView {
     
     enum EmptyType {
-        case project
+        case myProject
+        case userProject
     }
     
     private enum Text {
         static let addProject = "추가하러 가기"
         static let addProjectInfo = "프로젝트와 링크를 추가해\n나를 풍부하게 꾸며보세요!"
+        static let noUserProjectInfo = "등록된 프로젝트가 없습니다"
     }
     
     // MARK: UIComponents
@@ -57,9 +59,11 @@ final class GamEmptyView: UIView {
         self.isHidden = true
         
         switch type {
-        case .project:
+        case .myProject:
             self.button.setTitle(Text.addProject, for: .normal)
             self.infoLabel.text = Text.addProjectInfo
+        case .userProject:
+            self.infoLabel.text = Text.noUserProjectInfo
         }
     }
     
@@ -79,7 +83,7 @@ final class GamEmptyView: UIView {
         }
         
         switch type {
-        case .project:
+        case .myProject:
             self.addSubview(button)
             
             self.button.snp.makeConstraints { make in
@@ -88,6 +92,7 @@ final class GamEmptyView: UIView {
                 make.height.equalTo(37)
                 make.width.equalTo(108)
             }
+        case .userProject: break
         }
     }
 }

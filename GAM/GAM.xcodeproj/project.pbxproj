@@ -133,6 +133,7 @@
 		FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */; };
 		FFD9DB012A7A64BF0085B965 /* AddPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */; };
 		FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */; };
+		FFD9DB052A7A6C420085B965 /* GamRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB042A7A6C420085B965 /* GamRoundedButton.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -258,6 +259,7 @@
 		FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamEmptyView.swift; sourceTree = "<group>"; };
+		FFD9DB042A7A6C420085B965 /* GamRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamRoundedButton.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -368,6 +370,7 @@
 				FFC733822A71120B008B5054 /* MoreDefaultButton.swift */,
 				FFC733982A79002E008B5054 /* GamContactButton.swift */,
 				FFD9DAF82A7A57430085B965 /* SettingButton.swift */,
+				FFD9DB042A7A6C420085B965 /* GamRoundedButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */,
 				FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */,
 				FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */,
+				FFD9DB052A7A6C420085B965 /* GamRoundedButton.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */,
 				FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */,

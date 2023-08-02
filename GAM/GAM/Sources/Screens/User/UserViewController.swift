@@ -133,7 +133,7 @@ extension UserViewController {
         if let userProfileViewController = self.contentViewControllers[1] as? UserProfileViewController {
             userProfileViewController.setData(profile: self.profile)
         }
-        self.navigationView.setLeftTitle(self.profile.name)
+        self.navigationView.setCenterLeftTitle(self.profile.name)
         self.navigationView.scrapButton.isSelected = self.profile.isScrap
     }
 }

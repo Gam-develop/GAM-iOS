@@ -127,6 +127,9 @@
 		FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */; };
 		FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8812A60E55D00C731A3 /* FilterButton.swift */; };
 		FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */; };
+		FFD9DAF92A7A57430085B965 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAF82A7A57430085B965 /* SettingButton.swift */; };
+		FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */; };
+		FFD9DAFD2A7A58CA0085B965 /* MyProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFC2A7A58CA0085B965 /* MyProfileController.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -246,6 +249,9 @@
 		FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		FFCDF8812A60E55D00C731A3 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageType.swift; sourceTree = "<group>"; };
+		FFD9DAF82A7A57430085B965 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
+		FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPortfolioViewController.swift; sourceTree = "<group>"; };
+		FFD9DAFC2A7A58CA0085B965 /* MyProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileController.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */,
+				FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */,
+				FFD9DAFC2A7A58CA0085B965 /* MyProfileController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -353,6 +361,7 @@
 				FFCDF8812A60E55D00C731A3 /* FilterButton.swift */,
 				FFC733822A71120B008B5054 /* MoreDefaultButton.swift */,
 				FFC733982A79002E008B5054 /* GamContactButton.swift */,
+				FFD9DAF82A7A57430085B965 /* SettingButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -861,6 +870,7 @@
 				FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */,
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
+				FFD9DAFD2A7A58CA0085B965 /* MyProfileController.swift in Sources */,
 				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
 				FFC733872A71147A008B5054 /* UserProfileViewController.swift in Sources */,
 				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
@@ -906,6 +916,7 @@
 				FFA94CF12A4F1ACA009B034F /* UIView+.swift in Sources */,
 				FFCDF85C2A5A89D000C731A3 /* MagazineEntity.swift in Sources */,
 				FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */,
+				FFD9DAF92A7A57430085B965 /* SettingButton.swift in Sources */,
 				FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
@@ -922,6 +933,7 @@
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
+				FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,

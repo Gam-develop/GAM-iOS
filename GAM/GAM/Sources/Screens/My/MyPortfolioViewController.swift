@@ -10,11 +10,40 @@ import SnapKit
 
 final class MyPortfolioViewController: BaseViewController {
     
+    private enum Number {
+        static let portfolioCellHeight = 561.0
+    }
+    
+    private enum Text {
+        static let addProject = "프로젝트 추가하기"
+        static let addContactURL = "링크 추가하기"
+    }
+    
     // MARK: UIComponents
+    
+    private let portfolioTableView: UITableView = {
+        let tableView: UITableView = UITableView(frame: .init(), style: .grouped)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.01))
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = Number.portfolioCellHeight
+        tableView.separatorStyle = .none
+        tableView.register(cell: MyPortfolioTableViewCell.self)
+        tableView.register(cell: AddPortfolioTableViewCell.self)
+        tableView.register(PortfolioTableFooterView.self, forHeaderFooterViewReuseIdentifier: PortfolioTableFooterView.className)
+        return tableView
+    }()
     
     // MARK: Properties
     
     private var superViewController: MyViewController?
+    private var portfolio: UserPortfolioEntity = .init(
+        id: 1,
+        behanceURL: "",
+        instagramURL: "https://instagram.com/1v11aby",
+        notionURL: "",
+        works: [
+        ]
+    )
     
     // MARK: Initializer
     
@@ -34,15 +63,114 @@ final class MyPortfolioViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setLayout()
+        self.setPortfolioTableView()
     }
     
     // MARK: Methods
+    
+    private func setPortfolioTableView() {
+        self.portfolioTableView.dataSource = self
+        self.portfolioTableView.delegate = self
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension MyPortfolioViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch self.portfolio.works.count {
+        case 0: return 0
+        case 1, 2: return 2
+        default: return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return self.portfolio.works.count
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withType: MyPortfolioTableViewCell.self, for: indexPath)
+            
+            cell.repView.isHidden = indexPath.row != 0
+            cell.setData(data: self.portfolio.works[indexPath.row])
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
+            cell.addProjectButton.setAction { [weak self] in
+                self?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+            }
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if (self.portfolio.works.count <= 2 && section == 1) || (self.portfolio.works.count == 3) {
+            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: PortfolioTableFooterView.className) as? PortfolioTableFooterView
+            else { return UIView() }
+            view.setTitle(title: Text.addContactURL)
+            
+            view.setButtonState(
+                behance: self.portfolio.behanceURL,
+                instagram: self.portfolio.instagramURL,
+                notion: self.portfolio.notionURL
+            )
+            
+            view.behanceButton.setAction {
+                self.openSafariInApp(url: self.portfolio.behanceURL)
+            }
+            
+            view.instagramButton.setAction {
+                self.openSafariInApp(url: self.portfolio.instagramURL)
+            }
+            
+            view.notionButton.setAction {
+                self.openSafariInApp(url: self.portfolio.notionURL)
+            }
+            
+            return view
+        }
+        return nil
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension MyPortfolioViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if (section == 1) || (section == 0 && self.portfolio.works.count == 3) {
+            return 169 + 40
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            return 92
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
 }
 
 // MARK: - UI
 
 extension MyPortfolioViewController {
     private func setLayout() {
-        self.view.addSubviews([])
+        self.view.addSubviews([portfolioTableView])
+        
+        self.portfolioTableView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
 }

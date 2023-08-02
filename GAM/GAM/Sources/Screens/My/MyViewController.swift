@@ -109,7 +109,6 @@ final class MyViewController: BaseViewController {
 // MARK: - Network
 
 extension MyViewController {
-    
     private func fetchUserInfo() {
         self.getUserPortfolio()
         self.getUserProfile()

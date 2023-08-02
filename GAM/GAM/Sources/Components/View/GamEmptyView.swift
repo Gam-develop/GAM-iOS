@@ -54,7 +54,7 @@ final class GamEmptyView: UIView {
     // MARK: Methods
     
     private func setUI(type: EmptyType) {
-        self.isHidden = false
+        self.isHidden = true
         
         switch type {
         case .project:

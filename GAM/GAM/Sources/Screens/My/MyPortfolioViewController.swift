@@ -33,6 +33,8 @@ final class MyPortfolioViewController: BaseViewController {
         return tableView
     }()
     
+    private let emptyView: GamEmptyView = GamEmptyView(type: .project)
+    
     // MARK: Properties
     
     private var superViewController: MyViewController?
@@ -42,8 +44,13 @@ final class MyPortfolioViewController: BaseViewController {
         instagramURL: "https://instagram.com/1v11aby",
         notionURL: "",
         works: [
+            .init(id: 1, thumbnailImageURL: "", title: "", detail: "a")
         ]
-    )
+    ) {
+        didSet {
+            self.emptyView.isHidden = !self.portfolio.works.isEmpty
+        }
+    }
     
     // MARK: Initializer
     
@@ -64,6 +71,7 @@ final class MyPortfolioViewController: BaseViewController {
         
         self.setLayout()
         self.setPortfolioTableView()
+        self.setAddProjectButtonAction()
     }
     
     // MARK: Methods
@@ -71,6 +79,12 @@ final class MyPortfolioViewController: BaseViewController {
     private func setPortfolioTableView() {
         self.portfolioTableView.dataSource = self
         self.portfolioTableView.delegate = self
+    }
+    
+    private func setAddProjectButtonAction() {
+        self.emptyView.button.setAction { [weak self] in
+            self?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+        }
     }
 }
 
@@ -165,12 +179,18 @@ extension MyPortfolioViewController: UITableViewDelegate {
 
 extension MyPortfolioViewController {
     private func setLayout() {
-        self.view.addSubviews([portfolioTableView])
+        self.view.addSubviews([portfolioTableView, emptyView])
         
         self.portfolioTableView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+        
+        self.emptyView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(48)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(279)
         }
     }
 }

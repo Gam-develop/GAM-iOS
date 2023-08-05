@@ -17,6 +17,7 @@ final class GamNavigationView: UIView {
         case searchFilter
         case backUsernameScrapMore
         case usernameSetting
+        case backTitleSave
     }
     
     enum Text {
@@ -39,6 +40,14 @@ final class GamNavigationView: UIView {
     lazy var moreButton: MoreDefaultButton = MoreDefaultButton(type: .system)
     lazy var scrapButton: ScrapButton = ScrapButton(type: .system)
     lazy var settingButton: SettingButton = SettingButton(type: .system)
+    lazy var saveButton: UIButton = {
+        let button: UIButton = UIButton(type: .system)
+        button.setTitle("저장", for: .normal)
+        button.titleLabel?.font = .body4Bold
+        button.setTitleColor(.gamBlack, for: .normal)
+        button.setTitleColor(.gamGray3, for: .disabled)
+        return button
+    }()
     
     lazy var headline2Label: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .headline2SemiBold)
     
@@ -63,7 +72,8 @@ final class GamNavigationView: UIView {
         case .search: self.setSearchLayout()
         case .searchFilter: self.setSearchFilterLayout()
         case .backUsernameScrapMore: self.setBackUsernameScrapMoreLayout()
-        case .usernameSetting : self.setUsernameSettingLayout()
+        case .usernameSetting: self.setUsernameSettingLayout()
+        case .backTitleSave: self.setBackTitleSaveLayout()
         }
     }
     
@@ -159,6 +169,19 @@ extension GamNavigationView {
             make.left.equalToSuperview().inset(20)
             make.right.equalTo(self.settingButton.snp.left).offset(-8)
         }
+        self.underlineView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+    }
+    
+    private func setBackTitleSaveLayout() {
+        self.addSubviews([backButton, centerTitleLabel, saveButton, underlineView])
+        
+        self.setLeftButtonLayout(button: self.backButton)
+        self.setRightButtonLayout(button: self.saveButton)
+        self.setCenterTitleLabelLayout()
         self.underlineView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()

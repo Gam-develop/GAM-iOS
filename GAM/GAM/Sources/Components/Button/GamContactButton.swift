@@ -34,15 +34,19 @@ final class GamContactButton: UIButton {
         switch contactType {
         case .behance:
             self.setImage(.behanceOn, for: .normal)
+            self.setImage(.behanceOff, for: .selected)
             self.setImage(.behanceOff, for: .disabled)
         case .instagram:
             self.setImage(.instagramOn, for: .normal)
+            self.setImage(.instagramOff, for: .selected)
             self.setImage(.instagramOff, for: .disabled)
         case .notion:
             self.setImage(.notionOn, for: .normal)
+            self.setImage(.notionOff, for: .selected)
             self.setImage(.notionOff, for: .disabled)
         case .email:
             self.setImage(.emailOn, for: .normal)
+            self.setImage(.emailOff, for: .selected)
             self.setImage(.emailOff, for: .disabled)
         }
     }

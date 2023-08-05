@@ -45,9 +45,9 @@ final class PortfolioTableFooterView: UITableViewHeaderFooterView {
     }
     
     func setButtonState(behance: String, instagram: String, notion: String) {
-        self.behanceButton.isEnabled = !behance.isEmpty
-        self.instagramButton.isEnabled = !instagram.isEmpty
-        self.notionButton.isEnabled = !notion.isEmpty
+        self.behanceButton.isSelected = behance.isEmpty
+        self.instagramButton.isSelected = instagram.isEmpty
+        self.notionButton.isSelected = notion.isEmpty
     }
     
     private func setUI() {

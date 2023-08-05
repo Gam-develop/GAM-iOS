@@ -138,15 +138,27 @@ extension MyPortfolioViewController: UITableViewDataSource {
             )
             
             view.behanceButton.setAction { [weak self] in
-                self?.navigationController?.pushViewController(AddContactURLViewController(type: .behance), animated: true, completion: nil)
+                self?.navigationController?.pushViewController(
+                    AddContactURLViewController(
+                        type: .behance,
+                        url: self?.portfolio.behanceURL ?? ""
+                    ), animated: true, completion: nil)
             }
             
             view.instagramButton.setAction { [weak self] in
-                self?.navigationController?.pushViewController(AddContactURLViewController(type: .instagram), animated: true, completion: nil)
+                self?.navigationController?.pushViewController(
+                    AddContactURLViewController(
+                        type: .instagram,
+                        url: self?.portfolio.instagramURL ?? ""
+                    ), animated: true, completion: nil)
             }
             
             view.notionButton.setAction { [weak self] in
-                self?.navigationController?.pushViewController(AddContactURLViewController(type: .notion), animated: true, completion: nil)
+                self?.navigationController?.pushViewController(
+                    AddContactURLViewController(
+                        type: .notion,
+                        url: self?.portfolio.notionURL ?? ""
+                    ), animated: true, completion: nil)
             }
             
             return view

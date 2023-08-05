@@ -51,10 +51,11 @@ final class AddContactURLViewController: BaseViewController {
     
     // MARK: Initializer
     
-    init(type: ContactURLType) {
+    init(type: ContactURLType, url: String) {
         super.init(nibName: nil, bundle: nil)
         
         self.contactURLType = type
+        self.textField.text = url
     }
     
     required init?(coder: NSCoder) {

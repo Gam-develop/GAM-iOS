@@ -66,8 +66,7 @@ final class GamTextField: UITextField {
             .withUnretained(self)
             .subscribe(onNext: { (owner, changedText) in
                 if changedText.count > 0 {
-                    let regex = "(https?://)?(www.)?[-a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ@:%._+~#=]{2,256}.[a-z]{2,6}([-a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ@:%_+.~#?&//=]*)"
-                    if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
+                    if changedText.verifyUrl() && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
                         self.layer.borderWidth = 0
                     } else {
                         self.layer.borderWidth = 1

@@ -71,6 +71,7 @@ final class UserViewController: BaseViewController {
         self.setScrapButtonAction()
         self.fetchUserInfo()
         self.setUserBlockReportActionSheet()
+        self.setBackButtonAction(self.navigationView.backButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {

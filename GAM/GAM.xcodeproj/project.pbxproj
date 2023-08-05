@@ -129,7 +129,7 @@
 		FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */; };
 		FFD9DAF92A7A57430085B965 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAF82A7A57430085B965 /* SettingButton.swift */; };
 		FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */; };
-		FFD9DAFD2A7A58CA0085B965 /* MyProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFC2A7A58CA0085B965 /* MyProfileController.swift */; };
+		FFD9DAFD2A7A58CA0085B965 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */; };
 		FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */; };
 		FFD9DB012A7A64BF0085B965 /* AddPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */; };
 		FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */; };
@@ -137,6 +137,7 @@
 		FFD9DB072A7A8ED80085B965 /* AddContactURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */; };
 		FFD9DB092A7A91120085B965 /* GamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB082A7A91120085B965 /* GamTextField.swift */; };
 		FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */; };
+		FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -258,7 +259,7 @@
 		FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageType.swift; sourceTree = "<group>"; };
 		FFD9DAF82A7A57430085B965 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPortfolioViewController.swift; sourceTree = "<group>"; };
-		FFD9DAFC2A7A58CA0085B965 /* MyProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileController.swift; sourceTree = "<group>"; };
+		FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamEmptyView.swift; sourceTree = "<group>"; };
@@ -266,6 +267,7 @@
 		FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactURLViewController.swift; sourceTree = "<group>"; };
 		FFD9DB082A7A91120085B965 /* GamTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamTextField.swift; sourceTree = "<group>"; };
 		FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactURLType.swift; sourceTree = "<group>"; };
+		FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,8 +318,9 @@
 			children = (
 				FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */,
 				FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */,
-				FFD9DAFC2A7A58CA0085B965 /* MyProfileController.swift */,
+				FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */,
 				FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */,
+				FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -892,7 +895,7 @@
 				FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */,
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
-				FFD9DAFD2A7A58CA0085B965 /* MyProfileController.swift in Sources */,
+				FFD9DAFD2A7A58CA0085B965 /* MyProfileViewController.swift in Sources */,
 				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
 				FFC733872A71147A008B5054 /* UserProfileViewController.swift in Sources */,
 				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
@@ -901,6 +904,7 @@
 				FFD9DB092A7A91120085B965 /* GamTextField.swift in Sources */,
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* BrowseViewController.swift in Sources */,
+				FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
 				FFC733972A78FE90008B5054 /* UnselectableTagCollectionViewCell.swift in Sources */,
 				FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */,

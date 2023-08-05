@@ -91,7 +91,7 @@ final class MyViewController: BaseViewController {
         
         self.contentViewControllers = [
             MyPortfolioViewController(superViewController: self),
-            MyProfileController(superViewController: self)
+            MyProfileViewController(superViewController: self)
         ]
         
         self.addChild(pageViewController)
@@ -119,8 +119,8 @@ extension MyViewController {
     }
     
     private func getUserProfile() {
-        if let myProfileViewController = self.contentViewControllers[1] as? MyProfileController {
-//            myProfileViewController.setData(profile: self.profile)
+        if let myProfileViewController = self.contentViewControllers[1] as? MyProfileViewController {
+            myProfileViewController.setData(profile: self.profile)
         }
         self.navigationView.setLeftTitle(self.profile.name)
         self.navigationView.scrapButton.isSelected = self.profile.isScrap

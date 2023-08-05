@@ -14,6 +14,7 @@ final class GamTextField: UITextField {
     
     enum TextFieldType {
         case url
+        case email
     }
     
     // MARK: UIComponents
@@ -38,6 +39,7 @@ final class GamTextField: UITextField {
         self.setLayout()
         switch type {
         case .url : self.checkValidURL()
+        default: break
         }
     }
     

@@ -1,27 +1,27 @@
 //
-//  MyProfileController.swift
+//  EditProfileViewController.swift
 //  GAM
 //
-//  Created by Jungbin on 2023/08/02.
+//  Created by Jungbin on 2023/08/05.
 //
 
 import UIKit
 import SnapKit
 
-final class MyProfileController: BaseViewController {
+final class EditProfileViewController: BaseViewController {
     
     // MARK: UIComponents
     
     // MARK: Properties
     
-    private var superViewController: MyViewController?
+    private var profile: UserProfileEntity = .init(userID: 0, name: "", isScrap: false, info: "", infoDetail: "", tags: [], email: "")
     
     // MARK: Initializer
     
-    init(superViewController: MyViewController) {
+    init(profile: UserProfileEntity) {
         super.init(nibName: nil, bundle: nil)
         
-        self.superViewController = superViewController
+        self.profile = profile
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +41,7 @@ final class MyProfileController: BaseViewController {
 
 // MARK: - UI
 
-extension MyProfileController {
+extension EditProfileViewController {
     private func setLayout() {
         self.view.addSubviews([])
     }

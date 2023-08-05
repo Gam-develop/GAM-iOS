@@ -13,10 +13,10 @@ import RxCocoa
 final class AddContactURLViewController: BaseViewController {
     
     private enum Text {
-        static let placeholder = "포트폴리오 링크를 입력해주세요."
-        static let title = "포트폴리오 링크를 입력해주세요!"
-        static let content = "인스타그램, 비핸스, 노션 등\n나를 더욱 다채롭게 표현해보아요!"
-        static let info = "올바른 링크를 입력해주세요."
+        static let placeholder = "포트폴리오 링크를 입력해 주세요."
+        static let title = "포트폴리오 링크를 입력해 주세요!"
+        static let content = "인스타그램, 비핸스, 노션 등\n나를 더욱 다채롭게 표현해 보아요!"
+        static let info = "올바른 링크를 입력해 주세요."
         static let done = "입력 완료"
     }
     

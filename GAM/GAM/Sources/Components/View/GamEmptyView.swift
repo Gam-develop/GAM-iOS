@@ -16,8 +16,8 @@ final class GamEmptyView: UIView {
     
     private enum Text {
         static let addProject = "추가하러 가기"
-        static let addProjectInfo = "프로젝트와 링크를 추가해\n나를 풍부하게 꾸며보세요!"
-        static let noUserProjectInfo = "등록된 프로젝트가 없습니다"
+        static let addProjectInfo = "프로젝트와 링크를 추가해\n나를 풍부하게 꾸며 보세요!"
+        static let noUserProjectInfo = "등록된 프로젝트가 없습니다."
     }
     
     // MARK: UIComponents

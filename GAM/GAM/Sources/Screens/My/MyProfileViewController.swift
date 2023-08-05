@@ -14,7 +14,7 @@ final class MyProfileViewController: BaseViewController {
         static let infoTitle = "내소개"
         static let tagTitle = "활동 분야"
         static let emailTitle = "이메일"
-        static let emailPlaceholder = "이메일 주소를 입력해주세요."
+        static let emailPlaceholder = "이메일 주소를 입력해 주세요."
         static let edit = "편집하기"
     }
     

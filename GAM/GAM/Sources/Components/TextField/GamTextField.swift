@@ -19,7 +19,7 @@ final class GamTextField: UITextField {
     
     // MARK: UIComponents
     
-    private let clearButton: UIButton = {
+    let clearButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setImage(.textFieldClear, for: .normal)
         return button
@@ -39,7 +39,7 @@ final class GamTextField: UITextField {
         self.setLayout()
         switch type {
         case .url : self.checkValidURL()
-        default: break
+        case .email: self.checkValidEmail()
         }
     }
     
@@ -77,6 +77,28 @@ final class GamTextField: UITextField {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func checkValidEmail() {
+        if self.isEnabled {
+            self.rx.text
+                .orEmpty
+                .distinctUntilChanged()
+                .withUnretained(self)
+                .subscribe(onNext: { (owner, changedText) in
+                    if changedText.count > 0 {
+                        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+                        if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
+                            self.layer.borderWidth = 0
+                        } else {
+                            self.layer.borderWidth = 1
+                        }
+                    } else {
+                        self.layer.borderWidth = 0
+                    }
+                })
+                .disposed(by: disposeBag)
+        }
     }
     
     private func setClearButton() {

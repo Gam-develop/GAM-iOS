@@ -100,19 +100,25 @@ final class AddContactURLViewController: BaseViewController {
             .withUnretained(self)
             .subscribe(onNext: { (owner, changedText) in
                 if changedText.count > 0 {
-                    let regex = "(https?://)?(www.)?[-a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ@:%._+~#=]{2,256}.[a-z]{2,6}([-a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ@:%_+.~#?&//=]*)"
-                    if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
-                        self.infoLabel.isHidden = true
-                        self.doneButton.isEnabled = true
+                    if changedText.verifyUrl() && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
+                        owner.infoLabel.isHidden = true
+                        owner.doneButton.isEnabled = true
                     } else {
-                        self.infoLabel.isHidden = false
-                        self.doneButton.isEnabled = false
+                        owner.infoLabel.isHidden = false
+                        owner.doneButton.isEnabled = false
                     }
                 } else {
-                    self.infoLabel.isHidden = true
-                    self.doneButton.isEnabled = false
+                    owner.infoLabel.isHidden = true
+                    owner.doneButton.isEnabled = false
                 }
             })
+            .disposed(by: disposeBag)
+        
+        self.textField.clearButton.rx.tap
+            .withUnretained(self)
+            .bind { (owner, _) in
+                owner.infoLabel.isHidden = true
+            }
             .disposed(by: disposeBag)
     }
     

@@ -100,6 +100,7 @@ final class EditProfileViewController: BaseViewController {
         self.setData(profile: self.profile)
         self.hideKeyboardWhenTappedAround()
         self.setProfileInfoView()
+        self.setEmailTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -197,6 +198,33 @@ final class EditProfileViewController: BaseViewController {
                 }
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    private func setEmailTextField() {
+        self.emailTextField.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, changedText) in
+                if changedText.count > 0 {
+                    let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+                    if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
+                        owner.emailInfoLabel.isHidden = true
+                    } else {
+                        owner.emailInfoLabel.isHidden = false
+                    }
+                } else {
+                    owner.emailInfoLabel.isHidden = true
+                }
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.emailTextField.clearButton.rx.tap
+            .withUnretained(self)
+            .bind { (owner, _) in
+                owner.emailInfoLabel.isHidden = true
+            }
+            .disposed(by: disposeBag)
     }
 }
 

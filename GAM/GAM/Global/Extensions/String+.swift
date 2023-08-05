@@ -38,4 +38,8 @@ extension String {
         let buffer = 0.2 // 이게 없으면 UILabel이 잘려보이는 현상이 존재
         return CGSize(width: size.width + buffer, height: size.height)
     }
+    
+    mutating func removeLastSpace() {
+        self = self.replacingOccurrences(of: "^\\s+", with: "", options: .regularExpression)
+    }
 }

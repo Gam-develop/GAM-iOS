@@ -137,6 +137,10 @@ extension MyPortfolioViewController: UITableViewDataSource {
                 notion: self.portfolio.notionURL
             )
             
+            view.behanceButton.removeTarget(nil, action: nil, for: .allTouchEvents)
+            view.notionButton.removeTarget(nil, action: nil, for: .allTouchEvents)
+            view.instagramButton.removeTarget(nil, action: nil, for: .allTouchEvents)
+            
             view.behanceButton.setAction { [weak self] in
                 self?.navigationController?.pushViewController(
                     AddContactURLViewController(

@@ -19,7 +19,7 @@ final class EditProfileViewController: BaseViewController {
         static let emailTitle = "이메일"
         static let emailPlaceholder = "이메일 주소를 입력해 주세요."
         static let profileInfo = "한 줄 소개를 입력해 주세요."
-        static let tagInfo = "최소 1개, 최대 3개 선택해 주세요."
+        static let tagInfo = "최소 1개 선택해 주세요."
         static let emailInfo = "올바른 이메일을 입력해 주세요."
     }
     
@@ -236,7 +236,7 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
                 cell.isSelected = true
             }
         }
-        
+        self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count != 0
         self.navigationView.saveButton.isEnabled = self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 > 0
     }
     
@@ -244,6 +244,7 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
         if let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionViewCell {
             cell.isSelected = false
         }
+        self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count != 0
     }
 }
 

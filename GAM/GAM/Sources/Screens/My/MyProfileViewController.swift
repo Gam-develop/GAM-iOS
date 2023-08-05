@@ -95,7 +95,7 @@ final class MyProfileViewController: BaseViewController {
         self.tagCollectionView.reloadData()
         self.emailTextField.text = profile.email
         self.editButton.setAction { [weak self] in
-            self?.navigationController?.pushViewController(EditProfileViewController(profile: profile), animated: true)
+            self?.superViewController?.navigationController?.pushViewController(EditProfileViewController(profile: profile), animated: true)
         }
     }
 }

@@ -137,16 +137,16 @@ extension MyPortfolioViewController: UITableViewDataSource {
                 notion: self.portfolio.notionURL
             )
             
-            view.behanceButton.setAction {
-                self.openSafariInApp(url: self.portfolio.behanceURL)
+            view.behanceButton.setAction { [weak self] in
+                self?.navigationController?.pushViewController(AddContactURLViewController(type: .behance), animated: true, completion: nil)
             }
             
-            view.instagramButton.setAction {
-                self.openSafariInApp(url: self.portfolio.instagramURL)
+            view.instagramButton.setAction { [weak self] in
+                self?.navigationController?.pushViewController(AddContactURLViewController(type: .instagram), animated: true, completion: nil)
             }
             
-            view.notionButton.setAction {
-                self.openSafariInApp(url: self.portfolio.notionURL)
+            view.notionButton.setAction { [weak self] in
+                self?.navigationController?.pushViewController(AddContactURLViewController(type: .notion), animated: true, completion: nil)
             }
             
             return view

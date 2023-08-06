@@ -76,6 +76,16 @@ final class EditProfileViewController: BaseViewController {
     private var keyboardHeight: CGFloat = 0
     private var profile: UserProfileEntity = .init(userID: 0, name: "", isScrap: false, info: "", infoDetail: "", tags: [], email: "")
     private let disposeBag: DisposeBag = DisposeBag()
+    private var profileInfoObservation: NSKeyValueObservation?
+    private var tagObservation: NSKeyValueObservation?
+    private var emailObservation: NSKeyValueObservation?
+    private var isSaveButtonEnable: [Bool] = [false, false, false] {
+        didSet {
+            self.navigationView.saveButton.isEnabled = self.isSaveButtonEnable[0]
+                && self.isSaveButtonEnable[1]
+                && self.isSaveButtonEnable[2]
+        }
+    }
     
     // MARK: Initializer
     
@@ -89,6 +99,12 @@ final class EditProfileViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        self.profileInfoObservation?.invalidate()
+        self.tagObservation?.invalidate()
+        self.emailObservation?.invalidate()
+    }
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -97,10 +113,12 @@ final class EditProfileViewController: BaseViewController {
         self.setLayout()
         self.setTagCollectionView()
         self.setBackButtonAction(self.navigationView.backButton)
-        self.setData(profile: self.profile)
         self.hideKeyboardWhenTappedAround()
-        self.setProfileInfoView()
         self.setEmailTextField()
+        self.setSaveButtonAction()
+        self.checkSaveButtonEnable()
+        self.setData(profile: self.profile)
+        self.setProfileInfoView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,6 +157,10 @@ final class EditProfileViewController: BaseViewController {
         
         self.emailTextField.text = profile.email
         self.profileInfoDetailCountLabel.text = "\(profile.infoDetail.count)/150"
+        
+        self.profileInfoLabel.isHidden = profile.info.count != 0
+        self.tagInfoLabel.isHidden = profile.tags.count > 0
+        self.emailInfoLabel.isHidden = true
     }
     
     @objc
@@ -168,7 +190,12 @@ final class EditProfileViewController: BaseViewController {
             .orEmpty
             .distinctUntilChanged()
             .withUnretained(self)
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { (owner, changedText) in
+                self.profileInfoView.infoTextField.text?.removeLastSpace()
+                if changedText.count > 20 {
+                    self.profileInfoView.infoTextField.deleteBackward()
+                }
                 if changedText.count > 0 {
                     let regex = "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9\\s]{1,20}"
                     if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
@@ -226,6 +253,38 @@ final class EditProfileViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func setSaveButtonAction() {
+        self.navigationView.saveButton.setAction { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func checkSaveButtonEnable() {
+        self.profileInfoObservation = self.profileInfoLabel.observe(\.isHidden, options: [.old, .new]) { label, change in
+            if let isHidden = change.newValue, isHidden != change.oldValue {
+                self.isSaveButtonEnable[0] = isHidden
+            } else {
+                self.isSaveButtonEnable[0] = change.oldValue ?? true
+            }
+        }
+        
+        self.tagObservation = self.tagInfoLabel.observe(\.isHidden, options: [.old, .new]) { label, change in
+            if let isHidden = change.newValue, isHidden != change.oldValue {
+                self.isSaveButtonEnable[1] = isHidden
+            } else {
+                self.isSaveButtonEnable[1] = change.oldValue ?? true
+            }
+        }
+        
+        self.emailObservation = self.emailInfoLabel.observe(\.isHidden, options: [.old, .new]) { label, change in
+            if let isHidden = change.newValue, isHidden != change.oldValue {
+                self.isSaveButtonEnable[2] = isHidden
+            } else {
+                self.isSaveButtonEnable[2] = change.oldValue ?? true
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -265,7 +324,6 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
             }
         }
         self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count != 0
-        self.navigationView.saveButton.isEnabled = self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 > 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

@@ -44,7 +44,8 @@ final class MyPortfolioViewController: BaseViewController {
         instagramURL: "https://instagram.com/1v11aby",
         notionURL: "",
         works: [
-            .init(id: 1, thumbnailImageURL: "", title: "", detail: "a")
+            .init(id: 1, thumbnailImageURL: "", title: "안뇽", detail: "a"),
+            .init(id: 1, thumbnailImageURL: "", title: "안뇽2", detail: "a2222")
         ]
     ) {
         didSet {
@@ -86,6 +87,59 @@ final class MyPortfolioViewController: BaseViewController {
             self?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
         }
     }
+    
+    private func openEditActionSheet(work: WorkEntity) {
+        let actionSheet: UIAlertController = UIAlertController(
+            title: nil,
+            message: work.title,
+            preferredStyle: .actionSheet
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "대표 프로젝트로 설정",
+                style: .default,
+                handler: { _ in
+                    // TODO: 대표 프로젝트로 설정 request
+                    self.portfolioTableView.reloadSections(.init(integer: 0), with: .automatic)
+                }
+            )
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "수정하기",
+                style: .default,
+                handler: { _ in
+                    // TODO: 수정하기 request
+                    self.superViewController?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+                }
+            )
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "삭제하기",
+                style: .destructive,
+                handler: { _ in
+                    self.makeAlertWithCancel(title: work.title, message: "프로젝트를 삭제하시겠습니까?", okTitle: "삭제하기", okStyle: .destructive) { _ in
+                        // TODO: 삭제하기 request
+                        self.portfolioTableView.reloadData()
+                    }
+                }
+            )
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "취소",
+                style: .cancel,
+                handler: nil
+            )
+        )
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -113,7 +167,12 @@ extension MyPortfolioViewController: UITableViewDataSource {
             
             cell.repView.isHidden = indexPath.row != 0
             cell.setData(data: self.portfolio.works[indexPath.row])
-            
+            cell.moreButton.removeTarget(nil, action: nil, for: .allTouchEvents)
+            cell.moreButton.setAction { [weak self] in
+                if let work = self?.portfolio.works[indexPath.row] {
+                    self?.openEditActionSheet(work: work)
+                }
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)

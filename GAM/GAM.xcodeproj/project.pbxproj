@@ -91,7 +91,7 @@
 		FFC733852A711472008B5054 /* UserPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733842A711472008B5054 /* UserPortfolioViewController.swift */; };
 		FFC733872A71147A008B5054 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733862A71147A008B5054 /* UserProfileViewController.swift */; };
 		FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733882A716845008B5054 /* UserPortfolioEntity.swift */; };
-		FFC7338B2A7170F5008B5054 /* WorkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338A2A7170F5008B5054 /* WorkEntity.swift */; };
+		FFC7338B2A7170F5008B5054 /* ProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338A2A7170F5008B5054 /* ProjectEntity.swift */; };
 		FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338C2A7171A3008B5054 /* UserProfileEntity.swift */; };
 		FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */; };
 		FFC733912A717C81008B5054 /* RepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC733902A717C81008B5054 /* RepView.swift */; };
@@ -221,7 +221,7 @@
 		FFC733842A711472008B5054 /* UserPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortfolioViewController.swift; sourceTree = "<group>"; };
 		FFC733862A71147A008B5054 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		FFC733882A716845008B5054 /* UserPortfolioEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortfolioEntity.swift; sourceTree = "<group>"; };
-		FFC7338A2A7170F5008B5054 /* WorkEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkEntity.swift; sourceTree = "<group>"; };
+		FFC7338A2A7170F5008B5054 /* ProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEntity.swift; sourceTree = "<group>"; };
 		FFC7338C2A7171A3008B5054 /* UserProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEntity.swift; sourceTree = "<group>"; };
 		FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FFC733902A717C81008B5054 /* RepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepView.swift; sourceTree = "<group>"; };
@@ -733,7 +733,7 @@
 				FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */,
 				FF0FA6122A6D976900482841 /* PortfolioSearchEntity.swift */,
 				FFC733882A716845008B5054 /* UserPortfolioEntity.swift */,
-				FFC7338A2A7170F5008B5054 /* WorkEntity.swift */,
+				FFC7338A2A7170F5008B5054 /* ProjectEntity.swift */,
 				FFC7338C2A7171A3008B5054 /* UserProfileEntity.swift */,
 			);
 			path = Entities;
@@ -923,7 +923,7 @@
 				FFA94CDA2A4F092E009B034F /* BaseViewController.swift in Sources */,
 				FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */,
 				FFA706FE2A528830003DF6A0 /* SignUpTextField.swift in Sources */,
-				FFC7338B2A7170F5008B5054 /* WorkEntity.swift in Sources */,
+				FFC7338B2A7170F5008B5054 /* ProjectEntity.swift in Sources */,
 				FFA707122A5852C1003DF6A0 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */,
 				FFA94CEB2A4F1AA4009B034F /* UITableView+.swift in Sources */,
@@ -1130,11 +1130,13 @@
 				DEVELOPMENT_TEAM = N4RT4KGQK9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GAM/Plists/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "${APP_NAME}";
+				INFOPLIST_KEY_CFBundleDisplayName = "감-debug";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1161,11 +1163,13 @@
 				DEVELOPMENT_TEAM = N4RT4KGQK9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GAM/Plists/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "${APP_NAME}";
+				INFOPLIST_KEY_CFBundleDisplayName = "감-debug";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (

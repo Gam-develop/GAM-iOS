@@ -42,14 +42,14 @@ final class UserPortfolioViewController: BaseViewController {
         behanceURL: "",
         instagramURL: "https://instagram.com/1v11aby",
         notionURL: "",
-        works: [
+        projects: [
             .init(id: 1, thumbnailImageURL: "", title: "L’ESPACE", detail: ""),
             .init(id: 2, thumbnailImageURL: "", title: "L’ESPACE", detail: "학교에서는 받는 교육 외에, 교외 팀플을 통해서 학교에서 받는 교육과 스타일을 깨고자 외부에서 프로젝트를."),
             .init(id: 3, thumbnailImageURL: "", title: "열두글자열두글자열두글자", detail: "")
         ]
     ) {
         didSet {
-            self.emptyView.isHidden = !self.portfolio.works.isEmpty
+            self.emptyView.isHidden = !self.portfolio.projects.isEmpty
         }
     }
     
@@ -86,20 +86,20 @@ final class UserPortfolioViewController: BaseViewController {
 
 extension UserPortfolioViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.portfolio.works.count
+        return self.portfolio.projects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withType: PortfolioTableViewCell.self, for: indexPath)
         
         cell.repView.isHidden = indexPath.row != 0
-        cell.setData(data: self.portfolio.works[indexPath.row])
+        cell.setData(data: self.portfolio.projects[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if self.portfolio.works.count == 0 {
+        if self.portfolio.projects.count == 0 {
             return nil
         } else {
             guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: PortfolioTableFooterView.className) as? PortfolioTableFooterView

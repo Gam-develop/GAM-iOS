@@ -12,7 +12,7 @@ struct UserPortfolioEntity: Hashable {
     let behanceURL: String
     let instagramURL: String
     let notionURL: String
-    let works: [WorkEntity]
+    let projects: [ProjectEntity]
     
     static func == (lhs: UserPortfolioEntity, rhs: UserPortfolioEntity) -> Bool {
         return lhs.id == rhs.id

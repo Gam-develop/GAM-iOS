@@ -49,7 +49,7 @@ class PortfolioTableViewCell: UITableViewCell {
         self.contentView.frame = self.contentView.frame.inset(by: .init(top: 12, left: 20, bottom: 12, right: 20))
     }
     
-    func setData(data: WorkEntity) {
+    func setData(data: ProjectEntity) {
         self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
         self.titleLabel.text = data.title
         self.detailLabel.text = data.detail

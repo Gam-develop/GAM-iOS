@@ -10,17 +10,17 @@ import Foundation
 struct BrowseDesignerEntity {
     let id: Int
     let thumbnailImageURL: String
-    let majorWorkTitle: String
+    let majorProjectTitle: String
     let name: String
     let info: String
     let tags: [TagEntity]
     var isScrap: Bool
     var visibilityCount: Int
     
-    init(id: Int, thumbnailImageURL: String, majorWorkTitle: String, name: String, info: String, tags: [Int], isScrap: Bool, visibilityCount: Int) {
+    init(id: Int, thumbnailImageURL: String, majorProjectTitle: String, name: String, info: String, tags: [Int], isScrap: Bool, visibilityCount: Int) {
         self.id = id
         self.thumbnailImageURL = thumbnailImageURL
-        self.majorWorkTitle = majorWorkTitle
+        self.majorProjectTitle = majorProjectTitle
         self.name = name
         self.info = info
         self.tags = Tag.shared.mapTags(tags)

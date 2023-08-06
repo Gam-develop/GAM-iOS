@@ -43,13 +43,13 @@ final class MyPortfolioViewController: BaseViewController {
         behanceURL: "",
         instagramURL: "https://instagram.com/1v11aby",
         notionURL: "",
-        works: [
+        projects: [
             .init(id: 1, thumbnailImageURL: "", title: "안뇽", detail: "a"),
             .init(id: 1, thumbnailImageURL: "", title: "안뇽2", detail: "a2222")
         ]
     ) {
         didSet {
-            self.emptyView.isHidden = !self.portfolio.works.isEmpty
+            self.emptyView.isHidden = !self.portfolio.projects.isEmpty
         }
     }
     
@@ -88,10 +88,10 @@ final class MyPortfolioViewController: BaseViewController {
         }
     }
     
-    private func openEditActionSheet(work: WorkEntity) {
+    private func openEditActionSheet(project: ProjectEntity) {
         let actionSheet: UIAlertController = UIAlertController(
             title: nil,
-            message: work.title,
+            message: project.title,
             preferredStyle: .actionSheet
         )
         
@@ -122,7 +122,7 @@ final class MyPortfolioViewController: BaseViewController {
                 title: "삭제하기",
                 style: .destructive,
                 handler: { _ in
-                    self.makeAlertWithCancel(title: work.title, message: "프로젝트를 삭제하시겠습니까?", okTitle: "삭제하기", okStyle: .destructive) { _ in
+                    self.makeAlertWithCancel(title: project.title, message: "프로젝트를 삭제하시겠습니까?", okTitle: "삭제하기", okStyle: .destructive) { _ in
                         // TODO: 삭제하기 request
                         self.portfolioTableView.reloadData()
                     }
@@ -146,7 +146,7 @@ final class MyPortfolioViewController: BaseViewController {
 
 extension MyPortfolioViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch self.portfolio.works.count {
+        switch self.portfolio.projects.count {
         case 0: return 0
         case 1, 2: return 2
         default: return 1
@@ -155,7 +155,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.portfolio.works.count
+            return self.portfolio.projects.count
         } else {
             return 1
         }
@@ -166,11 +166,11 @@ extension MyPortfolioViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withType: MyPortfolioTableViewCell.self, for: indexPath)
             
             cell.repView.isHidden = indexPath.row != 0
-            cell.setData(data: self.portfolio.works[indexPath.row])
+            cell.setData(data: self.portfolio.projects[indexPath.row])
             cell.moreButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             cell.moreButton.setAction { [weak self] in
-                if let work = self?.portfolio.works[indexPath.row] {
-                    self?.openEditActionSheet(work: work)
+                if let project = self?.portfolio.projects[indexPath.row] {
+                    self?.openEditActionSheet(project: project)
                 }
             }
             return cell
@@ -185,7 +185,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if (self.portfolio.works.count <= 2 && section == 1) || (self.portfolio.works.count == 3) {
+        if (self.portfolio.projects.count <= 2 && section == 1) || (self.portfolio.projects.count == 3) {
             guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: PortfolioTableFooterView.className) as? PortfolioTableFooterView
             else { return UIView() }
             view.setTitle(title: Text.addContactURL)
@@ -234,7 +234,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
 
 extension MyPortfolioViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if (section == 1) || (section == 0 && self.portfolio.works.count == 3) {
+        if (section == 1) || (section == 0 && self.portfolio.projects.count == 3) {
             return 169 + 40
         } else {
             return 0

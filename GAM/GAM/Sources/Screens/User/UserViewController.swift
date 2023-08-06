@@ -71,6 +71,7 @@ final class UserViewController: BaseViewController {
         self.setScrapButtonAction()
         self.fetchUserInfo()
         self.setUserBlockReportActionSheet()
+        self.setBackButtonAction(self.navigationView.backButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,7 +134,7 @@ extension UserViewController {
         if let userProfileViewController = self.contentViewControllers[1] as? UserProfileViewController {
             userProfileViewController.setData(profile: self.profile)
         }
-        self.navigationView.setLeftTitle(self.profile.name)
+        self.navigationView.setCenterLeftTitle(self.profile.name)
         self.navigationView.scrapButton.isSelected = self.profile.isScrap
     }
 }

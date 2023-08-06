@@ -56,6 +56,7 @@ final class ProfileInfoView: UIView {
     
     private func setUI(isEditable: Bool) {
         self.backgroundColor = .gamWhite
+        self.layer.borderColor = UIColor.gamRed.cgColor
         self.makeRounded(cornerRadius: 8)
         if !isEditable {
             self.infoTextField.isUserInteractionEnabled = false

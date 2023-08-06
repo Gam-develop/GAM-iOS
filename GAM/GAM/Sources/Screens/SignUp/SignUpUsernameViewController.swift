@@ -66,7 +66,7 @@ final class SignUpUsernameViewController: BaseViewController {
         return button
     }()
     
-    // MARK: UIComponents
+    // MARK: Properties
     
     private var keyboardHeight: CGFloat = 0
     private let disposeBag: DisposeBag = DisposeBag()

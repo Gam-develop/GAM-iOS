@@ -1,13 +1,13 @@
 //
-//  ShareButton.swift
+//  SettingButton.swift
 //  GAM
 //
-//  Created by Jungbin on 2023/07/09.
+//  Created by Jungbin on 2023/08/02.
 //
 
 import UIKit
 
-final class ShareButton: UIButton {
+final class SettingButton: UIButton {
     
     // MARK: Initializer
     
@@ -24,6 +24,6 @@ final class ShareButton: UIButton {
     // MARK: Methods
     
     private func setUI() {
-        self.setImage(.icnShare, for: .normal)
+        self.setImage(.icnSetting, for: .normal)
     }
 }

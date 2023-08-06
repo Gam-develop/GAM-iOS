@@ -127,6 +127,17 @@
 		FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */; };
 		FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDF8812A60E55D00C731A3 /* FilterButton.swift */; };
 		FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */; };
+		FFD9DAF92A7A57430085B965 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAF82A7A57430085B965 /* SettingButton.swift */; };
+		FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */; };
+		FFD9DAFD2A7A58CA0085B965 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */; };
+		FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */; };
+		FFD9DB012A7A64BF0085B965 /* AddPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */; };
+		FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */; };
+		FFD9DB052A7A6C420085B965 /* GamRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB042A7A6C420085B965 /* GamRoundedButton.swift */; };
+		FFD9DB072A7A8ED80085B965 /* AddContactURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */; };
+		FFD9DB092A7A91120085B965 /* GamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB082A7A91120085B965 /* GamTextField.swift */; };
+		FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */; };
+		FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -246,6 +257,17 @@
 		FFCDF87F2A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		FFCDF8812A60E55D00C731A3 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageType.swift; sourceTree = "<group>"; };
+		FFD9DAF82A7A57430085B965 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
+		FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPortfolioViewController.swift; sourceTree = "<group>"; };
+		FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPortfolioTableViewCell.swift; sourceTree = "<group>"; };
+		FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioTableViewCell.swift; sourceTree = "<group>"; };
+		FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamEmptyView.swift; sourceTree = "<group>"; };
+		FFD9DB042A7A6C420085B965 /* GamRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamRoundedButton.swift; sourceTree = "<group>"; };
+		FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactURLViewController.swift; sourceTree = "<group>"; };
+		FFD9DB082A7A91120085B965 /* GamTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamTextField.swift; sourceTree = "<group>"; };
+		FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactURLType.swift; sourceTree = "<group>"; };
+		FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,6 +317,10 @@
 			isa = PBXGroup;
 			children = (
 				FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */,
+				FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */,
+				FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */,
+				FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */,
+				FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -339,6 +365,7 @@
 			children = (
 				FFA706FD2A528830003DF6A0 /* SignUpTextField.swift */,
 				FFCDF8772A5BC0FD00C731A3 /* GamSearchTextField.swift */,
+				FFD9DB082A7A91120085B965 /* GamTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -353,6 +380,8 @@
 				FFCDF8812A60E55D00C731A3 /* FilterButton.swift */,
 				FFC733822A71120B008B5054 /* MoreDefaultButton.swift */,
 				FFC733982A79002E008B5054 /* GamContactButton.swift */,
+				FFD9DAF82A7A57430085B965 /* SettingButton.swift */,
+				FFD9DB042A7A6C420085B965 /* GamRoundedButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -364,6 +393,7 @@
 				FFC7337D2A6FB90A008B5054 /* SelectedFilterTagView.swift */,
 				FFC733902A717C81008B5054 /* RepView.swift */,
 				FFC733942A78EA8A008B5054 /* ProfileInfoView.swift */,
+				FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -686,6 +716,8 @@
 				FFCDF87D2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift */,
 				FFCDF87B2A5BE56600C731A3 /* RecentSearchTableViewCell.swift */,
 				FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */,
+				FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */,
+				FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -731,6 +763,7 @@
 			isa = PBXGroup;
 			children = (
 				FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */,
+				FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -847,6 +880,7 @@
 				FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */,
 				FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */,
 				FF0FA6132A6D976900482841 /* PortfolioSearchEntity.swift in Sources */,
+				FFD9DB072A7A8ED80085B965 /* AddContactURLViewController.swift in Sources */,
 				FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
@@ -861,18 +895,22 @@
 				FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */,
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
+				FFD9DAFD2A7A58CA0085B965 /* MyProfileViewController.swift in Sources */,
 				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
 				FFC733872A71147A008B5054 /* UserProfileViewController.swift in Sources */,
 				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
 				FFA94D032A4F1B6C009B034F /* UITabBar+.swift in Sources */,
+				FFD9DB092A7A91120085B965 /* GamTextField.swift in Sources */,
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* BrowseViewController.swift in Sources */,
+				FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */,
 				FFA706F82A528130003DF6A0 /* SignUpUsernameViewController.swift in Sources */,
 				FFC733972A78FE90008B5054 /* UnselectableTagCollectionViewCell.swift in Sources */,
 				FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */,
 				FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */,
 				FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */,
+				FFD9DB052A7A6C420085B965 /* GamRoundedButton.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */,
 				FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */,
@@ -898,14 +936,17 @@
 				FFA94CD72A4F0902009B034F /* UserDefaultsManager.swift in Sources */,
 				FFA707152A58533F003DF6A0 /* TagCollectionViewCell.swift in Sources */,
 				FFA94CFD2A4F1B49009B034F /* Notification+Name+.swift in Sources */,
+				FFD9DB012A7A64BF0085B965 /* AddPortfolioTableViewCell.swift in Sources */,
 				FFA94CE72A4F1845009B034F /* UILabel+.swift in Sources */,
 				FFA94D232A4F1D84009B034F /* NetworkLoggerPlugin.swift in Sources */,
 				FFA707072A57186C003DF6A0 /* SignUpInfo.swift in Sources */,
+				FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */,
 				FFA94D1A2A4F1D2D009B034F /* APIConstants.swift in Sources */,
 				FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */,
 				FFA94CF12A4F1ACA009B034F /* UIView+.swift in Sources */,
 				FFCDF85C2A5A89D000C731A3 /* MagazineEntity.swift in Sources */,
 				FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */,
+				FFD9DAF92A7A57430085B965 /* SettingButton.swift in Sources */,
 				FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
@@ -922,10 +963,12 @@
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
+				FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
+				FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,
 				FFA94CF52A4F1AE2009B034F /* String+.swift in Sources */,
 				FFCDF8512A5A78CC00C731A3 /* MagazineTableView.swift in Sources */,
@@ -939,6 +982,7 @@
 				FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
 				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
+				FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */,
 				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
 				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseAPI.swift in Sources */,

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class PortfolioTableViewCell: UITableViewCell {
+class PortfolioTableViewCell: UITableViewCell {
     
     // MARK: UIComponents
     

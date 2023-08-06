@@ -61,6 +61,12 @@ extension UIImage {
     
     static let emailOn: UIImage = (UIImage(named: "emailOn") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let icnSetting: UIImage = (UIImage(named: "icnSetting") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let icnCircleMore: UIImage = (UIImage(named: "icnCircleMore") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let imgEmpty: UIImage = (UIImage(named: "imgEmpty") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     func resizeWithWidth(width: CGFloat) -> UIImage? {
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
         imageView.contentMode = .scaleAspectFit

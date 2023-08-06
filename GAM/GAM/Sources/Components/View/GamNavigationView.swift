@@ -16,8 +16,8 @@ final class GamNavigationView: UIView {
         case search
         case searchFilter
         case backUsernameScrapMore
-//        case backTitleSave
-//        case profile
+        case usernameSetting
+        case backTitleSave
     }
     
     enum Text {
@@ -39,45 +39,25 @@ final class GamNavigationView: UIView {
     lazy var filterButton: FilterButton = FilterButton(type: .system)
     lazy var moreButton: MoreDefaultButton = MoreDefaultButton(type: .system)
     lazy var scrapButton: ScrapButton = ScrapButton(type: .system)
+    lazy var settingButton: SettingButton = SettingButton(type: .system)
+    lazy var saveButton: UIButton = {
+        let button: UIButton = UIButton(type: .system)
+        button.setTitle("저장", for: .normal)
+        button.titleLabel?.font = .body4Bold
+        button.setTitleColor(.gamBlack, for: .normal)
+        button.setTitleColor(.gamGray3, for: .disabled)
+        return button
+    }()
     
     lazy var headline2Label: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .headline2SemiBold)
+    
+    lazy var headline4Label: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .headline4Bold)
     
     lazy var underlineView: UIView = {
         let view: UIView = UIView()
         view.backgroundColor = .gamGray2
         return view
     }()
-    
-//    lazy var notificationButton: UIButton = {
-//        let button: UIButton = UIButton(type: .system)
-//        button.setImage(UIImage(named: Text.notificationButtonImageName), for: .normal)
-//        return button
-//    }()
-//
-//    lazy var closeButton: UIButton = {
-//        let button: UIButton = UIButton(type: .system)
-//        button.setImage(UIImage(named: Text.closeButtonImageName), for: .normal)
-//        return button
-//    }()
-//
-//    lazy var likeButton: UIButton = {
-//        let button: UIButton = UIButton(type: .system)
-//        button.setImage(UIImage(named: Text.likeButtonImageName), for: .normal)
-//        return button
-//    }()
-//
-//    lazy var moreButton: UIButton = {
-//        let button: UIButton = UIButton(type: .system)
-//        button.setImage(UIImage(named: Text.moreButtonIamgeName), for: .normal)
-//        return button
-//    }()
-//    lazy var saveButton: UIButton = {
-//        let button: UIButton = UIButton(type: .system)
-//        button.setTitle(Text.saveText, for: .normal)
-//        button.setTitleColor(.sfBlack100, for: .normal)
-//        button.titleLabel?.font = .b16
-//        return button
-//    }()
     
     // MARK: Initializer
     
@@ -92,6 +72,8 @@ final class GamNavigationView: UIView {
         case .search: self.setSearchLayout()
         case .searchFilter: self.setSearchFilterLayout()
         case .backUsernameScrapMore: self.setBackUsernameScrapMoreLayout()
+        case .usernameSetting: self.setUsernameSettingLayout()
+        case .backTitleSave: self.setBackTitleSaveLayout()
         }
     }
     
@@ -107,8 +89,12 @@ final class GamNavigationView: UIView {
         self.centerTitleLabel.textAlignment = .center
     }
     
-    func setLeftTitle(_ text: String) {
+    func setCenterLeftTitle(_ text: String) {
         self.headline2Label.text = text
+    }
+    
+    func setLeftTitle(_ text: String) {
+        self.headline4Label.text = text
     }
 }
 
@@ -166,6 +152,36 @@ extension GamNavigationView {
             make.width.height.equalTo(44)
             make.trailing.equalTo(self.moreButton.snp.leading)
         }
+        self.underlineView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+    }
+    
+    private func setUsernameSettingLayout() {
+        self.addSubviews([headline4Label, settingButton, underlineView])
+        
+        self.setRightButtonLayout(button: self.settingButton)
+        self.headline4Label.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(5)
+            make.height.equalTo(34)
+            make.left.equalToSuperview().inset(20)
+            make.right.equalTo(self.settingButton.snp.left).offset(-8)
+        }
+        self.underlineView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+    }
+    
+    private func setBackTitleSaveLayout() {
+        self.addSubviews([backButton, centerTitleLabel, saveButton, underlineView])
+        
+        self.setLeftButtonLayout(button: self.backButton)
+        self.setRightButtonLayout(button: self.saveButton)
+        self.setCenterTitleLabelLayout()
         self.underlineView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()

@@ -109,7 +109,7 @@ final class AddContactURLViewController: BaseViewController {
                     }
                 } else {
                     owner.infoLabel.isHidden = true
-                    owner.doneButton.isEnabled = false
+                    owner.doneButton.isEnabled = true
                 }
             })
             .disposed(by: disposeBag)
@@ -118,6 +118,7 @@ final class AddContactURLViewController: BaseViewController {
             .withUnretained(self)
             .bind { (owner, _) in
                 owner.infoLabel.isHidden = true
+                owner.doneButton.isEnabled = true
             }
             .disposed(by: disposeBag)
     }

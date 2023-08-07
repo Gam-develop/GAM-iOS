@@ -177,7 +177,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
             cell.addProjectButton.setAction { [weak self] in
-                self?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+                self?.navigationController?.pushViewController(AddProjectViewController(), animated: true, completion: nil)
             }
             
             return cell

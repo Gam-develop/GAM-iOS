@@ -132,8 +132,7 @@ extension UserProfileViewController {
         }
         
         self.contentView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.centerX.top.bottom.equalToSuperview()
+            make.edges.width.equalToSuperview()
         }
         
         self.infoTitleLabel.snp.makeConstraints { make in

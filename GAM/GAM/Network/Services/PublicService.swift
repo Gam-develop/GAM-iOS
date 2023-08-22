@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-protocol PublicServiceProtocol {
+internal protocol PublicServiceProtocol {
     func getGamURL(completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 

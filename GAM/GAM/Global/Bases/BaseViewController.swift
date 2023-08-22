@@ -275,12 +275,12 @@ OS Version: \(UIDevice.current.systemVersion)
 
 extension BaseViewController {
     func fetchGamURL() {
+        self.startActivityIndicator()
         PublicService.shared.getGamURL { networkResult in
-            self.startActivityIndicator()
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? GamURLResponseDTO {
-                    GamURL.shared.url = result.toEntity()
+                    AppInfo.shared.url = result.toEntity()
                 }
             default:
                 self.showNetworkErrorAlert()

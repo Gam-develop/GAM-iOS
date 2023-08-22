@@ -30,7 +30,7 @@ final class AddContactURLViewController: BaseViewController {
     
     private let textField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .url)
-        textField.placeholder = Text.placeholder
+        textField.setGamPlaceholder(Text.placeholder)
         return textField
     }()
     

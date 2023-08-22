@@ -37,4 +37,11 @@ extension UITextField {
             return nil
         }
     }
+    
+    func setGamPlaceholder(_ text: String) {
+        self.attributedPlaceholder = NSAttributedString(
+            string: text,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gamGray3]
+        )
+    }
 }

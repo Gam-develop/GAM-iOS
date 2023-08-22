@@ -59,7 +59,7 @@ final class SignUpTextField: UITextField {
     }
     
     private func setPlaceholder() {
-        self.placeholder = Text.placeholder
+        self.setGamPlaceholder(Text.placeholder)
     }
     
     private func setClearButton() {

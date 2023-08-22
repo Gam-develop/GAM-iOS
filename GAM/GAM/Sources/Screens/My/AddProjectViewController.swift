@@ -56,7 +56,7 @@ final class AddProjectViewController: BaseViewController {
     private let projectTitleLabel: GamStarLabel = GamStarLabel(text: Text.projectTitle, font: .subhead4Bold)
     private let projectTitleTextField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .projectTitle)
-        textField.placeholder = Text.projectPlaceholder
+        textField.setGamPlaceholder(Text.projectPlaceholder)
         return textField
     }()
     private let projectTitleInfoLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.projectPlaceholder, font: .caption1Regular, color: .gamRed)

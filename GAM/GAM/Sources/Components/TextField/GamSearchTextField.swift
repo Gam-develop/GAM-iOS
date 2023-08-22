@@ -69,10 +69,6 @@ final class GamSearchTextField: UITextField {
             })
             .disposed(by: self.disposeBag)
     }
-    
-    private func setPlaceholderWithColor(placeholder: String) {
-        self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gamGray2])
-    }
 }
 
 // MARK: - UI
@@ -81,7 +77,7 @@ extension GamSearchTextField {
     private func setUI() {
         self.backgroundColor = .gamWhite
         self.makeRounded(cornerRadius: 8)
-        self.setPlaceholderWithColor(placeholder: Text.placeholder)
+        self.setGamPlaceholder(Text.placeholder)
         self.font = .body2Medium
         self.leftViewMode = .always
         self.tintColor = .gamBlack

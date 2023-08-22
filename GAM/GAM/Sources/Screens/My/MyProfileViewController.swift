@@ -40,7 +40,7 @@ final class MyProfileViewController: BaseViewController {
     
     private let emailTextField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .email)
-        textField.placeholder = Text.emailPlaceholder
+        textField.setGamPlaceholder(Text.emailPlaceholder)
         textField.isEnabled = false
         return textField
     }()

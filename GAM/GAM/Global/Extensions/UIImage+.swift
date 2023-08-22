@@ -67,6 +67,8 @@ extension UIImage {
     
     static let imgEmpty: UIImage = (UIImage(named: "imgEmpty") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let icnUploadImage: UIImage = (UIImage(named: "icnUploadImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     func resizeWithWidth(width: CGFloat) -> UIImage? {
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
         imageView.contentMode = .scaleAspectFit

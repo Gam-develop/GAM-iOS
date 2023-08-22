@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class GamSingleLineLabel: UILabel {
+class GamSingleLineLabel: UILabel {
     
     // MARK: Initializer
     

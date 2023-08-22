@@ -70,21 +70,25 @@ final class SignInViewController: BaseViewController {
             if UserApi.isKakaoTalkLoginAvailable() {
                 UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                     if let error = error {
-                        print(error)
+                        debugPrint(error)
                     }
                     else {
-                        print("loginWithKakaoTalk() success.")
-                        self?.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+                        debugPrint("loginWithKakaoTalk() success.")
+                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao), isProfileCompleted: { bool in
+                            self?.presentNextViewController(isProfileCompleted: bool)
+                        })
                     }
                 }
             } else {
                 UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
                     if let error = error {
-                        print(error)
+                        debugPrint(error)
                     }
                     else {
-                        print("loginWithKakaoAccount() success.")
-                        self?.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+                        debugPrint("loginWithKakaoAccount() success.")
+                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao), isProfileCompleted: { bool in
+                            self?.presentNextViewController(isProfileCompleted: bool)
+                        })
                     }
                 }
             }
@@ -124,6 +128,35 @@ final class SignInViewController: BaseViewController {
         if let privacyPolicyRect = self.infoLabel.boundingRectForCharacterRange(subText: Text.privacyPolicy),
            privacyPolicyRect.contains(point) {
             self.openSafariInApp(url: AppInfo.shared.url.privacyPolicy)
+        }
+    }
+    
+    private func presentNextViewController(isProfileCompleted: Bool) {
+        if isProfileCompleted {
+            self.present(GamTabBarController(), animated: true)
+        } else {
+            self.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+        }
+    }
+}
+
+
+// MARK: - Network
+
+extension SignInViewController {
+    private func requestSocialLogin(data: SocialLoginRequestDTO, isProfileCompleted: @escaping (Bool) -> (Void)) {
+        self.startActivityIndicator()
+        AuthService.shared.requestSocialLogin(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? SocialLoginResponseDTO {
+                    UserInfo.shared.userID = result.id
+                    isProfileCompleted(result.isProfileCompleted)
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
         }
     }
 }

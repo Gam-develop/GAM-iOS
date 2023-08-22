@@ -14,6 +14,7 @@
 		FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */; };
 		FF0FA6132A6D976900482841 /* PortfolioSearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6122A6D976900482841 /* PortfolioSearchEntity.swift */; };
 		FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */; };
+		FF6CC0222A94D41E00B24C94 /* AddProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
 		FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */; };
@@ -152,6 +153,7 @@
 		FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerScrapEntity.swift; sourceTree = "<group>"; };
 		FF0FA6122A6D976900482841 /* PortfolioSearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSearchEntity.swift; sourceTree = "<group>"; };
 		FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectEntity.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
 		FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 				FFC733882A716845008B5054 /* UserPortfolioEntity.swift */,
 				FFC7338A2A7170F5008B5054 /* ProjectEntity.swift */,
 				FFC7338C2A7171A3008B5054 /* UserProfileEntity.swift */,
+				FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				FFA94CEB2A4F1AA4009B034F /* UITableView+.swift in Sources */,
 				FFCDF8542A5A7BEE00C731A3 /* Headline1Label.swift in Sources */,
 				FFA94CFB2A4F1B3B009B034F /* UIImageView+.swift in Sources */,
+				FF6CC0222A94D41E00B24C94 /* AddProjectEntity.swift in Sources */,
 				FFCDF84E2A5A4AB300C731A3 /* Environment.swift in Sources */,
 				FFA94CD32A4F08D4009B034F /* ClassName.swift in Sources */,
 				FFC733832A71120B008B5054 /* MoreDefaultButton.swift in Sources */,

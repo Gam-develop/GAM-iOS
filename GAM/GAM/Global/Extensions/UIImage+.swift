@@ -69,6 +69,8 @@ extension UIImage {
     
     static let icnUploadImage: UIImage = (UIImage(named: "icnUploadImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let icnPhoto: UIImage = (UIImage(named: "icnPhoto") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     func resizedToGamSize() -> UIImage {
         return UIGraphicsImageRenderer(size: .init(width: 500, height: 500)).image { _ in
             draw(in: CGRect(origin: .zero, size: size))

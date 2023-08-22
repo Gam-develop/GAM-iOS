@@ -10,7 +10,7 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-final class AddProjectViewController: BaseViewController {
+final class AddProjectViewController: BaseViewController, UINavigationControllerDelegate {
     
     private enum Text {
         static let title = "프로젝트"
@@ -53,6 +53,12 @@ final class AddProjectViewController: BaseViewController {
         button.setImage(.icnUploadImage, for: .normal)
         return button
     }()
+    private let projectImageEditButton: UIButton = {
+        let button: UIButton = UIButton(type: .system)
+        button.setImage(.icnPhoto, for: .normal)
+        button.isHidden = true
+        return button
+    }()
     
     private let projectTitleLabel: GamStarLabel = GamStarLabel(text: Text.projectTitle, font: .subhead4Bold)
     private let projectTitleTextField: GamTextField = {
@@ -87,6 +93,12 @@ final class AddProjectViewController: BaseViewController {
     // MARK: Properties
     
     private let disposeBag: DisposeBag = DisposeBag()
+    private let imagePickerController: UIImagePickerController = {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.allowsEditing = true
+        return imagePickerController
+    }()
     private var keyboardHeight: CGFloat = 0
     
     // MARK: View Life Cycle
@@ -96,10 +108,12 @@ final class AddProjectViewController: BaseViewController {
         
         self.setLayout()
         self.dismissKeyboard()
+        self.setImagePickerController()
         self.setBackButtonAction(self.navigationView.backButton)
         self.setProjectTitleInfoLabel()
         self.setProjectTitleClearButtonAction()
         self.setProjectDetailTextInfoLabel()
+        self.setUploadImageButtonAction()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -113,6 +127,10 @@ final class AddProjectViewController: BaseViewController {
     }
     
     // MARK: Methods
+    
+    private func setImagePickerController() {
+        self.imagePickerController.delegate = self
+    }
     
     private func setProjectTitleInfoLabel() {
         self.projectTitleTextField.rx.text
@@ -150,6 +168,17 @@ final class AddProjectViewController: BaseViewController {
             })
             .disposed(by: self.disposeBag)
     }
+    
+    private func setUploadImageButtonAction() {
+        self.projectImageUploadButton.setAction { [weak self] in
+            self?.present(self?.imagePickerController ?? UIViewController(), animated: true)
+        }
+        
+        self.projectImageEditButton.setAction { [weak self] in
+            self?.present(self?.imagePickerController ?? UIViewController(), animated: true)
+        }
+    }
+    
     @objc
     func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -178,7 +207,7 @@ extension AddProjectViewController {
         self.scrollView.addSubview(contentView)
         
         self.contentView.addSubviews([
-            imageTitleLabel, imageDetailLabel, projectImageView, projectImageUploadButton,
+            imageTitleLabel, imageDetailLabel, projectImageView, projectImageUploadButton, projectImageEditButton,
             projectTitleLabel, projectTitleTextField, projectTitleInfoLabel, projectTitleCountLabel,
             projectDetailLabel, projectDetailTextView, projectDetailCountLabel
         ])
@@ -219,6 +248,11 @@ extension AddProjectViewController {
         self.projectImageUploadButton.snp.makeConstraints { make in
             make.center.equalTo(self.projectImageView)
             make.width.height.equalTo(48)
+        }
+        
+        self.projectImageEditButton.snp.makeConstraints { make in
+            make.right.bottom.equalTo(self.projectImageView).inset(10)
+            make.width.height.equalTo(40)
         }
         
         self.projectTitleLabel.snp.makeConstraints { make in

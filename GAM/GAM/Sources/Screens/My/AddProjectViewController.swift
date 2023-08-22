@@ -18,6 +18,7 @@ final class AddProjectViewController: BaseViewController {
         static let imageDetail = "1:1 사이즈 규격에 맞춰 사진을 올려 주세요."
         static let projectTitle = "제목"
         static let projectPlaceholder = "프로젝트 제목을 작성해 주세요."
+        static let projectInfo = "프로젝트 제목을 입력해 주세요."
         static let projectDetail = "설명"
         static let projectDetailPlaceholder = "프로젝트에 대하여 간단히 설명해 주세요!"
     }
@@ -59,7 +60,7 @@ final class AddProjectViewController: BaseViewController {
         textField.setGamPlaceholder(Text.projectPlaceholder)
         return textField
     }()
-    private let projectTitleInfoLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.projectPlaceholder, font: .caption1Regular, color: .gamRed)
+    private let projectTitleInfoLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.projectInfo, font: .caption1Regular, color: .gamRed)
     private let projectTitleCountLabel: GamSingleLineLabel = {
         let label: GamSingleLineLabel = GamSingleLineLabel(text: "\(0)/\(Number.projectTitleLimit)", font: .caption1Regular, color: .gamGray3)
         label.textAlignment = .right

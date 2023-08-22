@@ -16,11 +16,15 @@
 		FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */; };
 		FF6CC0222A94D41E00B24C94 /* AddProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */; };
 		FF6CC0242A95032900B24C94 /* GamURLEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0232A95032900B24C94 /* GamURLEntity.swift */; };
-		FF6CC0262A95039700B24C94 /* GamURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0252A95039700B24C94 /* GamURL.swift */; };
 		FF6CC0292A9506E500B24C94 /* PublicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0282A9506E500B24C94 /* PublicService.swift */; };
 		FF6CC02C2A95072200B24C94 /* PublicRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC02B2A95072200B24C94 /* PublicRouter.swift */; };
 		FF6CC02F2A9511ED00B24C94 /* GamMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC02E2A9511ED00B24C94 /* GamMoyaProvider.swift */; };
 		FF6CC0332A95127900B24C94 /* GamURLResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0322A95127900B24C94 /* GamURLResponseDTO.swift */; };
+		FF6CC0352A951E9900B24C94 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0342A951E9900B24C94 /* AuthRouter.swift */; };
+		FF6CC0372A951E9F00B24C94 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0362A951E9F00B24C94 /* AuthService.swift */; };
+		FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC03A2A951FB400B24C94 /* SocialLoginRequestDTO.swift */; };
+		FF6CC03E2A9521C300B24C94 /* SocialLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC03D2A9521C300B24C94 /* SocialLoginResponseDTO.swift */; };
+		FF6CC0402A95336100B24C94 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC03F2A95336100B24C94 /* AppInfo.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
 		FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */; };
@@ -161,11 +165,16 @@
 		FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectEntity.swift; sourceTree = "<group>"; };
 		FF6CC0232A95032900B24C94 /* GamURLEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamURLEntity.swift; sourceTree = "<group>"; };
-		FF6CC0252A95039700B24C94 /* GamURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamURL.swift; sourceTree = "<group>"; };
 		FF6CC0282A9506E500B24C94 /* PublicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicService.swift; sourceTree = "<group>"; };
 		FF6CC02B2A95072200B24C94 /* PublicRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRouter.swift; sourceTree = "<group>"; };
 		FF6CC02E2A9511ED00B24C94 /* GamMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamMoyaProvider.swift; sourceTree = "<group>"; };
 		FF6CC0322A95127900B24C94 /* GamURLResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamURLResponseDTO.swift; sourceTree = "<group>"; };
+		FF6CC0342A951E9900B24C94 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		FF6CC0362A951E9F00B24C94 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		FF6CC03A2A951FB400B24C94 /* SocialLoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestDTO.swift; sourceTree = "<group>"; };
+		FF6CC03D2A9521C300B24C94 /* SocialLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginResponseDTO.swift; sourceTree = "<group>"; };
+		FF6CC03F2A95336100B24C94 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		FF6CC0412A95361700B24C94 /* GAM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GAM.entitlements; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
 		FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +323,7 @@
 			children = (
 				FFA94D1D2A4F1D4C009B034F /* BaseService.swift */,
 				FF6CC0282A9506E500B24C94 /* PublicService.swift */,
+				FF6CC0362A951E9F00B24C94 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -322,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				FF6CC02B2A95072200B24C94 /* PublicRouter.swift */,
+				FF6CC0342A951E9900B24C94 /* AuthRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -330,22 +341,39 @@
 			isa = PBXGroup;
 			children = (
 				FF6CC0312A95126100B24C94 /* Response */,
-				FF6CC0302A95125900B24C94 /* Request */,
 			);
 			path = Public;
-			sourceTree = "<group>";
-		};
-		FF6CC0302A95125900B24C94 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Request;
 			sourceTree = "<group>";
 		};
 		FF6CC0312A95126100B24C94 /* Response */ = {
 			isa = PBXGroup;
 			children = (
 				FF6CC0322A95127900B24C94 /* GamURLResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		FF6CC0382A951FA000B24C94 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FF6CC03C2A9521B500B24C94 /* Response */,
+				FF6CC0392A951FA400B24C94 /* Request */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		FF6CC0392A951FA400B24C94 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				FF6CC03A2A951FB400B24C94 /* SocialLoginRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		FF6CC03C2A9521B500B24C94 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				FF6CC03D2A9521C300B24C94 /* SocialLoginResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -505,6 +533,7 @@
 		FFA94CB62A4EF8CD009B034F /* GAM */ = {
 			isa = PBXGroup;
 			children = (
+				FF6CC0412A95361700B24C94 /* GAM.entitlements */,
 				FFCDF8462A5A4A0800C731A3 /* Supports */,
 				FFA94CCD2A4F084D009B034F /* Global */,
 				FFA94D172A4F1D05009B034F /* Network */,
@@ -589,7 +618,7 @@
 				FFA94D092A4F1BC4009B034F /* ImageCacheManager.swift */,
 				FFA707062A57186C003DF6A0 /* SignUpInfo.swift */,
 				FFA7070B2A584FC3003DF6A0 /* Tag.swift */,
-				FF6CC0252A95039700B24C94 /* GamURL.swift */,
+				FF6CC03F2A95336100B24C94 /* AppInfo.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -641,6 +670,7 @@
 		FFA94D1F2A4F1D59009B034F /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				FF6CC0382A951FA000B24C94 /* Auth */,
 				FF6CC02D2A950C7D00B24C94 /* Public */,
 			);
 			path = DTO;
@@ -939,7 +969,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA94CE52A4F182D009B034F /* UIViewController+.swift in Sources */,
+				FF6CC03E2A9521C300B24C94 /* SocialLoginResponseDTO.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
+				FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */,
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
@@ -953,7 +985,6 @@
 				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
-				FF6CC0262A95039700B24C94 /* GamURL.swift in Sources */,
 				FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */,
 				FFC733992A79002E008B5054 /* GamContactButton.swift in Sources */,
 				FFA94D2C2A4F1E93009B034F /* SignInViewController.swift in Sources */,
@@ -995,6 +1026,7 @@
 				FFA706FE2A528830003DF6A0 /* SignUpTextField.swift in Sources */,
 				FFC7338B2A7170F5008B5054 /* ProjectEntity.swift in Sources */,
 				FFA707122A5852C1003DF6A0 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
+				FF6CC0402A95336100B24C94 /* AppInfo.swift in Sources */,
 				FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */,
 				FFA94CEB2A4F1AA4009B034F /* UITableView+.swift in Sources */,
 				FFCDF8542A5A7BEE00C731A3 /* Headline1Label.swift in Sources */,
@@ -1049,6 +1081,7 @@
 				FFA706F52A5274A1003DF6A0 /* GamActivityIndicatorView.swift in Sources */,
 				FFA94CF32A4F1AD6009B034F /* UIButton+.swift in Sources */,
 				FFA94D082A4F1BAC009B034F /* UserInfo.swift in Sources */,
+				FF6CC0372A951E9F00B24C94 /* AuthService.swift in Sources */,
 				FFCDF86A2A5AF84D00C731A3 /* MagazineDiscoverViewController.swift in Sources */,
 				FFC733852A711472008B5054 /* UserPortfolioViewController.swift in Sources */,
 				FFA7070F2A585194003DF6A0 /* TagCollectionView.swift in Sources */,
@@ -1060,6 +1093,7 @@
 				FF6CC0292A9506E500B24C94 /* PublicService.swift in Sources */,
 				FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */,
 				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
+				FF6CC0352A951E9900B24C94 /* AuthRouter.swift in Sources */,
 				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseService.swift in Sources */,
 			);
@@ -1201,6 +1235,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GAM/GAM.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N4RT4KGQK9;
@@ -1234,6 +1269,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GAM/GAM.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N4RT4KGQK9;

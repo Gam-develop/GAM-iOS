@@ -118,12 +118,12 @@ final class SignInViewController: BaseViewController {
         
         if let calaulatedTermsRect = self.infoLabel.boundingRectForCharacterRange(subText: Text.terms),
            calaulatedTermsRect.contains(point) {
-            self.openSafariInApp(url: GamURL.shared.url.agreement)
+            self.openSafariInApp(url: AppInfo.shared.url.agreement)
         }
         
         if let privacyPolicyRect = self.infoLabel.boundingRectForCharacterRange(subText: Text.privacyPolicy),
            privacyPolicyRect.contains(point) {
-            self.openSafariInApp(url: GamURL.shared.url.privacyPolicy)
+            self.openSafariInApp(url: AppInfo.shared.url.privacyPolicy)
         }
     }
 }

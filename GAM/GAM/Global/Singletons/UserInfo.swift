@@ -12,5 +12,7 @@ final class UserInfo {
     
     init() { }
     
-    var userID: Int?
+    var userID: Int = -1
+    var accessToken: String = ""
+    var refreshToken: String = ""
 }

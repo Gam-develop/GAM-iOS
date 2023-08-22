@@ -113,7 +113,6 @@ final class EditProfileViewController: BaseViewController {
         self.setLayout()
         self.setTagCollectionView()
         self.setBackButtonAction(self.navigationView.backButton)
-        self.hideKeyboardWhenTappedAround()
         self.setEmailTextField()
         self.setSaveButtonAction()
         self.checkSaveButtonEnable()

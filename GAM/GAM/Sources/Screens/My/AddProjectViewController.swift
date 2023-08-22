@@ -101,6 +101,13 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         return imagePickerController
     }()
     private var keyboardHeight: CGFloat = 0
+    private var addProjectData: AddProjectEntity = .init(image: .init(), title: .init(), detail: .init())
+    private var isSaveButtonEnable: [Bool] = [false, false] {
+        didSet {
+            self.navigationView.saveButton.isEnabled = self.isSaveButtonEnable[0]
+                && self.isSaveButtonEnable[1]
+        }
+    }
     
     // MARK: View Life Cycle
     
@@ -115,6 +122,9 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         self.setProjectTitleClearButtonAction()
         self.setProjectDetailTextInfoLabel()
         self.setUploadImageButtonAction()
+        self.setSaveButtonAction()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -142,6 +152,8 @@ final class AddProjectViewController: BaseViewController, UINavigationController
             .subscribe(onNext: { (owner, changedText) in
                 owner.projectTitleInfoLabel.isHidden = changedText.count > 0
                 self.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
+                owner.isSaveButtonEnable[1] = changedText.count > 0
+                
             })
             .disposed(by: self.disposeBag)
     }
@@ -151,6 +163,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
             self?.projectTitleCountLabel.text = "\(0)/\(Number.projectTitleLimit)"
             self?.projectTitleInfoLabel.isHidden = false
             self?.projectTitleTextField.layer.borderWidth = 1
+            self?.isSaveButtonEnable[1] = false
         }
     }
     
@@ -198,6 +211,47 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         }
     }
     
+    private func setAddProjectData() {
+        self.addProjectData = .init(
+            image: self.projectImageView.image ?? UIImage(),
+            title: self.projectTitleTextField.text ?? "",
+            detail: self.projectDetailTextView.text
+        )
+    }
+    
+    private func setSaveButtonAction() {
+        self.navigationView.saveButton.setAction { [weak self] in
+            self?.setAddProjectData()
+            self?.requestUploadProject()
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension AddProjectViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true) {
+            if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                self.projectImageView.image = image
+                self.isSaveButtonEnable[0] = true
+                self.projectImageUploadButton.isHidden = true
+                self.projectImageEditButton.isHidden = false
+            }
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+
+// MARK: - Network
+
+private extension AddProjectViewController {
+    func requestUploadProject() {
+        // TODO: ...
+    }
 }
 
 // MARK: - UI

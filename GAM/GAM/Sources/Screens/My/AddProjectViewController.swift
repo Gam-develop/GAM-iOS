@@ -87,6 +87,7 @@ final class AddProjectViewController: BaseViewController {
     // MARK: Properties
     
     private let disposeBag: DisposeBag = DisposeBag()
+    private var keyboardHeight: CGFloat = 0
     
     // MARK: View Life Cycle
     
@@ -99,6 +100,16 @@ final class AddProjectViewController: BaseViewController {
         self.setProjectTitleInfoLabel()
         self.setProjectTitleClearButtonAction()
         self.setProjectDetailTextInfoLabel()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.addKeyboardObserver(willShow: #selector(self.keyboardWillShow(_:)), willHide: #selector(self.keyboardWillHide(_:)))
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.removeKeyboardObserver()
     }
     
     // MARK: Methods
@@ -139,6 +150,24 @@ final class AddProjectViewController: BaseViewController {
             })
             .disposed(by: self.disposeBag)
     }
+    @objc
+    func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            self.keyboardHeight = keyboardRectangle.height
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentOffset.y + self.keyboardHeight - 40.adjustedH), animated: true)
+        }
+    }
+    
+    @objc
+    func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            self.keyboardHeight = keyboardRectangle.height
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
+        }
+    }
+    
 }
 
 // MARK: - UI

@@ -65,7 +65,7 @@ final class EditProfileViewController: BaseViewController {
     
     private let emailTextField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .email)
-        textField.placeholder = Text.emailPlaceholder
+        textField.setGamPlaceholder(Text.emailPlaceholder)
         return textField
     }()
     
@@ -113,7 +113,6 @@ final class EditProfileViewController: BaseViewController {
         self.setLayout()
         self.setTagCollectionView()
         self.setBackButtonAction(self.navigationView.backButton)
-        self.hideKeyboardWhenTappedAround()
         self.setEmailTextField()
         self.setSaveButtonAction()
         self.checkSaveButtonEnable()
@@ -354,8 +353,7 @@ extension EditProfileViewController {
         }
         
         self.contentView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.centerX.top.bottom.equalToSuperview()
+            make.edges.width.equalToSuperview()
         }
         
         self.infoTitleLabel.snp.makeConstraints { make in

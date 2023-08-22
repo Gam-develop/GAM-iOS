@@ -86,7 +86,7 @@ final class BrowseDiscoverCollectionViewCell: UICollectionViewCell {
     
     func setData(data: BrowseDesignerEntity) {
         self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
-        self.titleLabel.text = data.majorWorkTitle
+        self.titleLabel.text = data.majorProjectTitle
         self.tagsLabel.setTextWithStyle(to: Tag.shared.tagsString(data.tags), style: .caption1Regular, color: .gamGray3)
         self.authorLabel.text = data.name
         self.authorInfoLabel.text = data.info

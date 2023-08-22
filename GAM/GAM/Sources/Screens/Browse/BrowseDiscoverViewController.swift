@@ -35,11 +35,11 @@ final class BrowseDiscoverViewController: BaseViewController {
     private var superViewController: BrowseViewController?
     
     private var designers: [BrowseDesignerEntity] = [
-        BrowseDesignerEntity(id: 0, thumbnailImageURL: "", majorWorkTitle: "L’ESPACE", name: "최가연", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [0, 1, 2], isScrap: true, visibilityCount: 1234),
-        BrowseDesignerEntity(id: 1, thumbnailImageURL: "", majorWorkTitle: "L’ESPACE", name: "박경은", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [3], isScrap: false, visibilityCount: 2),
-        BrowseDesignerEntity(id: 2, thumbnailImageURL: "", majorWorkTitle: "L’ESPACE", name: "원종화", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [5, 7], isScrap: true, visibilityCount: 22),
-        BrowseDesignerEntity(id: 3, thumbnailImageURL: "", majorWorkTitle: "L’ESPACE", name: "정정빈", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [2], isScrap: false, visibilityCount: 132),
-        BrowseDesignerEntity(id: 4, thumbnailImageURL: "", majorWorkTitle: "L’ESPACE", name: "최가희", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [9, 10], isScrap: true, visibilityCount: 12)
+        BrowseDesignerEntity(id: 0, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "최가연", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [0, 1, 2], isScrap: true, visibilityCount: 1234),
+        BrowseDesignerEntity(id: 1, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "박경은", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [3], isScrap: false, visibilityCount: 2),
+        BrowseDesignerEntity(id: 2, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "원종화", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [5, 7], isScrap: true, visibilityCount: 22),
+        BrowseDesignerEntity(id: 3, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "정정빈", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [2], isScrap: false, visibilityCount: 132),
+        BrowseDesignerEntity(id: 4, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "최가희", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [9, 10], isScrap: true, visibilityCount: 12)
     ].shuffled()
     
     // MARK: Initializer

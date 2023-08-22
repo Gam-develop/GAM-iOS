@@ -1,5 +1,5 @@
 //
-//  WorkEntity.swift
+//  ProjectEntity.swift
 //  GAM
 //
 //  Created by Jungbin on 2023/07/27.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorkEntity: Hashable {
+struct ProjectEntity: Hashable {
     let id: Int
     let thumbnailImageURL: String
     let title: String

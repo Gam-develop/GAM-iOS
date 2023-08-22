@@ -40,7 +40,7 @@ final class MyProfileViewController: BaseViewController {
     
     private let emailTextField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .email)
-        textField.placeholder = Text.emailPlaceholder
+        textField.setGamPlaceholder(Text.emailPlaceholder)
         textField.isEnabled = false
         return textField
     }()
@@ -143,8 +143,7 @@ extension MyProfileViewController {
         }
         
         self.contentView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.centerX.top.bottom.equalToSuperview()
+            make.edges.width.equalToSuperview()
         }
         
         self.infoTitleLabel.snp.makeConstraints { make in

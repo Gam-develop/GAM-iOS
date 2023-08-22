@@ -28,6 +28,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         self.setBackgroundColor()
+        self.hideKeyboardWhenTappedAround()
     }
 }
 

@@ -138,6 +138,8 @@
 		FFD9DB092A7A91120085B965 /* GamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB082A7A91120085B965 /* GamTextField.swift */; };
 		FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */; };
 		FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */; };
+		FFD9DB0F2A7F7F6F0085B965 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */; };
+		FFD9DB112A80D16D0085B965 /* GamStarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -268,6 +270,8 @@
 		FFD9DB082A7A91120085B965 /* GamTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamTextField.swift; sourceTree = "<group>"; };
 		FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactURLType.swift; sourceTree = "<group>"; };
 		FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamStarLabel.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -321,6 +325,7 @@
 				FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */,
 				FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */,
 				FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */,
+				FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -705,6 +710,7 @@
 			children = (
 				FFCDF8532A5A7BEE00C731A3 /* Headline1Label.swift */,
 				FFC7337B2A6FA8E5008B5054 /* GamSingleLineLabel.swift */,
+				FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -918,7 +924,9 @@
 				FFCDF8572A5A7E9800C731A3 /* MagazineTableViewCell.swift in Sources */,
 				FFA94CFF2A4F1B53009B034F /* UIImage+.swift in Sources */,
 				FFA94D1C2A4F1D3B009B034F /* NetworkResult.swift in Sources */,
+				FFD9DB112A80D16D0085B965 /* GamStarLabel.swift in Sources */,
 				FFA94CD02A4F0881009B034F /* SendUpdateDelegate.swift in Sources */,
+				FFD9DB0F2A7F7F6F0085B965 /* AddProjectViewController.swift in Sources */,
 				FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */,
 				FFA94CDA2A4F092E009B034F /* BaseViewController.swift in Sources */,
 				FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */,

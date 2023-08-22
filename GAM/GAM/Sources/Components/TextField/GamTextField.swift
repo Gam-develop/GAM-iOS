@@ -15,6 +15,7 @@ final class GamTextField: UITextField {
     enum TextFieldType {
         case url
         case email
+        case projectTitle
     }
     
     // MARK: UIComponents
@@ -40,6 +41,7 @@ final class GamTextField: UITextField {
         switch type {
         case .url : self.checkValidURL()
         case .email: self.checkValidEmail()
+        case .projectTitle: self.checkValidProjectTitle()
         }
     }
     
@@ -85,6 +87,7 @@ final class GamTextField: UITextField {
                 .distinctUntilChanged()
                 .withUnretained(self)
                 .subscribe(onNext: { (owner, changedText) in
+                    self.text?.removeLastSpace()
                     if changedText.count > 0 {
                         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
                         if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
@@ -94,6 +97,28 @@ final class GamTextField: UITextField {
                         }
                     } else {
                         self.layer.borderWidth = 0
+                    }
+                })
+                .disposed(by: self.disposeBag)
+        }
+    }
+    
+    private func checkValidProjectTitle() {
+        if self.isEnabled {
+            self.rx.text
+                .orEmpty
+                .distinctUntilChanged()
+                .withUnretained(self)
+                .observe(on: MainScheduler.asyncInstance)
+                .subscribe(onNext: { (owner, changedText) in
+                    owner.text?.removeLastSpace()
+                    if changedText.count > 12 {
+                        owner.deleteBackward()
+                    }
+                    if changedText.count > 0 {
+                        self.layer.borderWidth = 0
+                    } else {
+                        self.layer.borderWidth = 1
                     }
                 })
                 .disposed(by: disposeBag)

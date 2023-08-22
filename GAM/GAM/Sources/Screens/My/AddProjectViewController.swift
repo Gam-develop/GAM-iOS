@@ -46,6 +46,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         let imageView: UIImageView = UIImageView()
         imageView.backgroundColor = .gamWhite
         imageView.makeRounded(cornerRadius: 10)
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     private let projectImageUploadButton: UIButton = {

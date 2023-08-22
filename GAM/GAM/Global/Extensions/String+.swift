@@ -43,6 +43,10 @@ extension String {
         self = self.replacingOccurrences(of: "^\\s+", with: "", options: .regularExpression)
     }
     
+    func removedLastSpace() -> String {
+        return self.replacingOccurrences(of: "^\\s+", with: "", options: .regularExpression)
+    }
+    
     func verifyUrl() -> Bool {
         let types: NSTextCheckingResult.CheckingType = [.link]
         let detector = try? NSDataDetector(types: types.rawValue)

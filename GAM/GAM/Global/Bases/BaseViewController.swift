@@ -172,6 +172,10 @@ extension BaseViewController {
         
         self.present(actionSheet, animated: true, completion: nil)
     }
+    
+    func showNetworkErrorAlert() {
+        self.makeAlert(title: Message.networkError.text)
+    }
 }
 
 // MARK: - MFMailComposeViewControllerDelegate
@@ -279,6 +283,7 @@ extension BaseViewController {
                     GamURL.shared.url = result.toEntity()
                 }
             default:
+                self.showNetworkErrorAlert()
             }
             self.stopActivityIndicator()
         }

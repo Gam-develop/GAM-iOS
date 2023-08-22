@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import KakaoSDKUser
+import AuthenticationServices
 
 final class SignInViewController: BaseViewController {
     
@@ -105,16 +106,16 @@ final class SignInViewController: BaseViewController {
     }
     
     private func setAppleButtonAction() {
-//        self.appleButton.setAction { [weak self] in
-//            let appleIDProvider = ASAuthorizationAppleIDProvider()
-//            let request = appleIDProvider.createRequest()
-//            request.requestedScopes = [.fullName, .email]
-//
-//            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-//            authorizationController.delegate = self
-//            authorizationController.presentationContextProvider = self
-//            authorizationController.performRequests()
-//        }
+        self.appleButton.setAction { [weak self] in
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
+        }
     }
     
     @objc private func privacyPolicyLabelTapped(_ sender: UITapGestureRecognizer) {
@@ -140,6 +141,43 @@ final class SignInViewController: BaseViewController {
     }
 }
 
+// MARK: - ASAuthorizationControllerDelegate
+
+extension SignInViewController: ASAuthorizationControllerDelegate {
+    
+    /// 사용자 인증 성공 시 인증 정보를 반환 받습니다.
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+            
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            if let identityToken = appleIDCredential.identityToken,
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+//                let fcmToken = UserDefaultsManager.fcmToken ?? ""
+                self.requestSocialLogin(data: .init(token: tokenString, socialType: .apple), isProfileCompleted: { bool in
+                    self.presentNextViewController(isProfileCompleted: bool)
+                })
+            }
+        default:
+            break
+        }
+    }
+    
+    /// 사용자 인증 실패 시 에러 처리를 합니다.
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        debugPrint("apple 로그인 사용자 인증 실패")
+        debugPrint("error \(error)")
+    }
+}
+
+// MARK: - ASAuthorizationControllerPresentationContextProviding
+
+extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
+    
+    /// 애플 로그인 UI를 어디에 띄울지 가장 적합한 뷰 앵커를 반환합니다.
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+}
 
 // MARK: - Network
 

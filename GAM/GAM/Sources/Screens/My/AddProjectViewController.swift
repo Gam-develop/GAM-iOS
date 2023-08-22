@@ -122,6 +122,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         self.setProjectTitleClearButtonAction()
         self.setProjectDetailTextInfoLabel()
         self.setUploadImageButtonAction()
+        self.setDetailTextView()
         self.setSaveButtonAction()
     }
     
@@ -151,7 +152,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { (owner, changedText) in
                 owner.projectTitleInfoLabel.isHidden = changedText.count > 0
-                self.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
+                owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
                 owner.isSaveButtonEnable[1] = changedText.count > 0
                 
             })
@@ -175,10 +176,13 @@ final class AddProjectViewController: BaseViewController, UINavigationController
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { (owner, changedText) in
                 owner.projectDetailTextView.text?.removeLastSpace()
-                if changedText.count > Number.projectDetailLimit {
-                    owner.projectDetailTextView.deleteBackward()
+                if owner.projectDetailTextView.textColor == .gamBlack {
+                    if changedText.count > Number.projectDetailLimit {
+                        owner.projectDetailTextView.deleteBackward()
+                    }
+                    self.projectDetailCountLabel.text = "\(changedText.count)/\(Number.projectDetailLimit)"
                 }
-                self.projectDetailCountLabel.text = "\(changedText.count)/\(Number.projectDetailLimit)"
+                
             })
             .disposed(by: self.disposeBag)
     }
@@ -191,6 +195,12 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         self.projectImageEditButton.setAction { [weak self] in
             self?.present(self?.imagePickerController ?? UIViewController(), animated: true)
         }
+    }
+    
+    private func setDetailTextView() {
+        self.projectDetailTextView.delegate = self
+        self.projectDetailTextView.text = Text.projectDetailPlaceholder
+        self.projectDetailTextView.textColor = .gamGray3
     }
     
     @objc
@@ -245,6 +255,22 @@ extension AddProjectViewController: UIImagePickerControllerDelegate {
 
 // MARK: - UITextViewDelegate
 
+extension AddProjectViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if self.projectDetailTextView.textColor == .gamGray3 {
+            self.projectDetailTextView.text = nil
+            self.projectDetailTextView.textColor = .gamBlack
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.endEditing(true)
+        if self.projectDetailTextView.text.isEmpty {
+            self.projectDetailTextView.text =  Text.projectDetailPlaceholder
+            self.projectDetailTextView.textColor = .gamGray3
+        }
+    }
+}
 
 // MARK: - Network
 

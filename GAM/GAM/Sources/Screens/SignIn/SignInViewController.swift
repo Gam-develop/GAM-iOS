@@ -56,6 +56,7 @@ final class SignInViewController: BaseViewController {
         self.setKakaoButtonAction()
         self.setAppleButtonAction()
         self.setPrivacyPolicyLabelTapRecognizer()
+        self.fetchGamURL()
     }
     
     // MARK: Methods

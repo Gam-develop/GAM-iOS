@@ -266,3 +266,21 @@ OS Version: \(UIDevice.current.systemVersion)
         }
     }
 }
+
+// MARK: - Network
+
+extension BaseViewController {
+    func fetchGamURL() {
+        PublicService.shared.getGamURL { networkResult in
+            self.startActivityIndicator()
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? GamURLResponseDTO {
+                    GamURL.shared.url = result.toEntity()
+                }
+            default:
+            }
+            self.stopActivityIndicator()
+        }
+    }
+}

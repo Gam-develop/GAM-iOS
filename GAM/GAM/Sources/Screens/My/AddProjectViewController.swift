@@ -15,7 +15,7 @@ final class AddProjectViewController: BaseViewController {
     private enum Text {
         static let title = "프로젝트"
         static let image = "대표 이미지"
-        static let imageDetail = "이미지 크기 및 사이즈에 대한 규격 설명입니다."
+        static let imageDetail = "1:1 사이즈 규격에 맞춰 사진을 올려 주세요."
         static let projectTitle = "제목"
         static let projectPlaceholder = "프로젝트 제목을 작성해 주세요."
         static let projectDetail = "설명"

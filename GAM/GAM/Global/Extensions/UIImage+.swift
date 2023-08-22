@@ -69,15 +69,9 @@ extension UIImage {
     
     static let icnUploadImage: UIImage = (UIImage(named: "icnUploadImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
-    func resizeWithWidth(width: CGFloat) -> UIImage? {
-        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = self
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        imageView.layer.render(in: context)
-        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
-        UIGraphicsEndImageContext()
-        return result
+    func resizedToGamSize() -> UIImage {
+        return UIGraphicsImageRenderer(size: .init(width: 500, height: 500)).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
     }
 }

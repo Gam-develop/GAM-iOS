@@ -74,7 +74,7 @@ final class SignUpInfoViewController: BaseViewController {
         self.setLayout()
         self.setUI()
         self.setUsername()
-        self.progressBarView.setProgress(step: .first)
+        self.progressBarView.setProgress(step: .third)
         self.setTextField()
         self.checkEnterInfoLimit()
         self.setDoneButtonAction()

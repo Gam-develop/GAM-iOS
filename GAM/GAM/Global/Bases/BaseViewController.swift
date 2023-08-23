@@ -172,6 +172,10 @@ extension BaseViewController {
         
         self.present(actionSheet, animated: true, completion: nil)
     }
+    
+    func showNetworkErrorAlert() {
+        self.makeAlert(title: Message.networkError.text)
+    }
 }
 
 // MARK: - MFMailComposeViewControllerDelegate
@@ -263,6 +267,25 @@ OS Version: \(UIDevice.current.systemVersion)
             @unknown default:
                 self.makeAlert(title: Message.networkError.text)
             }
+        }
+    }
+}
+
+// MARK: - Network
+
+extension BaseViewController {
+    func fetchGamURL() {
+        self.startActivityIndicator()
+        PublicService.shared.getGamURL { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? GamURLResponseDTO {
+                    AppInfo.shared.url = result.toEntity()
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
         }
     }
 }

@@ -87,7 +87,7 @@ final class SignUpTextField: UITextField {
         self.clearButton.snp.makeConstraints { make in
             make.right.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(24)
+            make.height.width.equalTo(44)
         }
         
         self.underLineView.snp.makeConstraints { make in

@@ -139,7 +139,7 @@ extension UIViewController {
             
             self.present(safariViewController, animated: true)
         } else {
-            debugPrint(#function, "URL String is not available.")
+            debugPrint(#function, url, "URL String is not available.")
         }
     }
     

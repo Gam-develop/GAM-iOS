@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import KakaoSDKUser
+import AuthenticationServices
 
 final class SignInViewController: BaseViewController {
     
@@ -56,6 +57,7 @@ final class SignInViewController: BaseViewController {
         self.setKakaoButtonAction()
         self.setAppleButtonAction()
         self.setPrivacyPolicyLabelTapRecognizer()
+        self.fetchGamURL()
     }
     
     // MARK: Methods
@@ -69,21 +71,25 @@ final class SignInViewController: BaseViewController {
             if UserApi.isKakaoTalkLoginAvailable() {
                 UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                     if let error = error {
-                        print(error)
+                        debugPrint(error)
                     }
                     else {
-                        print("loginWithKakaoTalk() success.")
-                        self?.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+                        debugPrint("loginWithKakaoTalk() success.")
+                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao), isProfileCompleted: { bool in
+                            self?.presentNextViewController(isProfileCompleted: bool)
+                        })
                     }
                 }
             } else {
                 UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
                     if let error = error {
-                        print(error)
+                        debugPrint(error)
                     }
                     else {
-                        print("loginWithKakaoAccount() success.")
-                        self?.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+                        debugPrint("loginWithKakaoAccount() success.")
+                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao), isProfileCompleted: { bool in
+                            self?.presentNextViewController(isProfileCompleted: bool)
+                        })
                     }
                 }
             }
@@ -100,16 +106,16 @@ final class SignInViewController: BaseViewController {
     }
     
     private func setAppleButtonAction() {
-//        self.appleButton.setAction { [weak self] in
-//            let appleIDProvider = ASAuthorizationAppleIDProvider()
-//            let request = appleIDProvider.createRequest()
-//            request.requestedScopes = [.fullName, .email]
-//
-//            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-//            authorizationController.delegate = self
-//            authorizationController.presentationContextProvider = self
-//            authorizationController.performRequests()
-//        }
+        self.appleButton.setAction { [weak self] in
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
+        }
     }
     
     @objc private func privacyPolicyLabelTapped(_ sender: UITapGestureRecognizer) {
@@ -117,12 +123,78 @@ final class SignInViewController: BaseViewController {
         
         if let calaulatedTermsRect = self.infoLabel.boundingRectForCharacterRange(subText: Text.terms),
            calaulatedTermsRect.contains(point) {
-            self.openSafariInApp(url: "https://www.daum.net")
+            self.openSafariInApp(url: AppInfo.shared.url.agreement)
         }
         
         if let privacyPolicyRect = self.infoLabel.boundingRectForCharacterRange(subText: Text.privacyPolicy),
            privacyPolicyRect.contains(point) {
-            self.openSafariInApp(url: "https://www.naver.com")
+            self.openSafariInApp(url: AppInfo.shared.url.privacyPolicy)
+        }
+    }
+    
+    private func presentNextViewController(isProfileCompleted: Bool) {
+        if isProfileCompleted {
+            self.present(GamTabBarController(), animated: true)
+        } else {
+            self.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
+        }
+    }
+}
+
+// MARK: - ASAuthorizationControllerDelegate
+
+extension SignInViewController: ASAuthorizationControllerDelegate {
+    
+    /// 사용자 인증 성공 시 인증 정보를 반환 받습니다.
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+            
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            if let identityToken = appleIDCredential.identityToken,
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+//                let fcmToken = UserDefaultsManager.fcmToken ?? ""
+                self.requestSocialLogin(data: .init(token: tokenString, socialType: .apple), isProfileCompleted: { bool in
+                    self.presentNextViewController(isProfileCompleted: bool)
+                })
+            }
+        default:
+            break
+        }
+    }
+    
+    /// 사용자 인증 실패 시 에러 처리를 합니다.
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        debugPrint("apple 로그인 사용자 인증 실패")
+        debugPrint("error \(error)")
+    }
+}
+
+// MARK: - ASAuthorizationControllerPresentationContextProviding
+
+extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
+    
+    /// 애플 로그인 UI를 어디에 띄울지 가장 적합한 뷰 앵커를 반환합니다.
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+}
+
+// MARK: - Network
+
+extension SignInViewController {
+    private func requestSocialLogin(data: SocialLoginRequestDTO, isProfileCompleted: @escaping (Bool) -> (Void)) {
+        self.startActivityIndicator()
+        AuthService.shared.requestSocialLogin(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? SocialLoginResponseDTO {
+                    UserInfo.shared.userID = result.id
+                    isProfileCompleted(result.isProfileCompleted)
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
         }
     }
 }

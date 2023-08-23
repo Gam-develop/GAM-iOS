@@ -118,7 +118,7 @@ final class SignUpInfoViewController: BaseViewController {
                         self.textField.setUnderlineColor(isCorrect: true)
                         self.infoLabel.isHidden = true
                         self.doneButton.isEnabled = true
-                        SignUpInfo.shared.username = changedText
+                        SignUpInfo.shared.info = changedText
                     } else {
                         self.textField.setUnderlineColor(isCorrect: false)
                         self.infoLabel.isHidden = false
@@ -152,8 +152,21 @@ final class SignUpInfoViewController: BaseViewController {
     private func setDoneButtonAction() {
         self.doneButton.setAction { [weak self] in
             SignUpInfo.shared.info = self?.textField.text
-            debugPrint("회원가입요청", SignUpInfo.shared.username, SignUpInfo.shared.tags, SignUpInfo.shared.info)
-            self?.present(GamTabBarController(), animated: true)
+            
+            guard let tags = SignUpInfo.shared.tags,
+               let username = SignUpInfo.shared.username,
+               let info = SignUpInfo.shared.info
+            else { return }
+            
+            let signUpData: SignUpRequestDTO = .init(
+                tags: tags,
+                username: username,
+                info: info
+            )
+            
+            self?.requestSignUp(data: signUpData, completion: {
+                self?.present(GamTabBarController(), animated: true)
+            })
         }
     }
     
@@ -176,6 +189,23 @@ final class SignUpInfoViewController: BaseViewController {
             self.doneButton.snp.updateConstraints { make in
                 make.bottom.equalToSuperview().inset(52)
             }
+        }
+    }
+}
+
+// MARK: - Network
+
+extension SignUpInfoViewController {
+    private func requestSignUp(data: SignUpRequestDTO, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        UserService.shared.requestSignUp(data: data) { networkResult in
+            switch networkResult {
+            case .success:
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
         }
     }
 }

@@ -14,14 +14,14 @@ internal protocol AuthServiceProtocol {
 
 final class AuthService: BaseService {
     static let shared = AuthService()
-    private lazy var provider = GamMoyaProvider<AuthRouter>(isLoggingOn: false )
+    private lazy var provider = GamMoyaProvider<AuthRouter>(isLoggingOn: true)
     
     private override init() {}
 }
 
 extension AuthService: AuthServiceProtocol {
     
-    // [GET] 감 URL
+    // [POST] 소셜로그인
     
     func requestSocialLogin(data: SocialLoginRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         self.provider.request(.requestSocialLogin(data: data)) { result in

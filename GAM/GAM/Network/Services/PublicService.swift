@@ -14,7 +14,7 @@ internal protocol PublicServiceProtocol {
 
 final class PublicService: BaseService {
     static let shared = PublicService()
-    private lazy var provider = GamMoyaProvider<PublicRouter>(isLoggingOn: false )
+    private lazy var provider = GamMoyaProvider<PublicRouter>(isLoggingOn: false)
     
     private override init() {}
 }

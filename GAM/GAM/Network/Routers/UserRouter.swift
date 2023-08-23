@@ -36,7 +36,7 @@ extension UserRouter: TargetType {
         switch self {
         case .requestSignUp(let data):
             let body: [String: Any] = [
-                "tag": data.tags,
+                "tags": data.tags,
                 "userName": data.username,
                 "info": data.info
             ]
@@ -47,7 +47,10 @@ extension UserRouter: TargetType {
     var headers: [String: String]? {
         switch self {
         case .requestSignUp:
-            return ["accessToken": UserInfo.shared.accessToken]
+            return [
+                "Content-Type": "application/json",
+                "Authorization": UserInfo.shared.accessToken
+            ]
 //        default:
 //            return ["Content-Type": "application/json"]
         }

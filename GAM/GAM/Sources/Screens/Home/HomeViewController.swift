@@ -50,19 +50,8 @@ final class HomeViewController: BaseViewController {
     
     // MARK: Properties
     
-    private var magazines: [MagazineEntity] = [
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 13),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "https://www.daum.net", visibilityCount: 1234),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
-    ].shuffled()
-    
-    private var designers: [PopularDesignerEntity] = [
-        PopularDesignerEntity(id: 0, thumbnailImageURL: "", name: "최가연", tags: [0, 1, 2], isScrap: true, visibilityCount: 1234),
-        PopularDesignerEntity(id: 1, thumbnailImageURL: "", name: "박경은", tags: [3], isScrap: false, visibilityCount: 2),
-        PopularDesignerEntity(id: 2, thumbnailImageURL: "", name: "원종화", tags: [5, 7], isScrap: true, visibilityCount: 22),
-        PopularDesignerEntity(id: 3, thumbnailImageURL: "", name: "정정빈", tags: [2], isScrap: false, visibilityCount: 132),
-        PopularDesignerEntity(id: 4, thumbnailImageURL: "", name: "최가희", tags: [9, 10], isScrap: true, visibilityCount: 12)
-    ].shuffled()
+    private var magazines: [MagazineEntity] = []
+    private var designers: [PopularDesignerEntity] = []
     
     // MARK: View Life Cycle
     
@@ -72,6 +61,7 @@ final class HomeViewController: BaseViewController {
         self.setTableView()
         self.setCollectionView()
         self.setLayout()
+        self.fetchData()
     }
     
     // MARK: Methods
@@ -93,7 +83,7 @@ final class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.magazines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -117,7 +107,7 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.designers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -152,6 +142,51 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         debugPrint("selected \(indexPath.row)")
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - Network
+
+extension HomeViewController {
+    private func fetchData() {
+        self.getPopularMagazine { magazines in
+            self.magazines = magazines
+            self.magazineTableView.reloadData()
+            self.getPopularDesigner { designers in
+                self.designers = designers
+                self.designerCollectionView.reloadData()
+            }
+        }
+    }
+    
+    private func getPopularMagazine(completion: @escaping ([MagazineEntity]) -> ()) {
+        self.startActivityIndicator()
+        MagazineService.shared.getPopularMagazine { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? PopularMagazineResponseDTO {
+                    completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func getPopularDesigner(completion: @escaping ([PopularDesignerEntity]) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.getPopularDesigner { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? PopularDesignerResponseDTO {
+                    completion(result.toPopularDesignerEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

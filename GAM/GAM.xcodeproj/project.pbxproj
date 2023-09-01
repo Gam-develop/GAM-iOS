@@ -28,6 +28,12 @@
 		FF6CC0432A963E5F00B24C94 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0422A963E5F00B24C94 /* SignUpRequestDTO.swift */; };
 		FF6CC0452A963F3E00B24C94 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0442A963F3E00B24C94 /* UserRouter.swift */; };
 		FF6CC0472A963FD500B24C94 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0462A963FD500B24C94 /* UserService.swift */; };
+		FF6E2D512A965D8100EA313A /* MagazineRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D502A965D8100EA313A /* MagazineRouter.swift */; };
+		FF6E2D532A965EAA00EA313A /* MagazineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D522A965EAA00EA313A /* MagazineService.swift */; };
+		FF6E2D572A965F7800EA313A /* PopularMagazineResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D562A965F7800EA313A /* PopularMagazineResponseDTO.swift */; };
+		FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D582A9662C300EA313A /* DesignerRouter.swift */; };
+		FF6E2D5B2A9662FF00EA313A /* DesignerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */; };
+		FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
 		FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */; };
@@ -181,6 +187,12 @@
 		FF6CC0422A963E5F00B24C94 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
 		FF6CC0442A963F3E00B24C94 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		FF6CC0462A963FD500B24C94 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		FF6E2D502A965D8100EA313A /* MagazineRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineRouter.swift; sourceTree = "<group>"; };
+		FF6E2D522A965EAA00EA313A /* MagazineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineService.swift; sourceTree = "<group>"; };
+		FF6E2D562A965F7800EA313A /* PopularMagazineResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMagazineResponseDTO.swift; sourceTree = "<group>"; };
+		FF6E2D582A9662C300EA313A /* DesignerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerRouter.swift; sourceTree = "<group>"; };
+		FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerService.swift; sourceTree = "<group>"; };
+		FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
 		FFA706E92A4F39E4003DF6A0 /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +343,8 @@
 				FF6CC0282A9506E500B24C94 /* PublicService.swift */,
 				FF6CC0362A951E9F00B24C94 /* AuthService.swift */,
 				FF6CC0462A963FD500B24C94 /* UserService.swift */,
+				FF6E2D522A965EAA00EA313A /* MagazineService.swift */,
+				FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -341,6 +355,8 @@
 				FF6CC02B2A95072200B24C94 /* PublicRouter.swift */,
 				FF6CC0342A951E9900B24C94 /* AuthRouter.swift */,
 				FF6CC0442A963F3E00B24C94 /* UserRouter.swift */,
+				FF6E2D502A965D8100EA313A /* MagazineRouter.swift */,
+				FF6E2D582A9662C300EA313A /* DesignerRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -383,6 +399,38 @@
 			isa = PBXGroup;
 			children = (
 				FF6CC03D2A9521C300B24C94 /* SocialLoginResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		FF6E2D542A965F5800EA313A /* Magazine */ = {
+			isa = PBXGroup;
+			children = (
+				FF6E2D552A965F5E00EA313A /* Response */,
+			);
+			path = Magazine;
+			sourceTree = "<group>";
+		};
+		FF6E2D552A965F5E00EA313A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				FF6E2D562A965F7800EA313A /* PopularMagazineResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		FF6E2D5C2A96634F00EA313A /* Designer */ = {
+			isa = PBXGroup;
+			children = (
+				FF6E2D5D2A96635400EA313A /* Response */,
+			);
+			path = Designer;
+			sourceTree = "<group>";
+		};
+		FF6E2D5D2A96635400EA313A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -679,6 +727,8 @@
 		FFA94D1F2A4F1D59009B034F /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				FF6E2D5C2A96634F00EA313A /* Designer */,
+				FF6E2D542A965F5800EA313A /* Magazine */,
 				FF6CC0382A951FA000B24C94 /* Auth */,
 				FF6CC02D2A950C7D00B24C94 /* Public */,
 			);
@@ -978,6 +1028,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA94CE52A4F182D009B034F /* UIViewController+.swift in Sources */,
+				FF6E2D532A965EAA00EA313A /* MagazineService.swift in Sources */,
 				FF6CC03E2A9521C300B24C94 /* SocialLoginResponseDTO.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
 				FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */,
@@ -990,6 +1041,7 @@
 				FF0FA6132A6D976900482841 /* PortfolioSearchEntity.swift in Sources */,
 				FFD9DB072A7A8ED80085B965 /* AddContactURLViewController.swift in Sources */,
 				FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */,
+				FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
@@ -1066,6 +1118,7 @@
 				FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
+				FF6E2D5B2A9662FF00EA313A /* DesignerService.swift in Sources */,
 				FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */,
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
 				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
@@ -1082,10 +1135,12 @@
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
 				FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
+				FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */,
+				FF6E2D512A965D8100EA313A /* MagazineRouter.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,
 				FFA94CF52A4F1AE2009B034F /* String+.swift in Sources */,
 				FFCDF8512A5A78CC00C731A3 /* MagazineTableView.swift in Sources */,
@@ -1099,6 +1154,7 @@
 				FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */,
 				FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */,
 				FF6CC0332A95127900B24C94 /* GamURLResponseDTO.swift in Sources */,
+				FF6E2D572A965F7800EA313A /* PopularMagazineResponseDTO.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
 				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
 				FF6CC0432A963E5F00B24C94 /* SignUpRequestDTO.swift in Sources */,

@@ -66,6 +66,7 @@ final class MagazineDiscoverViewController: BaseViewController {
         
         self.setLayout()
         self.setTableView()
+        self.fetchData()
     }
     
     // MARK: Methods
@@ -83,6 +84,13 @@ final class MagazineDiscoverViewController: BaseViewController {
     private func pushMagazineDetailViewController(_ sender: UITapGestureRecognizer) {
         let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazines[0].url)
         self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
+    }
+    
+    private func fetchData() {
+        self.getAllMagazine { magazines in
+            self.magazines = magazines
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -163,6 +171,25 @@ extension MagazineDiscoverViewController: UITableViewDelegate {
             case .all: return Number.allHeaderHeight
             }
         } else { return 0 }
+    }
+}
+
+// MARK: - Network
+
+extension MagazineDiscoverViewController {
+    private func getAllMagazine(completion: @escaping ([MagazineEntity]) -> ()) {
+        self.startActivityIndicator()
+        MagazineService.shared.getAllMagazine { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? MagazineResponseDTO {
+                    completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

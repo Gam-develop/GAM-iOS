@@ -164,7 +164,7 @@ extension HomeViewController {
         MagazineService.shared.getPopularMagazine { networkResult in
             switch networkResult {
             case .success(let responseData):
-                if let result = responseData as? PopularMagazineResponseDTO {
+                if let result = responseData as? MagazineResponseDTO {
                     completion(result.toMagazineEntity())
                 }
             default:

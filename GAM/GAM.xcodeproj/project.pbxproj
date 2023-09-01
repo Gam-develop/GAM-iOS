@@ -30,7 +30,7 @@
 		FF6CC0472A963FD500B24C94 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0462A963FD500B24C94 /* UserService.swift */; };
 		FF6E2D512A965D8100EA313A /* MagazineRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D502A965D8100EA313A /* MagazineRouter.swift */; };
 		FF6E2D532A965EAA00EA313A /* MagazineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D522A965EAA00EA313A /* MagazineService.swift */; };
-		FF6E2D572A965F7800EA313A /* PopularMagazineResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D562A965F7800EA313A /* PopularMagazineResponseDTO.swift */; };
+		FF6E2D572A965F7800EA313A /* MagazineResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */; };
 		FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D582A9662C300EA313A /* DesignerRouter.swift */; };
 		FF6E2D5B2A9662FF00EA313A /* DesignerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */; };
 		FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */; };
@@ -189,7 +189,7 @@
 		FF6CC0462A963FD500B24C94 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		FF6E2D502A965D8100EA313A /* MagazineRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineRouter.swift; sourceTree = "<group>"; };
 		FF6E2D522A965EAA00EA313A /* MagazineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineService.swift; sourceTree = "<group>"; };
-		FF6E2D562A965F7800EA313A /* PopularMagazineResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMagazineResponseDTO.swift; sourceTree = "<group>"; };
+		FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineResponseDTO.swift; sourceTree = "<group>"; };
 		FF6E2D582A9662C300EA313A /* DesignerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerRouter.swift; sourceTree = "<group>"; };
 		FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerService.swift; sourceTree = "<group>"; };
 		FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerResponseDTO.swift; sourceTree = "<group>"; };
@@ -414,7 +414,7 @@
 		FF6E2D552A965F5E00EA313A /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				FF6E2D562A965F7800EA313A /* PopularMagazineResponseDTO.swift */,
+				FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1154,7 +1154,7 @@
 				FFCDF85E2A5A89D900C731A3 /* TagEntity.swift in Sources */,
 				FFCDF87A2A5BE49600C731A3 /* RecentSearchEntity.swift in Sources */,
 				FF6CC0332A95127900B24C94 /* GamURLResponseDTO.swift in Sources */,
-				FF6E2D572A965F7800EA313A /* PopularMagazineResponseDTO.swift in Sources */,
+				FF6E2D572A965F7800EA313A /* MagazineResponseDTO.swift in Sources */,
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
 				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
 				FF6CC0432A963E5F00B24C94 /* SignUpRequestDTO.swift in Sources */,

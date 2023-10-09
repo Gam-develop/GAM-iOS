@@ -53,6 +53,11 @@ final class MagazineScrapViewController: BaseViewController {
         
         self.setLayout()
         self.setTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.fetchData()
     }
     

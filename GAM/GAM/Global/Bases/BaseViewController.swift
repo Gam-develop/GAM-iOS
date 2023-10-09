@@ -223,7 +223,7 @@ GAM 앱에서 보냈습니다.
 
 
 ——————————————————————————
-User: \(String(describing: UserInfo.shared.userID ?? -1))
+User: \(String(describing: UserInfo.shared.userID))
 App Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
 Device: \(self.deviceModelName())
 OS Version: \(UIDevice.current.systemVersion)
@@ -281,6 +281,22 @@ extension BaseViewController {
             case .success(let responseData):
                 if let result = responseData as? GamURLResponseDTO {
                     AppInfo.shared.url = result.toEntity()
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    func requestScrapMagazine(data: ScrapMagazineRequestDTO, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MagazineService.shared.requestScrapMagazine(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? ScrapMagazineRequestDTO {
+                    debugPrint("스크랩", result.currentScrapStatus)
+                    completion()
                 }
             default:
                 self.showNetworkErrorAlert()

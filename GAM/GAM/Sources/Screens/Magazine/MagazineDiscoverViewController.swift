@@ -116,9 +116,10 @@ extension MagazineDiscoverViewController: UITableViewDataSource {
                 cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
                 cell.scrapButton.setAction { [weak self] in
                     if let bool = self?.magazines[indexPath.row].isScrap {
-                        debugPrint("스크랩 request")
-                        self?.magazines[indexPath.row].isScrap = !bool
-                        cell.scrapButton.isSelected = !bool
+                        self?.requestScrapMagazine(data: .init(targetMagazineId: self?.magazines[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                            cell.scrapButton.isSelected = !bool
+                            self?.fetchData()
+                        }
                     }
                 }
                 return cell

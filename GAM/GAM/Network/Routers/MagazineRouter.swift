@@ -12,6 +12,7 @@ enum MagazineRouter {
     case getPopularMagazine
     case getAllMagazine
     case getScrapMagazine
+    case requestScrapMagazine(data: ScrapMagazineRequestDTO)
 }
 
 extension MagazineRouter: TargetType {
@@ -28,6 +29,8 @@ extension MagazineRouter: TargetType {
             return "/magazine"
         case .getScrapMagazine:
             return "/magazine/scraps"
+        case .requestScrapMagazine:
+            return "/magazine/scrap"
         }
     }
     
@@ -35,6 +38,8 @@ extension MagazineRouter: TargetType {
         switch self {
         case .getPopularMagazine, .getAllMagazine, .getScrapMagazine:
             return .get
+        case .requestScrapMagazine:
+            return .post
         }
     }
     
@@ -42,12 +47,18 @@ extension MagazineRouter: TargetType {
         switch self {
         case .getPopularMagazine, .getAllMagazine, .getScrapMagazine:
             return .requestPlain
+        case .requestScrapMagazine(let data):
+            let body: [String: Any] = [
+                "targetMagazineId": data.targetMagazineId,
+                "currentScrapStatus": data.currentScrapStatus
+            ]
+            return .requestParameters(parameters: body, encoding: JSONEncoding.prettyPrinted)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .getPopularMagazine, .getAllMagazine, .getScrapMagazine:
+        case .getPopularMagazine, .getAllMagazine, .getScrapMagazine, .requestScrapMagazine:
             return [
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken

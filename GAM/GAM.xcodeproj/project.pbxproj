@@ -14,6 +14,7 @@
 		FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */; };
 		FF0FA6132A6D976900482841 /* PortfolioSearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6122A6D976900482841 /* PortfolioSearchEntity.swift */; };
 		FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */; };
+		FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C14662AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift */; };
 		FF2E86AF2AA2BE1700258D75 /* ScrapMagazineDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E86AE2AA2BE1700258D75 /* ScrapMagazineDTO.swift */; };
 		FF6CC0222A94D41E00B24C94 /* AddProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */; };
 		FF6CC0242A95032900B24C94 /* GamURLEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0232A95032900B24C94 /* GamURLEntity.swift */; };
@@ -173,6 +174,7 @@
 		FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerScrapEntity.swift; sourceTree = "<group>"; };
 		FF0FA6122A6D976900482841 /* PortfolioSearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSearchEntity.swift; sourceTree = "<group>"; };
 		FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		FF2C14662AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMagazineRequestDTO.swift; sourceTree = "<group>"; };
 		FF2E86AE2AA2BE1700258D75 /* ScrapMagazineDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMagazineDTO.swift; sourceTree = "<group>"; };
 		FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectEntity.swift; sourceTree = "<group>"; };
 		FF6CC0232A95032900B24C94 /* GamURLEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamURLEntity.swift; sourceTree = "<group>"; };
@@ -338,6 +340,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF2C14642AD41721008E3FF5 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C14662AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		FF6CC0272A9506D200B24C94 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +418,7 @@
 		FF6E2D542A965F5800EA313A /* Magazine */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C14642AD41721008E3FF5 /* Request */,
 				FF6E2D552A965F5E00EA313A /* Response */,
 			);
 			path = Magazine;
@@ -1038,6 +1049,7 @@
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
+				FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */,
 				FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */,

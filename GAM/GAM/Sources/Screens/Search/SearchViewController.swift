@@ -60,6 +60,8 @@ final class SearchViewController: BaseViewController {
     private let magazineSearchResultTableView: MagazineTableView = MagazineTableView(cellType: .noScrap)
     private let portfolioSearchResultTableView: MagazineTableView = MagazineTableView(cellType: .noScrap)
     
+    private let emptyView: GamEmptyView = GamEmptyView(type: .noSearchResult)
+    
     // MARK: Properties
     
     private var searchType: SearchType = .magazine
@@ -110,6 +112,8 @@ final class SearchViewController: BaseViewController {
             self.portfolioSearchResultTableView.isHidden = true
             self.setPortfolioSearchResultLayout()
         }
+        self.setEmptyViewLayout()
+        self.setEmptyViewVisibility(isOn: false)
     }
     
     // MARK: Methods
@@ -124,6 +128,10 @@ final class SearchViewController: BaseViewController {
             self?.fetchRecentSearchData()
             self?.setRecentSearchSnapshot()
         }
+    }
+    
+    private func setEmptyViewVisibility(isOn: Bool) {
+        self.emptyView.isHidden = !isOn
     }
 }
 
@@ -211,6 +219,7 @@ extension SearchViewController {
             })
         self.magazineSearchResultDataSource.defaultRowAnimation = .automatic
         self.magazineSearchResultTableView.dataSource = self.magazineSearchResultDataSource
+        self.setEmptyViewVisibility(isOn: self.magazineSearchResultData.count == 0)
     }
     
     private func setMagazineSearchResultSnapshot() {
@@ -395,6 +404,16 @@ extension SearchViewController {
         self.portfolioSearchResultTableView.snp.makeConstraints { make in
             make.top.equalTo(self.searchTextField.snp.bottom).offset(27)
             make.left.right.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
+    }
+    
+    private func setEmptyViewLayout() {
+        self.view.addSubviews([emptyView])
+        
+        self.emptyView.snp.makeConstraints { make in
+            make.top.equalTo(self.searchTextField.snp.bottom).offset(70)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(279)
         }
     }
 }

@@ -44,11 +44,7 @@ final class MyPortfolioViewController: BaseViewController {
         instagramURL: "",
         notionURL: "",
         projects: []
-    ) {
-        didSet {
-            self.emptyView.isHidden = !self.portfolio.projects.isEmpty
-        }
-    }
+    )
     
     // MARK: Initializer
     
@@ -81,6 +77,7 @@ final class MyPortfolioViewController: BaseViewController {
                 self.portfolio = portfolio
                 self.portfolioTableView.reloadData()
                 self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                self.setEmptyView()
             }
         }
     }
@@ -134,8 +131,9 @@ final class MyPortfolioViewController: BaseViewController {
                 style: .destructive,
                 handler: { _ in
                     self.makeAlertWithCancel(title: project.title, message: "프로젝트를 삭제하시겠습니까?", okTitle: "삭제하기", okStyle: .destructive) { _ in
-                        // TODO: 삭제하기 request
-                        self.portfolioTableView.reloadData()
+                        self.deletePortfolio(workId: project.id) {
+                            self.fetchData()
+                        }
                     }
                 }
             )
@@ -281,7 +279,20 @@ extension MyPortfolioViewController {
     
     private func setRepPortfolio(workId: Int, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.setRepPortfolio(data: SetRepRequestDTO(workId: workId)) { networkResult in
+        MypageService.shared.setRepPortfolio(data: SetPortfolioRequestDTO(workId: workId)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func deletePortfolio(workId: Int, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.deletePortfolio(data: SetPortfolioRequestDTO(workId: workId)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()
@@ -311,5 +322,10 @@ extension MyPortfolioViewController {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(279)
         }
+    }
+    
+    private func setEmptyView() {
+        self.emptyView.isHidden = !self.portfolio.projects.isEmpty
+        self.portfolioTableView.isHidden = self.portfolio.projects.isEmpty
     }
 }

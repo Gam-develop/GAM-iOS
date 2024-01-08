@@ -10,7 +10,8 @@ import Moya
 
 enum MypageRouter {
     case getPortfolio
-    case setRepPortfolio(data: SetRepRequestDTO)
+    case setRepPortfolio(data: SetPortfolioRequestDTO)
+    case deletePortfolio(data: SetPortfolioRequestDTO)
 }
 
 extension MypageRouter: TargetType {
@@ -25,6 +26,8 @@ extension MypageRouter: TargetType {
             return "/user/my/portfolio"
         case .setRepPortfolio:
             return "/work/main"
+        case .deletePortfolio:
+            return "/work"
         }
     }
     
@@ -34,6 +37,8 @@ extension MypageRouter: TargetType {
             return .get
         case .setRepPortfolio:
             return .patch
+        case .deletePortfolio:
+            return .delete
         }
     }
     
@@ -43,13 +48,15 @@ extension MypageRouter: TargetType {
             return .requestPlain
         case .setRepPortfolio(let data):
             return .requestJSONEncodable(data)
+        case .deletePortfolio(let data):
+            return .requestJSONEncodable(data)
         }
     }
     
     
     var headers: [String: String]? {
         switch self {
-        case .getPortfolio, .setRepPortfolio:
+        case .getPortfolio, .setRepPortfolio, .deletePortfolio:
             return [
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */; };
+		84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9952B4BFFF9009C4C15 /* MypageService.swift */; };
+		84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9972B4C0042009C4C15 /* MypageRouter.swift */; };
 		FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */; };
 		FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */; };
 		FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */; };
@@ -167,6 +170,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioResponseDTO.swift; sourceTree = "<group>"; };
+		84E6F9952B4BFFF9009C4C15 /* MypageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageService.swift; sourceTree = "<group>"; };
+		84E6F9972B4C0042009C4C15 /* MypageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouter.swift; sourceTree = "<group>"; };
 		FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverViewController.swift; sourceTree = "<group>"; };
 		FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapViewController.swift; sourceTree = "<group>"; };
 		FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -340,6 +346,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84E6F9912B4BF97F009C4C15 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				84E6F9922B4BF98D009C4C15 /* Response */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		84E6F9922B4BF98D009C4C15 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		FF2C14642AD41721008E3FF5 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +379,7 @@
 				FF6CC0462A963FD500B24C94 /* UserService.swift */,
 				FF6E2D522A965EAA00EA313A /* MagazineService.swift */,
 				FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */,
+				84E6F9952B4BFFF9009C4C15 /* MypageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -369,6 +392,7 @@
 				FF6CC0442A963F3E00B24C94 /* UserRouter.swift */,
 				FF6E2D502A965D8100EA313A /* MagazineRouter.swift */,
 				FF6E2D582A9662C300EA313A /* DesignerRouter.swift */,
+				84E6F9972B4C0042009C4C15 /* MypageRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -745,6 +769,7 @@
 				FF6E2D542A965F5800EA313A /* Magazine */,
 				FF6CC0382A951FA000B24C94 /* Auth */,
 				FF6CC02D2A950C7D00B24C94 /* Public */,
+				84E6F9912B4BF97F009C4C15 /* Mypage */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1050,6 +1075,7 @@
 				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */,
+				84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */,
 				FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */,
@@ -1067,6 +1093,7 @@
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
 				FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */,
+				84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */,
 				FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */,
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
@@ -1140,6 +1167,7 @@
 				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
 				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
 				FFC733912A717C81008B5054 /* RepView.swift in Sources */,
+				84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
 				FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,

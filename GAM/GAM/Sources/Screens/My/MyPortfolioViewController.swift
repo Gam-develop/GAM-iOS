@@ -41,12 +41,9 @@ final class MyPortfolioViewController: BaseViewController {
     private var portfolio: UserPortfolioEntity = .init(
         id: 1,
         behanceURL: "",
-        instagramURL: "https://instagram.com/1v11aby",
+        instagramURL: "",
         notionURL: "",
-        projects: [
-            .init(id: 1, thumbnailImageURL: "", title: "안뇽", detail: "a"),
-            .init(id: 1, thumbnailImageURL: "", title: "안뇽2", detail: "a2222")
-        ]
+        projects: []
     ) {
         didSet {
             self.emptyView.isHidden = !self.portfolio.projects.isEmpty
@@ -70,12 +67,20 @@ final class MyPortfolioViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.fetchData()
         self.setLayout()
         self.setPortfolioTableView()
         self.setAddProjectButtonAction()
     }
     
     // MARK: Methods
+    
+    private func fetchData() {
+        self.getPortfolio { portfolio in
+            self.portfolio = portfolio
+            self.portfolioTableView.reloadData()
+        }
+    }
     
     private func setPortfolioTableView() {
         self.portfolioTableView.dataSource = self
@@ -249,6 +254,26 @@ extension MyPortfolioViewController: UITableViewDelegate {
         }
     }
 }
+
+// MARK: - Network
+
+extension MyPortfolioViewController {
+    private func getPortfolio(completion: @escaping (UserPortfolioEntity) -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.getPortfolio { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? PortfolioResponseDTO {
+                    completion(result.toUserPortfolioEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+}
+
 
 // MARK: - UI
 

@@ -7,25 +7,15 @@
 
 import Foundation
 
-// MARK: - PopularDesignerDTOElement
+// MARK: - PopularDesignerResponseDTO
 struct PopularDesignerResponseDTOElement: Codable {
-    let userInfo: UserInfoDTO
-    let workInfo: WorkInfoDTO
-
-    enum CodingKeys: String, CodingKey {
-        case userInfo = "UserInfo"
-        case workInfo = "WorkInfo"
-    }
-}
-
-// MARK: - UserInfo
-struct UserInfoDTO: Codable {
     let userID: Int
     let userTag: [Int]
     let userName: String
     let viewCount: Int
     let userDetail: String
     let designerScrap: Bool
+    let thumbnailImageURL: String
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
@@ -34,21 +24,22 @@ struct UserInfoDTO: Codable {
         case viewCount = "viewCount"
         case userDetail = "userDetail"
         case designerScrap = "designerScrap"
+        case thumbnailImageURL = "userWorkThumbNail"
     }
 }
 
 // MARK: - WorkInfo
-struct WorkInfoDTO: Codable {
-    let workID: Int
-    let workTitle: String
-    let photoURL: String
-
-    enum CodingKeys: String, CodingKey {
-        case workID = "workId"
-        case workTitle = "workTitle"
-        case photoURL = "photoUrl"
-    }
-}
+//struct WorkInfoDTO: Codable {
+//    let workID: Int
+//    let workTitle: String
+//    let photoURL: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case workID = "workId"
+//        case workTitle = "workTitle"
+//        case photoURL = "photoUrl"
+//    }
+//}
 
 typealias PopularDesignerResponseDTO = [PopularDesignerResponseDTOElement]
 
@@ -59,12 +50,12 @@ extension PopularDesignerResponseDTO {
         _ = self.map({
             popularDesignerEntity.append(
                 PopularDesignerEntity(
-                    id: $0.userInfo.userID,
-                    thumbnailImageURL: $0.workInfo.photoURL,
-                    name: $0.userInfo.userName,
-                    tags: $0.userInfo.userTag,
-                    isScrap: $0.userInfo.designerScrap,
-                    visibilityCount: $0.userInfo.viewCount
+                    id: $0.userID,
+                    thumbnailImageURL: $0.thumbnailImageURL,
+                    name: $0.userName,
+                    tags: $0.userTag,
+                    isScrap: $0.designerScrap,
+                    visibilityCount: $0.viewCount
                 )
             )
         })

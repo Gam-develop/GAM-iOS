@@ -38,14 +38,7 @@ final class MagazineDiscoverViewController: BaseViewController {
     // MARK: Properties
     
     private var superViewController: MagazineViewController?
-    private var magazines: [MagazineEntity] = [
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 13),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "https://www.daum.net", visibilityCount: 1234),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 17),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 2),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 3),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
-    ]
+    private var magazines: [MagazineEntity] = []
     
     // MARK: Initializer
     
@@ -66,6 +59,7 @@ final class MagazineDiscoverViewController: BaseViewController {
         
         self.setLayout()
         self.setTableView()
+        self.fetchData()
     }
     
     // MARK: Methods
@@ -84,6 +78,13 @@ final class MagazineDiscoverViewController: BaseViewController {
         let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazines[0].url)
         self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
     }
+    
+    private func fetchData() {
+        self.getAllMagazine { magazines in
+            self.magazines = magazines
+            self.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -96,7 +97,10 @@ extension MagazineDiscoverViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sectionType = TableSection(rawValue: section) {
             switch sectionType {
-            case .recent: return 1
+            case .recent:
+                if self.magazines.count > 1 {
+                    return 1
+                } else { return 0}
             case .all: return self.magazines.count
             }
         } else { return 0 }
@@ -112,9 +116,10 @@ extension MagazineDiscoverViewController: UITableViewDataSource {
                 cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
                 cell.scrapButton.setAction { [weak self] in
                     if let bool = self?.magazines[indexPath.row].isScrap {
-                        debugPrint("스크랩 request")
-                        self?.magazines[indexPath.row].isScrap = !bool
-                        cell.scrapButton.isSelected = !bool
+                        self?.requestScrapMagazine(data: .init(targetMagazineId: self?.magazines[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                            cell.scrapButton.isSelected = !bool
+                            self?.fetchData()
+                        }
                     }
                 }
                 return cell
@@ -128,7 +133,11 @@ extension MagazineDiscoverViewController: UITableViewDataSource {
             case .recent:
                 guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecentMagazineTableHeaderView.className) as? RecentMagazineTableHeaderView
                 else { return UIView() }
-                view.setData(data: self.magazines[0])
+                
+                if self.magazines.count > 1 {
+                    view.setData(data: self.magazines[0])
+                }
+                
                 view.setAction(target: self, action: #selector(self.pushMagazineDetailViewController(_:)))
                 return view
                 
@@ -163,6 +172,25 @@ extension MagazineDiscoverViewController: UITableViewDelegate {
             case .all: return Number.allHeaderHeight
             }
         } else { return 0 }
+    }
+}
+
+// MARK: - Network
+
+extension MagazineDiscoverViewController {
+    private func getAllMagazine(completion: @escaping ([MagazineEntity]) -> ()) {
+        self.startActivityIndicator()
+        MagazineService.shared.getAllMagazine { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? MagazineResponseDTO {
+                    completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

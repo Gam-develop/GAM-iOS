@@ -61,6 +61,11 @@ final class HomeViewController: BaseViewController {
         self.setTableView()
         self.setCollectionView()
         self.setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.fetchData()
     }
     
@@ -94,9 +99,10 @@ extension HomeViewController: UITableViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.magazines[indexPath.row].isScrap {
-                debugPrint("스크랩 request")
-                self?.magazines[indexPath.row].isScrap = !bool
-                cell.scrapButton.isSelected = !bool
+                self?.requestScrapMagazine(data: .init(targetMagazineId: self?.magazines[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                    cell.scrapButton.isSelected = !bool
+                    self?.fetchData()
+                }
             }
         }
         return cell
@@ -164,7 +170,7 @@ extension HomeViewController {
         MagazineService.shared.getPopularMagazine { networkResult in
             switch networkResult {
             case .success(let responseData):
-                if let result = responseData as? PopularMagazineResponseDTO {
+                if let result = responseData as? MagazineResponseDTO {
                     completion(result.toMagazineEntity())
                 }
             default:

@@ -10,6 +10,9 @@ import Moya
 
 internal protocol MagazineServiceProtocol {
     func getPopularMagazine(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getAllMagazine(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getScrapMagazine(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func requestScrapMagazine(data: ScrapMagazineRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class MagazineService: BaseService {
@@ -29,7 +32,55 @@ extension MagazineService: MagazineServiceProtocol {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
-                let networkResult = self.judgeStatus(by: statusCode, data, PopularMagazineResponseDTO.self)
+                let networkResult = self.judgeStatus(by: statusCode, data, MagazineResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 모든 매거진(발견)
+    
+    func getAllMagazine(completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.getAllMagazine) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, MagazineResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 스크랩 매거진
+    
+    func getScrapMagazine(completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.getScrapMagazine) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, ScrapMagazineResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [PUT] 매거진 스크랩 on/off
+    
+    func requestScrapMagazine(data: ScrapMagazineRequestDTO,completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.requestScrapMagazine(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, ScrapMagazineRequestDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

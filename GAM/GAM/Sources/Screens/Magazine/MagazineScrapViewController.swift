@@ -32,14 +32,7 @@ final class MagazineScrapViewController: BaseViewController {
     // MARK: Properties
     
     private var superViewController: MagazineViewController?
-    private var magazines: [MagazineEntity] = [
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 13),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "https://www.daum.net", visibilityCount: 1234),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 17),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 2),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 3),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
-    ]
+    private var magazines: [MagazineEntity] = []
     
     // MARK: Initializer
     
@@ -62,6 +55,12 @@ final class MagazineScrapViewController: BaseViewController {
         self.setTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.fetchData()
+    }
+    
     // MARK: Methods
     
     private func setTableView() {
@@ -70,6 +69,13 @@ final class MagazineScrapViewController: BaseViewController {
         
         self.tableView.register(MagazineScrapTableHeaderView.self, forHeaderFooterViewReuseIdentifier: MagazineScrapTableHeaderView.className)
         self.tableView.register(cell: MagazineTableViewCell.self)
+    }
+    
+    private func fetchData() {
+        self.getScrapMagazine { magazines in
+            self.magazines = magazines
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -86,9 +92,10 @@ extension MagazineScrapViewController: UITableViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.magazines[indexPath.row].isScrap {
-                debugPrint("스크랩 request")
-                self?.magazines[indexPath.row].isScrap = !bool
-                cell.scrapButton.isSelected = !bool
+                self?.requestScrapMagazine(data: .init(targetMagazineId: self?.magazines[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                    cell.scrapButton.isSelected = !bool
+                    self?.fetchData()
+                }
             }
         }
         return cell
@@ -114,6 +121,25 @@ extension MagazineScrapViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Number.headerHeight
+    }
+}
+
+// MARK: - Network
+
+extension MagazineScrapViewController {
+    private func getScrapMagazine(completion: @escaping ([MagazineEntity]) -> ()) {
+        self.startActivityIndicator()
+        MagazineService.shared.getScrapMagazine { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? ScrapMagazineResponseDTO {
+                    completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

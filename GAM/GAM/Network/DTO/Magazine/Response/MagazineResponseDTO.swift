@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PopularMagazineResponseDTO: Codable {
+struct MagazineResponseDTO: Codable {
     let magazineList: [MagazineDTO]
 
     enum CodingKeys: String, CodingKey {

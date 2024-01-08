@@ -93,6 +93,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
     
     // MARK: Properties
     
+    var sendUpdateDelegate: SendUpdateDelegate?
     private let disposeBag: DisposeBag = DisposeBag()
     private let imagePickerController: UIImagePickerController = {
         let imagePickerController = UIImagePickerController()
@@ -232,7 +233,12 @@ final class AddProjectViewController: BaseViewController, UINavigationController
     private func setSaveButtonAction() {
         self.navigationView.saveButton.setAction { [weak self] in
             self?.setAddProjectData()
-            self?.requestUploadProject()
+            if let projectTitle = self?.projectTitleTextField.text,
+               let projectDetail = self?.projectDetailTextView.text {
+                self?.createPortfolio(image: "todo", title: projectTitle, detail: projectDetail) {
+                    self?.sendUpdateDelegate?.sendUpdate(data: nil)
+                }
+            }
             self?.navigationController?.popViewController(animated: true)
         }
     }
@@ -275,8 +281,17 @@ extension AddProjectViewController: UITextViewDelegate {
 // MARK: - Network
 
 private extension AddProjectViewController {
-    func requestUploadProject() {
-        // TODO: ...
+    private func createPortfolio(image: String, title: String, detail: String, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.createPortfolio(data: CreatePortfolioRequestDTO(image: image, title: title, detail: detail)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

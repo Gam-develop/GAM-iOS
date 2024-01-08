@@ -186,7 +186,9 @@ extension MyPortfolioViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
             cell.addProjectButton.setAction { [weak self] in
-                self?.navigationController?.pushViewController(AddProjectViewController(), animated: true, completion: nil)
+                let addProjectViewController = AddProjectViewController()
+                addProjectViewController.sendUpdateDelegate = self
+                self?.navigationController?.pushViewController(addProjectViewController, animated: true, completion: nil)
             }
             
             return cell
@@ -256,6 +258,15 @@ extension MyPortfolioViewController: UITableViewDelegate {
         } else {
             return UITableView.automaticDimension
         }
+    }
+}
+
+// MARK: - SendUpdateDelegate
+
+extension MyPortfolioViewController: SendUpdateDelegate {
+    
+    func sendUpdate(data: Any?) {
+        self.fetchData()
     }
 }
 

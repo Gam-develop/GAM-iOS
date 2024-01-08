@@ -12,6 +12,7 @@ enum MypageRouter {
     case getPortfolio
     case setRepPortfolio(data: SetPortfolioRequestDTO)
     case deletePortfolio(data: SetPortfolioRequestDTO)
+    case createPortfolio(data: CreatePortfolioRequestDTO)
 }
 
 extension MypageRouter: TargetType {
@@ -26,7 +27,7 @@ extension MypageRouter: TargetType {
             return "/user/my/portfolio"
         case .setRepPortfolio:
             return "/work/main"
-        case .deletePortfolio:
+        case .deletePortfolio, .createPortfolio:
             return "/work"
         }
     }
@@ -39,6 +40,8 @@ extension MypageRouter: TargetType {
             return .patch
         case .deletePortfolio:
             return .delete
+        case .createPortfolio:
+            return .post
         }
     }
     
@@ -46,9 +49,9 @@ extension MypageRouter: TargetType {
         switch self {
         case .getPortfolio:
             return .requestPlain
-        case .setRepPortfolio(let data):
+        case .setRepPortfolio(let data), .deletePortfolio(let data):
             return .requestJSONEncodable(data)
-        case .deletePortfolio(let data):
+        case .createPortfolio(let data):
             return .requestJSONEncodable(data)
         }
     }
@@ -56,7 +59,7 @@ extension MypageRouter: TargetType {
     
     var headers: [String: String]? {
         switch self {
-        case .getPortfolio, .setRepPortfolio, .deletePortfolio:
+        case .getPortfolio, .setRepPortfolio, .deletePortfolio, .createPortfolio:
             return [
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken

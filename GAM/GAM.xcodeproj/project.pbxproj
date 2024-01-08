@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
 		84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */; };
 		84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9952B4BFFF9009C4C15 /* MypageService.swift */; };
 		84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9972B4C0042009C4C15 /* MypageRouter.swift */; };
 		84E6F99B2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */; };
-		84E6F99D2B4C24EE009C4C15 /* DeletePortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99C2B4C24EE009C4C15 /* DeletePortfolioResponseDTO.swift */; };
+		84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */; };
 		FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */; };
 		FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */; };
 		FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */; };
@@ -172,11 +173,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		84E6F9952B4BFFF9009C4C15 /* MypageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageService.swift; sourceTree = "<group>"; };
 		84E6F9972B4C0042009C4C15 /* MypageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouter.swift; sourceTree = "<group>"; };
 		84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPortfolioRequestDTO.swift; sourceTree = "<group>"; };
-		84E6F99C2B4C24EE009C4C15 /* DeletePortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePortfolioResponseDTO.swift; sourceTree = "<group>"; };
+		84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverViewController.swift; sourceTree = "<group>"; };
 		FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapViewController.swift; sourceTree = "<group>"; };
 		FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -363,7 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */,
-				84E6F99C2B4C24EE009C4C15 /* DeletePortfolioResponseDTO.swift */,
+				84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */,
+				84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1084,7 +1087,7 @@
 				FF6E2D532A965EAA00EA313A /* MagazineService.swift in Sources */,
 				FF6CC03E2A9521C300B24C94 /* SocialLoginResponseDTO.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
-				84E6F99D2B4C24EE009C4C15 /* DeletePortfolioResponseDTO.swift in Sources */,
+				84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */,
 				FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */,
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
@@ -1191,6 +1194,7 @@
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
 				FF6CC0472A963FD500B24C94 /* UserService.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
+				84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */,
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
 				FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,

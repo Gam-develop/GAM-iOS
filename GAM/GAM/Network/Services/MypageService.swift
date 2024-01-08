@@ -60,7 +60,22 @@ extension MypageService: MypageServiceProtocol {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
-                let networkResult = self.judgeStatus(by: statusCode, data, DeletePortfolioResponseDTO.self)
+                let networkResult = self.judgeStatus(by: statusCode, data, DefaultPortfolioResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [POST] 프로젝트 생성
+    func createPortfolio(data: CreatePortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.createPortfolio(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, DefaultPortfolioResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

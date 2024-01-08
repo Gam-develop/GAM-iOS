@@ -22,3 +22,23 @@ struct SearchMagazineResponseDTOElement: Codable {
 
 typealias SearchMagazineResponseDTO = [SearchMagazineResponseDTOElement]
 
+extension SearchMagazineResponseDTO {
+    func toMagazineEntity() -> [MagazineEntity] {
+        var entity: [MagazineEntity] = []
+        for i in 0..<self.count {
+            entity.append(
+                MagazineEntity(
+                    id: i,
+                    thumbnailImageURL: self[i].thumbNail,
+                    title: self[i].title,
+                    author: self[i].interviewPerson,
+                    isScrap: false,
+                    url: "",
+                    visibilityCount: self[i].viewCount
+                )
+            )
+        }
+        
+        return entity
+    }
+}

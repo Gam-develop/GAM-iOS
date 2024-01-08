@@ -72,14 +72,7 @@ final class SearchViewController: BaseViewController {
     var portfolioSearchResultSnapshot: NSDiffableDataSourceSnapshot<Section, PortfolioSearchEntity>!
     
     private var recentSearchData: [RecentSearchEntity] = []
-    private var magazineSearchResultData: [MagazineEntity] = [
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 13),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "https://www.daum.net", visibilityCount: 1234),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 17),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 2),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 3),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
-    ]
+    private var magazineSearchResultData: [MagazineEntity] = []
     private var portfolioSearchResultData: [PortfolioSearchEntity] = [
         .init(id: 0, thumbnailImageURL: "", title: "L’ESPACE", author: "최가연", visibilityCount: 1200),
         .init(id: 0, thumbnailImageURL: "", title: "SPACE Tour", author: "space", visibilityCount: 12020)

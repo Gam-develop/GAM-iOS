@@ -77,8 +77,11 @@ final class MyPortfolioViewController: BaseViewController {
     
     private func fetchData() {
         self.getPortfolio { portfolio in
-            self.portfolio = portfolio
-            self.portfolioTableView.reloadData()
+            DispatchQueue.main.async {
+                self.portfolio = portfolio
+                self.portfolioTableView.reloadData()
+                self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            }
         }
     }
     
@@ -93,24 +96,27 @@ final class MyPortfolioViewController: BaseViewController {
         }
     }
     
-    private func openEditActionSheet(project: ProjectEntity) {
+    private func openEditActionSheet(row: Int, project: ProjectEntity) {
         let actionSheet: UIAlertController = UIAlertController(
             title: nil,
             message: project.title,
             preferredStyle: .actionSheet
         )
         
-        actionSheet.addAction(
-            UIAlertAction(
-                title: "대표 프로젝트로 설정",
-                style: .default,
-                handler: { _ in
-                    // TODO: 대표 프로젝트로 설정 request
-                    self.portfolioTableView.reloadSections(.init(integer: 0), with: .automatic)
-                }
+        if row != 0 {
+            actionSheet.addAction(
+                UIAlertAction(
+                    title: "대표 프로젝트로 설정",
+                    style: .default,
+                    handler: { _ in
+                        self.setRepPortfolio(workId: project.id) {
+                            self.fetchData()
+                        }
+                    }
+                )
             )
-        )
-        
+        }
+    
         actionSheet.addAction(
             UIAlertAction(
                 title: "수정하기",
@@ -175,7 +181,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
             cell.moreButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             cell.moreButton.setAction { [weak self] in
                 if let project = self?.portfolio.projects[indexPath.row] {
-                    self?.openEditActionSheet(project: project)
+                    self?.openEditActionSheet(row: indexPath.row, project: project)
                 }
             }
             return cell
@@ -266,6 +272,19 @@ extension MyPortfolioViewController {
                 if let result = responseData as? PortfolioResponseDTO {
                     completion(result.toUserPortfolioEntity())
                 }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func setRepPortfolio(workId: Int, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.setRepPortfolio(data: SetRepRequestDTO(workId: workId)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
             default:
                 self.showNetworkErrorAlert()
             }

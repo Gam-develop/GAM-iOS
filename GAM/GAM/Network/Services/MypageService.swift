@@ -36,4 +36,20 @@ extension MypageService: MypageServiceProtocol {
             }
         }
     }
+    
+    // [PATCH] 대표 프로젝트로 설정
+    
+    func setRepPortfolio(data: SetRepRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.setRepPortfolio(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, SetRepRequestDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
 }

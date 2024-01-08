@@ -28,7 +28,7 @@ extension PortfolioResponseDTO {
     
     func toUserPortfolioEntity() -> UserPortfolioEntity {
         let projects = works.map { work in
-            ProjectEntity(id: 0, thumbnailImageURL: work.workThumbNail, title: work.workTitle, detail: work.workDetail)
+            ProjectEntity(id: work.workID, thumbnailImageURL: work.workThumbNail, title: work.workTitle, detail: work.workDetail)
         }
 
         return UserPortfolioEntity(id: 0, behanceURL: behanceLink, instagramURL: instagramLink, notionURL: notionLink, projects: projects)

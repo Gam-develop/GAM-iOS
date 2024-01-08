@@ -189,7 +189,10 @@ extension SearchViewController {
         self.searchTextField.text = sender.keyword
         switch self.searchType {
         case .magazine:
-            self.searchMagazine(keyword: sender.keyword)
+            self.requestSearchMagazine(data: sender.keyword) { result in
+                self.magazineSearchResultData = result
+                self.searchMagazine(keyword: sender.keyword)
+            }
         case .portfolio:
             self.searchPortfolio(keyword: sender.keyword)
         }
@@ -321,10 +324,33 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch self.searchType {
-        case .magazine: self.searchMagazine(keyword: textField.text)
+        case .magazine: 
+            self.requestSearchMagazine(data: textField.text ?? "") { result in
+                self.magazineSearchResultData = result
+                self.searchMagazine(keyword: textField.text)
+            }
         case .portfolio: self.searchPortfolio(keyword: textField.text)
         }
         return true
+    }
+}
+
+// MARK: - Network
+
+extension SearchViewController {
+    private func requestSearchMagazine(data: String, completion: @escaping ([MagazineEntity]) -> ()) {
+        self.startActivityIndicator()
+        MagazineService.shared.searchMagazine(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? SearchMagazineResponseDTO {
+                    completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

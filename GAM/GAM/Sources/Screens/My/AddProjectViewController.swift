@@ -240,18 +240,18 @@ final class AddProjectViewController: BaseViewController, UINavigationController
 
 // MARK: - UIImagePickerControllerDelegate
 
-extension AddProjectViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true) {
-            if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-                self.projectImageView.image = image
-                self.isSaveButtonEnable[0] = true
-                self.projectImageUploadButton.isHidden = true
-                self.projectImageEditButton.isHidden = false
+    extension AddProjectViewController: UIImagePickerControllerDelegate {
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            picker.dismiss(animated: true) {
+                if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                    self.projectImageView.image = image
+                    self.isSaveButtonEnable[0] = true
+                    self.projectImageUploadButton.isHidden = true
+                    self.projectImageEditButton.isHidden = false
+                }
             }
         }
     }
-}
 
 // MARK: - UITextViewDelegate
 

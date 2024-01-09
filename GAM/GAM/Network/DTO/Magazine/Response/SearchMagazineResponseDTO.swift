@@ -11,13 +11,6 @@ struct SearchMagazineResponseDTOElement: Codable {
     let title: String
     let interviewPerson: String
     let viewCount: Int
-
-    enum CodingKeys: String, CodingKey {
-        case thumbNail = "thumbNail"
-        case title = "title"
-        case interviewPerson = "interviewPerson"
-        case viewCount = "viewCount"
-    }
 }
 
 typealias SearchMagazineResponseDTO = [SearchMagazineResponseDTOElement]

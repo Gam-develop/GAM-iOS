@@ -15,20 +15,15 @@ struct PortfolioResponseDTO: Codable {
 }
 
 struct Work: Codable {
-    let workID: Int
+    let workId: Int
     let workThumbNail, workTitle, workDetail: String
-
-    enum CodingKeys: String, CodingKey {
-        case workID = "workId"
-        case workThumbNail, workTitle, workDetail
-    }
 }
 
 extension PortfolioResponseDTO {
     
     func toUserPortfolioEntity() -> UserPortfolioEntity {
         let projects = works.map { work in
-            ProjectEntity(id: work.workID, thumbnailImageURL: work.workThumbNail, title: work.workTitle, detail: work.workDetail)
+            ProjectEntity(id: work.workId, thumbnailImageURL: work.workThumbNail, title: work.workTitle, detail: work.workDetail)
         }
 
         return UserPortfolioEntity(id: 0, behanceURL: behanceLink, instagramURL: instagramLink, notionURL: notionLink, projects: projects)

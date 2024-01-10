@@ -163,6 +163,8 @@
 		FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */; };
 		FFD9DB0F2A7F7F6F0085B965 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */; };
 		FFD9DB112A80D16D0085B965 /* GamStarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */; };
+		FFEB5CA72B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */; };
+		FFEB5CA92B4E60BA00953362 /* ScrapDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -319,6 +321,8 @@
 		FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamStarLabel.swift; sourceTree = "<group>"; };
+		FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerRequestDTO.swift; sourceTree = "<group>"; };
+		FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -439,6 +443,7 @@
 		FF6E2D5C2A96634F00EA313A /* Designer */ = {
 			isa = PBXGroup;
 			children = (
+				FFEB5CA52B4E5F4300953362 /* Request */,
 				FF6E2D5D2A96635400EA313A /* Response */,
 			);
 			path = Designer;
@@ -448,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */,
+				FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -941,6 +947,14 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		FFEB5CA52B4E5F4300953362 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		FFF605C62A65807E00A1EEC6 /* CollectionReusableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1065,6 +1079,7 @@
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
 				FFCDF8802A5C1B5800C731A3 /* RecentSearchTapGestureRecognizer.swift in Sources */,
+				FFEB5CA92B4E60BA00953362 /* ScrapDesignerResponseDTO.swift in Sources */,
 				FFC733992A79002E008B5054 /* GamContactButton.swift in Sources */,
 				FFA94D2C2A4F1E93009B034F /* SignInViewController.swift in Sources */,
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
@@ -1088,6 +1103,7 @@
 				FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */,
 				FFCDF8762A5B1E2F00C731A3 /* SearchViewController.swift in Sources */,
 				FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */,
+				FFEB5CA72B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift in Sources */,
 				FFD9DB052A7A6C420085B965 /* GamRoundedButton.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */,

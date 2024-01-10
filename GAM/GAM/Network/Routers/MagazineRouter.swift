@@ -51,12 +51,7 @@ extension MagazineRouter: TargetType {
         case .getPopularMagazine, .getAllMagazine, .getScrapMagazine:
             return .requestPlain
         case .requestScrapMagazine(let data):
-            let body: [String: Any] = [
-                "targetMagazineId": data.targetMagazineId,
-                "currentScrapStatus": data.currentScrapStatus
-            ]
-            return .requestParameters(parameters: body, encoding: JSONEncoding.prettyPrinted)
-            
+            return .requestJSONEncodable(data)
         case .searchMagazine(let data):
             let body: [String : Any] = [
                 "keyword": data

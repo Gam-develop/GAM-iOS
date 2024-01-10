@@ -114,7 +114,7 @@ extension BrowseDiscoverViewController: UICollectionViewDataSource {
 
 extension BrowseDiscoverViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(UserViewController(), animated: true)
+        self.navigationController?.pushViewController(UserViewController(userID: self.designers[indexPath.row].id), animated: true)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity:CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

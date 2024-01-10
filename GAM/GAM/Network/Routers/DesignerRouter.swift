@@ -42,11 +42,7 @@ extension DesignerRouter: TargetType {
         case .getPopularDesigner:
             return .requestPlain
         case .requestScrapDesigner(let data):
-            let body: [String: Any] = [
-                "targetUserId": data.targetUserId,
-                "currentScrapStatus": data.currentScrapStatus
-            ]
-            return .requestParameters(parameters: body, encoding: JSONEncoding.prettyPrinted)
+            return .requestJSONEncodable(data)
         }
     }
     

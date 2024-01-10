@@ -212,27 +212,33 @@ extension MyPortfolioViewController: UITableViewDataSource {
             view.instagramButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             
             view.behanceButton.setAction { [weak self] in
+                let addContactURLViewController = AddContactURLViewController(
+                    type: .behance,
+                    url: self?.portfolio.behanceURL ?? ""
+                )
+                addContactURLViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(
-                    AddContactURLViewController(
-                        type: .behance,
-                        url: self?.portfolio.behanceURL ?? ""
-                    ), animated: true, completion: nil)
+                    addContactURLViewController, animated: true, completion: nil)
             }
             
             view.instagramButton.setAction { [weak self] in
+                let addContactURLViewController = AddContactURLViewController(
+                    type: .instagram,
+                    url: self?.portfolio.instagramURL ?? ""
+                )
+                addContactURLViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(
-                    AddContactURLViewController(
-                        type: .instagram,
-                        url: self?.portfolio.instagramURL ?? ""
-                    ), animated: true, completion: nil)
+                    addContactURLViewController, animated: true, completion: nil)
             }
             
             view.notionButton.setAction { [weak self] in
+                let addContactURLViewController = AddContactURLViewController(
+                    type: .notion,
+                    url: self?.portfolio.notionURL ?? ""
+                )
+                addContactURLViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(
-                    AddContactURLViewController(
-                        type: .notion,
-                        url: self?.portfolio.notionURL ?? ""
-                    ), animated: true, completion: nil)
+                    addContactURLViewController, animated: true, completion: nil)
             }
             
             return view
@@ -267,8 +273,9 @@ extension MyPortfolioViewController: SendUpdateDelegate {
     
     func sendUpdate(data: Any?) {
         self.fetchData()
-        self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        
+        if let scrollInfo = data as? [String: Bool], let scrollToTop = scrollInfo["scrollToTop"], scrollToTop {
+            self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
     }
 }
 

@@ -239,7 +239,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
             self?.setAddProjectData() { preSignedUrl in
                 self?.uploadImage(uploadUrl: preSignedUrl, image: self?.projectImageView.image ?? UIImage()) {
                     self?.createPortfolio(image: self!.addProjectData.image, title: self!.addProjectData.title, detail: self!.addProjectData.detail) {
-                        self?.sendUpdateDelegate?.sendUpdate(data: nil)
+                        self?.sendUpdateDelegate?.sendUpdate(data: ["scrollToTop": true])
                     }
                 }
             }

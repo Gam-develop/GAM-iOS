@@ -45,6 +45,7 @@ final class AddContactURLViewController: BaseViewController {
     
     // MARK: Properties
     
+    var sendUpdateDelegate: SendUpdateDelegate?
     private var contactURLType: ContactURLType = .behance
     private let disposeBag: DisposeBag = DisposeBag()
     private var keyboardHeight: CGFloat = 0
@@ -125,6 +126,9 @@ final class AddContactURLViewController: BaseViewController {
     
     private func setDoneButtonAction() {
         self.doneButton.setAction { [weak self] in
+            self?.updateLink(contactUrlType: self!.contactURLType, link: self?.textField.text ?? "") {
+                self?.sendUpdateDelegate?.sendUpdate(data: ["scrollToTop": false])
+            }
             self?.navigationController?.popViewController(animated: true)
         }
     }
@@ -148,6 +152,23 @@ final class AddContactURLViewController: BaseViewController {
             self.doneButton.snp.updateConstraints { make in
                 make.bottom.equalToSuperview().inset(102.adjustedH)
             }
+        }
+    }
+}
+
+// MARK: - Network
+
+extension AddContactURLViewController {
+    private func updateLink(contactUrlType: ContactURLType, link: String, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.updateLink(contactUrlType: contactUrlType, data: UpdateLinkRequestDTO(link: link)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
         }
     }
 }

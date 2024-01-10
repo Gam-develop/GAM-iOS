@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
+		84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */; };
 		84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */; };
 		84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */; };
 		84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */; };
@@ -177,6 +178,7 @@
 
 /* Begin PBXFileReference section */
 		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLinkRequestDTO.swift; sourceTree = "<group>"; };
 		84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRequestDTO.swift; sourceTree = "<group>"; };
 		84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlResponseDTO.swift; sourceTree = "<group>"; };
 		84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageRequestDTO.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */,
 				84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */,
 				84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */,
+				84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1238,6 +1241,7 @@
 				FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */,
 				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
 				FF6CC0352A951E9900B24C94 /* AuthRouter.swift in Sources */,
+				84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */,
 				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseService.swift in Sources */,
 			);

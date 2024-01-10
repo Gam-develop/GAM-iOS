@@ -273,7 +273,7 @@ extension MyPortfolioViewController: SendUpdateDelegate {
     
     func sendUpdate(data: Any?) {
         self.fetchData()
-        if let scrollInfo = data as? [String: Bool], let scrollToTop = scrollInfo["scrollToTop"], scrollToTop {
+        if let scrollToTop = data as? Bool, scrollToTop {
             self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
     }

@@ -127,7 +127,7 @@ final class AddContactURLViewController: BaseViewController {
     private func setDoneButtonAction() {
         self.doneButton.setAction { [weak self] in
             self?.updateLink(contactUrlType: self!.contactURLType, link: self?.textField.text ?? "") {
-                self?.sendUpdateDelegate?.sendUpdate(data: ["scrollToTop": false])
+                self?.sendUpdateDelegate?.sendUpdate(data: false)
             }
             self?.navigationController?.popViewController(animated: true)
         }

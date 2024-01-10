@@ -6,15 +6,14 @@
 //
 
 import Foundation
-import UIKit.UIImage
 
 struct AddProjectEntity: Hashable {
-    let image: UIImage
+    let image: String
     let title: String
     let detail: String
     
-    init(image: UIImage, title: String, detail: String) {
-        self.image = image.resizedToGamSize()
+    init(image: String, title: String, detail: String) {
+        self.image = image
         self.title = title
         self.detail = detail
     }

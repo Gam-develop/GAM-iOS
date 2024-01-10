@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
+		84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */; };
+		84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */; };
 		84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */; };
 		84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9952B4BFFF9009C4C15 /* MypageService.swift */; };
 		84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9972B4C0042009C4C15 /* MypageRouter.swift */; };
@@ -174,6 +176,8 @@
 
 /* Begin PBXFileReference section */
 		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRequestDTO.swift; sourceTree = "<group>"; };
+		84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlResponseDTO.swift; sourceTree = "<group>"; };
 		84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		84E6F9952B4BFFF9009C4C15 /* MypageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageService.swift; sourceTree = "<group>"; };
 		84E6F9972B4C0042009C4C15 /* MypageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouter.swift; sourceTree = "<group>"; };
@@ -366,6 +370,7 @@
 			children = (
 				84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */,
 				84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */,
+				84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 		84E6F9992B4C0B97009C4C15 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */,
 				84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */,
 				84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */,
 			);
@@ -1156,6 +1162,7 @@
 				FFCDF84E2A5A4AB300C731A3 /* Environment.swift in Sources */,
 				FFA94CD32A4F08D4009B034F /* ClassName.swift in Sources */,
 				FFC733832A71120B008B5054 /* MoreDefaultButton.swift in Sources */,
+				84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */,
 				FFC733932A76AAD0008B5054 /* PortfolioTableFooterView.swift in Sources */,
 				FFA94CD72A4F0902009B034F /* UserDefaultsManager.swift in Sources */,
 				FF6CC0452A963F3E00B24C94 /* UserRouter.swift in Sources */,
@@ -1223,6 +1230,7 @@
 				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
 				FF6CC0432A963E5F00B24C94 /* SignUpRequestDTO.swift in Sources */,
 				FF6CC0292A9506E500B24C94 /* PublicService.swift in Sources */,
+				84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */,
 				FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */,
 				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
 				FF6CC0352A951E9900B24C94 /* AuthRouter.swift in Sources */,

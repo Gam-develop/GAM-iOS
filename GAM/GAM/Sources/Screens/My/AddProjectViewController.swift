@@ -102,6 +102,8 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         return imagePickerController
     }()
     private var keyboardHeight: CGFloat = 0
+    
+    // TODO: 이미지 업로드 구현이랑 같이 해야될듯
     private var addProjectData: AddProjectEntity = .init(image: .init(), title: .init(), detail: .init())
     private var isSaveButtonEnable: [Bool] = [false, false] {
         didSet {
@@ -222,22 +224,26 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         }
     }
     
-    private func setAddProjectData() {
-        self.addProjectData = .init(
-            image: self.projectImageView.image ?? UIImage(),
-            title: self.projectTitleTextField.text ?? "",
-            detail: self.projectDetailTextView.text
-        )
+    private func setAddProjectData(completion: @escaping () -> ()) {
+        self.getImageUrl() { preSignedUrl in
+            self.addProjectData = .init(
+                image: preSignedUrl,
+                title: self.projectTitleTextField.text ?? "",
+                detail: self.projectDetailTextView.text
+            )
+            completion()
+        }
     }
     
     private func setSaveButtonAction() {
         self.navigationView.saveButton.setAction { [weak self] in
-            self?.setAddProjectData()
-            if let projectTitle = self?.projectTitleTextField.text,
-               let projectDetail = self?.projectDetailTextView.text {
-                self?.createPortfolio(image: "todo", title: projectTitle, detail: projectDetail) {
-                    self?.sendUpdateDelegate?.sendUpdate(data: nil)
-                }
+            self?.setAddProjectData() {
+                print(self!.addProjectData)
+                // 이미지 업로드하기 (비동기 처리도 괜찮음)
+//                image: self.projectImageView.image?.resizedToGamSize() ?? UIImage()
+//                self?.createPortfolio(image: self!.addProjectData.image, title: self!.addProjectData.title, detail: self!.addProjectData.detail) {
+//                    self?.sendUpdateDelegate?.sendUpdate(data: nil)
+//                }
             }
             self?.navigationController?.popViewController(animated: true)
         }
@@ -287,6 +293,21 @@ private extension AddProjectViewController {
             switch networkResult {
             case .success(_):
                 completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func getImageUrl(completion: @escaping (String) -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.getImageUrl(data: ImageUrlRequestDTO(imageName: "gam.png")) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? ImageUrlResponseDTO {
+                    completion(result.preSignedUrl)
+                }
             default:
                 self.showNetworkErrorAlert()
             }

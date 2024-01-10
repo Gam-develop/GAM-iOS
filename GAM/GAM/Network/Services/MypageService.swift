@@ -82,4 +82,19 @@ extension MypageService: MypageServiceProtocol {
             }
         }
     }
+    
+    // [GET] 이미지 url 받아오기
+    func getImageUrl(data: ImageUrlRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.getImageUrl(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, ImageUrlResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
 }

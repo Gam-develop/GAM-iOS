@@ -226,7 +226,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
     private func setAddProjectData(completion: @escaping (String) -> ()) {
         self.getImageUrl() { data in
             self.addProjectData = .init(
-                image: "\(Environment.IMAGE_BASE_URL)\(String(data.fileName.dropFirst(5)))",
+                image: String(data.fileName.dropFirst(5)),
                 title: self.projectTitleTextField.text ?? "",
                 detail: self.projectDetailTextView.text
             )
@@ -237,9 +237,10 @@ final class AddProjectViewController: BaseViewController, UINavigationController
     private func setSaveButtonAction() {
         self.navigationView.saveButton.setAction { [weak self] in
             self?.setAddProjectData() { preSignedUrl in
-                self?.uploadImage(uploadUrl: preSignedUrl, image: self?.projectImageView.image?.resizedToGamSize() ?? UIImage())
-                self?.createPortfolio(image: self!.addProjectData.image, title: self!.addProjectData.title, detail: self!.addProjectData.detail) {
-                    self?.sendUpdateDelegate?.sendUpdate(data: nil)
+                self?.uploadImage(uploadUrl: preSignedUrl, image: self?.projectImageView.image ?? UIImage()) {
+                    self?.createPortfolio(image: self!.addProjectData.image, title: self!.addProjectData.title, detail: self!.addProjectData.detail) {
+                        self?.sendUpdateDelegate?.sendUpdate(data: nil)
+                    }
                 }
             }
             self?.navigationController?.popViewController(animated: true)
@@ -312,8 +313,10 @@ private extension AddProjectViewController {
         }
     }
     
-    private func uploadImage(uploadUrl: String, image: UIImage) {
-        MypageService.shared.uploadImage(data: UploadImageRequestDTO(uploadUrl: uploadUrl, image: image))
+    private func uploadImage(uploadUrl: String, image: UIImage, completion: @escaping () -> ()) {
+        MypageService.shared.uploadImage(data: UploadImageRequestDTO(uploadUrl: uploadUrl, image: image)) {
+            completion()
+        }
     }
 }
 

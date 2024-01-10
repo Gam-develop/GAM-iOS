@@ -76,7 +76,6 @@ final class MyPortfolioViewController: BaseViewController {
             DispatchQueue.main.async {
                 self.portfolio = portfolio
                 self.portfolioTableView.reloadData()
-                self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 self.setEmptyView()
             }
         }
@@ -108,6 +107,7 @@ final class MyPortfolioViewController: BaseViewController {
                     handler: { _ in
                         self.setRepPortfolio(workId: project.id) {
                             self.fetchData()
+                            self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                         }
                     }
                 )
@@ -267,6 +267,8 @@ extension MyPortfolioViewController: SendUpdateDelegate {
     
     func sendUpdate(data: Any?) {
         self.fetchData()
+        self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        
     }
 }
 

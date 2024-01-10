@@ -149,8 +149,8 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        debugPrint("selected \(indexPath.row)")
         collectionView.deselectItem(at: indexPath, animated: true)
+        self.navigationController?.pushViewController(UserViewController(userID: self.designers[indexPath.row].id), animated: true)
     }
 }
 

@@ -101,7 +101,10 @@ extension HomeViewController: UITableViewDataSource {
             if let bool = self?.magazines[indexPath.row].isScrap {
                 self?.requestScrapMagazine(data: .init(targetMagazineId: self?.magazines[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
                     cell.scrapButton.isSelected = !bool
-                    self?.fetchData()
+                    self?.getPopularMagazine { magazines in
+                        self?.magazines = magazines
+                        self?.magazineTableView.reloadData()
+                    }
                 }
             }
         }
@@ -124,9 +127,9 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.designers[indexPath.row].isScrap {
-                debugPrint("스크랩 request")
-                self?.magazines[indexPath.row].isScrap = !bool
-                cell.scrapButton.isSelected = !bool
+                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                    cell.scrapButton.isSelected = !bool
+                }
             }
         }
         return cell

@@ -97,4 +97,17 @@ extension MypageService: MypageServiceProtocol {
             }
         }
     }
+    
+    // [PUT] 이미지 업로드
+    func uploadImage(data: UploadImageRequestDTO) {
+        self.provider.request(.uploadImage(data: data)) { result in
+            switch result {
+            case .success(_):
+                // TODO: 성공 시 아무 것도 반환하지 않음
+                break
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
 }

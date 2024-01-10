@@ -14,12 +14,18 @@ enum MypageRouter {
     case deletePortfolio(data: SetPortfolioRequestDTO)
     case createPortfolio(data: CreatePortfolioRequestDTO)
     case getImageUrl(data: ImageUrlRequestDTO)
+    case uploadImage(data: UploadImageRequestDTO)
 }
 
 extension MypageRouter: TargetType {
     
     var baseURL: URL {
-        return URL(string: APIConstants.baseURL)!
+        switch self {
+        case .uploadImage(let data):
+            return URL(string: data.uploadUrl)!
+        default:
+            return URL(string: APIConstants.baseURL)!
+        }
     }
     
     var path: String {
@@ -32,6 +38,8 @@ extension MypageRouter: TargetType {
             return "/work"
         case .getImageUrl:
             return "/s3/image"
+        case .uploadImage:
+            return ""
         }
     }
     
@@ -45,6 +53,8 @@ extension MypageRouter: TargetType {
             return .delete
         case .createPortfolio:
             return .post
+        case .uploadImage:
+            return .put
         }
     }
     
@@ -61,6 +71,8 @@ extension MypageRouter: TargetType {
                 "fileName": data.imageName
             ]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .uploadImage(let data):
+            return .requestData(data.imageData.jpegData(compressionQuality: 0.8) ?? Data())
         }
     }
     
@@ -71,6 +83,10 @@ extension MypageRouter: TargetType {
             return [
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken
+            ]
+        case .uploadImage:
+            return [
+                "Content-Type": "image/jpeg"
             ]
         }
     }

@@ -60,6 +60,20 @@ final class UserViewController: BaseViewController {
         tags: [1, 4],
         email: "must4rdev@gmail.com")
     
+    private var userID: Int = 0
+    
+    // MARK: Initializer
+    
+    init(userID: Int) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.userID = userID
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {

@@ -188,6 +188,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
+            cell.addProjectButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             cell.addProjectButton.setAction { [weak self] in
                 let writeProjectViewController = WriteProjectViewController(data: .init(id: .init(), thumbnailImageURL: .init(), title: .init(), detail: .init()), viewType: .create)
                 writeProjectViewController.sendUpdateDelegate = self

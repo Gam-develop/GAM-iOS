@@ -16,6 +16,7 @@ enum MypageRouter {
     case getImageUrl(data: ImageUrlRequestDTO)
     case uploadImage(data: UploadImageRequestDTO)
     case updateLink(contactUrlType: ContactURLType, data: UpdateLinkRequestDTO)
+    case updatePortfolio(data: UpdatePortfolioRequestDTO)
 }
 
 extension MypageRouter: TargetType {
@@ -43,6 +44,8 @@ extension MypageRouter: TargetType {
             return ""
         case .updateLink(let contactUrlType, _):
             return "/user/link/\(contactUrlType.rawValue)"
+        case .updatePortfolio:
+            return "/work/edit"
         }
     }
     
@@ -50,7 +53,7 @@ extension MypageRouter: TargetType {
         switch self {
         case .getPortfolio, .getImageUrl:
             return .get
-        case .setRepPortfolio, .updateLink:
+        case .setRepPortfolio, .updateLink, .updatePortfolio:
             return .patch
         case .deletePortfolio:
             return .delete
@@ -78,13 +81,15 @@ extension MypageRouter: TargetType {
             return .requestData(data.imageData.jpegData(compressionQuality: 0.8) ?? Data())
         case .updateLink(_, let data):
             return .requestJSONEncodable(data)
+        case .updatePortfolio(let data):
+            return .requestJSONEncodable(data)
         }
     }
     
     
     var headers: [String: String]? {
         switch self {
-        case .getPortfolio, .setRepPortfolio, .deletePortfolio, .createPortfolio, .getImageUrl, .updateLink:
+        case .getPortfolio, .setRepPortfolio, .deletePortfolio, .createPortfolio, .getImageUrl, .updateLink, .updatePortfolio:
             return [
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken

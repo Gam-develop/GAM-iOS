@@ -82,7 +82,7 @@ class PortfolioTableViewCell: UITableViewCell {
         self.titleLabel.adjustsFontSizeToFitWidth = true
         self.detailLabel.numberOfLines = 0
         self.detailLabel.lineBreakMode = .byCharWrapping
-        self.thumbnailImageView.backgroundColor = .black
+        self.thumbnailImageView.backgroundColor = .gamWhite
         self.thumbnailImageView.contentMode = .scaleAspectFit
     }
     

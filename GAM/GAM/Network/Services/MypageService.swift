@@ -125,4 +125,19 @@ extension MypageService: MypageServiceProtocol {
             }
         }
     }
+    
+    // [PATCH] 프로젝트 수정
+    func updatePortfolio(data: UpdatePortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.updatePortfolio(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, DefaultPortfolioResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
 }

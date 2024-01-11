@@ -119,7 +119,9 @@ final class MyPortfolioViewController: BaseViewController {
                 title: "수정하기",
                 style: .default,
                 handler: { _ in
-                    self.superViewController?.navigationController?.pushViewController(AddProjectViewController(data: AddProjectEntity(image: project.thumbnailImageURL, title: project.title, detail: project.detail)), animated: true, completion: nil)
+                    let writeProjectViewController = WriteProjectViewController(data: ProjectEntity(id: project.id, thumbnailImageURL: project.thumbnailImageURL, title: project.title, detail: project.detail), viewType: .update)
+                    writeProjectViewController.sendUpdateDelegate = self
+                    self.superViewController?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
                 }
             )
         )
@@ -185,9 +187,9 @@ extension MyPortfolioViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
             cell.addProjectButton.setAction { [weak self] in
-                let addProjectViewController = AddProjectViewController(data: .init(image: .init(), title: .init(), detail: .init()))
-                addProjectViewController.sendUpdateDelegate = self
-                self?.navigationController?.pushViewController(addProjectViewController, animated: true, completion: nil)
+                let writeProjectViewController = WriteProjectViewController(data: .init(id: .init(), thumbnailImageURL: .init(), title: .init(), detail: .init()), viewType: .create)
+                writeProjectViewController.sendUpdateDelegate = self
+                self?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
             }
             
             return cell

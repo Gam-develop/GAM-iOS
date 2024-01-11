@@ -295,7 +295,21 @@ extension BaseViewController {
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? ScrapMagazineRequestDTO {
-                    debugPrint("스크랩", result.currentScrapStatus)
+                    completion()
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    func requestScrapDesigner(data: ScrapDesignerRequestDTO, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.requestScrapDesigner(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? ScrapDesignerResponseDTO {
                     completion()
                 }
             default:

@@ -60,6 +60,8 @@ final class SearchViewController: BaseViewController {
     private let magazineSearchResultTableView: MagazineTableView = MagazineTableView(cellType: .noScrap)
     private let portfolioSearchResultTableView: MagazineTableView = MagazineTableView(cellType: .noScrap)
     
+    private let emptyView: GamEmptyView = GamEmptyView(type: .noSearchResult)
+    
     // MARK: Properties
     
     private var searchType: SearchType = .magazine
@@ -72,14 +74,7 @@ final class SearchViewController: BaseViewController {
     var portfolioSearchResultSnapshot: NSDiffableDataSourceSnapshot<Section, PortfolioSearchEntity>!
     
     private var recentSearchData: [RecentSearchEntity] = []
-    private var magazineSearchResultData: [MagazineEntity] = [
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 13),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "졸업 작품이\n전세계적인 주목을\n받았다고?", author: "이용택", isScrap: false, url: "https://www.daum.net", visibilityCount: 1234),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 17),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 2),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 3),
-        MagazineEntity(id: 0, thumbnailImageURL: "", title: "어쩌\n구", author: "김형우", isScrap: true, url: "https://www.naver.com", visibilityCount: 1)
-    ]
+    private var magazineSearchResultData: [MagazineEntity] = []
     private var portfolioSearchResultData: [PortfolioSearchEntity] = [
         .init(id: 0, thumbnailImageURL: "", title: "L’ESPACE", author: "최가연", visibilityCount: 1200),
         .init(id: 0, thumbnailImageURL: "", title: "SPACE Tour", author: "space", visibilityCount: 12020)
@@ -117,6 +112,8 @@ final class SearchViewController: BaseViewController {
             self.portfolioSearchResultTableView.isHidden = true
             self.setPortfolioSearchResultLayout()
         }
+        self.setEmptyViewLayout()
+        self.setEmptyViewVisibility(isOn: false)
     }
     
     // MARK: Methods
@@ -131,6 +128,10 @@ final class SearchViewController: BaseViewController {
             self?.fetchRecentSearchData()
             self?.setRecentSearchSnapshot()
         }
+    }
+    
+    private func setEmptyViewVisibility(isOn: Bool) {
+        self.emptyView.isHidden = !isOn
     }
 }
 
@@ -189,7 +190,10 @@ extension SearchViewController {
         self.searchTextField.text = sender.keyword
         switch self.searchType {
         case .magazine:
-            self.searchMagazine(keyword: sender.keyword)
+            self.requestSearchMagazine(data: sender.keyword) { result in
+                self.magazineSearchResultData = result
+                self.searchMagazine(keyword: sender.keyword)
+            }
         case .portfolio:
             self.searchPortfolio(keyword: sender.keyword)
         }
@@ -215,6 +219,7 @@ extension SearchViewController {
             })
         self.magazineSearchResultDataSource.defaultRowAnimation = .automatic
         self.magazineSearchResultTableView.dataSource = self.magazineSearchResultDataSource
+        self.setEmptyViewVisibility(isOn: self.magazineSearchResultData.count == 0)
     }
     
     private func setMagazineSearchResultSnapshot() {
@@ -321,10 +326,33 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch self.searchType {
-        case .magazine: self.searchMagazine(keyword: textField.text)
+        case .magazine: 
+            self.requestSearchMagazine(data: textField.text ?? "") { result in
+                self.magazineSearchResultData = result
+                self.searchMagazine(keyword: textField.text)
+            }
         case .portfolio: self.searchPortfolio(keyword: textField.text)
         }
         return true
+    }
+}
+
+// MARK: - Network
+
+extension SearchViewController {
+    private func requestSearchMagazine(data: String, completion: @escaping ([MagazineEntity]) -> ()) {
+        self.startActivityIndicator()
+        MagazineService.shared.searchMagazine(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? SearchMagazineResponseDTO {
+                    completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 
@@ -376,6 +404,16 @@ extension SearchViewController {
         self.portfolioSearchResultTableView.snp.makeConstraints { make in
             make.top.equalTo(self.searchTextField.snp.bottom).offset(27)
             make.left.right.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
+    }
+    
+    private func setEmptyViewLayout() {
+        self.view.addSubviews([emptyView])
+        
+        self.emptyView.snp.makeConstraints { make in
+            make.top.equalTo(self.searchTextField.snp.bottom).offset(70)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(279)
         }
     }
 }

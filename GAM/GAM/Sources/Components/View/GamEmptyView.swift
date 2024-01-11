@@ -12,12 +12,14 @@ final class GamEmptyView: UIView {
     enum EmptyType {
         case myProject
         case userProject
+        case noSearchResult
     }
     
     private enum Text {
         static let addProject = "추가하러 가기"
         static let addProjectInfo = "프로젝트와 링크를 추가해\n나를 풍부하게 꾸며 보세요!"
         static let noUserProjectInfo = "등록된 프로젝트가 없습니다."
+        static let noSearchResult = "검색 결과가 없어요\n다양한 검색으로 감을 찾아보세요"
     }
     
     // MARK: UIComponents
@@ -64,6 +66,8 @@ final class GamEmptyView: UIView {
             self.infoLabel.text = Text.addProjectInfo
         case .userProject:
             self.infoLabel.text = Text.noUserProjectInfo
+        case .noSearchResult:
+            self.infoLabel.text = Text.noSearchResult
         }
     }
     
@@ -93,6 +97,7 @@ final class GamEmptyView: UIView {
                 make.width.equalTo(108)
             }
         case .userProject: break
+        case .noSearchResult: break
         }
     }
 }

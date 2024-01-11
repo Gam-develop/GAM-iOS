@@ -13,6 +13,7 @@ internal protocol MagazineServiceProtocol {
     func getAllMagazine(completion: @escaping (NetworkResult<Any>) -> (Void))
     func getScrapMagazine(completion: @escaping (NetworkResult<Any>) -> (Void))
     func requestScrapMagazine(data: ScrapMagazineRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func searchMagazine(data: String, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class MagazineService: BaseService {
@@ -81,6 +82,22 @@ extension MagazineService: MagazineServiceProtocol {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = self.judgeStatus(by: statusCode, data, ScrapMagazineRequestDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 매거진 검색
+    
+    func searchMagazine(data: String,completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.searchMagazine(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, SearchMagazineResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

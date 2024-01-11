@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CreatePortfolioRequestDTO: Codable {
+struct CreatePortfolioRequestDTO: Encodable {
     let image: String
     let title: String
     let detail: String

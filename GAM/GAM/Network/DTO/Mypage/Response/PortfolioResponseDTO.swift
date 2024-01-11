@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PortfolioResponseDTO: Codable {
+struct PortfolioResponseDTO: Decodable {
     let behanceLink: String
     let instagramLink: String
     let notionLink: String

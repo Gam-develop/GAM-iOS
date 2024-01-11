@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DefaultPortfolioResponseDTO: Codable {
+struct DefaultPortfolioResponseDTO: Decodable {
     let workID: Int
 
     enum CodingKeys: String, CodingKey {

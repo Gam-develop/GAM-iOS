@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UpdateLinkRequestDTO: Codable {
+struct UpdateLinkRequestDTO: Encodable {
     let link: String
     
     init(link: String) {

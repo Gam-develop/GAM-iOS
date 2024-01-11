@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageUrlResponseDTO: Codable {
+struct ImageUrlResponseDTO: Decodable {
     let preSignedUrl: String
     let fileName: String
 }

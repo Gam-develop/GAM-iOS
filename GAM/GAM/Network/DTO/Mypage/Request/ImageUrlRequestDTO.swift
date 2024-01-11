@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageUrlRequestDTO: Codable {
+struct ImageUrlRequestDTO: Encodable {
     let imageName: String
     
     init(imageName: String) {

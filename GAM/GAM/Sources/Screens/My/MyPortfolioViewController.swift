@@ -88,7 +88,9 @@ final class MyPortfolioViewController: BaseViewController {
     
     private func setAddProjectButtonAction() {
         self.emptyView.button.setAction { [weak self] in
-            self?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+            let writeProjectViewController = WriteProjectViewController(data: .init(id: .init(), thumbnailImageURL: .init(), title: .init(), detail: .init()), viewType: .create)
+            writeProjectViewController.sendUpdateDelegate = self
+            self?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
         }
     }
     

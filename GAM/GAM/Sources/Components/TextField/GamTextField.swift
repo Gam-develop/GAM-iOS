@@ -115,11 +115,11 @@ final class GamTextField: UITextField {
                     if changedText.count > 12 {
                         owner.deleteBackward()
                     }
-                    if changedText.count > 0 {
-                        self.layer.borderWidth = 0
-                    } else {
-                        self.layer.borderWidth = 1
-                    }
+//                    if changedText.count > 0 {
+//                        self.layer.borderWidth = 0
+//                    } else {
+//                        self.layer.borderWidth = 1
+//                    }
                 })
                 .disposed(by: disposeBag)
         }

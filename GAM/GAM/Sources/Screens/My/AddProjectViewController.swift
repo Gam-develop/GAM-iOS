@@ -44,9 +44,9 @@ final class AddProjectViewController: BaseViewController, UINavigationController
     private let imageDetailLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.imageDetail, font: .caption1Regular, color: .gamGray3)
     private let projectImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
-        imageView.backgroundColor = .gamWhite
+        imageView.backgroundColor = .black
         imageView.makeRounded(cornerRadius: 10)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private let projectImageUploadButton: UIButton = {
@@ -111,6 +111,29 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         }
     }
     
+    // MARK: Initializer
+    
+    init(data: AddProjectEntity) {
+        super.init(nibName: nil, bundle: nil)
+        
+//        self.projectImageView.setImageUrl(data.image)
+//                self.isSaveButtonEnable[0] = true
+//                self.projectImageUploadButton.isHidden = true
+//                self.projectImageEditButton.isHidden = false
+////        
+//        self.projectTitleTextField.text = data.title
+//        self.projectDetailTextView.text = data.detail
+//        
+//        self.projectTitleTextField.
+        
+        self.addProjectData = data
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -126,6 +149,16 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         self.setUploadImageButtonAction()
         self.setDetailTextView()
         self.setSaveButtonAction()
+        
+        self.projectImageView.setImageUrl(addProjectData.image)
+                self.isSaveButtonEnable[0] = true
+                self.projectImageUploadButton.isHidden = true
+                self.projectImageEditButton.isHidden = false
+
+        self.projectTitleTextField.text = addProjectData.title
+        self.projectDetailTextView.text = addProjectData.detail
+        
+        self.projectTitleTextField.didChangeValue(forKey: addProjectData.title)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,6 +189,11 @@ final class AddProjectViewController: BaseViewController, UINavigationController
                 owner.projectTitleInfoLabel.isHidden = changedText.count > 0
                 owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
                 owner.isSaveButtonEnable[1] = changedText.count > 0
+                if changedText.count > 0 {
+                    owner.projectTitleTextField.layer.borderWidth = 0
+                } else {
+                    owner.projectTitleTextField.layer.borderWidth = 1
+                }
                 
             })
             .disposed(by: self.disposeBag)

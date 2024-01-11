@@ -119,8 +119,7 @@ final class MyPortfolioViewController: BaseViewController {
                 title: "수정하기",
                 style: .default,
                 handler: { _ in
-                    // TODO: 수정하기 request
-                    self.superViewController?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+                    self.superViewController?.navigationController?.pushViewController(AddProjectViewController(data: AddProjectEntity(image: project.thumbnailImageURL, title: project.title, detail: project.detail)), animated: true, completion: nil)
                 }
             )
         )
@@ -186,7 +185,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
             cell.addProjectButton.setAction { [weak self] in
-                let addProjectViewController = AddProjectViewController()
+                let addProjectViewController = AddProjectViewController(data: .init(image: .init(), title: .init(), detail: .init()))
                 addProjectViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(addProjectViewController, animated: true, completion: nil)
             }

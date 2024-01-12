@@ -13,6 +13,7 @@ enum MagazineRouter {
     case getAllMagazine
     case getScrapMagazine
     case requestScrapMagazine(data: ScrapMagazineRequestDTO)
+    case searchMagazine(data: String)
 }
 
 extension MagazineRouter: TargetType {
@@ -31,12 +32,14 @@ extension MagazineRouter: TargetType {
             return "/magazine/scraps"
         case .requestScrapMagazine:
             return "/magazine/scrap"
+        case .searchMagazine:
+            return "/magazine/search"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPopularMagazine, .getAllMagazine, .getScrapMagazine:
+        case .getPopularMagazine, .getAllMagazine, .getScrapMagazine, .searchMagazine:
             return .get
         case .requestScrapMagazine:
             return .post
@@ -48,17 +51,18 @@ extension MagazineRouter: TargetType {
         case .getPopularMagazine, .getAllMagazine, .getScrapMagazine:
             return .requestPlain
         case .requestScrapMagazine(let data):
-            let body: [String: Any] = [
-                "targetMagazineId": data.targetMagazineId,
-                "currentScrapStatus": data.currentScrapStatus
+            return .requestJSONEncodable(data)
+        case .searchMagazine(let data):
+            let body: [String : Any] = [
+                "keyword": data
             ]
-            return .requestParameters(parameters: body, encoding: JSONEncoding.prettyPrinted)
+            return .requestParameters(parameters: body, encoding: URLEncoding.queryString)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .getPopularMagazine, .getAllMagazine, .getScrapMagazine, .requestScrapMagazine:
+        case .getPopularMagazine, .getAllMagazine, .getScrapMagazine, .requestScrapMagazine, .searchMagazine:
             return [
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken

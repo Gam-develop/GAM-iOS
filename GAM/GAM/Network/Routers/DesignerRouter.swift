@@ -10,6 +10,7 @@ import Moya
 
 enum DesignerRouter {
     case getPopularDesigner
+    case requestScrapDesigner(data: ScrapDesignerRequestDTO)
 }
 
 extension DesignerRouter: TargetType {
@@ -22,6 +23,8 @@ extension DesignerRouter: TargetType {
         switch self {
         case .getPopularDesigner:
             return "/user/popular"
+        case .requestScrapDesigner:
+            return "/user/scrap"
         }
     }
     
@@ -29,6 +32,8 @@ extension DesignerRouter: TargetType {
         switch self {
         case .getPopularDesigner:
             return .get
+        case .requestScrapDesigner:
+            return .post
         }
     }
     
@@ -36,12 +41,14 @@ extension DesignerRouter: TargetType {
         switch self {
         case .getPopularDesigner:
             return .requestPlain
+        case .requestScrapDesigner(let data):
+            return .requestJSONEncodable(data)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .getPopularDesigner:
+        case .getPopularDesigner, .requestScrapDesigner:
             return [
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken

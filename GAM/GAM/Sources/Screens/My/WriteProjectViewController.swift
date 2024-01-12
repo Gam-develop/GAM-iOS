@@ -189,10 +189,11 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
             .distinctUntilChanged()
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { changedText in
-                self.projectTitleInfoLabel.isHidden = changedText?.count ?? 0 > 0
-                self.projectTitleCountLabel.text = "\(changedText?.count ?? 0)/\(Number.projectTitleLimit)"
-                self.isSaveButtonEnable[1] = changedText?.count ?? 0 > 0
-                if changedText?.count ?? 0 > 0 {
+                guard let text = changedText else { return }
+                self.projectTitleInfoLabel.isHidden = text.count > 0
+                self.projectTitleCountLabel.text = "\(text.count)/\(Number.projectTitleLimit)"
+                self.isSaveButtonEnable[1] = text.count > 0
+                if text.count > 0 {
                     self.projectTitleTextField.layer.borderWidth = 0
                 } else {
                     self.projectTitleTextField.layer.borderWidth = 1

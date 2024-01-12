@@ -88,7 +88,7 @@ final class MyPortfolioViewController: BaseViewController {
     
     private func setAddProjectButtonAction() {
         self.emptyView.button.setAction { [weak self] in
-            let writeProjectViewController = WriteProjectViewController(data: .init(id: .init(), thumbnailImageURL: .init(), title: .init(), detail: .init()), viewType: .create)
+            let writeProjectViewController = WriteProjectViewController(projectData: nil)
             writeProjectViewController.sendUpdateDelegate = self
             self?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
         }
@@ -121,7 +121,7 @@ final class MyPortfolioViewController: BaseViewController {
                 title: "수정하기",
                 style: .default,
                 handler: { _ in
-                    let writeProjectViewController = WriteProjectViewController(data: ProjectEntity(id: project.id, thumbnailImageURL: project.thumbnailImageURL, title: project.title, detail: project.detail), viewType: .update)
+                    let writeProjectViewController = WriteProjectViewController(projectData: ProjectEntity(id: project.id, thumbnailImageURL: project.thumbnailImageURL, title: project.title, detail: project.detail))
                     writeProjectViewController.sendUpdateDelegate = self
                     self.superViewController?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
                 }
@@ -190,7 +190,7 @@ extension MyPortfolioViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
             cell.addProjectButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             cell.addProjectButton.setAction { [weak self] in
-                let writeProjectViewController = WriteProjectViewController(data: .init(id: .init(), thumbnailImageURL: .init(), title: .init(), detail: .init()), viewType: .create)
+                let writeProjectViewController = WriteProjectViewController(projectData: nil)
                 writeProjectViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
             }

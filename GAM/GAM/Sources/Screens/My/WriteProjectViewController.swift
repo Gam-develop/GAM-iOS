@@ -114,10 +114,14 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     
     // MARK: Initializer
     
-    init(data: ProjectEntity, viewType: WriteProjectViewType) {
+    init(projectData: ProjectEntity?) {
         super.init(nibName: nil, bundle: nil)
-        self.projectData = data
-        self.viewType = viewType
+        if let data = projectData {
+            self.projectData = data
+            self.viewType = .update
+        } else {
+            self.viewType = .create
+        }
     }
     
     required init?(coder: NSCoder) {

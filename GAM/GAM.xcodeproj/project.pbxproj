@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */; };
+		848403C92B514A2C009249E3 /* ProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */; };
 		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
 		84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */; };
 		84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */; };
@@ -183,6 +184,7 @@
 /* Begin PBXFileReference section */
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseDTO.swift; sourceTree = "<group>"; };
 		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLinkRequestDTO.swift; sourceTree = "<group>"; };
 		84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRequestDTO.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */,
 				84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */,
 				84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */,
+				848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1151,6 +1154,7 @@
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
 				FFD9DAFD2A7A58CA0085B965 /* MyProfileViewController.swift in Sources */,
 				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
+				848403C92B514A2C009249E3 /* ProfileResponseDTO.swift in Sources */,
 				FFC733872A71147A008B5054 /* UserProfileViewController.swift in Sources */,
 				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,

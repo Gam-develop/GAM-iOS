@@ -10,6 +10,14 @@ import Moya
 
 internal protocol MypageServiceProtocol {
     func getPortfolio(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func setRepPortfolio(data: SetPortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func deletePortfolio(data: SetPortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func createPortfolio(data: CreatePortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getImageUrl(data: ImageUrlRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func uploadImage(data: UploadImageRequestDTO, completion: @escaping () -> ())
+    func updateLink(contactUrlType: ContactURLType, data: UpdateLinkRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func updatePortfolio(data: UpdatePortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getProfile(completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class MypageService: BaseService {
@@ -133,6 +141,21 @@ extension MypageService: MypageServiceProtocol {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = self.judgeStatus(by: statusCode, data, DefaultPortfolioResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 프로필 조회
+    func getProfile(completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.getProfile) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, ProfileResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

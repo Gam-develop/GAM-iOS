@@ -17,6 +17,7 @@ enum MypageRouter {
     case uploadImage(data: UploadImageRequestDTO)
     case updateLink(contactUrlType: ContactURLType, data: UpdateLinkRequestDTO)
     case updatePortfolio(data: UpdatePortfolioRequestDTO)
+    case getProfile
 }
 
 extension MypageRouter: TargetType {
@@ -46,12 +47,14 @@ extension MypageRouter: TargetType {
             return "/user/link/\(contactUrlType.rawValue)"
         case .updatePortfolio:
             return "/work/edit"
+        case .getProfile:
+            return "/user/my/profile"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPortfolio, .getImageUrl:
+        case .getPortfolio, .getImageUrl, .getProfile:
             return .get
         case .setRepPortfolio, .updateLink, .updatePortfolio:
             return .patch
@@ -66,7 +69,7 @@ extension MypageRouter: TargetType {
     
     var task: Task {
         switch self {
-        case .getPortfolio:
+        case .getPortfolio, .getProfile:
             return .requestPlain
         case .setRepPortfolio(let data), .deletePortfolio(let data):
             return .requestJSONEncodable(data)
@@ -89,14 +92,14 @@ extension MypageRouter: TargetType {
     
     var headers: [String: String]? {
         switch self {
-        case .getPortfolio, .setRepPortfolio, .deletePortfolio, .createPortfolio, .getImageUrl, .updateLink, .updatePortfolio:
-            return [
-                "Content-Type": "application/json",
-                "Authorization": UserInfo.shared.accessToken
-            ]
         case .uploadImage:
             return [
                 "Content-Type": "image/jpeg"
+            ]
+        default:
+            return [
+                "Content-Type": "application/json",
+                "Authorization": UserInfo.shared.accessToken
             ]
         }
     }

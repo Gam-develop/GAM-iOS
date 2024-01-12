@@ -44,23 +44,6 @@ final class MyViewController: BaseViewController {
     
     fileprivate var contentViewControllers = [UIViewController]()
     
-    private var profile: UserProfileEntity = UserProfileEntity(
-        userID: 1,
-        name: "정정빈",
-        isScrap: true,
-        info: "사용자의 행복을 추구하는 디자이너",
-        infoDetail:
-"""
-안녕하세요! 저는 삶을 다채롭게 만드는 브랜드 디자이너
-입니다.
-
-
-
-창의성, 미적 감각을 바탕으로 제품과 경험을 통해사람들의 삶을 더 아름답고 풍요롭게 만들어 나가고 있습니다. 브랜드의 가치와 메시지를 시각적으로 전달하여 고객들의 인상을 주는 것을 목표로 하고 있습니다.
-""",
-        tags: [1, 4],
-        email: "must4rdev@gmail.com")
-    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -69,7 +52,7 @@ final class MyViewController: BaseViewController {
         self.setUpViews()
         self.setLayout()
         self.bindTabHeader()
-        self.fetchUserInfo()
+        self.updateUserProfile()
         self.setSettingButtonAction()
     }
     
@@ -104,26 +87,33 @@ final class MyViewController: BaseViewController {
             self?.navigationController?.pushViewController(BaseViewController(), animated: true)
         }
     }
+    
+    private func updateUserProfile() {
+        self.getUserProfile() { profile in
+            if let myProfileViewController = self.contentViewControllers[1] as? MyProfileViewController {
+                myProfileViewController.setData(profile: profile)
+            }
+            self.navigationView.setLeftTitle(profile.name)
+        }
+    }
 }
 
 // MARK: - Network
 
 extension MyViewController {
-    private func fetchUserInfo() {
-        self.getUserPortfolio()
-        self.getUserProfile()
-    }
-    
-    private func getUserPortfolio() {
-        
-    }
-    
-    private func getUserProfile() {
-        if let myProfileViewController = self.contentViewControllers[1] as? MyProfileViewController {
-            myProfileViewController.setData(profile: self.profile)
+    private func getUserProfile(completion: @escaping (UserProfileEntity) -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.getProfile { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? ProfileResponseDTO {
+                    completion(result.toUserProfileEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
         }
-        self.navigationView.setLeftTitle(self.profile.name)
-        self.navigationView.scrapButton.isSelected = self.profile.isScrap
     }
 }
 

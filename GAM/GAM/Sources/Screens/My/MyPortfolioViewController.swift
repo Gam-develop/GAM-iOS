@@ -73,11 +73,9 @@ final class MyPortfolioViewController: BaseViewController {
     
     private func fetchData() {
         self.getPortfolio { portfolio in
-            DispatchQueue.main.async {
-                self.portfolio = portfolio
-                self.portfolioTableView.reloadData()
-                self.setEmptyView()
-            }
+            self.portfolio = portfolio
+            self.portfolioTableView.reloadData()
+            self.setEmptyView()
         }
     }
     

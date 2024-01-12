@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
+		845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */; };
+		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
+		84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */; };
+		84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */; };
+		84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */; };
+		84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */; };
+		84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */; };
+		84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9952B4BFFF9009C4C15 /* MypageService.swift */; };
+		84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9972B4C0042009C4C15 /* MypageRouter.swift */; };
+		84E6F99B2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */; };
+		84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */; };
 		FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */; };
 		FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */; };
 		FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */; };
@@ -16,7 +28,6 @@
 		FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */; };
 		FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C14662AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift */; };
 		FF2E86AF2AA2BE1700258D75 /* ScrapMagazineDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E86AE2AA2BE1700258D75 /* ScrapMagazineDTO.swift */; };
-		FF6CC0222A94D41E00B24C94 /* AddProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */; };
 		FF6CC0242A95032900B24C94 /* GamURLEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0232A95032900B24C94 /* GamURLEntity.swift */; };
 		FF6CC0292A9506E500B24C94 /* PublicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC0282A9506E500B24C94 /* PublicService.swift */; };
 		FF6CC02C2A95072200B24C94 /* PublicRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CC02B2A95072200B24C94 /* PublicRouter.swift */; };
@@ -161,7 +172,7 @@
 		FFD9DB092A7A91120085B965 /* GamTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB082A7A91120085B965 /* GamTextField.swift */; };
 		FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */; };
 		FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */; };
-		FFD9DB0F2A7F7F6F0085B965 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */; };
+		FFD9DB0F2A7F7F6F0085B965 /* WriteProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0E2A7F7F6F0085B965 /* WriteProjectViewController.swift */; };
 		FFD9DB112A80D16D0085B965 /* GamStarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */; };
 		FFEB5CA72B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */; };
 		FFEB5CA92B4E60BA00953362 /* ScrapDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */; };
@@ -170,6 +181,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
+		845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLinkRequestDTO.swift; sourceTree = "<group>"; };
+		84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRequestDTO.swift; sourceTree = "<group>"; };
+		84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlResponseDTO.swift; sourceTree = "<group>"; };
+		84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageRequestDTO.swift; sourceTree = "<group>"; };
+		84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioResponseDTO.swift; sourceTree = "<group>"; };
+		84E6F9952B4BFFF9009C4C15 /* MypageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageService.swift; sourceTree = "<group>"; };
+		84E6F9972B4C0042009C4C15 /* MypageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouter.swift; sourceTree = "<group>"; };
+		84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverViewController.swift; sourceTree = "<group>"; };
 		FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapViewController.swift; sourceTree = "<group>"; };
 		FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -179,7 +202,6 @@
 		FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		FF2C14662AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMagazineRequestDTO.swift; sourceTree = "<group>"; };
 		FF2E86AE2AA2BE1700258D75 /* ScrapMagazineDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMagazineDTO.swift; sourceTree = "<group>"; };
-		FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectEntity.swift; sourceTree = "<group>"; };
 		FF6CC0232A95032900B24C94 /* GamURLEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamURLEntity.swift; sourceTree = "<group>"; };
 		FF6CC0282A9506E500B24C94 /* PublicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicService.swift; sourceTree = "<group>"; };
 		FF6CC02B2A95072200B24C94 /* PublicRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRouter.swift; sourceTree = "<group>"; };
@@ -319,7 +341,7 @@
 		FFD9DB082A7A91120085B965 /* GamTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamTextField.swift; sourceTree = "<group>"; };
 		FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactURLType.swift; sourceTree = "<group>"; };
 		FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		FFD9DB0E2A7F7F6F0085B965 /* WriteProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewController.swift; sourceTree = "<group>"; };
 		FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamStarLabel.swift; sourceTree = "<group>"; };
 		FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerRequestDTO.swift; sourceTree = "<group>"; };
 		FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerResponseDTO.swift; sourceTree = "<group>"; };
@@ -346,6 +368,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84E6F9912B4BF97F009C4C15 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				84E6F9992B4C0B97009C4C15 /* Request */,
+				84E6F9922B4BF98D009C4C15 /* Response */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		84E6F9922B4BF98D009C4C15 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */,
+				84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */,
+				84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		84E6F9992B4C0B97009C4C15 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */,
+				84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */,
+				84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */,
+				84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */,
+				84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */,
+				845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		FF2C14642AD41721008E3FF5 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +417,7 @@
 				FF6CC0462A963FD500B24C94 /* UserService.swift */,
 				FF6E2D522A965EAA00EA313A /* MagazineService.swift */,
 				FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */,
+				84E6F9952B4BFFF9009C4C15 /* MypageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -375,6 +430,7 @@
 				FF6CC0442A963F3E00B24C94 /* UserRouter.swift */,
 				FF6E2D502A965D8100EA313A /* MagazineRouter.swift */,
 				FF6E2D582A9662C300EA313A /* DesignerRouter.swift */,
+				84E6F9972B4C0042009C4C15 /* MypageRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -488,7 +544,7 @@
 				FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */,
 				FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */,
 				FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */,
-				FFD9DB0E2A7F7F6F0085B965 /* AddProjectViewController.swift */,
+				FFD9DB0E2A7F7F6F0085B965 /* WriteProjectViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -754,6 +810,7 @@
 				FF6E2D542A965F5800EA313A /* Magazine */,
 				FF6CC0382A951FA000B24C94 /* Auth */,
 				FF6CC02D2A950C7D00B24C94 /* Public */,
+				84E6F9912B4BF97F009C4C15 /* Mypage */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -912,7 +969,6 @@
 				FFC733882A716845008B5054 /* UserPortfolioEntity.swift */,
 				FFC7338A2A7170F5008B5054 /* ProjectEntity.swift */,
 				FFC7338C2A7171A3008B5054 /* UserProfileEntity.swift */,
-				FF6CC0212A94D41E00B24C94 /* AddProjectEntity.swift */,
 				FF6CC0232A95032900B24C94 /* GamURLEntity.swift */,
 			);
 			path = Entities;
@@ -943,6 +999,7 @@
 			children = (
 				FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */,
 				FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */,
+				845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1062,11 +1119,13 @@
 				FF6E2D532A965EAA00EA313A /* MagazineService.swift in Sources */,
 				FF6CC03E2A9521C300B24C94 /* SocialLoginResponseDTO.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
+				84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */,
 				FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */,
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */,
+				84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */,
 				FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */,
@@ -1075,6 +1134,7 @@
 				FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */,
 				FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
+				845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
@@ -1085,6 +1145,7 @@
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
 				FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */,
+				84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */,
 				FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */,
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
@@ -1114,7 +1175,7 @@
 				FFA94D1C2A4F1D3B009B034F /* NetworkResult.swift in Sources */,
 				FFD9DB112A80D16D0085B965 /* GamStarLabel.swift in Sources */,
 				FFA94CD02A4F0881009B034F /* SendUpdateDelegate.swift in Sources */,
-				FFD9DB0F2A7F7F6F0085B965 /* AddProjectViewController.swift in Sources */,
+				FFD9DB0F2A7F7F6F0085B965 /* WriteProjectViewController.swift in Sources */,
 				FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */,
 				FFA94CDA2A4F092E009B034F /* BaseViewController.swift in Sources */,
 				FFCDF8732A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift in Sources */,
@@ -1126,10 +1187,10 @@
 				FFA94CEB2A4F1AA4009B034F /* UITableView+.swift in Sources */,
 				FFCDF8542A5A7BEE00C731A3 /* Headline1Label.swift in Sources */,
 				FFA94CFB2A4F1B3B009B034F /* UIImageView+.swift in Sources */,
-				FF6CC0222A94D41E00B24C94 /* AddProjectEntity.swift in Sources */,
 				FFCDF84E2A5A4AB300C731A3 /* Environment.swift in Sources */,
 				FFA94CD32A4F08D4009B034F /* ClassName.swift in Sources */,
 				FFC733832A71120B008B5054 /* MoreDefaultButton.swift in Sources */,
+				84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */,
 				FFC733932A76AAD0008B5054 /* PortfolioTableFooterView.swift in Sources */,
 				FFA94CD72A4F0902009B034F /* UserDefaultsManager.swift in Sources */,
 				FF6CC0452A963F3E00B24C94 /* UserRouter.swift in Sources */,
@@ -1159,6 +1220,7 @@
 				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
 				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
 				FFC733912A717C81008B5054 /* RepView.swift in Sources */,
+				84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
 				FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,
@@ -1167,6 +1229,7 @@
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
 				FF6CC0472A963FD500B24C94 /* UserService.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
+				84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */,
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
 				FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
@@ -1176,9 +1239,11 @@
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */,
 				FF6E2D512A965D8100EA313A /* MagazineRouter.swift in Sources */,
+				84E6F99B2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,
 				FFA94CF52A4F1AE2009B034F /* String+.swift in Sources */,
 				FFCDF8512A5A78CC00C731A3 /* MagazineTableView.swift in Sources */,
+				845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */,
 				FFA706F52A5274A1003DF6A0 /* GamActivityIndicatorView.swift in Sources */,
 				FFA94CF32A4F1AD6009B034F /* UIButton+.swift in Sources */,
 				FFA94D082A4F1BAC009B034F /* UserInfo.swift in Sources */,
@@ -1194,10 +1259,13 @@
 				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
 				FF6CC0432A963E5F00B24C94 /* SignUpRequestDTO.swift in Sources */,
 				FF6CC0292A9506E500B24C94 /* PublicService.swift in Sources */,
+				84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */,
+				84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */,
 				FFB6AB682B4C395D00695DE4 /* SearchMagazineResponseDTO.swift in Sources */,
 				FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */,
 				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
 				FF6CC0352A951E9900B24C94 /* AuthRouter.swift in Sources */,
+				84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */,
 				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseService.swift in Sources */,
 			);

@@ -282,7 +282,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
                             }
                         } else {
                             self?.updatePortfolio(workId: projectData.id, image: projectData.thumbnailImageURL, title: projectData.title, detail: projectData.detail) {
-                                self?.sendUpdateDelegate?.sendUpdate(data: true)
+                                self?.sendUpdateDelegate?.sendUpdate(data: false)
                             }
                         }
                     }

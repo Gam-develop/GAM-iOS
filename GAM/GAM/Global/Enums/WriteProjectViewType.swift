@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WriteProjectViewType: String {
+enum WriteProjectViewType {
     case create
     case update
 }

@@ -103,7 +103,6 @@ extension MypageService: MypageServiceProtocol {
         self.provider.request(.uploadImage(data: data)) { result in
             switch result {
             case .success(_):
-                // TODO: 성공 시 아무 것도 반환하지 않음
                 completion()
             case .failure(let error):
                 debugPrint(error)

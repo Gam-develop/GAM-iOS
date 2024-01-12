@@ -56,8 +56,6 @@ class PortfolioTableViewCell: UITableViewCell {
         
         self.underlineView.isHidden = data.detail.count == 0
         
-        // TODO: 레이아웃 왜 깨지지...
-        
         if data.detail.count == 0 {
             self.detailLabel.snp.remakeConstraints { make in
                 make.top.equalTo(self.repView.snp.bottom)

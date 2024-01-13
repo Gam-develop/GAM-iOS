@@ -18,6 +18,7 @@ enum MypageRouter {
     case updateLink(contactUrlType: ContactURLType, data: UpdateLinkRequestDTO)
     case updatePortfolio(data: UpdatePortfolioRequestDTO)
     case getProfile
+    case updateProfile(data: UpdateProfileRequestDTO)
 }
 
 extension MypageRouter: TargetType {
@@ -49,6 +50,8 @@ extension MypageRouter: TargetType {
             return "/work/edit"
         case .getProfile:
             return "/user/my/profile"
+        case .updateProfile:
+            return "/user/introduce"
         }
     }
     
@@ -56,7 +59,7 @@ extension MypageRouter: TargetType {
         switch self {
         case .getPortfolio, .getImageUrl, .getProfile:
             return .get
-        case .setRepPortfolio, .updateLink, .updatePortfolio:
+        case .setRepPortfolio, .updateLink, .updatePortfolio, .updateProfile:
             return .patch
         case .deletePortfolio:
             return .delete
@@ -85,6 +88,8 @@ extension MypageRouter: TargetType {
         case .updateLink(_, let data):
             return .requestJSONEncodable(data)
         case .updatePortfolio(let data):
+            return .requestJSONEncodable(data)
+        case .updateProfile(let data):
             return .requestJSONEncodable(data)
         }
     }

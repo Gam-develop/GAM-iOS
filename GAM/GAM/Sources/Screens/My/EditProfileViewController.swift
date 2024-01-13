@@ -21,6 +21,7 @@ final class EditProfileViewController: BaseViewController {
         static let profileInfo = "한 줄 소개를 입력해 주세요."
         static let tagInfo = "최소 1개 선택해 주세요."
         static let emailInfo = "올바른 이메일을 입력해 주세요."
+        static let detailPlaceholder = "자신에 대해 다채롭게 표현해 보세요!"
     }
     
     private enum Number {
@@ -73,6 +74,7 @@ final class EditProfileViewController: BaseViewController {
     
     // MARK: Properties
     
+    var sendUpdateDelegate: SendUpdateDelegate?
     private var keyboardHeight: CGFloat = 0
     private var profile: UserProfileEntity = .init(userID: 0, name: "", isScrap: false, info: "", infoDetail: "", tags: [], email: "")
     private let disposeBag: DisposeBag = DisposeBag()
@@ -118,6 +120,7 @@ final class EditProfileViewController: BaseViewController {
         self.checkSaveButtonEnable()
         self.setData(profile: self.profile)
         self.setProfileInfoView()
+        self.profileInfoView.detailTextView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,7 +153,7 @@ final class EditProfileViewController: BaseViewController {
         self.tagCollectionView.reloadData()
         
         _ = profile.tags.map { tag in
-            self.tagCollectionView.selectItem(at: IndexPath(row: tag.id, section: 0), animated: true, scrollPosition: .init())
+            self.tagCollectionView.selectItem(at: IndexPath(row: tag.id - 1, section: 0), animated: true, scrollPosition: .init())
             self.collectionView(self.tagCollectionView, didSelectItemAt: IndexPath(row: tag.id, section: 0))
         }
         
@@ -185,37 +188,31 @@ final class EditProfileViewController: BaseViewController {
     }
     
     private func setProfileInfoView() {
-        self.profileInfoView.infoTextField.rx.text
-            .orEmpty
+        self.profileInfoView.infoTextField.rx.observe(String.self, "text")
             .distinctUntilChanged()
-            .withUnretained(self)
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { (owner, changedText) in
+            .subscribe(onNext: { changedText in
+                guard let text = changedText else { return }
+                self.profile.info = text
                 self.profileInfoView.infoTextField.text?.removeLastSpace()
-                if changedText.count > 20 {
+                if text.count > 20 {
                     self.profileInfoView.infoTextField.deleteBackward()
                 }
-                if changedText.count > 0 {
-                    let regex = "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9\\s]{1,20}"
-                    if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
-                        self.profileInfoView.layer.borderWidth = 0
-                        self.profileInfoLabel.isHidden = true
-                    } else {
-                        self.profileInfoView.layer.borderWidth = 1
-                        self.profileInfoLabel.isHidden = false
-                    }
+                if text.count > 0 {
+                    self.profileInfoView.layer.borderWidth = 0
+                    self.profileInfoLabel.isHidden = true
                 } else {
                     self.profileInfoView.layer.borderWidth = 1
                     self.profileInfoLabel.isHidden = false
                 }
-            })
-            .disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
         
         self.profileInfoView.detailTextView.rx.text
             .orEmpty
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { (owner, changedText) in
+                self.profile.infoDetail = changedText
                 self.profileInfoView.detailTextView.text.removeLastSpace()
                 if changedText.count > 150 {
                     self.profileInfoView.detailTextView.deleteBackward()
@@ -227,23 +224,23 @@ final class EditProfileViewController: BaseViewController {
     }
     
     private func setEmailTextField() {
-        self.emailTextField.rx.text
-            .orEmpty
+        self.emailTextField.rx.observe(String.self, "text")
             .distinctUntilChanged()
-            .withUnretained(self)
-            .subscribe(onNext: { (owner, changedText) in
-                if changedText.count > 0 {
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { changedText in
+                guard let text = changedText else { return }
+                self.profile.email = text
+                if text.count > 0 {
                     let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-                    if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
-                        owner.emailInfoLabel.isHidden = true
+                    if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && text.trimmingCharacters(in: .whitespaces).count >= 1 {
+                        self.emailInfoLabel.isHidden = true
                     } else {
-                        owner.emailInfoLabel.isHidden = false
+                        self.emailInfoLabel.isHidden = false
                     }
                 } else {
-                    owner.emailInfoLabel.isHidden = true
+                    self.emailInfoLabel.isHidden = true
                 }
-            })
-            .disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
         
         self.emailTextField.clearButton.rx.tap
             .withUnretained(self)
@@ -255,7 +252,12 @@ final class EditProfileViewController: BaseViewController {
     
     private func setSaveButtonAction() {
         self.navigationView.saveButton.setAction { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            if let profile = self?.profile, let tags = self?.tagCollectionView.indexPathsForSelectedItems?.map({ $0.item + 1 }) {
+                self?.updateProfile(userInfo: profile.info, userDetail: profile.infoDetail, email: profile.email, tags: tags) { responseData in
+                    self?.sendUpdateDelegate?.sendUpdate(data: responseData)
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }
         }
     }
     
@@ -282,6 +284,26 @@ final class EditProfileViewController: BaseViewController {
             } else {
                 self.isSaveButtonEnable[2] = change.oldValue ?? true
             }
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension EditProfileViewController: UITextViewDelegate {    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if self.profileInfoView.detailTextView.textColor == .gamGray3 {
+            self.profileInfoView.detailTextView.text = nil
+            self.profileInfoView.detailTextView.textColor = .gamBlack
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.endEditing(true)
+        if self.profileInfoView.detailTextView.text.isEmpty {
+            self.profileInfoView.detailTextView.text =  Text.detailPlaceholder
+            self.profileInfoDetailCountLabel.text = "0/150"
+            self.profileInfoView.detailTextView.textColor = .gamGray3
         }
     }
 }
@@ -330,6 +352,25 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
             cell.isSelected = false
         }
         self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count != 0
+    }
+}
+
+// MARK: - Network
+
+private extension EditProfileViewController {
+    private func updateProfile(userInfo: String, userDetail: String, email: String, tags: [Int], completion: @escaping (UserProfileEntity) -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.updateProfile(data: UpdateProfileRequestDTO(userInfo: userInfo, userDetail: userDetail, email: email, tags: tags)) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? UpdateProfileResponseDTO {
+                    completion(result.toUserProfileEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

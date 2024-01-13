@@ -75,6 +75,7 @@ final class MyProfileViewController: BaseViewController {
         
         self.setLayout()
         self.setTagCollectionView()
+        self.setEditButtonAction()
     }
     
     // MARK: Methods
@@ -94,8 +95,24 @@ final class MyProfileViewController: BaseViewController {
         )
         self.tagCollectionView.reloadData()
         self.emailTextField.text = profile.email
+    }
+    
+    func setEditButtonAction() {
         self.editButton.setAction { [weak self] in
-            self?.superViewController?.navigationController?.pushViewController(EditProfileViewController(profile: profile), animated: true)
+            guard let profile = self?.profile else { return }
+            let editProfileViewController = EditProfileViewController(profile: profile)
+            editProfileViewController.sendUpdateDelegate = self
+            self?.superViewController?.navigationController?.pushViewController(editProfileViewController, animated: true)
+        }
+    }
+}
+
+// MARK: - SendUpdateDelegate
+
+extension MyProfileViewController: SendUpdateDelegate {
+    func sendUpdate(data: Any?) {
+        if let data = data as? UserProfileEntity {
+            self.setData(profile: UserProfileEntity(userID: profile.userID, name: profile.name, isScrap: profile.isScrap, info: data.info, infoDetail: data.infoDetail, tags: data.tags.map { $0.id }, email: data.email))
         }
     }
 }

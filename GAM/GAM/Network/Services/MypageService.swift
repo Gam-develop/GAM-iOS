@@ -162,4 +162,19 @@ extension MypageService: MypageServiceProtocol {
             }
         }
     }
+    
+    // [PATCH] 프로필 업데이트
+    func updateProfile(data: UpdateProfileRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.updateProfile(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, UpdateProfileResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
 }

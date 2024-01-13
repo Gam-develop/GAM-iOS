@@ -11,10 +11,10 @@ struct UserProfileEntity {
     let userID: Int
     let name: String
     let isScrap: Bool
-    let info: String
-    let infoDetail: String
-    let tags: [TagEntity]
-    let email: String
+    var info: String
+    var infoDetail: String
+    var tags: [TagEntity]
+    var email: String
     
     static func == (lhs: UserProfileEntity, rhs: UserProfileEntity) -> Bool {
         return lhs.userID == rhs.userID

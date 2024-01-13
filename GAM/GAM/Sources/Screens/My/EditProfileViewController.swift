@@ -212,15 +212,23 @@ final class EditProfileViewController: BaseViewController {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { (owner, changedText) in
-                self.profile.infoDetail = changedText
-                self.profileInfoView.detailTextView.text.removeLastSpace()
+                owner.profile.infoDetail = changedText
+                owner.profileInfoView.detailTextView.text.removeLastSpace()
+                
                 if changedText.count > 150 {
-                    self.profileInfoView.detailTextView.deleteBackward()
+                    owner.profileInfoView.detailTextView.deleteBackward()
+                } else if changedText == Text.detailPlaceholder {
+                    owner.profileInfoDetailCountLabel.text = "0/150"
                 } else {
-                    self.profileInfoDetailCountLabel.text = "\(changedText.count)/150"
+                    owner.profileInfoDetailCountLabel.text = "\(changedText.count)/150"
                 }
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
+        
+        if profileInfoView.detailTextView.text.count == 0 {
+            self.profileInfoView.detailTextView.text =  Text.detailPlaceholder
+            self.profileInfoView.detailTextView.textColor = .gamGray3
+        }
     }
     
     private func setEmailTextField() {
@@ -253,7 +261,8 @@ final class EditProfileViewController: BaseViewController {
     private func setSaveButtonAction() {
         self.navigationView.saveButton.setAction { [weak self] in
             if let profile = self?.profile, let tags = self?.tagCollectionView.indexPathsForSelectedItems?.map({ $0.item + 1 }) {
-                self?.updateProfile(userInfo: profile.info, userDetail: profile.infoDetail, email: profile.email, tags: tags) { responseData in
+                let infoDetail = profile.infoDetail == Text.detailPlaceholder ? "" : profile.infoDetail
+                self?.updateProfile(userInfo: profile.info, userDetail: infoDetail, email: profile.email, tags: tags) { responseData in
                     self?.sendUpdateDelegate?.sendUpdate(data: responseData)
                     self?.navigationController?.popViewController(animated: true)
                 }
@@ -302,7 +311,6 @@ extension EditProfileViewController: UITextViewDelegate {
         textView.endEditing(true)
         if self.profileInfoView.detailTextView.text.isEmpty {
             self.profileInfoView.detailTextView.text =  Text.detailPlaceholder
-            self.profileInfoDetailCountLabel.text = "0/150"
             self.profileInfoView.detailTextView.textColor = .gamGray3
         }
     }

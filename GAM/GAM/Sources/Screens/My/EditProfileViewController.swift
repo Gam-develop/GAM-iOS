@@ -21,7 +21,7 @@ final class EditProfileViewController: BaseViewController {
         static let profileInfo = "한 줄 소개를 입력해 주세요."
         static let tagInfo = "최소 1개 선택해 주세요."
         static let emailInfo = "올바른 이메일을 입력해 주세요."
-        static let detailPlaceholder = "자신에 대해 다채롭게 표현해 보세요!"
+        static let detailPlaceholder = "경험 위주 자기소개 부탁드립니다."
     }
     
     private enum Number {
@@ -188,24 +188,25 @@ final class EditProfileViewController: BaseViewController {
     }
     
     private func setProfileInfoView() {
-        self.profileInfoView.infoTextField.rx.observe(String.self, "text")
+        self.profileInfoView.infoTextField.rx.text
+            .orEmpty
             .distinctUntilChanged()
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { changedText in
-                guard let text = changedText else { return }
-                self.profile.info = text
-                self.profileInfoView.infoTextField.text?.removeLastSpace()
-                if text.count > 20 {
-                    self.profileInfoView.infoTextField.deleteBackward()
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, changedText) in
+                owner.profile.info = changedText
+                owner.profileInfoView.infoTextField.text?.removeLastSpace()
+                if changedText.count > 20 {
+                    owner.profileInfoView.infoTextField.deleteBackward()
                 }
-                if text.count > 0 {
-                    self.profileInfoView.layer.borderWidth = 0
-                    self.profileInfoLabel.isHidden = true
+                if changedText.count > 0 {
+                    owner.profileInfoView.layer.borderWidth = 0
+                    owner.profileInfoLabel.isHidden = true
                 } else {
-                    self.profileInfoView.layer.borderWidth = 1
-                    self.profileInfoLabel.isHidden = false
+                    owner.profileInfoView.layer.borderWidth = 1
+                    owner.profileInfoLabel.isHidden = false
                 }
-        }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
         self.profileInfoView.detailTextView.rx.text
             .orEmpty

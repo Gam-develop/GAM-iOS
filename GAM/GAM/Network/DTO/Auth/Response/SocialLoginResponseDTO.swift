@@ -8,7 +8,6 @@
 import Foundation
 
 struct SocialLoginResponseDTO: Codable {
-    let isUser: Bool
     let isProfileCompleted: Bool
     let id: Int
     let accessToken: String
@@ -16,7 +15,6 @@ struct SocialLoginResponseDTO: Codable {
     let appVersion: String
 
     enum CodingKeys: String, CodingKey {
-        case isUser = "isUser"
         case isProfileCompleted = "isProfileCompleted"
         case id = "id"
         case accessToken = "accessToken"

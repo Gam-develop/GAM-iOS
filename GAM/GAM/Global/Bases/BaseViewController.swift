@@ -303,4 +303,30 @@ extension BaseViewController {
             self.stopActivityIndicator()
         }
     }
+    
+    func requestRefreshToken(data: RefreshTokenRequestDTO, isProfileCompleted: @escaping (Bool) -> (Void)) {
+        self.startActivityIndicator()
+        AuthService.shared.requestRefreshToken(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? RefreshTokenResponseDTO {
+                    self.setUserInfo(
+                        userID: result.id,
+                        accessToken: result.accessToken,
+                        refreshToken: result.refreshToken
+                    )
+                    isProfileCompleted(result.isProfileCompleted)
+                }
+            case .requestErr:
+                self.removeUserInfo()
+                let signInViewController: BaseViewController = SignInViewController()
+                signInViewController.modalTransitionStyle = .crossDissolve
+                signInViewController.modalPresentationStyle = .fullScreen
+                self.present(signInViewController, animated: true)
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
 }

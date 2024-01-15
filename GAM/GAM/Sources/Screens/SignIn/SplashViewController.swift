@@ -35,6 +35,19 @@ final class SplashViewController: BaseViewController {
         self.view.backgroundColor = .gamBlack
     }
     
+    private func autoSignIn() {
+        // TODO: FCM
+//        let deviceToken: String = UserInfo.shared.deviceToken
+        
+        let tokenData: RefreshTokenRequestDTO = .init(
+            accessToken: UserDefaultsManager.accessToken ?? "",
+            refreshToken: UserDefaultsManager.refreshToken ?? ""
+        )
+        
+        self.requestRefreshToken(data: tokenData) { isProfileCompleted in
+            self.presentNextViewController(isProfileCompleted: isProfileCompleted)
+        }
+    }
     
     private func presentNextViewController(isProfileCompleted: Bool) {
         if isProfileCompleted {

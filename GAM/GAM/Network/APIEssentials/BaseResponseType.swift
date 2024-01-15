@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BaseResponseType<T: Codable>: Codable {
+struct BaseResponseType<T: Decodable>: Decodable {
     
     var status: Int
     var success: Bool

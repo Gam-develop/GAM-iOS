@@ -17,6 +17,8 @@ enum MypageRouter {
     case uploadImage(data: UploadImageRequestDTO)
     case updateLink(contactUrlType: ContactURLType, data: UpdateLinkRequestDTO)
     case updatePortfolio(data: UpdatePortfolioRequestDTO)
+    case getProfile
+    case updateProfile(data: UpdateProfileRequestDTO)
 }
 
 extension MypageRouter: TargetType {
@@ -46,14 +48,18 @@ extension MypageRouter: TargetType {
             return "/user/link/\(contactUrlType.rawValue)"
         case .updatePortfolio:
             return "/work/edit"
+        case .getProfile:
+            return "/user/my/profile"
+        case .updateProfile:
+            return "/user/introduce"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPortfolio, .getImageUrl:
+        case .getPortfolio, .getImageUrl, .getProfile:
             return .get
-        case .setRepPortfolio, .updateLink, .updatePortfolio:
+        case .setRepPortfolio, .updateLink, .updatePortfolio, .updateProfile:
             return .patch
         case .deletePortfolio:
             return .delete
@@ -66,7 +72,7 @@ extension MypageRouter: TargetType {
     
     var task: Task {
         switch self {
-        case .getPortfolio:
+        case .getPortfolio, .getProfile:
             return .requestPlain
         case .setRepPortfolio(let data), .deletePortfolio(let data):
             return .requestJSONEncodable(data)
@@ -83,20 +89,22 @@ extension MypageRouter: TargetType {
             return .requestJSONEncodable(data)
         case .updatePortfolio(let data):
             return .requestJSONEncodable(data)
+        case .updateProfile(let data):
+            return .requestJSONEncodable(data)
         }
     }
     
     
     var headers: [String: String]? {
         switch self {
-        case .getPortfolio, .setRepPortfolio, .deletePortfolio, .createPortfolio, .getImageUrl, .updateLink, .updatePortfolio:
-            return [
-                "Content-Type": "application/json",
-                "Authorization": UserInfo.shared.accessToken
-            ]
         case .uploadImage:
             return [
                 "Content-Type": "image/jpeg"
+            ]
+        default:
+            return [
+                "Content-Type": "application/json",
+                "Authorization": UserInfo.shared.accessToken
             ]
         }
     }

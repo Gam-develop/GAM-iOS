@@ -14,7 +14,7 @@ struct PortfolioResponseDTO: Decodable {
     let works: [Work]
 }
 
-struct Work: Codable {
+struct Work: Decodable {
     let workId: Int
     let workThumbNail, workTitle, workDetail: String
 }

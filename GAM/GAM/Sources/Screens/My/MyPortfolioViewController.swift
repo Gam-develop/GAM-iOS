@@ -73,11 +73,9 @@ final class MyPortfolioViewController: BaseViewController {
     
     private func fetchData() {
         self.getPortfolio { portfolio in
-            DispatchQueue.main.async {
-                self.portfolio = portfolio
-                self.portfolioTableView.reloadData()
-                self.setEmptyView()
-            }
+            self.portfolio = portfolio
+            self.portfolioTableView.reloadData()
+            self.setEmptyView()
         }
     }
     
@@ -280,7 +278,7 @@ extension MyPortfolioViewController: SendUpdateDelegate {
         if let scrollToTop = data as? Bool, scrollToTop {
             if self.portfolioTableView.numberOfSections > 0 {
                 if self.portfolioTableView.numberOfRows(inSection: 0) > 0 {
-                    self.portfolioTableView.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: true)
+                    self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 }
             }
         }

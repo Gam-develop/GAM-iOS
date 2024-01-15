@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */; };
+		848403C92B514A2C009249E3 /* ProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */; };
 		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
 		84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */; };
+		84BBCBF62B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBCBF52B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift */; };
+		84BBCBF82B52CC900010F2AE /* UpdateProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */; };
 		84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */; };
 		84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */; };
 		84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */; };
@@ -183,8 +186,11 @@
 /* Begin PBXFileReference section */
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseDTO.swift; sourceTree = "<group>"; };
 		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLinkRequestDTO.swift; sourceTree = "<group>"; };
+		84BBCBF52B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequestDTO.swift; sourceTree = "<group>"; };
+		84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResponseDTO.swift; sourceTree = "<group>"; };
 		84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRequestDTO.swift; sourceTree = "<group>"; };
 		84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlResponseDTO.swift; sourceTree = "<group>"; };
 		84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageRequestDTO.swift; sourceTree = "<group>"; };
@@ -383,6 +389,8 @@
 				84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */,
 				84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */,
 				84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */,
+				848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */,
+				84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -396,6 +404,7 @@
 				84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */,
 				84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */,
 				845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */,
+				84BBCBF52B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1151,6 +1160,7 @@
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
 				FFD9DAFD2A7A58CA0085B965 /* MyProfileViewController.swift in Sources */,
 				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
+				848403C92B514A2C009249E3 /* ProfileResponseDTO.swift in Sources */,
 				FFC733872A71147A008B5054 /* UserProfileViewController.swift in Sources */,
 				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
@@ -1225,9 +1235,11 @@
 				FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,
 				FFA94CDC2A4F0966009B034F /* BaseNavigationController.swift in Sources */,
+				84BBCBF62B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift in Sources */,
 				FFA94D272A4F1E4A009B034F /* GamTabBarController.swift in Sources */,
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
 				FF6CC0472A963FD500B24C94 /* UserService.swift in Sources */,
+				84BBCBF82B52CC900010F2AE /* UpdateProfileResponseDTO.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
 				84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */,
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,

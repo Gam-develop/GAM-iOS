@@ -269,6 +269,22 @@ OS Version: \(UIDevice.current.systemVersion)
             }
         }
     }
+    
+    func setUserInfo(userID: Int, accessToken: String, refreshToken: String) {
+        UserInfo.shared.userID = userID
+        UserInfo.shared.accessToken = accessToken
+        UserInfo.shared.refreshToken = refreshToken
+        
+        UserDefaultsManager.userID = userID
+        UserDefaultsManager.accessToken = accessToken
+        UserDefaultsManager.refreshToken = refreshToken
+    }
+    
+    func removeUserInfo() {
+        UserDefaultsManager.userID = nil
+        UserDefaultsManager.accessToken = nil
+        UserDefaultsManager.refreshToken = nil
+    }
 }
 
 // MARK: - Network

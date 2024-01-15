@@ -190,6 +190,11 @@ extension SignInViewController {
             case .success(let responseData):
                 if let result = responseData as? SocialLoginResponseDTO {
                     UserInfo.shared.userID = result.id
+                    self.setUserInfo(
+                        userID: result.id,
+                        accessToken: result.accessToken,
+                        refreshToken: result.refreshToken
+                    )
                     isProfileCompleted(result.isProfileCompleted)
                 }
             default:

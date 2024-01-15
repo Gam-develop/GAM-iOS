@@ -14,5 +14,8 @@ extension UserDefaults {
         case userID = "userID"
         case recentMagazineSearch = "recentMagazineSearch"
         case recentPortfolioSearch = "recentPortfolioSearch"
+        case accessToken = "accessToken"
+        case refreshToken = "refreshToken"
+        case fcmDeviceToken = "fcmDeviceToken"
     }
 }

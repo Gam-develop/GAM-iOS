@@ -13,18 +13,12 @@ struct PopularDesignerResponseDTOElement: Codable {
     let userTag: [Int]
     let userName: String
     let viewCount: Int
-    let userDetail: String
     let designerScrap: Bool
-    let thumbnailImageURL: String
+    let userWorkThumbNail: String
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
-        case userTag = "userTag"
-        case userName = "userName"
-        case viewCount = "viewCount"
-        case userDetail = "userDetail"
-        case designerScrap = "designerScrap"
-        case thumbnailImageURL = "userWorkThumbNail"
+        case userTag, userName, viewCount, designerScrap, userWorkThumbNail
     }
 }
 
@@ -51,7 +45,7 @@ extension PopularDesignerResponseDTO {
             popularDesignerEntity.append(
                 PopularDesignerEntity(
                     id: $0.userID,
-                    thumbnailImageURL: $0.thumbnailImageURL,
+                    thumbnailImageURL: $0.userWorkThumbNail,
                     name: $0.userName,
                     tags: $0.userTag,
                     isScrap: $0.designerScrap,

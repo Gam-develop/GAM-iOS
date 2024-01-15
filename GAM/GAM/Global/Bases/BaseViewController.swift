@@ -320,6 +320,21 @@ extension BaseViewController {
         }
     }
     
+    func requestScrapDesigner(data: ScrapDesignerRequestDTO, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.requestScrapDesigner(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? ScrapDesignerResponseDTO {
+                    completion()
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
     func requestRefreshToken(data: RefreshTokenRequestDTO, isProfileCompleted: @escaping (Bool) -> (Void)) {
         self.startActivityIndicator()
         AuthService.shared.requestRefreshToken(data: data) { networkResult in

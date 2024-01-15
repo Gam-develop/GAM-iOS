@@ -1,5 +1,5 @@
 //
-//  AddProjectViewController.swift
+//  WriteProjectViewController.swift
 //  GAM
 //
 //  Created by Jungbin on 2023/08/06.
@@ -10,7 +10,7 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-final class AddProjectViewController: BaseViewController, UINavigationControllerDelegate {
+final class WriteProjectViewController: BaseViewController, UINavigationControllerDelegate {
     
     private enum Text {
         static let title = "프로젝트"
@@ -46,7 +46,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         let imageView: UIImageView = UIImageView()
         imageView.backgroundColor = .gamWhite
         imageView.makeRounded(cornerRadius: 10)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private let projectImageUploadButton: UIButton = {
@@ -93,6 +93,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
     
     // MARK: Properties
     
+    var sendUpdateDelegate: SendUpdateDelegate?
     private let disposeBag: DisposeBag = DisposeBag()
     private let imagePickerController: UIImagePickerController = {
         let imagePickerController = UIImagePickerController()
@@ -101,13 +102,32 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         return imagePickerController
     }()
     private var keyboardHeight: CGFloat = 0
-    private var addProjectData: AddProjectEntity = .init(image: .init(), title: .init(), detail: .init())
+    
+    private var projectData: ProjectEntity = .init(id: .init(), thumbnailImageURL: .init(), title: .init(), detail: .init())
+    private var viewType: WriteProjectViewType = .create
     private var isSaveButtonEnable: [Bool] = [false, false] {
         didSet {
             self.navigationView.saveButton.isEnabled = self.isSaveButtonEnable[0]
                 && self.isSaveButtonEnable[1]
         }
     }
+    
+    // MARK: Initializer
+    
+    init(projectData: ProjectEntity?) {
+        super.init(nibName: nil, bundle: nil)
+        if let data = projectData {
+            self.projectData = data
+            self.viewType = .update
+        } else {
+            self.viewType = .create
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     // MARK: View Life Cycle
     
@@ -124,6 +144,10 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         self.setUploadImageButtonAction()
         self.setDetailTextView()
         self.setSaveButtonAction()
+        
+        if self.viewType == .update {
+            self.setUpdateProjectData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,23 +164,41 @@ final class AddProjectViewController: BaseViewController, UINavigationController
     
     // MARK: Methods
     
+    private func setUpdateProjectData() {
+        self.projectImageView.setImageUrl(projectData.thumbnailImageURL)
+        self.isSaveButtonEnable[0] = true
+        self.projectImageUploadButton.isHidden = true
+        self.projectImageEditButton.isHidden = false
+    
+        self.projectTitleTextField.text = projectData.title
+        self.projectDetailTextView.text = projectData.detail
+        
+        if self.projectData.detail == Text.projectDetailPlaceholder {
+            self.projectDetailTextView.textColor = .gamGray3
+        } else {
+            self.projectDetailTextView.textColor = .gamBlack
+        }
+    }
+    
     private func setImagePickerController() {
         self.imagePickerController.delegate = self
     }
     
     private func setProjectTitleInfoLabel() {
-        self.projectTitleTextField.rx.text
-            .orEmpty
+        self.projectTitleTextField.rx.observe(String.self, "text")
             .distinctUntilChanged()
-            .withUnretained(self)
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { (owner, changedText) in
-                owner.projectTitleInfoLabel.isHidden = changedText.count > 0
-                owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
-                owner.isSaveButtonEnable[1] = changedText.count > 0
-                
-            })
-            .disposed(by: self.disposeBag)
+            .subscribe(onNext: { changedText in
+                guard let text = changedText else { return }
+                self.projectTitleInfoLabel.isHidden = text.count > 0
+                self.projectTitleCountLabel.text = "\(text.count)/\(Number.projectTitleLimit)"
+                self.isSaveButtonEnable[1] = text.count > 0
+                if text.count > 0 {
+                    self.projectTitleTextField.layer.borderWidth = 0
+                } else {
+                    self.projectTitleTextField.layer.borderWidth = 1
+                }
+        }).disposed(by: disposeBag)
     }
     
     private func setProjectTitleClearButtonAction() {
@@ -175,7 +217,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
             .withUnretained(self)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { (owner, changedText) in
-                owner.projectDetailTextView.text?.removeLastSpace()
+                owner.projectDetailTextView.text.removeLastSpace()
                 if owner.projectDetailTextView.textColor == .gamBlack {
                     if changedText.count > Number.projectDetailLimit {
                         owner.projectDetailTextView.deleteBackward()
@@ -203,6 +245,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         self.projectDetailTextView.textColor = .gamGray3
     }
     
+    
     @objc
     func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -221,18 +264,35 @@ final class AddProjectViewController: BaseViewController, UINavigationController
         }
     }
     
-    private func setAddProjectData() {
-        self.addProjectData = .init(
-            image: self.projectImageView.image ?? UIImage(),
-            title: self.projectTitleTextField.text ?? "",
-            detail: self.projectDetailTextView.text
-        )
+    private func setAddProjectData(completion: @escaping (String) -> ()) {
+        self.getImageUrl() { data in
+            self.projectData = .init(
+                id: self.projectData.id,
+                thumbnailImageURL: String(data.fileName.dropFirst(5)),
+                title: self.projectTitleTextField.text ?? "",
+                detail: self.projectDetailTextView.text
+            )
+            completion(data.preSignedUrl)
+        }
     }
     
     private func setSaveButtonAction() {
         self.navigationView.saveButton.setAction { [weak self] in
-            self?.setAddProjectData()
-            self?.requestUploadProject()
+            self?.setAddProjectData() { preSignedUrl in
+                self?.uploadImage(uploadUrl: preSignedUrl, image: self?.projectImageView.image ?? UIImage()) {
+                    if let projectData = self?.projectData {
+                        if self?.viewType == .create {
+                            self?.createPortfolio(image: projectData.thumbnailImageURL, title: projectData.title, detail: projectData.detail) {
+                                self?.sendUpdateDelegate?.sendUpdate(data: true)
+                            }
+                        } else {
+                            self?.updatePortfolio(workId: projectData.id, image: projectData.thumbnailImageURL, title: projectData.title, detail: projectData.detail) {
+                                self?.sendUpdateDelegate?.sendUpdate(data: false)
+                            }
+                        }
+                    }
+                }
+            }
             self?.navigationController?.popViewController(animated: true)
         }
     }
@@ -240,7 +300,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
 
 // MARK: - UIImagePickerControllerDelegate
 
-    extension AddProjectViewController: UIImagePickerControllerDelegate {
+    extension WriteProjectViewController: UIImagePickerControllerDelegate {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             picker.dismiss(animated: true) {
                 if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
@@ -255,7 +315,7 @@ final class AddProjectViewController: BaseViewController, UINavigationController
 
 // MARK: - UITextViewDelegate
 
-extension AddProjectViewController: UITextViewDelegate {
+extension WriteProjectViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if self.projectDetailTextView.textColor == .gamGray3 {
             self.projectDetailTextView.text = nil
@@ -274,15 +334,58 @@ extension AddProjectViewController: UITextViewDelegate {
 
 // MARK: - Network
 
-private extension AddProjectViewController {
-    func requestUploadProject() {
-        // TODO: ...
+private extension WriteProjectViewController {
+    private func createPortfolio(image: String, title: String, detail: String, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.createPortfolio(data: CreatePortfolioRequestDTO(image: image, title: title, detail: detail)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func getImageUrl(completion: @escaping (ImageUrlResponseDTO) -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.getImageUrl(data: ImageUrlRequestDTO(imageName: "gam.jpeg")) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? ImageUrlResponseDTO {
+                    completion(result)
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func uploadImage(uploadUrl: String, image: UIImage, completion: @escaping () -> ()) {
+        MypageService.shared.uploadImage(data: UploadImageRequestDTO(uploadUrl: uploadUrl, image: image)) {
+            completion()
+        }
+    }
+    
+    private func updatePortfolio(workId: Int, image: String, title: String, detail: String, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.updatePortfolio(data: UpdatePortfolioRequestDTO(workId: workId, image: image, title: title, detail: detail)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 
 // MARK: - UI
 
-extension AddProjectViewController {
+extension WriteProjectViewController {
     private func setLayout() {
         self.view.addSubviews([navigationView, scrollView])
         self.scrollView.addSubview(contentView)

@@ -12,4 +12,11 @@ struct ProjectEntity: Hashable {
     let thumbnailImageURL: String
     let title: String
     let detail: String
+    
+    init(id: Int, thumbnailImageURL: String, title: String, detail: String) {
+        self.id = id
+        self.thumbnailImageURL = thumbnailImageURL
+        self.title = title
+        self.detail = detail
+    }
 }

@@ -56,8 +56,6 @@ class PortfolioTableViewCell: UITableViewCell {
         
         self.underlineView.isHidden = data.detail.count == 0
         
-        // TODO: 레이아웃 왜 깨지지...
-        
         if data.detail.count == 0 {
             self.detailLabel.snp.remakeConstraints { make in
                 make.top.equalTo(self.repView.snp.bottom)
@@ -82,6 +80,8 @@ class PortfolioTableViewCell: UITableViewCell {
         self.titleLabel.adjustsFontSizeToFitWidth = true
         self.detailLabel.numberOfLines = 0
         self.detailLabel.lineBreakMode = .byCharWrapping
+        self.thumbnailImageView.backgroundColor = .gamWhite
+        self.thumbnailImageView.contentMode = .scaleAspectFit
     }
     
     private func setLayout() {

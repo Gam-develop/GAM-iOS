@@ -10,6 +10,9 @@ import SnapKit
 
 final class ProfileInfoView: UIView {
     
+    // MARK: Properties
+    private let detailPlaceholder = "경험 위주 자기소개 부탁드립니다."
+    
     // MARK: UIComponents
     
     let infoTextField: UITextField = {
@@ -51,7 +54,14 @@ final class ProfileInfoView: UIView {
     
     func setData(info: String, detail: String) {
         self.infoTextField.text = info
-        self.detailTextView.text = detail
+        
+        if detail.isEmpty {
+            self.detailTextView.text = detailPlaceholder
+            self.detailTextView.textColor = .gamGray3
+        } else {
+            self.detailTextView.text = detail
+            self.detailTextView.textColor = .gamBlack
+        }
     }
     
     private func setUI(isEditable: Bool) {

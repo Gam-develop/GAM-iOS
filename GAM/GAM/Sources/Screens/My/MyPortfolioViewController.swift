@@ -41,17 +41,10 @@ final class MyPortfolioViewController: BaseViewController {
     private var portfolio: UserPortfolioEntity = .init(
         id: 1,
         behanceURL: "",
-        instagramURL: "https://instagram.com/1v11aby",
+        instagramURL: "",
         notionURL: "",
-        projects: [
-            .init(id: 1, thumbnailImageURL: "", title: "안뇽", detail: "a"),
-            .init(id: 1, thumbnailImageURL: "", title: "안뇽2", detail: "a2222")
-        ]
-    ) {
-        didSet {
-            self.emptyView.isHidden = !self.portfolio.projects.isEmpty
-        }
-    }
+        projects: []
+    )
     
     // MARK: Initializer
     
@@ -70,12 +63,21 @@ final class MyPortfolioViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.fetchData()
         self.setLayout()
         self.setPortfolioTableView()
         self.setAddProjectButtonAction()
     }
     
     // MARK: Methods
+    
+    private func fetchData() {
+        self.getPortfolio { portfolio in
+            self.portfolio = portfolio
+            self.portfolioTableView.reloadData()
+            self.setEmptyView()
+        }
+    }
     
     private func setPortfolioTableView() {
         self.portfolioTableView.dataSource = self
@@ -84,35 +86,42 @@ final class MyPortfolioViewController: BaseViewController {
     
     private func setAddProjectButtonAction() {
         self.emptyView.button.setAction { [weak self] in
-            self?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+            let writeProjectViewController = WriteProjectViewController(projectData: nil)
+            writeProjectViewController.sendUpdateDelegate = self
+            self?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
         }
     }
     
-    private func openEditActionSheet(project: ProjectEntity) {
+    private func openEditActionSheet(row: Int, project: ProjectEntity) {
         let actionSheet: UIAlertController = UIAlertController(
             title: nil,
             message: project.title,
             preferredStyle: .actionSheet
         )
         
-        actionSheet.addAction(
-            UIAlertAction(
-                title: "대표 프로젝트로 설정",
-                style: .default,
-                handler: { _ in
-                    // TODO: 대표 프로젝트로 설정 request
-                    self.portfolioTableView.reloadSections(.init(integer: 0), with: .automatic)
-                }
+        if row != 0 {
+            actionSheet.addAction(
+                UIAlertAction(
+                    title: "대표 프로젝트로 설정",
+                    style: .default,
+                    handler: { _ in
+                        self.setRepPortfolio(workId: project.id) {
+                            self.fetchData()
+                            self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                        }
+                    }
+                )
             )
-        )
-        
+        }
+    
         actionSheet.addAction(
             UIAlertAction(
                 title: "수정하기",
                 style: .default,
                 handler: { _ in
-                    // TODO: 수정하기 request
-                    self.superViewController?.navigationController?.pushViewController(BaseViewController(), animated: true, completion: nil)
+                    let writeProjectViewController = WriteProjectViewController(projectData: ProjectEntity(id: project.id, thumbnailImageURL: project.thumbnailImageURL, title: project.title, detail: project.detail))
+                    writeProjectViewController.sendUpdateDelegate = self
+                    self.superViewController?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
                 }
             )
         )
@@ -123,8 +132,9 @@ final class MyPortfolioViewController: BaseViewController {
                 style: .destructive,
                 handler: { _ in
                     self.makeAlertWithCancel(title: project.title, message: "프로젝트를 삭제하시겠습니까?", okTitle: "삭제하기", okStyle: .destructive) { _ in
-                        // TODO: 삭제하기 request
-                        self.portfolioTableView.reloadData()
+                        self.deletePortfolio(workId: project.id) {
+                            self.fetchData()
+                        }
                     }
                 }
             )
@@ -170,14 +180,17 @@ extension MyPortfolioViewController: UITableViewDataSource {
             cell.moreButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             cell.moreButton.setAction { [weak self] in
                 if let project = self?.portfolio.projects[indexPath.row] {
-                    self?.openEditActionSheet(project: project)
+                    self?.openEditActionSheet(row: indexPath.row, project: project)
                 }
             }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withType: AddPortfolioTableViewCell.self, for: indexPath)
+            cell.addProjectButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             cell.addProjectButton.setAction { [weak self] in
-                self?.navigationController?.pushViewController(AddProjectViewController(), animated: true, completion: nil)
+                let writeProjectViewController = WriteProjectViewController(projectData: nil)
+                writeProjectViewController.sendUpdateDelegate = self
+                self?.navigationController?.pushViewController(writeProjectViewController, animated: true, completion: nil)
             }
             
             return cell
@@ -201,27 +214,33 @@ extension MyPortfolioViewController: UITableViewDataSource {
             view.instagramButton.removeTarget(nil, action: nil, for: .allTouchEvents)
             
             view.behanceButton.setAction { [weak self] in
+                let addContactURLViewController = AddContactURLViewController(
+                    type: .behance,
+                    url: self?.portfolio.behanceURL ?? ""
+                )
+                addContactURLViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(
-                    AddContactURLViewController(
-                        type: .behance,
-                        url: self?.portfolio.behanceURL ?? ""
-                    ), animated: true, completion: nil)
+                    addContactURLViewController, animated: true, completion: nil)
             }
             
             view.instagramButton.setAction { [weak self] in
+                let addContactURLViewController = AddContactURLViewController(
+                    type: .instagram,
+                    url: self?.portfolio.instagramURL ?? ""
+                )
+                addContactURLViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(
-                    AddContactURLViewController(
-                        type: .instagram,
-                        url: self?.portfolio.instagramURL ?? ""
-                    ), animated: true, completion: nil)
+                    addContactURLViewController, animated: true, completion: nil)
             }
             
             view.notionButton.setAction { [weak self] in
+                let addContactURLViewController = AddContactURLViewController(
+                    type: .notion,
+                    url: self?.portfolio.notionURL ?? ""
+                )
+                addContactURLViewController.sendUpdateDelegate = self
                 self?.navigationController?.pushViewController(
-                    AddContactURLViewController(
-                        type: .notion,
-                        url: self?.portfolio.notionURL ?? ""
-                    ), animated: true, completion: nil)
+                    addContactURLViewController, animated: true, completion: nil)
             }
             
             return view
@@ -250,6 +269,69 @@ extension MyPortfolioViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - SendUpdateDelegate
+
+extension MyPortfolioViewController: SendUpdateDelegate {
+    
+    func sendUpdate(data: Any?) {
+        self.fetchData()
+        if let scrollToTop = data as? Bool, scrollToTop {
+            if self.portfolioTableView.numberOfSections > 0 {
+                if self.portfolioTableView.numberOfRows(inSection: 0) > 0 {
+                    self.portfolioTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                }
+            }
+        }
+
+    }
+}
+
+// MARK: - Network
+
+extension MyPortfolioViewController {
+    private func getPortfolio(completion: @escaping (UserPortfolioEntity) -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.getPortfolio { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? PortfolioResponseDTO {
+                    completion(result.toUserPortfolioEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func setRepPortfolio(workId: Int, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.setRepPortfolio(data: SetPortfolioRequestDTO(workId: workId)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func deletePortfolio(workId: Int, completion: @escaping () -> ()) {
+        self.startActivityIndicator()
+        MypageService.shared.deletePortfolio(data: SetPortfolioRequestDTO(workId: workId)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+}
+
+
 // MARK: - UI
 
 extension MyPortfolioViewController {
@@ -267,5 +349,10 @@ extension MyPortfolioViewController {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(279)
         }
+    }
+    
+    private func setEmptyView() {
+        self.emptyView.isHidden = !self.portfolio.projects.isEmpty
+        self.portfolioTableView.isHidden = self.portfolio.projects.isEmpty
     }
 }

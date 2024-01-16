@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 
-class SettingViewModel {
+final class SettingViewModel {
     
     // MARK: Properties
     

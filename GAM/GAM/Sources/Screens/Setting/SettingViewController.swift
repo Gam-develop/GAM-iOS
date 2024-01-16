@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class SettingViewController: BaseViewController {
+final class SettingViewController: BaseViewController {
     
     // MARK: Properties
     
@@ -77,7 +77,7 @@ extension SettingViewController {
         }
         
         self.tableView.snp.makeConstraints { make in
-            make.top.equalTo(navigationView.snp.bottom).offset(4)
+            make.top.equalTo(navigationView.snp.bottom).inset(1)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -95,23 +95,12 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = SettingTableHeaderView()
-        headerView.setCategoryLabel(viewModel.categories[section
-                                                        ])
+        headerView.setCategoryLabel(viewModel.categories[section])
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = .gamGray2
-        return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

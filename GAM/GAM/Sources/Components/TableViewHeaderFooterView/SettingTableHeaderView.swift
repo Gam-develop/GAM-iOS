@@ -11,9 +11,15 @@ import SnapKit
 final class SettingTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: UIComponents
+    
+    private let seperatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gamGray2
+        return view
+    }()
 
     private let categoryLabel: UILabel = {
-        let label: UILabel = UILabel()
+        let label = UILabel()
         label.font = .body5Bold
         label.textColor = .gamGray3
         return label
@@ -40,7 +46,13 @@ final class SettingTableHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setLayout() {
-        self.addSubviews([categoryLabel])
+        self.addSubviews([seperatorView, categoryLabel])
+        
+        self.seperatorView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(1)
+        }
 
         self.categoryLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)

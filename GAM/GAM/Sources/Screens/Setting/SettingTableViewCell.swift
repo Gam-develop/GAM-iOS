@@ -10,12 +10,6 @@ import SnapKit
 
 class SettingTableViewCell: UITableViewCell {
     
-    // MARK: Properties
-    
-    static var className: String {
-        return String(describing: Self.self)
-    }
-    
     // MARK: UI Component
     
     private let menuLabel: UILabel = {

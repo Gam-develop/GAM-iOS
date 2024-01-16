@@ -98,9 +98,10 @@ extension BrowseScrapViewController: UICollectionViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.designers[indexPath.row].isScrap {
-                debugPrint("스크랩 request")
-                self?.designers[indexPath.row].isScrap = !bool
-                cell.scrapButton.isSelected = !bool
+                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                    self?.designers[indexPath.row].isScrap = !bool
+                    cell.scrapButton.isSelected = !bool
+                }
             }
         }
         return cell

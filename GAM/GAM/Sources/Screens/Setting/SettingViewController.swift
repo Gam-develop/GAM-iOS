@@ -12,7 +12,7 @@ class SettingViewController: BaseViewController {
     
     // MARK: Properties
     
-    private let viewModel = SettingsViewModel()
+    private let viewModel = SettingViewModel()
     private let disposeBag = DisposeBag()
 
     // MARK: UIComponents
@@ -57,11 +57,11 @@ class SettingViewController: BaseViewController {
     }
 
     private func setDelegate() {
-        tableView.rx.setDelegate(self)
+        self.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
-        tableView.rx.setDataSource(self)
+        self.tableView.rx.setDataSource(self)
             .disposed(by: disposeBag)
-        tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.className)
+        self.tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.className)
     }
 }
 

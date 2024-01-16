@@ -34,17 +34,7 @@ final class BrowseScrapViewController: BaseViewController {
     // MARK: Properties
     
     private var superViewController: BrowseViewController?
-    private var designers: [BrowseDesignerScrapEntity] = [
-        .init(id: 1, thumbnailImageURL: "", name: "최가연", isScrap: true),
-        .init(id: 2, thumbnailImageURL: "", name: "박경은", isScrap: false),
-        .init(id: 3, thumbnailImageURL: "", name: "원종화", isScrap: false),
-        .init(id: 4, thumbnailImageURL: "", name: "정정빈", isScrap: true),
-        .init(id: 5, thumbnailImageURL: "", name: "최가희", isScrap: true),
-        .init(id: 6, thumbnailImageURL: "", name: "이용택", isScrap: false),
-        .init(id: 1, thumbnailImageURL: "", name: "최가연", isScrap: true),
-        .init(id: 2, thumbnailImageURL: "", name: "박경은", isScrap: false),
-        .init(id: 3, thumbnailImageURL: "", name: "원종화", isScrap: false)
-    ].shuffled()
+    private var designers: [BrowseDesignerScrapEntity] = []
     
     // MARK: Initializer
     

@@ -166,6 +166,7 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         debugPrint("apple 로그인 사용자 인증 실패")
         debugPrint("error \(error)")
+        self.showNetworkErrorAlert()
     }
 }
 
@@ -189,6 +190,11 @@ extension SignInViewController {
             case .success(let responseData):
                 if let result = responseData as? SocialLoginResponseDTO {
                     UserInfo.shared.userID = result.id
+                    self.setUserInfo(
+                        userID: result.id,
+                        accessToken: result.accessToken,
+                        refreshToken: result.refreshToken
+                    )
                     isProfileCompleted(result.isProfileCompleted)
                 }
             default:

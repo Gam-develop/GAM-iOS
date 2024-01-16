@@ -1,0 +1,159 @@
+//
+//  SettingViewController.swift
+//  GAM
+//
+//  Created by Juhyeon Byun on 1/15/24.
+//
+
+import UIKit
+import RxSwift
+
+final class SettingViewController: BaseViewController {
+    
+    // MARK: Properties
+    
+    private let viewModel = SettingViewModel()
+    private let disposeBag = DisposeBag()
+
+    // MARK: UIComponents
+    
+    private let tableView: UITableView = {
+        let view = UITableView(frame: .zero, style: .plain)
+        view.backgroundColor = .gamGray1
+        view.separatorStyle = .none
+        view.showsVerticalScrollIndicator = false
+        view.sectionHeaderTopPadding = 0
+        view.bounces = false
+        return view
+    }()
+
+    private let navigationView: GamNavigationView = {
+        let view = GamNavigationView(type: .backTitle)
+        view.setCenterTitle("설정")
+        return view
+    }()
+    
+    private let underLineView: UIView = {
+        let view: UIView = UIView()
+        view.backgroundColor = .gamBlack
+        return view
+    }()
+
+    // MARK: Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.setupUI()
+        self.setLayout()
+        self.setDelegate()
+        self.setBackButtonAction(self.navigationView.backButton)
+    }
+
+    // MARK: - Method
+    
+    private func setupUI() {
+        self.hideTabBar()
+    }
+
+    private func setDelegate() {
+        self.tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        self.tableView.rx.setDataSource(self)
+            .disposed(by: disposeBag)
+        self.tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.className)
+    }
+}
+
+// MARK: - UI
+
+extension SettingViewController {
+    private func setLayout() {
+        self.view.addSubviews([navigationView, tableView])
+        
+        self.navigationView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
+        }
+        
+        self.tableView.snp.makeConstraints { make in
+            make.top.equalTo(navigationView.snp.bottom).inset(1)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension SettingViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = SettingTableHeaderView()
+        headerView.setCategoryLabel(viewModel.categories[section])
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch viewModel.submenus[indexPath.section][indexPath.row] {
+        case "문의하기":
+            self.sendContactMail()
+        case "리뷰 남기기":
+            // TODO: - 앱 아이디 필요
+            let url = "itms-apps://itunes.apple.com/app/";
+            if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        case "서비스 소개":
+            self.openSafariInApp(url: AppInfo.shared.url.intro)
+        case "만든 사람들":
+            self.openSafariInApp(url: AppInfo.shared.url.makers)
+        case "서비스 이용약관":
+            self.openSafariInApp(url: AppInfo.shared.url.agreement)
+        case "개인정보처리방침":
+            self.openSafariInApp(url: AppInfo.shared.url.privacyPolicy)
+        case "로그아웃":
+            let alert = UIAlertController(title: nil, message: "접속중인 기기에서\n로그아웃 하시겠습니까?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "로그아웃", style: .default) { _ in
+                // TODO: - 로그아웃 처리 필요
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(okAction)
+            alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+            present(alert, animated: true, completion: nil)
+        case "탈퇴하기":
+            // TODO: - 탈퇴하기 처리 필요
+            self.navigationController?.pushViewController(BaseViewController(), animated: true)
+        default:
+            break
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension SettingViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.categories.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.submenus[section].count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.className, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
+        cell.setMenuLabel(viewModel.submenus[indexPath.section][indexPath.row])
+        return cell
+    }
+}

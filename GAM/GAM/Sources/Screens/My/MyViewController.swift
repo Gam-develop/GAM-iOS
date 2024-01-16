@@ -59,6 +59,7 @@ final class MyViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.showTabBar()
         self.tabHeaderView.collectionView.reloadData()
         self.bindTabHeader()
         
@@ -84,7 +85,7 @@ final class MyViewController: BaseViewController {
     
     private func setSettingButtonAction() {
         self.navigationView.settingButton.setAction { [weak self] in
-            self?.navigationController?.pushViewController(BaseViewController(), animated: true)
+            self?.navigationController?.pushViewController(SettingViewController(), animated: true)
         }
     }
     

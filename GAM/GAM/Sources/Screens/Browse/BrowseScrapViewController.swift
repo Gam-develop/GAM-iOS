@@ -65,6 +65,7 @@ final class BrowseScrapViewController: BaseViewController {
         
         self.setLayout()
         self.setCollectionView()
+        self.fetchData()
     }
     
     // MARK: Methods
@@ -77,6 +78,13 @@ final class BrowseScrapViewController: BaseViewController {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+    }
+    
+    private func fetchData() {
+        self.getScrapDesigner { designers in
+            self.designers = designers
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -120,6 +128,25 @@ extension BrowseScrapViewController: UICollectionViewDataSource {
 extension BrowseScrapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         debugPrint(indexPath, "selected")
+    }
+}
+
+// MARK: - Network
+
+extension BrowseScrapViewController {
+    private func getScrapDesigner(completion: @escaping ([BrowseDesignerScrapEntity]) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.getScrapDesigner { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? GetScrapDesignerResponseDTO {
+                    completion(result.toBrowseDesignerScrapEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

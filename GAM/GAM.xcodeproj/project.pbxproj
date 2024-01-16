@@ -177,6 +177,9 @@
 		FFD9DB0D2A7E43880085B965 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */; };
 		FFD9DB0F2A7F7F6F0085B965 /* WriteProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB0E2A7F7F6F0085B965 /* WriteProjectViewController.swift */; };
 		FFD9DB112A80D16D0085B965 /* GamStarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */; };
+		FFEB5CAB2B4E844D00953362 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CAA2B4E844D00953362 /* SplashViewController.swift */; };
+		FFEB5CAD2B4F9B5000953362 /* RefreshTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CAC2B4F9B5000953362 /* RefreshTokenRequestDTO.swift */; };
+		FFEB5CAF2B4FA03200953362 /* RefreshTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CAE2B4FA03200953362 /* RefreshTokenResponseDTO.swift */; };
 		FFEB5CA72B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */; };
 		FFEB5CA92B4E60BA00953362 /* ScrapDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */; };
 		FFEB5CB12B55AD4300953362 /* GetScrapDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */; };
@@ -351,6 +354,9 @@
 		FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FFD9DB0E2A7F7F6F0085B965 /* WriteProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewController.swift; sourceTree = "<group>"; };
 		FFD9DB102A80D16D0085B965 /* GamStarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamStarLabel.swift; sourceTree = "<group>"; };
+		FFEB5CAA2B4E844D00953362 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		FFEB5CAC2B4F9B5000953362 /* RefreshTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequestDTO.swift; sourceTree = "<group>"; };
+		FFEB5CAE2B4FA03200953362 /* RefreshTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponseDTO.swift; sourceTree = "<group>"; };
 		FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerRequestDTO.swift; sourceTree = "<group>"; };
 		FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScrapDesignerResponseDTO.swift; sourceTree = "<group>"; };
@@ -476,6 +482,7 @@
 		FF6CC0392A951FA400B24C94 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				FFEB5CAC2B4F9B5000953362 /* RefreshTokenRequestDTO.swift */,
 				FF6CC03A2A951FB400B24C94 /* SocialLoginRequestDTO.swift */,
 				FF6CC0422A963E5F00B24C94 /* SignUpRequestDTO.swift */,
 			);
@@ -486,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				FF6CC03D2A9521C300B24C94 /* SocialLoginResponseDTO.swift */,
+				FFEB5CAE2B4FA03200953362 /* RefreshTokenResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -890,6 +898,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA94D2B2A4F1E93009B034F /* SignInViewController.swift */,
+				FFEB5CAA2B4E844D00953362 /* SplashViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -1171,6 +1180,7 @@
 				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
 				FFA94D032A4F1B6C009B034F /* UITabBar+.swift in Sources */,
+				FFEB5CAF2B4FA03200953362 /* RefreshTokenResponseDTO.swift in Sources */,
 				FFD9DB092A7A91120085B965 /* GamTextField.swift in Sources */,
 				FFA94CE12A4F09B0009B034F /* UIFont+.swift in Sources */,
 				FFA706EC2A4F39EB003DF6A0 /* BrowseViewController.swift in Sources */,
@@ -1220,6 +1230,7 @@
 				FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */,
 				FF6CC0242A95032900B24C94 /* GamURLEntity.swift in Sources */,
 				FFA94D1A2A4F1D2D009B034F /* APIConstants.swift in Sources */,
+				FFEB5CAD2B4F9B5000953362 /* RefreshTokenRequestDTO.swift in Sources */,
 				FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */,
 				FFA94CF12A4F1ACA009B034F /* UIView+.swift in Sources */,
 				FF6CC02F2A9511ED00B24C94 /* GamMoyaProvider.swift in Sources */,
@@ -1282,6 +1293,7 @@
 				84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */,
 				84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */,
 				FFB6AB682B4C395D00695DE4 /* SearchMagazineResponseDTO.swift in Sources */,
+				FFEB5CAB2B4E844D00953362 /* SplashViewController.swift in Sources */,
 				FFD9DAFF2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift in Sources */,
 				FFC733812A710B6D008B5054 /* UserViewController.swift in Sources */,
 				FF6CC0352A951E9900B24C94 /* AuthRouter.swift in Sources */,

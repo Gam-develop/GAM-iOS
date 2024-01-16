@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 class BaseService {
-    func judgeStatus<T: Codable>(by statusCode: Int, _ data: Data, _ type: T.Type) -> NetworkResult<Any> {
+    func judgeStatus<T: Decodable>(by statusCode: Int, _ data: Data, _ type: T.Type) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(BaseResponseType<T>.self, from: data)
                 

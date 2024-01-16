@@ -269,6 +269,22 @@ OS Version: \(UIDevice.current.systemVersion)
             }
         }
     }
+    
+    func setUserInfo(userID: Int, accessToken: String, refreshToken: String) {
+        UserInfo.shared.userID = userID
+        UserInfo.shared.accessToken = accessToken
+        UserInfo.shared.refreshToken = refreshToken
+        
+        UserDefaultsManager.userID = userID
+        UserDefaultsManager.accessToken = accessToken
+        UserDefaultsManager.refreshToken = refreshToken
+    }
+    
+    func removeUserInfo() {
+        UserDefaultsManager.userID = nil
+        UserDefaultsManager.accessToken = nil
+        UserDefaultsManager.refreshToken = nil
+    }
 }
 
 // MARK: - Network
@@ -293,10 +309,8 @@ extension BaseViewController {
         self.startActivityIndicator()
         MagazineService.shared.requestScrapMagazine(data: data) { networkResult in
             switch networkResult {
-            case .success(let responseData):
-                if let result = responseData as? ScrapMagazineRequestDTO {
-                    completion()
-                }
+            case .success:
+                completion()
             default:
                 self.showNetworkErrorAlert()
             }
@@ -308,10 +322,34 @@ extension BaseViewController {
         self.startActivityIndicator()
         DesignerService.shared.requestScrapDesigner(data: data) { networkResult in
             switch networkResult {
+            case .success:
+                completion()
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    func requestRefreshToken(data: RefreshTokenRequestDTO, isProfileCompleted: @escaping (Bool) -> (Void)) {
+        self.startActivityIndicator()
+        AuthService.shared.requestRefreshToken(data: data) { networkResult in
+            switch networkResult {
             case .success(let responseData):
-                if let result = responseData as? ScrapDesignerResponseDTO {
-                    completion()
+                if let result = responseData as? RefreshTokenResponseDTO {
+                    self.setUserInfo(
+                        userID: result.id,
+                        accessToken: result.accessToken,
+                        refreshToken: result.refreshToken
+                    )
+                    isProfileCompleted(result.isProfileCompleted)
                 }
+            case .requestErr:
+                self.removeUserInfo()
+                let signInViewController: BaseViewController = SignInViewController()
+                signInViewController.modalTransitionStyle = .crossDissolve
+                signInViewController.modalPresentationStyle = .fullScreen
+                self.present(signInViewController, animated: true)
             default:
                 self.showNetworkErrorAlert()
             }

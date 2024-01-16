@@ -16,6 +16,7 @@ enum SocialType: String {
 enum AuthRouter {
     case requestSocialLogin(data: SocialLoginRequestDTO)
     case requestRefreshToken(data: RefreshTokenRequestDTO)
+    case requestLogout(data: LogoutRequestDTO)
 }
 
 extension AuthRouter: TargetType {
@@ -30,12 +31,14 @@ extension AuthRouter: TargetType {
             return "/social/login"
         case .requestRefreshToken:
             return "/social/refresh"
+        case .requestLogout:
+            return "social/logout"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .requestSocialLogin, .requestRefreshToken:
+        case .requestSocialLogin, .requestRefreshToken, .requestLogout:
             return .post
         }
     }
@@ -49,6 +52,8 @@ extension AuthRouter: TargetType {
             ]
             return .requestParameters(parameters: body, encoding: JSONEncoding.prettyPrinted)
         case .requestRefreshToken(let data):
+            return .requestJSONEncodable(data)
+        case .requestLogout(let data):
             return .requestJSONEncodable(data)
         }
     }

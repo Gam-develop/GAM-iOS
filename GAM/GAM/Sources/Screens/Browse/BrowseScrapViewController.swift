@@ -55,6 +55,11 @@ final class BrowseScrapViewController: BaseViewController {
         
         self.setLayout()
         self.setCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.fetchData()
     }
     

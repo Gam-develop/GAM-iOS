@@ -49,7 +49,7 @@ extension SettingTableViewCell {
         menuLabel.text = label
         
         if label == "버전 정보" {
-            versionLabel.text = "1.0.0"
+            versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         }
     }
 }

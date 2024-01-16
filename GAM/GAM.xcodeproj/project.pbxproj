@@ -180,6 +180,7 @@
 		FFEB5CA72B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */; };
 		FFEB5CA92B4E60BA00953362 /* ScrapDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */; };
 		FFEB5CB12B55AD4300953362 /* GetScrapDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */; };
+		FFEB5CB32B562F8300953362 /* GetBrowseDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB5CB22B562F8300953362 /* GetBrowseDesignerResponseDTO.swift */; };
 		FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */; };
 		FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -353,6 +354,7 @@
 		FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerRequestDTO.swift; sourceTree = "<group>"; };
 		FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScrapDesignerResponseDTO.swift; sourceTree = "<group>"; };
+		FFEB5CB22B562F8300953362 /* GetBrowseDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBrowseDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FFF605C12A657CC400A1EEC6 /* BrowseDesignerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerEntity.swift; sourceTree = "<group>"; };
 		FFF605C72A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -522,6 +524,7 @@
 				FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */,
 				FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */,
 				FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */,
+				FFEB5CB22B562F8300953362 /* GetBrowseDesignerResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
 				FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
+				FFEB5CB32B562F8300953362 /* GetBrowseDesignerResponseDTO.swift in Sources */,
 				FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,

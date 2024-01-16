@@ -94,20 +94,9 @@ extension SettingViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .gamGray1
-
-        let label = UILabel()
-        label.text = viewModel.categories[section]
-        label.font = .body5Bold
-        label.textColor = .gamGray3
-        headerView.addSubview(label)
-
-        label.snp.makeConstraints { make in
-            make.leading.equalTo(headerView).offset(16)
-            make.centerY.equalTo(headerView)
-        }
-        
+        let headerView = SettingTableHeaderView()
+        headerView.setCategoryLabel(viewModel.categories[section
+                                                        ])
         return headerView
     }
     

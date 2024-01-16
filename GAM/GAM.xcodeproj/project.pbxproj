@@ -25,6 +25,7 @@
 		84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9972B4C0042009C4C15 /* MypageRouter.swift */; };
 		84E6F99B2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */; };
 		84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */; };
+		84E79E212B5663A000C80DB7 /* SettingTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E79E202B5663A000C80DB7 /* SettingTableHeaderView.swift */; };
 		FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */; };
 		FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */; };
 		FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */; };
@@ -205,6 +206,7 @@
 		84E6F9972B4C0042009C4C15 /* MypageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouter.swift; sourceTree = "<group>"; };
 		84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPortfolioResponseDTO.swift; sourceTree = "<group>"; };
+		84E79E202B5663A000C80DB7 /* SettingTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableHeaderView.swift; sourceTree = "<group>"; };
 		FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverViewController.swift; sourceTree = "<group>"; };
 		FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapViewController.swift; sourceTree = "<group>"; };
 		FF04135C2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -384,7 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				84DD77932B5436F3008B297F /* SettingViewController.swift */,
-				84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */,
 				84DD779F2B5598A7008B297F /* SettingViewModel.swift */,
 			);
 			path = Setting;
@@ -978,6 +979,7 @@
 				FFC7338E2A717A64008B5054 /* PortfolioTableViewCell.swift */,
 				FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */,
 				FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */,
+				84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1007,6 +1009,7 @@
 				FFCDF86E2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift */,
 				FFCDF8722A5B1ABF00C731A3 /* MagazineScrapTableHeaderView.swift */,
 				FFC733922A76AAD0008B5054 /* PortfolioTableFooterView.swift */,
+				84E79E202B5663A000C80DB7 /* SettingTableHeaderView.swift */,
 			);
 			path = TableViewHeaderFooterView;
 			sourceTree = "<group>";
@@ -1270,6 +1273,7 @@
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */,
+				84E79E212B5663A000C80DB7 /* SettingTableHeaderView.swift in Sources */,
 				FF6E2D512A965D8100EA313A /* MagazineRouter.swift in Sources */,
 				84E6F99B2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,

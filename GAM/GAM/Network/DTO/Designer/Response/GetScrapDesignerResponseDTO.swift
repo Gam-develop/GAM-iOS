@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetScrapDesignerResponseDTOElement: Codable {
+struct GetScrapDesignerResponseDTOElement: Decodable {
     let userID: Int
     let userName: String
     let userThumbNail: String

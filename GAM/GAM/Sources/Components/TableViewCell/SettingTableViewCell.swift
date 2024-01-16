@@ -30,14 +30,16 @@ final class SettingTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUI()
-        setConstraint()
+        
+        self.setUI()
+        self.setConstraint()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setUI()
-        setConstraint()
+        
+        self.setUI()
+        self.setConstraint()
     }
 }
 
@@ -46,10 +48,10 @@ final class SettingTableViewCell: UITableViewCell {
 extension SettingTableViewCell {
     
     func setMenuLable(_ label: String) {
-        menuLabel.text = label
+        self.menuLabel.text = label
         
         if label == "버전 정보" {
-            versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+            self.versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         }
     }
 }
@@ -59,18 +61,18 @@ extension SettingTableViewCell {
 extension SettingTableViewCell {
     
     private func setUI() {
-        contentView.backgroundColor = .gamGray1
-        contentView.addSubview(menuLabel)
-        contentView.addSubview(versionLabel)
+        self.contentView.backgroundColor = .gamGray1
+        self.contentView.addSubview(menuLabel)
+        self.contentView.addSubview(versionLabel)
     }
     
     private func setConstraint() {
-        menuLabel.snp.makeConstraints { make in
+        self.menuLabel.snp.makeConstraints { make in
             make.centerY.equalTo(contentView.snp.centerY)
             make.leading.equalTo(contentView.snp.leading).offset(16)
         }
 
-        versionLabel.snp.makeConstraints { make in
+        self.versionLabel.snp.makeConstraints { make in
             make.centerY.equalTo(contentView.snp.centerY)
             make.trailing.equalTo(contentView.snp.trailing).offset(-16)
         }

@@ -61,6 +61,6 @@ final class SettingTableHeaderView: UITableViewHeaderFooterView {
     }
     
     func setCategoryLabel(_ category: String) {
-        categoryLabel.text = category
+        self.categoryLabel.text = category
     }
 }

@@ -50,3 +50,20 @@ struct GetBrowseDesignerResponseDTOElement: Decodable {
 }
 
 typealias GetBrowseDesignerResponseDTO = [GetBrowseDesignerResponseDTOElement]
+
+extension GetBrowseDesignerResponseDTO {
+    func toBrowseDesignerEntity() -> [BrowseDesignerEntity] {
+        return self.map { designerResponse in
+            BrowseDesignerEntity(
+                id: designerResponse.userInfo.userID,
+                thumbnailImageURL: designerResponse.workInfo.photoURL,
+                majorProjectTitle: designerResponse.workInfo.workTitle,
+                name: designerResponse.userInfo.userName,
+                info: designerResponse.userInfo.userDetail,
+                tags: designerResponse.userInfo.userTag,
+                isScrap: designerResponse.userInfo.designerScrap,
+                visibilityCount: designerResponse.userInfo.viewCount
+            )
+        }
+    }
+}

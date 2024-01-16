@@ -117,26 +117,32 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch viewModel.submenus[indexPath.section][indexPath.row] {
         case "문의하기":
-            print()
+            self.sendContactMail()
         case "리뷰 남기기":
-            print()
+            // TODO: - 앱 아이디 필요
+            let url = "itms-apps://itunes.apple.com/app/";
+            if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         case "서비스 소개":
-            print()
+            self.openSafariInApp(url: AppInfo.shared.url.intro)
         case "만든 사람들":
-            print()
+            self.openSafariInApp(url: AppInfo.shared.url.makers)
         case "서비스 이용약관":
-            print()
+            self.openSafariInApp(url: AppInfo.shared.url.agreement)
         case "개인정보처리방침":
-            print()
+            self.openSafariInApp(url: AppInfo.shared.url.privacyPolicy)
         case "로그아웃":
             let alert = UIAlertController(title: nil, message: "접속중인 기기에서\n로그아웃 하시겠습니까?", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "로그아웃", style: .default) { _ in
+                // TODO: - 로그아웃 처리 필요
                 self.navigationController?.popViewController(animated: true)
             }
             alert.addAction(okAction)
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
             present(alert, animated: true, completion: nil)
         case "탈퇴하기":
+            // TODO: - 탈퇴하기 처리 필요
             self.navigationController?.pushViewController(BaseViewController(), animated: true)
         default:
             break

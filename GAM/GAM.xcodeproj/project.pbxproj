@@ -17,6 +17,9 @@
 		84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */; };
 		84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */; };
 		84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */; };
+		84DD77942B5436F3008B297F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD77932B5436F3008B297F /* SettingViewController.swift */; };
+		84DD779C2B5591F7008B297F /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */; };
+		84DD77A02B5598A7008B297F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD779F2B5598A7008B297F /* SettingViewModel.swift */; };
 		84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */; };
 		84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9952B4BFFF9009C4C15 /* MypageService.swift */; };
 		84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9972B4C0042009C4C15 /* MypageRouter.swift */; };
@@ -194,6 +197,9 @@
 		84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRequestDTO.swift; sourceTree = "<group>"; };
 		84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlResponseDTO.swift; sourceTree = "<group>"; };
 		84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageRequestDTO.swift; sourceTree = "<group>"; };
+		84DD77932B5436F3008B297F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		84DD779F2B5598A7008B297F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		84E6F9952B4BFFF9009C4C15 /* MypageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageService.swift; sourceTree = "<group>"; };
 		84E6F9972B4C0042009C4C15 /* MypageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouter.swift; sourceTree = "<group>"; };
@@ -374,6 +380,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84DD77922B5436CC008B297F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				84DD77932B5436F3008B297F /* SettingViewController.swift */,
+				84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */,
+				84DD779F2B5598A7008B297F /* SettingViewModel.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		84E6F9912B4BF97F009C4C15 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
@@ -876,6 +892,7 @@
 				FFA706E02A4F2F72003DF6A0 /* My */,
 				FFCDF8742A5B1E0300C731A3 /* Search */,
 				FFC7337F2A710B67008B5054 /* User */,
+				84DD77922B5436CC008B297F /* Setting */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1128,6 +1145,7 @@
 				FF6E2D532A965EAA00EA313A /* MagazineService.swift in Sources */,
 				FF6CC03E2A9521C300B24C94 /* SocialLoginResponseDTO.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
+				84DD77A02B5598A7008B297F /* SettingViewModel.swift in Sources */,
 				84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */,
 				FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */,
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
@@ -1214,6 +1232,7 @@
 				FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */,
 				FF6CC0242A95032900B24C94 /* GamURLEntity.swift in Sources */,
 				FFA94D1A2A4F1D2D009B034F /* APIConstants.swift in Sources */,
+				84DD77942B5436F3008B297F /* SettingViewController.swift in Sources */,
 				FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */,
 				FFA94CF12A4F1ACA009B034F /* UIView+.swift in Sources */,
 				FF6CC02F2A9511ED00B24C94 /* GamMoyaProvider.swift in Sources */,
@@ -1240,6 +1259,7 @@
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
 				FF6CC0472A963FD500B24C94 /* UserService.swift in Sources */,
 				84BBCBF82B52CC900010F2AE /* UpdateProfileResponseDTO.swift in Sources */,
+				84DD779C2B5591F7008B297F /* SettingTableViewCell.swift in Sources */,
 				FFA94CF72A4F1AFD009B034F /* UserDefaults+.swift in Sources */,
 				84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */,
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,

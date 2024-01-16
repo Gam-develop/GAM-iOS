@@ -47,7 +47,7 @@ final class SettingTableViewCell: UITableViewCell {
 
 extension SettingTableViewCell {
     
-    func setMenuLable(_ label: String) {
+    func setMenuLabel(_ label: String) {
         self.menuLabel.text = label
         
         if label == "버전 정보" {

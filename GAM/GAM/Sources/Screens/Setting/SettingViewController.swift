@@ -153,7 +153,7 @@ extension SettingViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.className, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
-        cell.setMenuLable(viewModel.submenus[indexPath.section][indexPath.row])
+        cell.setMenuLabel(viewModel.submenus[indexPath.section][indexPath.row])
         return cell
     }
 }

@@ -63,7 +63,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     
     private let projectTitleLabel: GamStarLabel = GamStarLabel(text: Text.projectTitle, font: .subhead4Bold)
     private let projectTitleTextField: GamTextField = {
-        let textField: GamTextField = GamTextField(type: .projectTitle)
+        let textField: GamTextField = GamTextField(type: .none)
         textField.setGamPlaceholder(Text.projectPlaceholder)
         return textField
     }()
@@ -172,6 +172,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     
         self.projectTitleTextField.text = projectData.title
         self.projectDetailTextView.text = projectData.detail
+        self.projectTitleTextField.sendActions(for: .editingChanged)
         
         if self.projectData.detail == Text.projectDetailPlaceholder {
             self.projectDetailTextView.textColor = .gamGray3
@@ -185,20 +186,26 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     }
     
     private func setProjectTitleInfoLabel() {
-        self.projectTitleTextField.rx.observe(String.self, "text")
-            .distinctUntilChanged()
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { changedText in
-                guard let text = changedText else { return }
-                self.projectTitleInfoLabel.isHidden = text.count > 0
-                self.projectTitleCountLabel.text = "\(text.count)/\(Number.projectTitleLimit)"
-                self.isSaveButtonEnable[1] = text.count > 0
-                if text.count > 0 {
-                    self.projectTitleTextField.layer.borderWidth = 0
-                } else {
-                    self.projectTitleTextField.layer.borderWidth = 1
-                }
-        }).disposed(by: disposeBag)
+        self.projectTitleTextField.rx.text
+                .orEmpty
+                .distinctUntilChanged()
+                .asDriver(onErrorJustReturn: "")
+                .drive(with: self, onNext: { owner, changedText in
+                    owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
+                    if changedText.count > 12 {
+                        owner.projectTitleTextField.deleteBackward()
+                    }
+                    let trimText = changedText.trimmingCharacters(in: .whitespaces)
+                    owner.isSaveButtonEnable[1] = !trimText.isEmpty
+                    if !changedText.isEmpty && trimText.isEmpty {
+                        owner.projectTitleInfoLabel.isHidden = false
+                        owner.projectTitleTextField.layer.borderWidth = 1
+                    } else {
+                        owner.projectTitleInfoLabel.isHidden = true
+                        owner.projectTitleTextField.layer.borderWidth = 0
+                    }
+                })
+                .disposed(by: disposeBag)
     }
     
     private func setProjectTitleClearButtonAction() {

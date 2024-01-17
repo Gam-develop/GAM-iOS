@@ -15,7 +15,6 @@ final class GamTextField: UITextField {
     enum TextFieldType {
         case url
         case email
-        case projectTitle
     }
     
     // MARK: UIComponents
@@ -32,7 +31,7 @@ final class GamTextField: UITextField {
     
     // MARK: Initializer
     
-    init(type: TextFieldType) {
+    init(type: TextFieldType?) {
         super.init(frame: .zero)
         
         self.setUI()
@@ -41,7 +40,7 @@ final class GamTextField: UITextField {
         switch type {
         case .url : self.checkValidURL()
         case .email: self.checkValidEmail()
-        case .projectTitle: self.checkValidProjectTitle()
+        default: break
         }
     }
     
@@ -100,23 +99,6 @@ final class GamTextField: UITextField {
                     }
                 })
                 .disposed(by: self.disposeBag)
-        }
-    }
-    
-    private func checkValidProjectTitle() {
-        if self.isEnabled {
-            self.rx.text
-                .orEmpty
-                .distinctUntilChanged()
-                .withUnretained(self)
-                .observe(on: MainScheduler.asyncInstance)
-                .subscribe(onNext: { (owner, changedText) in
-                    owner.text?.removeLastSpace()
-                    if changedText.count > 12 {
-                        owner.deleteBackward()
-                    }
-                })
-                .disposed(by: disposeBag)
         }
     }
     

@@ -11,6 +11,7 @@ struct SearchMagazineResponseDTOElement: Codable {
     let title: String
     let interviewPerson: String
     let viewCount: Int
+    let magazineUrl: String
 }
 
 typealias SearchMagazineResponseDTO = [SearchMagazineResponseDTOElement]
@@ -26,7 +27,7 @@ extension SearchMagazineResponseDTO {
                     title: self[i].title,
                     author: self[i].interviewPerson,
                     isScrap: false,
-                    url: "",
+                    url: self[i].magazineUrl,
                     visibilityCount: self[i].viewCount
                 )
             )

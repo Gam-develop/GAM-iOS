@@ -48,7 +48,8 @@ extension AuthRouter: TargetType {
         case .requestSocialLogin(let data):
             let body: [String: Any] = [
                 "token": data.token,
-                "providerType": data.socialType
+                "providerType": data.socialType,
+                "deviceToken": data.deviceToken
             ]
             return .requestParameters(parameters: body, encoding: JSONEncoding.prettyPrinted)
         case .requestRefreshToken(let data):

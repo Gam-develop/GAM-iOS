@@ -133,6 +133,19 @@ final class SearchViewController: BaseViewController {
     private func setEmptyViewVisibility(isOn: Bool) {
         self.emptyView.isHidden = !isOn
     }
+    
+    private func setSearchResultData(searchType: SearchType, keyword: String) {
+        switch searchType {
+        case .magazine:
+            self.magazineSearchResultTableView.isHidden = false
+            self.setMagazineSearchResultTableView(keyword: keyword)
+            self.setMagazineSearchResultSnapshot()
+        case .portfolio:
+            self.portfolioSearchResultTableView.isHidden = false
+            self.setPortfolioSearchResultTableView(keyword: keyword)
+            self.setPortfolioSearchResultSnapshot()
+        }
+    }
 }
 
 // MARK: - Recent Search
@@ -192,10 +205,13 @@ extension SearchViewController {
         case .magazine:
             self.requestSearchMagazine(data: sender.keyword) { result in
                 self.magazineSearchResultData = result
-                self.searchMagazine(keyword: sender.keyword)
+                self.setSearchResultData(searchType: self.searchType, keyword: sender.keyword)
             }
         case .portfolio:
-            self.searchPortfolio(keyword: sender.keyword)
+            self.requestSearchDesigner(data: sender.keyword) { result in
+                self.portfolioSearchResultData = result
+                self.setSearchResultData(searchType: self.searchType, keyword: sender.keyword)
+            }
         }
     }
 }
@@ -229,24 +245,18 @@ extension SearchViewController {
         self.magazineSearchResultDataSource.apply(self.magazineSearchResultSnapshot)
     }
     
-    private func searchMagazine(keyword: String?) {
-        if let keyword = keyword?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
-            self.magazineSearchResultTableView.isHidden = false
-            self.setMagazineSearchResultTableView(keyword: keyword)
-            self.setMagazineSearchResultSnapshot()
-            
-            if self.recentSearchData.count >= 8 {
-                self.recentSearchData.removeLast()
-            }
-            
-            self.recentSearchData.reverse()
-            if let duplicatedIndex = self.recentSearchData.firstIndex(where: { $0.title == keyword }) {
-                self.recentSearchData.remove(at: duplicatedIndex)
-            }
-            
-            self.recentSearchData.append(RecentSearchEntity(id: Date().hashValue, title: keyword))
-            RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentMagazineSearch)
+    private func setRecentSearchMagazine(keyword: String) {
+        if self.recentSearchData.count >= 8 {
+            self.recentSearchData.removeLast()
         }
+        
+        self.recentSearchData.reverse()
+        if let duplicatedIndex = self.recentSearchData.firstIndex(where: { $0.title == keyword }) {
+            self.recentSearchData.remove(at: duplicatedIndex)
+        }
+        
+        self.recentSearchData.append(RecentSearchEntity(id: Date().hashValue, title: keyword))
+        RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentMagazineSearch)
         
         self.fetchRecentSearchData()
         self.setRecentSearchTableView()
@@ -273,6 +283,7 @@ extension SearchViewController {
             })
         self.portfolioSearchResultDataSource.defaultRowAnimation = .automatic
         self.portfolioSearchResultTableView.dataSource = self.portfolioSearchResultDataSource
+        self.setEmptyViewVisibility(isOn: self.portfolioSearchResultData.count == 0)
     }
     
     private func setPortfolioSearchResultSnapshot() {
@@ -282,24 +293,18 @@ extension SearchViewController {
         self.portfolioSearchResultDataSource.apply(self.portfolioSearchResultSnapshot)
     }
     
-    private func searchPortfolio(keyword: String?) {
-        if let keyword = keyword?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
-            self.portfolioSearchResultTableView.isHidden = false
-            self.setPortfolioSearchResultTableView(keyword: keyword)
-            self.setPortfolioSearchResultSnapshot()
-            
-            if self.recentSearchData.count >= 8 {
-                self.recentSearchData.removeLast()
-            }
-            
-            self.recentSearchData.reverse()
-            if let duplicatedIndex = self.recentSearchData.firstIndex(where: { $0.title == keyword }) {
-                self.recentSearchData.remove(at: duplicatedIndex)
-            }
-            
-            self.recentSearchData.append(RecentSearchEntity(id: Date().hashValue, title: keyword))
-            RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentPortfolioSearch)
+    private func setRecentSearchPortfolio(keyword: String) {
+        if self.recentSearchData.count >= 8 {
+            self.recentSearchData.removeLast()
         }
+        
+        self.recentSearchData.reverse()
+        if let duplicatedIndex = self.recentSearchData.firstIndex(where: { $0.title == keyword }) {
+            self.recentSearchData.remove(at: duplicatedIndex)
+        }
+        
+        self.recentSearchData.append(RecentSearchEntity(id: Date().hashValue, title: keyword))
+        RecentSearchEntity.setUserDefaults(data: self.recentSearchData, forKey: .recentPortfolioSearch)
         
         self.fetchRecentSearchData()
         self.setRecentSearchTableView()
@@ -325,14 +330,23 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch self.searchType {
-        case .magazine: 
-            self.requestSearchMagazine(data: textField.text ?? "") { result in
-                self.magazineSearchResultData = result
-                self.searchMagazine(keyword: textField.text)
+        if let keyword = textField.text?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
+            switch self.searchType {
+            case .magazine:
+                self.setRecentSearchMagazine(keyword: keyword)
+                self.requestSearchMagazine(data: keyword) { result in
+                    self.magazineSearchResultData = result
+                    self.setSearchResultData(searchType: self.searchType, keyword: keyword)
+                }
+            case .portfolio:
+                self.setRecentSearchPortfolio(keyword: keyword)
+                self.requestSearchDesigner(data: keyword) { result in
+                    self.portfolioSearchResultData = result
+                    self.setSearchResultData(searchType: self.searchType, keyword: keyword)
+                }
             }
-        case .portfolio: self.searchPortfolio(keyword: textField.text)
         }
+        
         return true
     }
 }
@@ -347,6 +361,21 @@ extension SearchViewController {
             case .success(let responseData):
                 if let result = responseData as? SearchMagazineResponseDTO {
                     completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func requestSearchDesigner(data: String, completion: @escaping ([PortfolioSearchEntity]) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.searchDesigner(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? SearchDesignerResponseDTO {
+                    completion(result.toPortfolioSearchEntity())
                 }
             default:
                 self.showNetworkErrorAlert()

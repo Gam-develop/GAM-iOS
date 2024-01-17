@@ -34,13 +34,7 @@ final class BrowseDiscoverViewController: BaseViewController {
     
     private var superViewController: BrowseViewController?
     
-    private var designers: [BrowseDesignerEntity] = [
-        BrowseDesignerEntity(id: 0, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "최가연", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [0, 1, 2], isScrap: true, visibilityCount: 1234),
-        BrowseDesignerEntity(id: 1, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "박경은", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [3], isScrap: false, visibilityCount: 2),
-        BrowseDesignerEntity(id: 2, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "원종화", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [5, 7], isScrap: true, visibilityCount: 22),
-        BrowseDesignerEntity(id: 3, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "정정빈", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [2], isScrap: false, visibilityCount: 132),
-        BrowseDesignerEntity(id: 4, thumbnailImageURL: "", majorProjectTitle: "L’ESPACE", name: "최가희", info: "삶을 다채롭게 만드는 브랜드 디자이너", tags: [9, 10], isScrap: true, visibilityCount: 12)
-    ].shuffled()
+    private var designers: [BrowseDesignerEntity] = []
     
     // MARK: Initializer
     
@@ -64,6 +58,12 @@ final class BrowseDiscoverViewController: BaseViewController {
         self.setCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.fetchData()
+    }
+    
     // MARK: Methods
     
     private func setCollectionViewLayout() {
@@ -84,6 +84,13 @@ final class BrowseDiscoverViewController: BaseViewController {
         
         self.collectionView.register(cell: BrowseDiscoverCollectionViewCell.self)
     }
+    
+    private func fetchData() {
+        self.getBrowseDesigner { designers in
+            self.designers = designers
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -101,9 +108,10 @@ extension BrowseDiscoverViewController: UICollectionViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.designers[indexPath.row].isScrap {
-                debugPrint("스크랩 request")
-                self?.designers[indexPath.row].isScrap = !bool
-                cell.scrapButton.isSelected = !bool
+                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                    self?.designers[indexPath.row].isScrap = !bool
+                    cell.scrapButton.isSelected = !bool
+                }
             }
         }
         return cell
@@ -128,6 +136,25 @@ extension BrowseDiscoverViewController: UICollectionViewDelegateFlowLayout {
             y: scrollView.contentInset.top
         )
         targetContentOffset.pointee = offset
+    }
+}
+
+// MARK: - Network
+
+extension BrowseDiscoverViewController {
+    private func getBrowseDesigner(completion: @escaping ([BrowseDesignerEntity]) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.getBrowseDesigner { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? GetBrowseDesignerResponseDTO {
+                    completion(result.toBrowseDesignerEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

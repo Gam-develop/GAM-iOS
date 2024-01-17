@@ -11,6 +11,9 @@ import Moya
 enum DesignerRouter {
     case getPopularDesigner
     case requestScrapDesigner(data: ScrapDesignerRequestDTO)
+    case getBrowseDesigner
+    case getScrapDesigner
+    case searchDesigner(data: String)
 }
 
 extension DesignerRouter: TargetType {
@@ -25,12 +28,18 @@ extension DesignerRouter: TargetType {
             return "/user/popular"
         case .requestScrapDesigner:
             return "/user/scrap"
+        case .getBrowseDesigner:
+            return "/user"
+        case .getScrapDesigner:
+            return "/user/scraps"
+        case .searchDesigner:
+            return "/user/search"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPopularDesigner:
+        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .searchDesigner:
             return .get
         case .requestScrapDesigner:
             return .post
@@ -39,20 +48,22 @@ extension DesignerRouter: TargetType {
     
     var task: Task {
         switch self {
-        case .getPopularDesigner:
+        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner:
             return .requestPlain
         case .requestScrapDesigner(let data):
             return .requestJSONEncodable(data)
+        case .searchDesigner(let data):
+            let body: [String : Any] = [
+                "keyword": data
+            ]
+            return .requestParameters(parameters: body, encoding: URLEncoding.queryString)
         }
     }
     
     var headers: [String: String]? {
-        switch self {
-        case .getPopularDesigner, .requestScrapDesigner:
-            return [
-                "Content-Type": "application/json",
-                "Authorization": UserInfo.shared.accessToken
-            ]
-        }
+        return [
+            "Content-Type": "application/json",
+            "Authorization": UserInfo.shared.accessToken
+        ]
     }
 }

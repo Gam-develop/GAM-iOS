@@ -34,17 +34,7 @@ final class BrowseScrapViewController: BaseViewController {
     // MARK: Properties
     
     private var superViewController: BrowseViewController?
-    private var designers: [BrowseDesignerScrapEntity] = [
-        .init(id: 1, thumbnailImageURL: "", name: "최가연", isScrap: true),
-        .init(id: 2, thumbnailImageURL: "", name: "박경은", isScrap: false),
-        .init(id: 3, thumbnailImageURL: "", name: "원종화", isScrap: false),
-        .init(id: 4, thumbnailImageURL: "", name: "정정빈", isScrap: true),
-        .init(id: 5, thumbnailImageURL: "", name: "최가희", isScrap: true),
-        .init(id: 6, thumbnailImageURL: "", name: "이용택", isScrap: false),
-        .init(id: 1, thumbnailImageURL: "", name: "최가연", isScrap: true),
-        .init(id: 2, thumbnailImageURL: "", name: "박경은", isScrap: false),
-        .init(id: 3, thumbnailImageURL: "", name: "원종화", isScrap: false)
-    ].shuffled()
+    private var designers: [BrowseDesignerScrapEntity] = []
     
     // MARK: Initializer
     
@@ -67,6 +57,12 @@ final class BrowseScrapViewController: BaseViewController {
         self.setCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.fetchData()
+    }
+    
     // MARK: Methods
     
     private func setCollectionView() {
@@ -77,6 +73,13 @@ final class BrowseScrapViewController: BaseViewController {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+    }
+    
+    private func fetchData() {
+        self.getScrapDesigner { designers in
+            self.designers = designers
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -95,9 +98,10 @@ extension BrowseScrapViewController: UICollectionViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.designers[indexPath.row].isScrap {
-                debugPrint("스크랩 request")
-                self?.designers[indexPath.row].isScrap = !bool
-                cell.scrapButton.isSelected = !bool
+                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                    self?.designers[indexPath.row].isScrap = !bool
+                    cell.scrapButton.isSelected = !bool
+                }
             }
         }
         return cell
@@ -120,6 +124,25 @@ extension BrowseScrapViewController: UICollectionViewDataSource {
 extension BrowseScrapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         debugPrint(indexPath, "selected")
+    }
+}
+
+// MARK: - Network
+
+extension BrowseScrapViewController {
+    private func getScrapDesigner(completion: @escaping ([BrowseDesignerScrapEntity]) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.getScrapDesigner { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? GetScrapDesignerResponseDTO {
+                    completion(result.toBrowseDesignerScrapEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
     }
 }
 

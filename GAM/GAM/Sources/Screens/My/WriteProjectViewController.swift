@@ -189,19 +189,17 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         self.projectTitleTextField.rx.text
                 .orEmpty
                 .distinctUntilChanged()
-                .withUnretained(self)
-                .observe(on: MainScheduler.asyncInstance)
-                .debug()
-                .subscribe(onNext: { (_, changedText) in
-                    self.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
+                .asDriver(onErrorJustReturn: "")
+                .drive(with: self, onNext: { owner, changedText in
+                    owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
                     let trimText = changedText.trimmingCharacters(in: .whitespaces)
-                    self.isSaveButtonEnable[1] = !trimText.isEmpty
+                    owner.isSaveButtonEnable[1] = !trimText.isEmpty
                     if !changedText.isEmpty && trimText.isEmpty {
-                        self.projectTitleInfoLabel.isHidden = false
-                        self.projectTitleTextField.layer.borderWidth = 1
+                        owner.projectTitleInfoLabel.isHidden = false
+                        owner.projectTitleTextField.layer.borderWidth = 1
                     } else {
-                        self.projectTitleInfoLabel.isHidden = true
-                        self.projectTitleTextField.layer.borderWidth = 0
+                        owner.projectTitleInfoLabel.isHidden = true
+                        owner.projectTitleTextField.layer.borderWidth = 0
                     }
                 })
                 .disposed(by: disposeBag)

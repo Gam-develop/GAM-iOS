@@ -15,4 +15,5 @@ final class UserInfo {
     var userID: Int = -1
     var accessToken: String = ""
     var refreshToken: String = ""
+    var deviceToken: String = ""
 }

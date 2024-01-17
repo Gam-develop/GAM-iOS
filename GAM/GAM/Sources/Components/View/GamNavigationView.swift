@@ -18,6 +18,7 @@ final class GamNavigationView: UIView {
         case backUsernameScrapMore
         case usernameSetting
         case backTitleSave
+        case backTitle
     }
     
     enum Text {
@@ -74,6 +75,7 @@ final class GamNavigationView: UIView {
         case .backUsernameScrapMore: self.setBackUsernameScrapMoreLayout()
         case .usernameSetting: self.setUsernameSettingLayout()
         case .backTitleSave: self.setBackTitleSaveLayout()
+        case .backTitle: self.setBackTitleLayout()
         }
     }
     
@@ -181,6 +183,18 @@ extension GamNavigationView {
         
         self.setLeftButtonLayout(button: self.backButton)
         self.setRightButtonLayout(button: self.saveButton)
+        self.setCenterTitleLabelLayout()
+        self.underlineView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+    }
+    
+    private func setBackTitleLayout() {
+        self.addSubviews([backButton, centerTitleLabel, underlineView])
+        
+        self.setLeftButtonLayout(button: self.backButton)
         self.setCenterTitleLabelLayout()
         self.underlineView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()

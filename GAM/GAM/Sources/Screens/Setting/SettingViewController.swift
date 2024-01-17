@@ -47,6 +47,7 @@ final class SettingViewController: BaseViewController {
         self.setupUI()
         self.setLayout()
         self.setDelegate()
+        self.setBinding()
         self.setBackButtonAction(self.navigationView.backButton)
     }
 
@@ -62,6 +63,19 @@ final class SettingViewController: BaseViewController {
         self.tableView.rx.setDataSource(self)
             .disposed(by: disposeBag)
         self.tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.className)
+    }
+    
+    private func setBinding() {
+        viewModel.action.popViewController
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popToRootViewController(animated: true)
+                let signInViewController: BaseViewController = SignInViewController()
+                signInViewController.modalTransitionStyle = .crossDissolve
+                signInViewController.modalPresentationStyle = .fullScreen
+                self?.present(signInViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -124,8 +138,7 @@ extension SettingViewController: UITableViewDelegate {
         case "로그아웃":
             let alert = UIAlertController(title: nil, message: "접속중인 기기에서\n로그아웃 하시겠습니까?", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "로그아웃", style: .default) { _ in
-                // TODO: - 로그아웃 처리 필요
-                self.navigationController?.popViewController(animated: true)
+                self.viewModel.action.logout.onNext(())
             }
             alert.addAction(okAction)
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))

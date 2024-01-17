@@ -11,6 +11,7 @@ import Moya
 internal protocol AuthServiceProtocol {
     func requestSocialLogin(data: SocialLoginRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
     func requestRefreshToken(data: RefreshTokenRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func requestLogout(data: LogoutRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class AuthService: BaseService {
@@ -47,6 +48,22 @@ extension AuthService: AuthServiceProtocol {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = self.judgeStatus(by: statusCode, data, RefreshTokenResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [POST] 로그아웃
+    
+    func requestLogout(data: LogoutRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.requestLogout(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

@@ -13,9 +13,8 @@ struct SearchDesignerResponseDTOElement: Codable {
     let userID, viewCount: Int
 
     enum CodingKeys: String, CodingKey {
-        case thumbNail, title, userName
+        case thumbNail, title, userName, viewCount
         case userID = "userId"
-        case viewCount
     }
 }
 

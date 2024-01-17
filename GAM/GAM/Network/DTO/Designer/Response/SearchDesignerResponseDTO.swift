@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - SearchDesignerResponseDTOElement
-struct SearchDesignerResponseDTOElement: Codable {
+struct SearchDesignerResponseDTOElement: Decodable {
     let thumbNail, title, userName: String
     let userID, viewCount: Int
 

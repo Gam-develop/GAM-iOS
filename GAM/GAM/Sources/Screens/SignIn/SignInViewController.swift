@@ -75,7 +75,7 @@ final class SignInViewController: BaseViewController {
                     }
                     else {
                         debugPrint("loginWithKakaoTalk() success.")
-                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao), isProfileCompleted: { bool in
+                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao, deviceToken: UserInfo.shared.deviceToken), isProfileCompleted: { bool in
                             self?.presentNextViewController(isProfileCompleted: bool)
                         })
                     }
@@ -87,7 +87,7 @@ final class SignInViewController: BaseViewController {
                     }
                     else {
                         debugPrint("loginWithKakaoAccount() success.")
-                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao), isProfileCompleted: { bool in
+                        self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao, deviceToken: UserInfo.shared.deviceToken), isProfileCompleted: { bool in
                             self?.presentNextViewController(isProfileCompleted: bool)
                         })
                     }
@@ -153,7 +153,7 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
             if let identityToken = appleIDCredential.identityToken,
                let tokenString = String(data: identityToken, encoding: .utf8) {
 //                let fcmToken = UserDefaultsManager.fcmToken ?? ""
-                self.requestSocialLogin(data: .init(token: tokenString, socialType: .apple), isProfileCompleted: { bool in
+                self.requestSocialLogin(data: .init(token: tokenString, socialType: .apple, deviceToken: UserInfo.shared.deviceToken), isProfileCompleted: { bool in
                     self.presentNextViewController(isProfileCompleted: bool)
                 })
             }

@@ -192,12 +192,12 @@ extension SearchViewController {
         case .magazine:
             self.requestSearchMagazine(data: sender.keyword) { result in
                 self.magazineSearchResultData = result
-                self.searchMagazine(keyword: sender.keyword)
+                self.setRecentSearchMagazine(keyword: sender.keyword)
             }
         case .portfolio:
             self.requestSearchDesigner(data: sender.keyword) { result in
                 self.portfolioSearchResultData = result
-                self.searchPortfolio(keyword: sender.keyword)
+                self.setRecentSearchPortfolio(keyword: sender.keyword)
             }
         }
     }
@@ -232,7 +232,7 @@ extension SearchViewController {
         self.magazineSearchResultDataSource.apply(self.magazineSearchResultSnapshot)
     }
     
-    private func searchMagazine(keyword: String?) {
+    private func setRecentSearchMagazine(keyword: String?) {
         if let keyword = keyword?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
             self.magazineSearchResultTableView.isHidden = false
             self.setMagazineSearchResultTableView(keyword: keyword)
@@ -286,7 +286,7 @@ extension SearchViewController {
         self.portfolioSearchResultDataSource.apply(self.portfolioSearchResultSnapshot)
     }
     
-    private func searchPortfolio(keyword: String?) {
+    private func setRecentSearchPortfolio(keyword: String?) {
         if let keyword = keyword?.trimmingCharacters(in: .whitespaces), keyword.count > 0 {
             self.portfolioSearchResultTableView.isHidden = false
             self.setPortfolioSearchResultTableView(keyword: keyword)
@@ -333,12 +333,12 @@ extension SearchViewController: UITextFieldDelegate {
         case .magazine: 
             self.requestSearchMagazine(data: textField.text ?? "") { result in
                 self.magazineSearchResultData = result
-                self.searchMagazine(keyword: textField.text)
+                self.setRecentSearchMagazine(keyword: textField.text)
             }
         case .portfolio: 
             self.requestSearchDesigner(data: textField.text ?? "") { result in
                 self.portfolioSearchResultData = result
-                self.searchPortfolio(keyword: textField.text)
+                self.setRecentSearchPortfolio(keyword: textField.text)
             }
         }
         return true

@@ -128,6 +128,7 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.designers[indexPath.row].isScrap {
                 self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                    self?.designers[indexPath.row].isScrap = !bool
                     cell.scrapButton.isSelected = !bool
                 }
             }

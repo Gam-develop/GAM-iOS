@@ -75,7 +75,7 @@ extension MagazineService: MagazineServiceProtocol {
     
     // [PUT] 매거진 스크랩 on/off
     
-    func requestScrapMagazine(data: ScrapMagazineRequestDTO,completion: @escaping (NetworkResult<Any>) -> (Void)) {
+    func requestScrapMagazine(data: ScrapMagazineRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         self.provider.request(.requestScrapMagazine(data: data)) { result in
             switch result {
             case .success(let response):
@@ -91,7 +91,7 @@ extension MagazineService: MagazineServiceProtocol {
     
     // [GET] 매거진 검색
     
-    func searchMagazine(data: String,completion: @escaping (NetworkResult<Any>) -> (Void)) {
+    func searchMagazine(data: String, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         self.provider.request(.searchMagazine(data: data)) { result in
             switch result {
             case .success(let response):

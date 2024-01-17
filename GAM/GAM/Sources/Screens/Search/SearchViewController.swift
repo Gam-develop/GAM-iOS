@@ -195,7 +195,10 @@ extension SearchViewController {
                 self.searchMagazine(keyword: sender.keyword)
             }
         case .portfolio:
-            self.searchPortfolio(keyword: sender.keyword)
+            self.requestSearchDesigner(data: sender.keyword) { result in
+                self.portfolioSearchResultData = result
+                self.searchPortfolio(keyword: sender.keyword)
+            }
         }
     }
 }
@@ -273,6 +276,7 @@ extension SearchViewController {
             })
         self.portfolioSearchResultDataSource.defaultRowAnimation = .automatic
         self.portfolioSearchResultTableView.dataSource = self.portfolioSearchResultDataSource
+        self.setEmptyViewVisibility(isOn: self.portfolioSearchResultData.count == 0)
     }
     
     private func setPortfolioSearchResultSnapshot() {
@@ -331,7 +335,11 @@ extension SearchViewController: UITextFieldDelegate {
                 self.magazineSearchResultData = result
                 self.searchMagazine(keyword: textField.text)
             }
-        case .portfolio: self.searchPortfolio(keyword: textField.text)
+        case .portfolio: 
+            self.requestSearchDesigner(data: textField.text ?? "") { result in
+                self.portfolioSearchResultData = result
+                self.searchPortfolio(keyword: textField.text)
+            }
         }
         return true
     }
@@ -347,6 +355,21 @@ extension SearchViewController {
             case .success(let responseData):
                 if let result = responseData as? SearchMagazineResponseDTO {
                     completion(result.toMagazineEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func requestSearchDesigner(data: String, completion: @escaping ([PortfolioSearchEntity]) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.searchDesigner(data: data) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? SearchDesignerResponseDTO {
+                    completion(result.toPortfolioSearchEntity())
                 }
             default:
                 self.showNetworkErrorAlert()

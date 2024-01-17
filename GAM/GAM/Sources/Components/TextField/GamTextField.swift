@@ -111,7 +111,6 @@ final class GamTextField: UITextField {
                 .withUnretained(self)
                 .observe(on: MainScheduler.asyncInstance)
                 .subscribe(onNext: { (owner, changedText) in
-                    owner.text?.removeLastSpace()
                     if changedText.count > 12 {
                         owner.deleteBackward()
                     }

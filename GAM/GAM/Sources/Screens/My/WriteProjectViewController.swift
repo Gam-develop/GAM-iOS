@@ -172,6 +172,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     
         self.projectTitleTextField.text = projectData.title
         self.projectDetailTextView.text = projectData.detail
+        self.projectTitleTextField.sendActions(for: .editingChanged)
         
         if self.projectData.detail == Text.projectDetailPlaceholder {
             self.projectDetailTextView.textColor = .gamGray3
@@ -185,20 +186,25 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     }
     
     private func setProjectTitleInfoLabel() {
-        self.projectTitleTextField.rx.observe(String.self, "text")
-            .distinctUntilChanged()
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { changedText in
-                guard let text = changedText else { return }
-                self.projectTitleInfoLabel.isHidden = text.count > 0
-                self.projectTitleCountLabel.text = "\(text.count)/\(Number.projectTitleLimit)"
-                self.isSaveButtonEnable[1] = text.count > 0
-                if text.count > 0 {
-                    self.projectTitleTextField.layer.borderWidth = 0
-                } else {
-                    self.projectTitleTextField.layer.borderWidth = 1
-                }
-        }).disposed(by: disposeBag)
+        self.projectTitleTextField.rx.text
+                .orEmpty
+                .distinctUntilChanged()
+                .withUnretained(self)
+                .observe(on: MainScheduler.asyncInstance)
+                .debug()
+                .subscribe(onNext: { (_, changedText) in
+                    self.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
+                    let trimText = changedText.trimmingCharacters(in: .whitespaces)
+                    self.isSaveButtonEnable[1] = !trimText.isEmpty
+                    if !changedText.isEmpty && trimText.isEmpty {
+                        self.projectTitleInfoLabel.isHidden = false
+                        self.projectTitleTextField.layer.borderWidth = 1
+                    } else {
+                        self.projectTitleInfoLabel.isHidden = true
+                        self.projectTitleTextField.layer.borderWidth = 0
+                    }
+                })
+                .disposed(by: disposeBag)
     }
     
     private func setProjectTitleClearButtonAction() {

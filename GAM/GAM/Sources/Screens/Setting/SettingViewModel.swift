@@ -54,12 +54,20 @@ final class SettingViewModel {
             .subscribe(onNext: { [weak self] in
 //                self?.logout()
                 print("로그아웃됨")
+//                self?.removeUserInfo()
+                print("토큰 지움")
+                self?.action.popViewController.onNext(())
             })
             .disposed(by: disposeBag)
     }
     
-    func deleteAccount() {
-        
+    // TODO: - 탈퇴 api 연결 (아직 서버 배포 안됨)
+    func deleteAccount() {}
+    
+    func removeUserInfo() {
+        UserDefaultsManager.userID = nil
+        UserDefaultsManager.accessToken = nil
+        UserDefaultsManager.refreshToken = nil
     }
 }
 

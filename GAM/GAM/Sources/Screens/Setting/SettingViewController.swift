@@ -66,7 +66,7 @@ final class SettingViewController: BaseViewController {
     }
     
     private func setBinding() {
-        viewModel.action.logout
+        viewModel.action.popViewController
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)

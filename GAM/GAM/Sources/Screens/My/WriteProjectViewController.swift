@@ -63,7 +63,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     
     private let projectTitleLabel: GamStarLabel = GamStarLabel(text: Text.projectTitle, font: .subhead4Bold)
     private let projectTitleTextField: GamTextField = {
-        let textField: GamTextField = GamTextField(type: .projectTitle)
+        let textField: GamTextField = GamTextField(type: .none)
         textField.setGamPlaceholder(Text.projectPlaceholder)
         return textField
     }()
@@ -192,6 +192,9 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
                 .asDriver(onErrorJustReturn: "")
                 .drive(with: self, onNext: { owner, changedText in
                     owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
+                    if changedText.count > 12 {
+                        owner.projectTitleTextField.deleteBackward()
+                    }
                     let trimText = changedText.trimmingCharacters(in: .whitespaces)
                     owner.isSaveButtonEnable[1] = !trimText.isEmpty
                     if !changedText.isEmpty && trimText.isEmpty {

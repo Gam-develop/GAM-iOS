@@ -52,11 +52,10 @@ final class SettingViewModel {
     private func setBinding() {
         self.action.logout
             .subscribe(onNext: { [weak self] in
-//                self?.logout()
-                print("로그아웃됨")
-//                self?.removeUserInfo()
-                print("토큰 지움")
-                self?.action.popViewController.onNext(())
+                self?.logout() {
+                    self?.removeUserInfo()
+                    self?.action.popViewController.onNext(())
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -74,11 +73,11 @@ final class SettingViewModel {
 // MARK: - Network
 
 extension SettingViewModel {
-    private func logout() {
+    private func logout(completion: @escaping () -> ()) {
         networkService.requestLogout(data: LogoutRequestDTO(accessToken: UserInfo.shared.accessToken, refreshToken: UserInfo.shared.accessToken)) { networkResult in
             switch networkResult {
             case .success(_):
-                break
+                completion()
             default:
                 self.action.showNetworkErrorAlert.onNext(())
             }

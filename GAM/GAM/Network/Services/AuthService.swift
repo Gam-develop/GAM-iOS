@@ -57,16 +57,6 @@ extension AuthService: AuthServiceProtocol {
     
     // [POST] 로그아웃
     
-//    func requestLogout(data: LogoutRequestDTO, completion: @escaping () -> ()) {
-//        self.provider.request(.requestLogout(data: data)) { result in
-//            switch result {
-//            case .success(_):
-//                completion()
-//            case .failure(let error):
-//                debugPrint(error)
-//            }
-//        }
-//    }
     func requestLogout(data: LogoutRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         self.provider.request(.requestLogout(data: data)) { result in
             switch result {

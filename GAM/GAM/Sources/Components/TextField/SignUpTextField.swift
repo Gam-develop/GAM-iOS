@@ -77,6 +77,7 @@ final class SignUpTextField: UITextField {
             .bind { (owner, _) in
                 owner.text = ""
                 owner.clearButton.isHidden = true
+                owner.sendActions(for: .editingChanged)
             }
             .disposed(by: disposeBag)
     }

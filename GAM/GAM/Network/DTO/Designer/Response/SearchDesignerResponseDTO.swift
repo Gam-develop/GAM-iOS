@@ -24,7 +24,7 @@ extension SearchDesignerResponseDTO {
     func toPortfolioSearchEntity() -> [PortfolioSearchEntity] {
         return self.map { designerResponse in
             PortfolioSearchEntity(
-                id: designerResponse.userID,
+                userId: designerResponse.userID,
                 thumbnailImageURL: designerResponse.thumbNail,
                 title: designerResponse.title,
                 author: designerResponse.userName,

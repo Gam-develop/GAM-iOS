@@ -8,7 +8,7 @@
 import Foundation
 
 struct BrowseDesignerEntity {
-    let id: Int
+    let userId: Int
     let thumbnailImageURL: String
     let majorProjectTitle: String
     let name: String
@@ -17,8 +17,8 @@ struct BrowseDesignerEntity {
     var isScrap: Bool
     var visibilityCount: Int
     
-    init(id: Int, thumbnailImageURL: String, majorProjectTitle: String, name: String, info: String, tags: [Int], isScrap: Bool, visibilityCount: Int) {
-        self.id = id
+    init(userId: Int, thumbnailImageURL: String, majorProjectTitle: String, name: String, info: String, tags: [Int], isScrap: Bool, visibilityCount: Int) {
+        self.userId = userId
         self.thumbnailImageURL = thumbnailImageURL
         self.majorProjectTitle = majorProjectTitle
         self.name = name

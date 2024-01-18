@@ -55,7 +55,7 @@ extension GetBrowseDesignerResponseDTO {
     func toBrowseDesignerEntity() -> [BrowseDesignerEntity] {
         return self.map { designerResponse in
             BrowseDesignerEntity(
-                id: designerResponse.userInfo.userID,
+                userId: designerResponse.userInfo.userID,
                 thumbnailImageURL: designerResponse.workInfo.photoURL,
                 majorProjectTitle: designerResponse.workInfo.workTitle,
                 name: designerResponse.userInfo.userName,

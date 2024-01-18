@@ -26,7 +26,7 @@ extension GetScrapDesignerResponseDTO {
     func toBrowseDesignerScrapEntity() -> [BrowseDesignerScrapEntity] {
         return self.map { designerResponse in
             BrowseDesignerScrapEntity(
-                id: designerResponse.userID,
+                userId: designerResponse.userID,
                 thumbnailImageURL: designerResponse.userThumbNail,
                 name: designerResponse.userName,
                 isScrap: true

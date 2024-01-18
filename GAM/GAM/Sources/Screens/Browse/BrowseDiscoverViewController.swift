@@ -108,7 +108,7 @@ extension BrowseDiscoverViewController: UICollectionViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.designers[indexPath.row].isScrap {
-                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].userId ?? 0, currentScrapStatus: bool)) {
                     self?.designers[indexPath.row].isScrap = !bool
                     cell.scrapButton.isSelected = !bool
                 }
@@ -122,7 +122,7 @@ extension BrowseDiscoverViewController: UICollectionViewDataSource {
 
 extension BrowseDiscoverViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(UserViewController(userID: self.designers[indexPath.row].id), animated: true)
+        self.navigationController?.pushViewController(UserViewController(userID: self.designers[indexPath.row].userId), animated: true)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity:CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

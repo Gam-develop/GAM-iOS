@@ -19,6 +19,7 @@ final class SignUpUsernameViewController: BaseViewController {
 """
         static let wrongUsername = "한글, 영문, 숫자만 입력 가능합니다."
         static let done = "입력 완료"
+        static let duplicatedUsername = "이미 사용 중인 닉네임입니다."
     }
     
     // MARK: UIComponents
@@ -110,13 +111,13 @@ final class SignUpUsernameViewController: BaseViewController {
             .distinctUntilChanged()
             .subscribe(onNext: { changedText in
                 self.countLabel.text = "\(changedText.count)/5"
+                self.infoLabel.text = Text.wrongUsername
                 if changedText.count > 0 {
                     let regex = "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9]{0,5}"
                     if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
                         self.textField.setUnderlineColor(isCorrect: true)
                         self.infoLabel.isHidden = true
                         self.doneButton.isEnabled = true
-                        SignUpInfo.shared.username = changedText
                     } else {
                         self.textField.setUnderlineColor(isCorrect: false)
                         self.infoLabel.isHidden = false
@@ -149,7 +150,18 @@ final class SignUpUsernameViewController: BaseViewController {
     
     private func setDoneButtonAction() {
         self.doneButton.setAction { [weak self] in
-            self?.navigationController?.pushViewController(SignUpTagViewController(), animated: true)
+            guard let username: String = self?.textField.text
+            else { return }
+            self?.checkUsernameDuplicated(username: username, completion: { isDuplicated in
+                self?.infoLabel.isHidden = !isDuplicated
+                self?.doneButton.isEnabled = !isDuplicated
+                if isDuplicated {
+                    self?.infoLabel.text = Text.duplicatedUsername
+                } else {
+                    SignUpInfo.shared.username = username
+                    self?.navigationController?.pushViewController(SignUpTagViewController(), animated: true)
+                }
+            })
         }
     }
     

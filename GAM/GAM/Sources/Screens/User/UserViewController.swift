@@ -43,31 +43,14 @@ final class UserViewController: BaseViewController {
     }
     
     fileprivate var contentViewControllers = [UIViewController]()
-    private var profile: UserProfileEntity = UserProfileEntity(
-        userID: 1,
-        name: "정정빈",
-        isScrap: true,
-        info: "사용자의 행복을 추구하는 디자이너",
-        infoDetail:
-"""
-안녕하세요! 저는 삶을 다채롭게 만드는 브랜드 디자이너
-입니다.
-
-
-
-창의성, 미적 감각을 바탕으로 제품과 경험을 통해사람들의 삶을 더 아름답고 풍요롭게 만들어 나가고 있습니다. 브랜드의 가치와 메시지를 시각적으로 전달하여 고객들의 인상을 주는 것을 목표로 하고 있습니다.
-""",
-        tags: [1, 4],
-        email: "must4rdev@gmail.com")
-    
-    private var userID: Int = 0
+    private var profile: UserProfileEntity = .init(userID: .init(), name: .init(), isScrap: .init(), info: .init(), infoDetail: .init(), tags: .init(), email: .init())
     
     // MARK: Initializer
     
     init(userID: Int) {
         super.init(nibName: nil, bundle: nil)
         
-        self.userID = userID
+        self.profile.userID = userID
     }
     
     required init?(coder: NSCoder) {
@@ -116,8 +99,10 @@ final class UserViewController: BaseViewController {
     
     private func setScrapButtonAction() {
         self.navigationView.scrapButton.setAction { [weak self] in
-            // TODO: scrap request
-            self?.navigationView.scrapButton.isSelected.toggle()
+            guard let userProfile = self?.profile else { return }
+            self?.requestScrapDesigner(data: ScrapDesignerRequestDTO(targetUserId: userProfile.userID, currentScrapStatus: userProfile.isScrap)) {
+                self?.navigationView.scrapButton.isSelected.toggle()
+            }
         }
     }
     
@@ -131,25 +116,38 @@ final class UserViewController: BaseViewController {
     }
 }
 
+// MARK: - Method
+
+extension UserViewController {
+    private func fetchUserInfo() {
+        print(self.profile.userID)
+        self.getUserProfile(userId: self.profile.userID) { profile in
+            self.profile = profile
+            if let userProfileViewController = self.contentViewControllers[1] as? UserProfileViewController {
+                userProfileViewController.setData(profile: profile)
+            }
+            self.navigationView.setCenterLeftTitle(profile.name)
+            self.navigationView.scrapButton.isSelected = profile.isScrap
+        }
+    }
+}
+
 // MARK: - Network
 
 extension UserViewController {
-    
-    private func fetchUserInfo() {
-        self.getUserPortfolio()
-        self.getUserProfile()
-    }
-    
-    private func getUserPortfolio() {
-        
-    }
-    
-    private func getUserProfile() {
-        if let userProfileViewController = self.contentViewControllers[1] as? UserProfileViewController {
-            userProfileViewController.setData(profile: self.profile)
+    private func getUserProfile(userId: Int, completion: @escaping (UserProfileEntity) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.getUserProfile(data: GetUserProfileRequestDTO(userId: userId)) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? GetUserProfileResponseDTO {
+                    completion(result.toUserProfileEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
         }
-        self.navigationView.setCenterLeftTitle(self.profile.name)
-        self.navigationView.scrapButton.isSelected = self.profile.isScrap
     }
 }
 

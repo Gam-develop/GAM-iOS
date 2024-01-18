@@ -14,6 +14,7 @@ internal protocol DesignerServiceProtocol {
     func getBrowseDesigner(completion: @escaping (NetworkResult<Any>) -> (Void))
     func getScrapDesigner(completion: @escaping (NetworkResult<Any>) -> (Void))
     func searchDesigner(data: String, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getUserProfile(data: GetUserProfileRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class DesignerService: BaseService {
@@ -91,13 +92,29 @@ extension DesignerService: DesignerServiceProtocol {
     
     // [GET] 디자이너 검색
     
-    func searchDesigner(data: String,completion: @escaping (NetworkResult<Any>) -> (Void)) {
+    func searchDesigner(data: String, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         self.provider.request(.searchDesigner(data: data)) { result in
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = self.judgeStatus(by: statusCode, data, SearchDesignerResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 유저 프로필 조회
+    
+    func getUserProfile(data: GetUserProfileRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.getUserProfile(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, GetUserProfileResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

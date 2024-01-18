@@ -10,6 +10,7 @@ import Moya
 
 internal protocol UserServiceProtocol {
     func requestSignUp(data: SignUpRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func checkUsernameDuplicated(data: String, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class UserService: BaseService {
@@ -30,6 +31,22 @@ extension UserService: UserServiceProtocol {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = self.judgeStatus(by: statusCode, data, SocialLoginResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 닉네임 중복 검사
+    
+    func checkUsernameDuplicated(data: String, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.checkUsernameDuplicated(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, CheckUsernameDuplicatedResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

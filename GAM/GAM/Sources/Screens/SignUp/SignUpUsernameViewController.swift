@@ -176,6 +176,25 @@ final class SignUpUsernameViewController: BaseViewController {
     }
 }
 
+// MARK: - Network
+
+extension SignUpUsernameViewController {
+    private func checkUsernameDuplicated(username: String, completion: @escaping (Bool) -> ()) {
+        self.startActivityIndicator()
+        UserService.shared.checkUsernameDuplicated(data: username) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? CheckUsernameDuplicatedResponseDTO {
+                    completion(result.isDuplicated)
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+}
+
 // MARK: - UI
 
 extension SignUpUsernameViewController {

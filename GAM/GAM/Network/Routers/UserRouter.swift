@@ -10,6 +10,7 @@ import Moya
 
 enum UserRouter {
     case requestSignUp(data: SignUpRequestDTO)
+    case checkUsernameDuplicated(data: String)
 }
 
 extension UserRouter: TargetType {
@@ -22,6 +23,8 @@ extension UserRouter: TargetType {
         switch self {
         case .requestSignUp:
             return "/user/onboard"
+        case .checkUsernameDuplicated:
+            return "/user/name/check"
         }
     }
     
@@ -29,6 +32,8 @@ extension UserRouter: TargetType {
         switch self {
         case .requestSignUp:
             return .post
+        case .checkUsernameDuplicated:
+            return .get
         }
     }
     
@@ -41,6 +46,11 @@ extension UserRouter: TargetType {
                 "info": data.info
             ]
             return .requestParameters(parameters: body, encoding: JSONEncoding.prettyPrinted)
+        case .checkUsernameDuplicated(let data):
+            let body: [String: Any] = [
+                "userName": data
+            ]
+            return .requestParameters(parameters: body, encoding: URLEncoding.queryString)
         }
     }
     
@@ -51,8 +61,8 @@ extension UserRouter: TargetType {
                 "Content-Type": "application/json",
                 "Authorization": UserInfo.shared.accessToken
             ]
-//        default:
-//            return ["Content-Type": "application/json"]
+        default:
+            return ["Content-Type": "application/json"]
         }
     }
 }

@@ -102,6 +102,7 @@ final class UserViewController: BaseViewController {
             guard let userProfile = self?.profile else { return }
             self?.requestScrapDesigner(data: ScrapDesignerRequestDTO(targetUserId: userProfile.userID, currentScrapStatus: userProfile.isScrap)) {
                 self?.navigationView.scrapButton.isSelected.toggle()
+                self?.profile.isScrap.toggle()
             }
         }
     }
@@ -120,7 +121,12 @@ final class UserViewController: BaseViewController {
 
 extension UserViewController {
     private func fetchUserInfo() {
-        print(self.profile.userID)
+        self.getUserPortfolio(userId: self.profile.userID) { portfolio in
+            if let userProfileViewController = self.contentViewControllers[0] as? UserPortfolioViewController {
+                userProfileViewController.setData(portfolio: portfolio)
+            }
+        }
+        
         self.getUserProfile(userId: self.profile.userID) { profile in
             self.profile = profile
             if let userProfileViewController = self.contentViewControllers[1] as? UserProfileViewController {
@@ -142,6 +148,21 @@ extension UserViewController {
             case .success(let responseData):
                 if let result = responseData as? GetUserProfileResponseDTO {
                     completion(result.toUserProfileEntity())
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func getUserPortfolio(userId: Int, completion: @escaping (UserPortfolioEntity) -> ()) {
+        self.startActivityIndicator()
+        DesignerService.shared.getUserPortfolio(data: GetUserPortfolioRequestDTO(userId: userId)) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? GetUserPortfolioResponseDTO {
+                    completion(result.toUserPortfolioEntity())
                 }
             default:
                 self.showNetworkErrorAlert()

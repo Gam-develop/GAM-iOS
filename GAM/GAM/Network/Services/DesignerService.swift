@@ -15,6 +15,7 @@ internal protocol DesignerServiceProtocol {
     func getScrapDesigner(completion: @escaping (NetworkResult<Any>) -> (Void))
     func searchDesigner(data: String, completion: @escaping (NetworkResult<Any>) -> (Void))
     func getUserProfile(data: GetUserProfileRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getUserPortfolio(data: GetUserPortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class DesignerService: BaseService {
@@ -115,6 +116,23 @@ extension DesignerService: DesignerServiceProtocol {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = self.judgeStatus(by: statusCode, data, GetUserProfileResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 유저 포트폴리오 조회
+    
+    func getUserPortfolio(data: GetUserPortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.getUserPortfolio(data: data)) { result in
+            print(result)
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, GetUserPortfolioResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)

@@ -10,7 +10,7 @@ import Foundation
 struct UserProfileEntity {
     var userID: Int
     let name: String
-    let isScrap: Bool
+    var isScrap: Bool
     var info: String
     var infoDetail: String
     var tags: [TagEntity]

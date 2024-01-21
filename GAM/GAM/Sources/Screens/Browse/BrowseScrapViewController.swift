@@ -98,7 +98,7 @@ extension BrowseScrapViewController: UICollectionViewDataSource {
         cell.scrapButton.removeTarget(nil, action: nil, for: .allTouchEvents)
         cell.scrapButton.setAction { [weak self] in
             if let bool = self?.designers[indexPath.row].isScrap {
-                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
+                self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].userId ?? 0, currentScrapStatus: bool)) {
                     self?.designers[indexPath.row].isScrap = !bool
                     cell.scrapButton.isSelected = !bool
                 }
@@ -123,7 +123,8 @@ extension BrowseScrapViewController: UICollectionViewDataSource {
 
 extension BrowseScrapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        debugPrint(indexPath, "selected")
+        let portfolioDetailViewController: BaseViewController = UserViewController(userID: self.designers[indexPath.row].userId)
+        self.navigationController?.pushViewController(portfolioDetailViewController, animated: true)
     }
 }
 

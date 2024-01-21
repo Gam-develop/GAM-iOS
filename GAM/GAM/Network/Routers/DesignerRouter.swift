@@ -14,6 +14,8 @@ enum DesignerRouter {
     case getBrowseDesigner
     case getScrapDesigner
     case searchDesigner(data: String)
+    case getUserProfile(data: GetUserProfileRequestDTO)
+    case getUserPortfolio(data: GetUserPortfolioRequestDTO)
 }
 
 extension DesignerRouter: TargetType {
@@ -34,12 +36,16 @@ extension DesignerRouter: TargetType {
             return "/user/scraps"
         case .searchDesigner:
             return "/user/search"
+        case .getUserProfile:
+            return "/user/detail/profile"
+        case .getUserPortfolio(let data):
+            return "/user/portfolio/\(data.userId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .searchDesigner:
+        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .searchDesigner, .getUserProfile, .getUserPortfolio:
             return .get
         case .requestScrapDesigner:
             return .post
@@ -48,7 +54,7 @@ extension DesignerRouter: TargetType {
     
     var task: Task {
         switch self {
-        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner:
+        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .getUserPortfolio:
             return .requestPlain
         case .requestScrapDesigner(let data):
             return .requestJSONEncodable(data)
@@ -57,6 +63,11 @@ extension DesignerRouter: TargetType {
                 "keyword": data
             ]
             return .requestParameters(parameters: body, encoding: URLEncoding.queryString)
+        case .getUserProfile(let data):
+            let query: [String: Any] = [
+                "userId": data.userId
+            ]
+            return .requestParameters(parameters: query, encoding: URLEncoding.queryString)
         }
     }
     

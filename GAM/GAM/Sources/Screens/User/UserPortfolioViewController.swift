@@ -37,21 +37,7 @@ final class UserPortfolioViewController: BaseViewController {
     // MARK: Properties
     
     private var superViewController: UserViewController?
-    private var portfolio: UserPortfolioEntity = .init(
-        id: 1,
-        behanceURL: "",
-        instagramURL: "https://instagram.com/1v11aby",
-        notionURL: "",
-        projects: [
-            .init(id: 1, thumbnailImageURL: "", title: "L’ESPACE", detail: ""),
-            .init(id: 2, thumbnailImageURL: "", title: "L’ESPACE", detail: "학교에서는 받는 교육 외에, 교외 팀플을 통해서 학교에서 받는 교육과 스타일을 깨고자 외부에서 프로젝트를."),
-            .init(id: 3, thumbnailImageURL: "", title: "열두글자열두글자열두글자", detail: "")
-        ]
-    ) {
-        didSet {
-            self.emptyView.isHidden = !self.portfolio.projects.isEmpty
-        }
-    }
+    private var portfolio: UserPortfolioEntity = .init(id: .init(), behanceURL: .init(), instagramURL: .init(), notionURL: .init(), projects: [])
     
     // MARK: Initializer
     
@@ -75,6 +61,18 @@ final class UserPortfolioViewController: BaseViewController {
     }
     
     // MARK: Methods
+    
+    func setData(portfolio: UserPortfolioEntity) {
+        self.portfolio = portfolio
+        self.portfolioTableView.reloadData()
+        self.setEmptyView()
+    }
+    
+    private func setEmptyView() {
+        self.emptyView.isHidden = !self.portfolio.projects.isEmpty
+        self.portfolioTableView.isHidden = self.portfolio.projects.isEmpty
+    }
+
     
     private func setPortfolioTableView() {
         self.portfolioTableView.dataSource = self

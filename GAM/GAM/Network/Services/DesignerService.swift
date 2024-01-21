@@ -127,7 +127,6 @@ extension DesignerService: DesignerServiceProtocol {
     
     func getUserPortfolio(data: GetUserPortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         self.provider.request(.getUserPortfolio(data: data)) { result in
-            print(result)
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode

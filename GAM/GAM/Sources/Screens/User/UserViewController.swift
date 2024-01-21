@@ -115,11 +115,7 @@ final class UserViewController: BaseViewController {
             )
         }
     }
-}
-
-// MARK: - Method
-
-extension UserViewController {
+    
     private func fetchUserInfo() {
         self.getUserPortfolio(userId: self.profile.userID) { portfolio in
             if let userProfileViewController = self.contentViewControllers[0] as? UserPortfolioViewController {

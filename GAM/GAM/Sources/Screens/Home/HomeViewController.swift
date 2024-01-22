@@ -186,7 +186,7 @@ extension HomeViewController {
     
     private func getPopularDesigner(completion: @escaping ([PopularDesignerEntity]) -> ()) {
         self.startActivityIndicator()
-        DesignerService.shared.getPopularDesigner { networkResult in
+        UserService.shared.getPopularDesigner { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? PopularDesignerResponseDTO {

@@ -1,5 +1,5 @@
 //
-//  ImageUrlRequestDTO.swift
+//  GetImageUrlRequestDTO.swift
 //  GAM
 //
 //  Created by Juhyeon Byun on 1/9/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageUrlRequestDTO: Encodable {
+struct GetImageUrlRequestDTO: Encodable {
     let imageName: String
     
     init(imageName: String) {

@@ -369,7 +369,7 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
 private extension EditProfileViewController {
     private func updateProfile(userInfo: String, userDetail: String, email: String, tags: [Int], completion: @escaping (UserProfileEntity) -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.updateProfile(data: UpdateProfileRequestDTO(userInfo: userInfo, userDetail: userDetail, email: email, tags: tags)) { networkResult in
+        UserService.shared.updateProfile(data: UpdateMyProfileRequestDTO(userInfo: userInfo, userDetail: userDetail, email: email, tags: tags)) { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? UpdateProfileResponseDTO {

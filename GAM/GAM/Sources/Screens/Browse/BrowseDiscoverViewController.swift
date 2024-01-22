@@ -144,7 +144,7 @@ extension BrowseDiscoverViewController: UICollectionViewDelegateFlowLayout {
 extension BrowseDiscoverViewController {
     private func getBrowseDesigner(completion: @escaping ([BrowseDesignerEntity]) -> ()) {
         self.startActivityIndicator()
-        DesignerService.shared.getBrowseDesigner { networkResult in
+        UserService.shared.getBrowseDesigner { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? GetBrowseDesignerResponseDTO {

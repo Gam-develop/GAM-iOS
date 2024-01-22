@@ -344,7 +344,7 @@ extension WriteProjectViewController: UITextViewDelegate {
 private extension WriteProjectViewController {
     private func createPortfolio(image: String, title: String, detail: String, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.createPortfolio(data: CreatePortfolioRequestDTO(image: image, title: title, detail: detail)) { networkResult in
+        UserService.shared.createPortfolio(data: CreatePortfolioRequestDTO(image: image, title: title, detail: detail)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()
@@ -355,12 +355,12 @@ private extension WriteProjectViewController {
         }
     }
     
-    private func getImageUrl(completion: @escaping (ImageUrlResponseDTO) -> ()) {
+    private func getImageUrl(completion: @escaping (GetImageUrlResponseDTO) -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.getImageUrl(data: ImageUrlRequestDTO(imageName: "gam.jpeg")) { networkResult in
+        UserService.shared.getImageUrl(data: GetImageUrlRequestDTO(imageName: "gam.jpeg")) { networkResult in
             switch networkResult {
             case .success(let responseData):
-                if let result = responseData as? ImageUrlResponseDTO {
+                if let result = responseData as? GetImageUrlResponseDTO {
                     completion(result)
                 }
             default:
@@ -371,14 +371,14 @@ private extension WriteProjectViewController {
     }
     
     private func uploadImage(uploadUrl: String, image: UIImage, completion: @escaping () -> ()) {
-        MypageService.shared.uploadImage(data: UploadImageRequestDTO(uploadUrl: uploadUrl, image: image)) {
+        UserService.shared.uploadImage(data: UploadImageRequestDTO(uploadUrl: uploadUrl, image: image)) {
             completion()
         }
     }
     
     private func updatePortfolio(workId: Int, image: String, title: String, detail: String, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.updatePortfolio(data: UpdatePortfolioRequestDTO(workId: workId, image: image, title: title, detail: detail)) { networkResult in
+        UserService.shared.updatePortfolio(data: UpdateMyPortfolioRequestDTO(workId: workId, image: image, title: title, detail: detail)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()

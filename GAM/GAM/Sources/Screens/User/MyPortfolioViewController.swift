@@ -291,10 +291,10 @@ extension MyPortfolioViewController: SendUpdateDelegate {
 extension MyPortfolioViewController {
     private func getPortfolio(completion: @escaping (UserPortfolioEntity) -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.getPortfolio { networkResult in
+        UserService.shared.getPortfolio { networkResult in
             switch networkResult {
             case .success(let responseData):
-                if let result = responseData as? PortfolioResponseDTO {
+                if let result = responseData as? GetMyPortfolioResponseDTO {
                     completion(result.toUserPortfolioEntity())
                 }
             default:
@@ -306,7 +306,7 @@ extension MyPortfolioViewController {
     
     private func setRepPortfolio(workId: Int, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.setRepPortfolio(data: SetPortfolioRequestDTO(workId: workId)) { networkResult in
+        UserService.shared.setRepPortfolio(data: SetMyPortfolioRequestDTO(workId: workId)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()
@@ -319,7 +319,7 @@ extension MyPortfolioViewController {
     
     private func deletePortfolio(workId: Int, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.deletePortfolio(data: SetPortfolioRequestDTO(workId: workId)) { networkResult in
+        UserService.shared.deletePortfolio(data: SetMyPortfolioRequestDTO(workId: workId)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()

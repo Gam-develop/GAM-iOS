@@ -133,7 +133,7 @@ extension BrowseScrapViewController: UICollectionViewDelegate {
 extension BrowseScrapViewController {
     private func getScrapDesigner(completion: @escaping ([BrowseDesignerScrapEntity]) -> ()) {
         self.startActivityIndicator()
-        DesignerService.shared.getScrapDesigner { networkResult in
+        UserService.shared.getScrapDesigner { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? GetScrapDesignerResponseDTO {

@@ -104,10 +104,10 @@ final class MyViewController: BaseViewController {
 extension MyViewController {
     private func getUserProfile(completion: @escaping (UserProfileEntity) -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.getProfile { networkResult in
+        UserService.shared.getProfile { networkResult in
             switch networkResult {
             case .success(let responseData):
-                if let result = responseData as? ProfileResponseDTO {
+                if let result = responseData as? GetMyProfileResponseDTO {
                     completion(result.toUserProfileEntity())
                 }
             default:

@@ -1,5 +1,5 @@
 //
-//  UpdateProfileRequestDTO.swift
+//  UpdateMyProfileRequestDTO.swift
 //  GAM
 //
 //  Created by Juhyeon Byun on 1/13/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UpdateProfileRequestDTO: Encodable {
+struct UpdateMyProfileRequestDTO: Encodable {
     let userInfo: String
     let userDetail: String
     let email: String

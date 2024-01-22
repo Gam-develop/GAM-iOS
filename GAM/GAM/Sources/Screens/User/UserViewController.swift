@@ -118,8 +118,8 @@ final class UserViewController: BaseViewController {
     
     private func fetchUserInfo() {
         self.getUserPortfolio(userId: self.profile.userID) { portfolio in
-            if let userProfileViewController = self.contentViewControllers[0] as? UserPortfolioViewController {
-                userProfileViewController.setData(portfolio: portfolio)
+            if let userPortfolioViewController = self.contentViewControllers[0] as? UserPortfolioViewController {
+                userPortfolioViewController.setData(portfolio: portfolio)
             }
         }
         
@@ -139,7 +139,7 @@ final class UserViewController: BaseViewController {
 extension UserViewController {
     private func getUserProfile(userId: Int, completion: @escaping (UserProfileEntity) -> ()) {
         self.startActivityIndicator()
-        DesignerService.shared.getUserProfile(data: GetUserProfileRequestDTO(userId: userId)) { networkResult in
+        UserService.shared.getUserProfile(data: GetUserProfileRequestDTO(userId: userId)) { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? GetUserProfileResponseDTO {
@@ -154,7 +154,7 @@ extension UserViewController {
     
     private func getUserPortfolio(userId: Int, completion: @escaping (UserPortfolioEntity) -> ()) {
         self.startActivityIndicator()
-        DesignerService.shared.getUserPortfolio(data: GetUserPortfolioRequestDTO(userId: userId)) { networkResult in
+        UserService.shared.getUserPortfolio(data: GetUserPortfolioRequestDTO(userId: userId)) { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? GetUserPortfolioResponseDTO {

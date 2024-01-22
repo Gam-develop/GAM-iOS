@@ -52,7 +52,7 @@ final class GamPopupViewController: BaseViewController {
         return button
     }()
     
-    private let writeButton: UIButton = {
+    let writeButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setTitle(Text.write, for: .normal)
         button.setTitleColor(.gamBlack, for: .normal)

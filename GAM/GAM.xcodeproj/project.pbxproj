@@ -55,6 +55,7 @@
 		FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D582A9662C300EA313A /* DesignerRouter.swift */; };
 		FF6E2D5B2A9662FF00EA313A /* DesignerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */; };
 		FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */; };
+		FF83FD9C2B5D68E80047748B /* GamPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */; };
 		FFA2AA572B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
@@ -245,6 +246,7 @@
 		FF6E2D582A9662C300EA313A /* DesignerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerRouter.swift; sourceTree = "<group>"; };
 		FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerService.swift; sourceTree = "<group>"; };
 		FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerResponseDTO.swift; sourceTree = "<group>"; };
+		FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamPopupViewController.swift; sourceTree = "<group>"; };
 		FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameDuplicatedResponseDTO.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				FFC733902A717C81008B5054 /* RepView.swift */,
 				FFC733942A78EA8A008B5054 /* ProfileInfoView.swift */,
 				FFD9DB022A7A6A600085B965 /* GamEmptyView.swift */,
+				FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1287,6 +1290,7 @@
 				FFD9DAF92A7A57430085B965 /* SettingButton.swift in Sources */,
 				FFEB5CB12B55AD4300953362 /* GetScrapDesignerResponseDTO.swift in Sources */,
 				FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */,
+				FF83FD9C2B5D68E80047748B /* GamPopupViewController.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
 				FF6E2D5B2A9662FF00EA313A /* DesignerService.swift in Sources */,

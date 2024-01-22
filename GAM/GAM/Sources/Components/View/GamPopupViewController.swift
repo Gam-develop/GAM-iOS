@@ -92,8 +92,15 @@ final class GamPopupViewController: BaseViewController {
         
         self.setLayout()
         self.setUI()
+        self.setCancelButtonAction()
     }
     
+    // MARK: Methods
+    
+    private func setCancelButtonAction() {
+        self.cancelButton.setAction { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
 }
 

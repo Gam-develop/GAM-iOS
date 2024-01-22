@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */; };
+		847349912B58D794001DE9E1 /* GetUserProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */; };
+		847349932B58D828001DE9E1 /* GetUserProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */; };
+		847CF74E2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF74D2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift */; };
+		847CF7502B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */; };
 		848403C92B514A2C009249E3 /* ProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */; };
 		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
 		84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */; };
@@ -200,6 +204,10 @@
 /* Begin PBXFileReference section */
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequestDTO.swift; sourceTree = "<group>"; };
+		847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileResponseDTO.swift; sourceTree = "<group>"; };
+		847CF74D2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseDTO.swift; sourceTree = "<group>"; };
 		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLinkRequestDTO.swift; sourceTree = "<group>"; };
@@ -562,6 +570,8 @@
 				FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */,
 				FFEB5CB22B562F8300953362 /* GetBrowseDesignerResponseDTO.swift */,
 				FFC8324D2B566D4200825ADB /* SearchDesignerResponseDTO.swift */,
+				847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */,
+				847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1083,6 +1093,8 @@
 			isa = PBXGroup;
 			children = (
 				FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */,
+				847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */,
+				847CF74D2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1205,11 +1217,13 @@
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */,
 				FF6BBEA02B5ED8F6002196B3 /* GamUpdatePopupViewController.swift in Sources */,
+				847CF74E2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift in Sources */,
 				FFCDF8782A5BC0FD00C731A3 /* GamSearchTextField.swift in Sources */,
 				FF0FA6132A6D976900482841 /* PortfolioSearchEntity.swift in Sources */,
 				FFD9DB072A7A8ED80085B965 /* AddContactURLViewController.swift in Sources */,
 				FFCDF8712A5B198200C731A3 /* MagazineScrapViewController.swift in Sources */,
 				FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */,
+				847349932B58D828001DE9E1 /* GetUserProfileResponseDTO.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
@@ -1280,6 +1294,7 @@
 				FFA94D232A4F1D84009B034F /* NetworkLoggerPlugin.swift in Sources */,
 				FF2E86AF2AA2BE1700258D75 /* ScrapMagazineDTO.swift in Sources */,
 				FFA707072A57186C003DF6A0 /* SignUpInfo.swift in Sources */,
+				847349912B58D794001DE9E1 /* GetUserProfileRequestDTO.swift in Sources */,
 				FFD9DB0B2A7A9D550085B965 /* ContactURLType.swift in Sources */,
 				FF6CC0242A95032900B24C94 /* GamURLEntity.swift in Sources */,
 				FFA94D1A2A4F1D2D009B034F /* APIConstants.swift in Sources */,
@@ -1320,6 +1335,7 @@
 				FFD9DAF72A79668E0085B965 /* ToastMessageType.swift in Sources */,
 				FFD9DAFB2A7A58C10085B965 /* MyPortfolioViewController.swift in Sources */,
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
+				847CF7502B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift in Sources */,
 				FFEB5CB32B562F8300953362 /* GetBrowseDesignerResponseDTO.swift in Sources */,
 				FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,

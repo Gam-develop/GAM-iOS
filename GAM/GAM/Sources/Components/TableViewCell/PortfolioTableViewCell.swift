@@ -56,20 +56,20 @@ class PortfolioTableViewCell: UITableViewCell {
         
         self.underlineView.isHidden = data.detail.count == 0
         
-        if data.detail.count == 0 {
-            self.detailLabel.snp.remakeConstraints { make in
-                make.top.equalTo(self.repView.snp.bottom)
-                make.left.right.equalToSuperview().inset(16)
-                make.height.equalTo(0)
-                make.bottom.equalToSuperview().inset(24)
-            }
-        } else {
-            self.detailLabel.snp.remakeConstraints { make in
-                make.top.equalTo(self.underlineView.snp.bottom).offset(8)
-                make.left.right.equalToSuperview().inset(16)
-                make.bottom.equalToSuperview().inset(24)
-            }
-        }
+//        if data.detail.count == 0 {
+//            self.detailLabel.snp.remakeConstraints { make in
+//                make.top.equalTo(self.repView.snp.bottom)
+//                make.left.right.equalToSuperview().inset(16)
+//                make.height.equalTo(0)
+//                make.bottom.equalToSuperview().inset(24)
+//            }
+//        } else {
+//            self.detailLabel.snp.remakeConstraints { make in
+//                make.top.equalTo(self.underlineView.snp.bottom).offset(8)
+//                make.left.right.equalToSuperview().inset(16)
+//                make.bottom.equalToSuperview().inset(24)
+//            }
+//        }
     }
     
     private func setUI() {

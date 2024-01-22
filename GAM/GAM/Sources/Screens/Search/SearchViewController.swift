@@ -75,10 +75,7 @@ final class SearchViewController: BaseViewController {
     
     private var recentSearchData: [RecentSearchEntity] = []
     private var magazineSearchResultData: [MagazineEntity] = []
-    private var portfolioSearchResultData: [PortfolioSearchEntity] = [
-        .init(id: 0, thumbnailImageURL: "", title: "L’ESPACE", author: "최가연", visibilityCount: 1200),
-        .init(id: 0, thumbnailImageURL: "", title: "SPACE Tour", author: "space", visibilityCount: 12020)
-    ]
+    private var portfolioSearchResultData: [PortfolioSearchEntity] = []
     
     // MARK: Initializer
     
@@ -320,7 +317,7 @@ extension SearchViewController: UITableViewDelegate {
             let magazineDetailViewController: MagazineDetailViewController = MagazineDetailViewController(url: self.magazineSearchResultData[indexPath.row].url)
             self.navigationController?.pushViewController(magazineDetailViewController, animated: true)
         } else {
-            let portfolioDetailViewController: BaseViewController = BaseViewController()
+            let portfolioDetailViewController: BaseViewController = UserViewController(userID: self.portfolioSearchResultData[indexPath.row].userId)
             self.navigationController?.pushViewController(portfolioDetailViewController, animated: true)
         }
     }

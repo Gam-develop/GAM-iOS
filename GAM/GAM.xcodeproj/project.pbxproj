@@ -15,6 +15,9 @@
 		847CF7502B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */; };
 		848403C92B514A2C009249E3 /* GetMyProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848403C82B514A2C009249E3 /* GetMyProfileResponseDTO.swift */; };
 		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
+		84975BE32B5FFF5200F903E7 /* SecessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84975BE22B5FFF5200F903E7 /* SecessionViewController.swift */; };
+		84975BE52B5FFF5A00F903E7 /* SecessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84975BE42B5FFF5A00F903E7 /* SecessionViewModel.swift */; };
+		84975BE72B600D3D00F903E7 /* SecessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84975BE62B600D3D00F903E7 /* SecessionTableViewCell.swift */; };
 		84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */; };
 		84BBCBF62B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBCBF52B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift */; };
 		84BBCBF82B52CC900010F2AE /* UpdateProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */; };
@@ -206,6 +209,9 @@
 		847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		848403C82B514A2C009249E3 /* GetMyProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyProfileResponseDTO.swift; sourceTree = "<group>"; };
 		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		84975BE22B5FFF5200F903E7 /* SecessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionViewController.swift; sourceTree = "<group>"; };
+		84975BE42B5FFF5A00F903E7 /* SecessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionViewModel.swift; sourceTree = "<group>"; };
+		84975BE62B600D3D00F903E7 /* SecessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionTableViewCell.swift; sourceTree = "<group>"; };
 		84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLinkRequestDTO.swift; sourceTree = "<group>"; };
 		84BBCBF52B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyProfileRequestDTO.swift; sourceTree = "<group>"; };
 		84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResponseDTO.swift; sourceTree = "<group>"; };
@@ -407,6 +413,8 @@
 			children = (
 				84DD77932B5436F3008B297F /* SettingViewController.swift */,
 				84DD779F2B5598A7008B297F /* SettingViewModel.swift */,
+				84975BE22B5FFF5200F903E7 /* SecessionViewController.swift */,
+				84975BE42B5FFF5A00F903E7 /* SecessionViewModel.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -969,6 +977,7 @@
 				FFD9DAFE2A7A5DA50085B965 /* MyPortfolioTableViewCell.swift */,
 				FFD9DB002A7A64BF0085B965 /* AddPortfolioTableViewCell.swift */,
 				84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */,
+				84975BE62B600D3D00F903E7 /* SecessionTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1198,6 +1207,7 @@
 				FFCDF87C2A5BE56600C731A3 /* RecentSearchTableViewCell.swift in Sources */,
 				FFEB5CA72B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift in Sources */,
 				FFD9DB052A7A6C420085B965 /* GamRoundedButton.swift in Sources */,
+				84975BE52B5FFF5A00F903E7 /* SecessionViewModel.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */,
 				FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */,
@@ -1253,11 +1263,13 @@
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
 				FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */,
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
+				84975BE72B600D3D00F903E7 /* SecessionTableViewCell.swift in Sources */,
 				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
 				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
 				FFC733912A717C81008B5054 /* RepView.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
 				FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */,
+				84975BE32B5FFF5200F903E7 /* SecessionViewController.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,
 				FFA94CDC2A4F0966009B034F /* BaseNavigationController.swift in Sources */,
 				84BBCBF62B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift in Sources */,

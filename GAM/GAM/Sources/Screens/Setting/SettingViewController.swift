@@ -32,12 +32,6 @@ final class SettingViewController: BaseViewController {
         view.setCenterTitle("설정")
         return view
     }()
-    
-    private let underLineView: UIView = {
-        let view: UIView = UIView()
-        view.backgroundColor = .gamBlack
-        return view
-    }()
 
     // MARK: Life Cycle
     
@@ -151,8 +145,7 @@ extension SettingViewController: UITableViewDelegate {
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
             present(alert, animated: true, completion: nil)
         case "탈퇴하기":
-            // TODO: - 탈퇴하기 처리 필요
-            self.navigationController?.pushViewController(BaseViewController(), animated: true)
+            self.navigationController?.pushViewController(SecessionViewController(viewModel: SecessionViewModel()), animated: true)
         default:
             break
         }

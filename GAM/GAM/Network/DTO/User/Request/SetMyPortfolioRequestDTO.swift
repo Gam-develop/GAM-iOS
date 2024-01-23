@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SetPortfolioRequestDTO: Encodable {
+struct SetMyPortfolioRequestDTO: Encodable {
     let workId: Int
     
     init(workId: Int) {

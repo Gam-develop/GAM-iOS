@@ -368,7 +368,7 @@ extension SearchViewController {
     
     private func requestSearchDesigner(data: String, completion: @escaping ([PortfolioSearchEntity]) -> ()) {
         self.startActivityIndicator()
-        DesignerService.shared.searchDesigner(data: data) { networkResult in
+        UserService.shared.searchDesigner(data: data) { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? SearchDesignerResponseDTO {

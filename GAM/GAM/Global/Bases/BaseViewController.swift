@@ -320,7 +320,7 @@ extension BaseViewController {
     
     func requestScrapDesigner(data: ScrapDesignerRequestDTO, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        DesignerService.shared.requestScrapDesigner(data: data) { networkResult in
+        UserService.shared.requestScrapDesigner(data: data) { networkResult in
             switch networkResult {
             case .success:
                 completion()

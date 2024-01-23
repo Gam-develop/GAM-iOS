@@ -161,7 +161,7 @@ final class AddContactURLViewController: BaseViewController {
 extension AddContactURLViewController {
     private func updateLink(contactUrlType: ContactURLType, link: String, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        MypageService.shared.updateLink(contactUrlType: contactUrlType, data: UpdateLinkRequestDTO(link: link)) { networkResult in
+        UserService.shared.updateLink(contactUrlType: contactUrlType, data: UpdateLinkRequestDTO(link: link)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()

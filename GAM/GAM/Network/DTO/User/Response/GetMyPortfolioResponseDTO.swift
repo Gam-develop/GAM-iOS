@@ -1,5 +1,5 @@
 //
-//  PortfolioResponseDTO.swift
+//  GetMyPortfolioResponseDTO.swift
 //  GAM
 //
 //  Created by Juhyeon Byun on 1/8/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PortfolioResponseDTO: Decodable {
+struct GetMyPortfolioResponseDTO: Decodable {
     let behanceLink: String
     let instagramLink: String
     let notionLink: String
@@ -19,7 +19,7 @@ struct Work: Decodable {
     let workThumbNail, workTitle, workDetail: String
 }
 
-extension PortfolioResponseDTO {
+extension GetMyPortfolioResponseDTO {
     
     func toUserPortfolioEntity() -> UserPortfolioEntity {
         let projects = works.map { work in

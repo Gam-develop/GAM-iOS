@@ -8,28 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
-		845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */; };
+		845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */; };
 		847349912B58D794001DE9E1 /* GetUserProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */; };
 		847349932B58D828001DE9E1 /* GetUserProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */; };
 		847CF74E2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF74D2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift */; };
 		847CF7502B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */; };
-		848403C92B514A2C009249E3 /* ProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */; };
+		848403C92B514A2C009249E3 /* GetMyProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848403C82B514A2C009249E3 /* GetMyProfileResponseDTO.swift */; };
 		84903EE62B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */; };
 		84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */; };
-		84BBCBF62B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBCBF52B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift */; };
+		84BBCBF62B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBCBF52B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift */; };
 		84BBCBF82B52CC900010F2AE /* UpdateProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */; };
-		84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */; };
-		84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */; };
+		84C03A092B4D0D7A0058EC79 /* GetImageUrlRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A082B4D0D7A0058EC79 /* GetImageUrlRequestDTO.swift */; };
+		84C03A0B2B4D16F80058EC79 /* GetImageUrlResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0A2B4D16F80058EC79 /* GetImageUrlResponseDTO.swift */; };
 		84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */; };
 		84DD77942B5436F3008B297F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD77932B5436F3008B297F /* SettingViewController.swift */; };
 		84DD779C2B5591F7008B297F /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */; };
 		84DD77A02B5598A7008B297F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD779F2B5598A7008B297F /* SettingViewModel.swift */; };
 		84E311AE2B56D92D00C981B7 /* LogoutRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E311AD2B56D92D00C981B7 /* LogoutRequestDTO.swift */; };
-		84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */; };
-		84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9952B4BFFF9009C4C15 /* MypageService.swift */; };
-		84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9972B4C0042009C4C15 /* MypageRouter.swift */; };
-		84E6F99B2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */; };
-		84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */; };
+		84E6F9942B4BF9CA009C4C15 /* GetMyPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F9932B4BF9CA009C4C15 /* GetMyPortfolioResponseDTO.swift */; };
+		84E6F99B2B4C0BE7009C4C15 /* SetMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99A2B4C0BE7009C4C15 /* SetMyPortfolioRequestDTO.swift */; };
+		84E6F99D2B4C24EE009C4C15 /* SetDefaultMyPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6F99C2B4C24EE009C4C15 /* SetDefaultMyPortfolioResponseDTO.swift */; };
 		84E79E212B5663A000C80DB7 /* SettingTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E79E202B5663A000C80DB7 /* SettingTableHeaderView.swift */; };
 		FF0413592A62B31700BE65F1 /* BrowseDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */; };
 		FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */; };
@@ -56,8 +54,6 @@
 		FF6E2D512A965D8100EA313A /* MagazineRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D502A965D8100EA313A /* MagazineRouter.swift */; };
 		FF6E2D532A965EAA00EA313A /* MagazineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D522A965EAA00EA313A /* MagazineService.swift */; };
 		FF6E2D572A965F7800EA313A /* MagazineResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */; };
-		FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D582A9662C300EA313A /* DesignerRouter.swift */; };
-		FF6E2D5B2A9662FF00EA313A /* DesignerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */; };
 		FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */; };
 		FFA2AA572B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
@@ -201,28 +197,26 @@
 
 /* Begin PBXFileReference section */
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
-		845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequestDTO.swift; sourceTree = "<group>"; };
 		847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileResponseDTO.swift; sourceTree = "<group>"; };
 		847CF74D2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPortfolioResponseDTO.swift; sourceTree = "<group>"; };
-		848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseDTO.swift; sourceTree = "<group>"; };
+		848403C82B514A2C009249E3 /* GetMyProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyProfileResponseDTO.swift; sourceTree = "<group>"; };
 		84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLinkRequestDTO.swift; sourceTree = "<group>"; };
-		84BBCBF52B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequestDTO.swift; sourceTree = "<group>"; };
+		84BBCBF52B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyProfileRequestDTO.swift; sourceTree = "<group>"; };
 		84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResponseDTO.swift; sourceTree = "<group>"; };
-		84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRequestDTO.swift; sourceTree = "<group>"; };
-		84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlResponseDTO.swift; sourceTree = "<group>"; };
+		84C03A082B4D0D7A0058EC79 /* GetImageUrlRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageUrlRequestDTO.swift; sourceTree = "<group>"; };
+		84C03A0A2B4D16F80058EC79 /* GetImageUrlResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageUrlResponseDTO.swift; sourceTree = "<group>"; };
 		84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageRequestDTO.swift; sourceTree = "<group>"; };
 		84DD77932B5436F3008B297F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		84DD779B2B5591F7008B297F /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		84DD779F2B5598A7008B297F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		84E311AD2B56D92D00C981B7 /* LogoutRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequestDTO.swift; sourceTree = "<group>"; };
-		84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioResponseDTO.swift; sourceTree = "<group>"; };
-		84E6F9952B4BFFF9009C4C15 /* MypageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageService.swift; sourceTree = "<group>"; };
-		84E6F9972B4C0042009C4C15 /* MypageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouter.swift; sourceTree = "<group>"; };
-		84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPortfolioRequestDTO.swift; sourceTree = "<group>"; };
-		84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPortfolioResponseDTO.swift; sourceTree = "<group>"; };
+		84E6F9932B4BF9CA009C4C15 /* GetMyPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyPortfolioResponseDTO.swift; sourceTree = "<group>"; };
+		84E6F99A2B4C0BE7009C4C15 /* SetMyPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMyPortfolioRequestDTO.swift; sourceTree = "<group>"; };
+		84E6F99C2B4C24EE009C4C15 /* SetDefaultMyPortfolioResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDefaultMyPortfolioResponseDTO.swift; sourceTree = "<group>"; };
 		84E79E202B5663A000C80DB7 /* SettingTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableHeaderView.swift; sourceTree = "<group>"; };
 		FF0413582A62B31700BE65F1 /* BrowseDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDiscoverViewController.swift; sourceTree = "<group>"; };
 		FF04135A2A62B32200BE65F1 /* BrowseScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseScrapViewController.swift; sourceTree = "<group>"; };
@@ -250,8 +244,6 @@
 		FF6E2D502A965D8100EA313A /* MagazineRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineRouter.swift; sourceTree = "<group>"; };
 		FF6E2D522A965EAA00EA313A /* MagazineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineService.swift; sourceTree = "<group>"; };
 		FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineResponseDTO.swift; sourceTree = "<group>"; };
-		FF6E2D582A9662C300EA313A /* DesignerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerRouter.swift; sourceTree = "<group>"; };
-		FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerService.swift; sourceTree = "<group>"; };
 		FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameDuplicatedResponseDTO.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
@@ -415,41 +407,6 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		84E6F9912B4BF97F009C4C15 /* Mypage */ = {
-			isa = PBXGroup;
-			children = (
-				84E6F9992B4C0B97009C4C15 /* Request */,
-				84E6F9922B4BF98D009C4C15 /* Response */,
-			);
-			path = Mypage;
-			sourceTree = "<group>";
-		};
-		84E6F9922B4BF98D009C4C15 /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				84E6F9932B4BF9CA009C4C15 /* PortfolioResponseDTO.swift */,
-				84E6F99C2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift */,
-				84C03A0A2B4D16F80058EC79 /* ImageUrlResponseDTO.swift */,
-				848403C82B514A2C009249E3 /* ProfileResponseDTO.swift */,
-				84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		84E6F9992B4C0B97009C4C15 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				84C03A082B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift */,
-				84E6F99A2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift */,
-				84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */,
-				84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */,
-				84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */,
-				845DB2AD2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift */,
-				84BBCBF52B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
 		FF2C14642AD41721008E3FF5 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,8 +423,6 @@
 				FF6CC0362A951E9F00B24C94 /* AuthService.swift */,
 				FF6CC0462A963FD500B24C94 /* UserService.swift */,
 				FF6E2D522A965EAA00EA313A /* MagazineService.swift */,
-				FF6E2D5A2A9662FF00EA313A /* DesignerService.swift */,
-				84E6F9952B4BFFF9009C4C15 /* MypageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -479,8 +434,6 @@
 				FF6CC0342A951E9900B24C94 /* AuthRouter.swift */,
 				FF6CC0442A963F3E00B24C94 /* UserRouter.swift */,
 				FF6E2D502A965D8100EA313A /* MagazineRouter.swift */,
-				FF6E2D582A9662C300EA313A /* DesignerRouter.swift */,
-				84E6F9972B4C0042009C4C15 /* MypageRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -549,32 +502,10 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
-		FF6E2D5C2A96634F00EA313A /* Designer */ = {
-			isa = PBXGroup;
-			children = (
-				FFEB5CA52B4E5F4300953362 /* Request */,
-				FF6E2D5D2A96635400EA313A /* Response */,
-			);
-			path = Designer;
-			sourceTree = "<group>";
-		};
-		FF6E2D5D2A96635400EA313A /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */,
-				FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */,
-				FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */,
-				FFEB5CB22B562F8300953362 /* GetBrowseDesignerResponseDTO.swift */,
-				FFC8324D2B566D4200825ADB /* SearchDesignerResponseDTO.swift */,
-				847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */,
-				847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
 		FFA2AA542B59054A00FCE598 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				FFEB5CA52B4E5F4300953362 /* Request */,
 				FFA2AA552B59054F00FCE598 /* Response */,
 			);
 			path = User;
@@ -584,6 +515,18 @@
 			isa = PBXGroup;
 			children = (
 				FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */,
+				FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */,
+				FFEB5CA82B4E60BA00953362 /* ScrapDesignerResponseDTO.swift */,
+				FFEB5CB02B55AD4300953362 /* GetScrapDesignerResponseDTO.swift */,
+				FFEB5CB22B562F8300953362 /* GetBrowseDesignerResponseDTO.swift */,
+				FFC8324D2B566D4200825ADB /* SearchDesignerResponseDTO.swift */,
+				847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */,
+				847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */,
+				84E6F9932B4BF9CA009C4C15 /* GetMyPortfolioResponseDTO.swift */,
+				84E6F99C2B4C24EE009C4C15 /* SetDefaultMyPortfolioResponseDTO.swift */,
+				84C03A0A2B4D16F80058EC79 /* GetImageUrlResponseDTO.swift */,
+				848403C82B514A2C009249E3 /* GetMyProfileResponseDTO.swift */,
+				84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -608,19 +551,6 @@
 				FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */,
 			);
 			path = Browse;
-			sourceTree = "<group>";
-		};
-		FFA706E02A4F2F72003DF6A0 /* My */ = {
-			isa = PBXGroup;
-			children = (
-				FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */,
-				FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */,
-				FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */,
-				FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */,
-				FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */,
-				FFD9DB0E2A7F7F6F0085B965 /* WriteProjectViewController.swift */,
-			);
-			path = My;
 			sourceTree = "<group>";
 		};
 		FFA706E12A4F301A003DF6A0 /* PagingTab */ = {
@@ -881,11 +811,9 @@
 			isa = PBXGroup;
 			children = (
 				FFA2AA542B59054A00FCE598 /* User */,
-				FF6E2D5C2A96634F00EA313A /* Designer */,
 				FF6E2D542A965F5800EA313A /* Magazine */,
 				FF6CC0382A951FA000B24C94 /* Auth */,
 				FF6CC02D2A950C7D00B24C94 /* Public */,
-				84E6F9912B4BF97F009C4C15 /* Mypage */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -939,7 +867,6 @@
 				FFA94D2D2A4F1E9D009B034F /* Home */,
 				FFA706DE2A4F2F65003DF6A0 /* Magazine */,
 				FFA706DF2A4F2F6C003DF6A0 /* Browse */,
-				FFA706E02A4F2F72003DF6A0 /* My */,
 				FFCDF8742A5B1E0300C731A3 /* Search */,
 				FFC7337F2A710B67008B5054 /* User */,
 				84DD77922B5436CC008B297F /* Setting */,
@@ -987,6 +914,12 @@
 				FFC733802A710B6C008B5054 /* UserViewController.swift */,
 				FFC733842A711472008B5054 /* UserPortfolioViewController.swift */,
 				FFC733862A71147A008B5054 /* UserProfileViewController.swift */,
+				FFA706ED2A4F39F3003DF6A0 /* MyViewController.swift */,
+				FFD9DAFA2A7A58C10085B965 /* MyPortfolioViewController.swift */,
+				FFD9DAFC2A7A58CA0085B965 /* MyProfileViewController.swift */,
+				FFD9DB062A7A8ED80085B965 /* AddContactURLViewController.swift */,
+				FFD9DB0C2A7E43880085B965 /* EditProfileViewController.swift */,
+				FFD9DB0E2A7F7F6F0085B965 /* WriteProjectViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1089,6 +1022,13 @@
 				FFEB5CA62B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift */,
 				847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */,
 				847CF74D2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift */,
+				84C03A082B4D0D7A0058EC79 /* GetImageUrlRequestDTO.swift */,
+				84E6F99A2B4C0BE7009C4C15 /* SetMyPortfolioRequestDTO.swift */,
+				84903EE52B4C350600BD1F1B /* CreatePortfolioRequestDTO.swift */,
+				84C03A0C2B4E40500058EC79 /* UploadImageRequestDTO.swift */,
+				84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */,
+				845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */,
+				84BBCBF52B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1201,13 +1141,13 @@
 				FF6CC03E2A9521C300B24C94 /* SocialLoginResponseDTO.swift in Sources */,
 				FFA94D012A4F1B61009B034F /* UINavigationController+.swift in Sources */,
 				84DD77A02B5598A7008B297F /* SettingViewModel.swift in Sources */,
-				84E6F99D2B4C24EE009C4C15 /* DefaultPortfolioResponseDTO.swift in Sources */,
+				84E6F99D2B4C24EE009C4C15 /* SetDefaultMyPortfolioResponseDTO.swift in Sources */,
 				FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */,
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */,
-				84E6F9942B4BF9CA009C4C15 /* PortfolioResponseDTO.swift in Sources */,
+				84E6F9942B4BF9CA009C4C15 /* GetMyPortfolioResponseDTO.swift in Sources */,
 				FFA94CE92A4F1A94009B034F /* UICollectionView+.swift in Sources */,
 				FF04135B2A62B32200BE65F1 /* BrowseScrapViewController.swift in Sources */,
 				847CF74E2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift in Sources */,
@@ -1218,7 +1158,7 @@
 				FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */,
 				847349932B58D828001DE9E1 /* GetUserProfileResponseDTO.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
-				845DB2AE2B504914007E7ED9 /* UpdatePortfolioRequestDTO.swift in Sources */,
+				845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,
@@ -1229,13 +1169,12 @@
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
 				FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */,
-				84E6F9982B4C0042009C4C15 /* MypageRouter.swift in Sources */,
 				FFC7338D2A7171A3008B5054 /* UserProfileEntity.swift in Sources */,
 				FFA706FB2A52827E003DF6A0 /* GamProgressBarView.swift in Sources */,
 				FFA706EA2A4F39E4003DF6A0 /* MagazineViewController.swift in Sources */,
 				FFD9DAFD2A7A58CA0085B965 /* MyProfileViewController.swift in Sources */,
 				FFA7070C2A584FC3003DF6A0 /* Tag.swift in Sources */,
-				848403C92B514A2C009249E3 /* ProfileResponseDTO.swift in Sources */,
+				848403C92B514A2C009249E3 /* GetMyProfileResponseDTO.swift in Sources */,
 				FFC733872A71147A008B5054 /* UserProfileViewController.swift in Sources */,
 				FFC7337E2A6FB90A008B5054 /* SelectedFilterTagView.swift in Sources */,
 				FFA94CCC2A4EFAE5009B034F /* HomeViewController.swift in Sources */,
@@ -1276,7 +1215,7 @@
 				FFCDF84E2A5A4AB300C731A3 /* Environment.swift in Sources */,
 				FFA94CD32A4F08D4009B034F /* ClassName.swift in Sources */,
 				FFC733832A71120B008B5054 /* MoreDefaultButton.swift in Sources */,
-				84C03A0B2B4D16F80058EC79 /* ImageUrlResponseDTO.swift in Sources */,
+				84C03A0B2B4D16F80058EC79 /* GetImageUrlResponseDTO.swift in Sources */,
 				FFC733932A76AAD0008B5054 /* PortfolioTableFooterView.swift in Sources */,
 				FFA94CD72A4F0902009B034F /* UserDefaultsManager.swift in Sources */,
 				FF6CC0452A963F3E00B24C94 /* UserRouter.swift in Sources */,
@@ -1304,18 +1243,16 @@
 				FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
-				FF6E2D5B2A9662FF00EA313A /* DesignerService.swift in Sources */,
 				FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */,
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
 				FFCDF8822A60E55D00C731A3 /* FilterButton.swift in Sources */,
 				FFCDF8642A5AB9FE00C731A3 /* MagazineDetailViewController.swift in Sources */,
 				FFC733912A717C81008B5054 /* RepView.swift in Sources */,
-				84E6F9962B4BFFF9009C4C15 /* MypageService.swift in Sources */,
 				FFA707032A5712C0003DF6A0 /* SignUpTagViewController.swift in Sources */,
 				FF0FA60F2A6D862300482841 /* BrowseScrapCollectionViewCell.swift in Sources */,
 				FFCDF86C2A5AFB4300C731A3 /* RecentMagazineTableHeaderView.swift in Sources */,
 				FFA94CDC2A4F0966009B034F /* BaseNavigationController.swift in Sources */,
-				84BBCBF62B52CB2C0010F2AE /* UpdateProfileRequestDTO.swift in Sources */,
+				84BBCBF62B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift in Sources */,
 				FFC8324E2B566D4200825ADB /* SearchDesignerResponseDTO.swift in Sources */,
 				FFA94D272A4F1E4A009B034F /* GamTabBarController.swift in Sources */,
 				FFC733892A716845008B5054 /* UserPortfolioEntity.swift in Sources */,
@@ -1329,14 +1266,13 @@
 				FFCDF8662A5ABBEA00C731A3 /* ShareButton.swift in Sources */,
 				847CF7502B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift in Sources */,
 				FFEB5CB32B562F8300953362 /* GetBrowseDesignerResponseDTO.swift in Sources */,
-				FF6E2D592A9662C300EA313A /* DesignerRouter.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */,
 				84E79E212B5663A000C80DB7 /* SettingTableHeaderView.swift in Sources */,
 				FF6E2D512A965D8100EA313A /* MagazineRouter.swift in Sources */,
-				84E6F99B2B4C0BE7009C4C15 /* SetPortfolioRequestDTO.swift in Sources */,
+				84E6F99B2B4C0BE7009C4C15 /* SetMyPortfolioRequestDTO.swift in Sources */,
 				FFA94CD52A4F08EE009B034F /* Message.swift in Sources */,
 				FFA94CF52A4F1AE2009B034F /* String+.swift in Sources */,
 				FFCDF8512A5A78CC00C731A3 /* MagazineTableView.swift in Sources */,
@@ -1356,7 +1292,7 @@
 				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
 				FF6CC0432A963E5F00B24C94 /* SignUpRequestDTO.swift in Sources */,
 				FF6CC0292A9506E500B24C94 /* PublicService.swift in Sources */,
-				84C03A092B4D0D7A0058EC79 /* ImageUrlRequestDTO.swift in Sources */,
+				84C03A092B4D0D7A0058EC79 /* GetImageUrlRequestDTO.swift in Sources */,
 				84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */,
 				FFA2AA572B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift in Sources */,
 				FFB6AB682B4C395D00695DE4 /* SearchMagazineResponseDTO.swift in Sources */,

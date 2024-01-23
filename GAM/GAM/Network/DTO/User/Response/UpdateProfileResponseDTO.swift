@@ -16,6 +16,12 @@ struct UpdateProfileResponseDTO: Decodable {
 
 extension UpdateProfileResponseDTO {
     func toUserProfileEntity() -> UserProfileEntity {
-        return UserProfileEntity(userID: 0, name: "", isScrap: false, info: userInfo, infoDetail: userDetail, tags: tags, email: email)
+        return UserProfileEntity(userID: 0,
+                                 name: "",
+                                 isScrap: false,
+                                 info: userInfo,
+                                 infoDetail: userDetail,
+                                 tags: tags,
+                                 email: email)
     }
 }

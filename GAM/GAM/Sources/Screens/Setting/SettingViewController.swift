@@ -67,13 +67,20 @@ final class SettingViewController: BaseViewController {
     
     private func setBinding() {
         viewModel.action.popViewController
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                self?.navigationController?.popToRootViewController(animated: true)
+            .asDriver(onErrorJustReturn: ())
+            .drive(with: self, onNext: { owner, _ in
+                owner.navigationController?.popToRootViewController(animated: true)
                 let signInViewController: BaseViewController = SignInViewController()
                 signInViewController.modalTransitionStyle = .crossDissolve
                 signInViewController.modalPresentationStyle = .fullScreen
-                self?.present(signInViewController, animated: true)
+                owner.present(signInViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.action.showNetworkErrorAlert
+            .asDriver(onErrorJustReturn: ())
+            .drive(with: self, onNext: { owner, _ in
+                owner.showNetworkErrorAlert()
             })
             .disposed(by: disposeBag)
     }

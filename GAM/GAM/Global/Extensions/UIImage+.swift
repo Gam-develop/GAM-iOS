@@ -71,6 +71,10 @@ extension UIImage {
     
     static let icnPhoto: UIImage = (UIImage(named: "icnPhoto") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let checkboxOn: UIImage = (UIImage(named: "checkboxOn") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let checkboxOff: UIImage = (UIImage(named: "checkboxOff") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     func resizedToGamSize() -> UIImage {
         return UIGraphicsImageRenderer(size: .init(width: 500, height: 500)).image { _ in
             draw(in: CGRect(origin: .zero, size: size))

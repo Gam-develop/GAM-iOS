@@ -18,6 +18,7 @@ final class GamUpdatePopupViewController: BaseViewController {
     
     private enum Number {
         static let radius = 16.0
+        static let buttonRadius = 4.0
     }
     
     // MARK: UIComponents
@@ -48,7 +49,7 @@ final class GamUpdatePopupViewController: BaseViewController {
         button.setTitleColor(.gamBlack, for: .normal)
         button.titleLabel?.font = .subhead2SemiBold
         button.setBackgroundColor(.gamYellow, for: .normal)
-        button.makeRounded(cornerRadius: 4)
+        button.makeRounded(cornerRadius: Number.buttonRadius)
         return button
     }()
     

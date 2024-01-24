@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             } else if let token = token {
                 print("FCM registration token: \(token)")
                 UserDefaultsManager.fcmDeviceToken = token
+                UserInfo.shared.deviceToken = token ?? "non-token"
             }
         }
         

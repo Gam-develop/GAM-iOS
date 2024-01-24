@@ -94,7 +94,7 @@ extension MagazineScrapViewController: UITableViewDataSource {
             if let bool = self?.magazines[indexPath.row].isScrap {
                 self?.requestScrapMagazine(data: .init(targetMagazineId: self?.magazines[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
                     cell.scrapButton.isSelected = !bool
-                    self?.fetchData()
+                    self?.magazines[indexPath.row].isScrap = !bool
                 }
             }
         }

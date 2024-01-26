@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 
 final class SettingViewModel {
@@ -34,8 +35,8 @@ final class SettingViewModel {
     struct Action {
         let logout = PublishSubject<Void>()
         let deleteAccount = PublishSubject<Void>()
-        let showNetworkErrorAlert = PublishSubject<Void>()
-        let popViewController = PublishSubject<Void>()
+        let showNetworkErrorAlert = PublishRelay<Void>()
+        let popViewController = PublishRelay<Void>()
     }
 
     let action = Action()
@@ -54,7 +55,7 @@ final class SettingViewModel {
             .subscribe(onNext: { [weak self] in
                 self?.logout() {
                     self?.removeUserInfo()
-                    self?.action.popViewController.onNext(())
+                    self?.action.popViewController.accept(())
                 }
             })
             .disposed(by: disposeBag)
@@ -79,7 +80,7 @@ extension SettingViewModel {
             case .success(_):
                 completion()
             default:
-                self.action.showNetworkErrorAlert.onNext(())
+                self.action.showNetworkErrorAlert.accept(())
             }
         }
     }

@@ -32,12 +32,6 @@ final class SettingViewController: BaseViewController {
         view.setCenterTitle("설정")
         return view
     }()
-    
-    private let underLineView: UIView = {
-        let view: UIView = UIView()
-        view.backgroundColor = .gamBlack
-        return view
-    }()
 
     // MARK: Life Cycle
     
@@ -67,13 +61,20 @@ final class SettingViewController: BaseViewController {
     
     private func setBinding() {
         viewModel.action.popViewController
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                self?.navigationController?.popToRootViewController(animated: true)
+            .asDriver(onErrorJustReturn: ())
+            .drive(with: self, onNext: { owner, _ in
+                owner.navigationController?.popToRootViewController(animated: true)
                 let signInViewController: BaseViewController = SignInViewController()
                 signInViewController.modalTransitionStyle = .crossDissolve
                 signInViewController.modalPresentationStyle = .fullScreen
-                self?.present(signInViewController, animated: true)
+                owner.present(signInViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.action.showNetworkErrorAlert
+            .asDriver(onErrorJustReturn: ())
+            .drive(with: self, onNext: { owner, _ in
+                owner.showNetworkErrorAlert()
             })
             .disposed(by: disposeBag)
     }
@@ -144,8 +145,7 @@ extension SettingViewController: UITableViewDelegate {
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
             present(alert, animated: true, completion: nil)
         case "탈퇴하기":
-            // TODO: - 탈퇴하기 처리 필요
-            self.navigationController?.pushViewController(BaseViewController(), animated: true)
+            self.navigationController?.pushViewController(SecessionViewController(viewModel: SecessionViewModel()), animated: true)
         default:
             break
         }

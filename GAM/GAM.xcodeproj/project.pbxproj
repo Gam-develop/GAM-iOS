@@ -11,6 +11,7 @@
 		845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */; };
 		847349912B58D794001DE9E1 /* GetUserProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */; };
 		847349932B58D828001DE9E1 /* GetUserProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847349922B58D828001DE9E1 /* GetUserProfileResponseDTO.swift */; };
+		847AA7112B63422E00E5B55C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 847AA7102B63422E00E5B55C /* RxGesture */; };
 		847CF74E2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF74D2B5CF3EA00542E57 /* GetUserPortfolioRequestDTO.swift */; };
 		847CF7502B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF74F2B5CF49000542E57 /* GetUserPortfolioResponseDTO.swift */; };
 		848403C92B514A2C009249E3 /* GetMyProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848403C82B514A2C009249E3 /* GetMyProfileResponseDTO.swift */; };
@@ -418,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA94D372A4F1FF5009B034F /* RxSwift in Frameworks */,
+				847AA7112B63422E00E5B55C /* RxGesture in Frameworks */,
 				FF6BBEAF2B60DC71002196B3 /* FirebaseAuth in Frameworks */,
 				FF6BBEAB2B60DC71002196B3 /* FirebaseAppCheck in Frameworks */,
 				FF6BBEC12B60DC71002196B3 /* FirebaseFunctions in Frameworks */,
@@ -1128,6 +1130,7 @@
 				FFA7071B2A59A94E003DF6A0 /* KakaoSDKAuth */,
 				FFA7071D2A59A94E003DF6A0 /* KakaoSDKCommon */,
 				FFA7071F2A59A94E003DF6A0 /* KakaoSDKUser */,
+				847AA7102B63422E00E5B55C /* RxGesture */,
 				FF6BBEA22B60DC71002196B3 /* FirebaseAnalytics */,
 				FF6BBEA42B60DC71002196B3 /* FirebaseAnalyticsOnDeviceConversion */,
 				FF6BBEA62B60DC71002196B3 /* FirebaseAnalyticsSwift */,
@@ -1188,6 +1191,7 @@
 				FFA94D382A4F2167009B034F /* XCRemoteSwiftPackageReference "Moya" */,
 				FFA706E42A4F318F003DF6A0 /* XCRemoteSwiftPackageReference "RxSwiftExt" */,
 				FFA7071A2A59A94E003DF6A0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				847AA70F2B63422E00E5B55C /* XCRemoteSwiftPackageReference "RxGesture" */,
 				FF6BBEA12B60DC71002196B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = FFA94CB52A4EF8CD009B034F /* Products */;
@@ -1633,6 +1637,14 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		847AA70F2B63422E00E5B55C /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		FFA706E42A4F318F003DF6A0 /* XCRemoteSwiftPackageReference "RxSwiftExt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxSwiftExt";
@@ -1800,6 +1812,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FF6BBEA12B60DC71002196B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfigSwift;
+		};
+		847AA7102B63422E00E5B55C /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 847AA70F2B63422E00E5B55C /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 		FFA706E52A4F318F003DF6A0 /* RxSwiftExt */ = {
 			isa = XCSwiftPackageProductDependency;

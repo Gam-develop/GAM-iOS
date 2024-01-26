@@ -60,6 +60,7 @@ final class MagazineDiscoverViewController: BaseViewController {
         self.setLayout()
         self.setTableView()
         self.fetchData()
+        self.setRefreshControl()
     }
     
     // MARK: Methods
@@ -83,6 +84,19 @@ final class MagazineDiscoverViewController: BaseViewController {
         self.getAllMagazine { magazines in
             self.magazines = magazines
             self.tableView.reloadData()
+        }
+    }
+    
+    private func setRefreshControl() {
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(target, action: #selector(self.handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        self.fetchData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
 }

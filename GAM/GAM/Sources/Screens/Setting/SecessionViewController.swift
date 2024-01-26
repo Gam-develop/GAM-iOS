@@ -28,7 +28,8 @@ final class SecessionViewController: BaseViewController {
         return view
     }()
     
-    private let titleLabel = GamSingleLineLabel(text: "주현님 좋은 영감을 주셔서 감사했어요",
+    // TODO: - 닉네임 넣어야됨
+    private let titleLabel = GamSingleLineLabel(text: "님 좋은 영감을 주셔서 감사했어요",
                                                 font: .subhead4Bold,
                                                 color: .black)
     

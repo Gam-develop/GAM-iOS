@@ -53,15 +53,6 @@ extension SecessionViewModel {
             self.selectedItems.removeAll { $0 == index }
         }
         
-//        if selectedItems.isEmpty {
-//            self.confirmButtonState.accept(false)
-//        } else {
-//            if selectedItems.contains(reasons.count - 1) {
-//                self.confirmButtonState.accept(!self.reasonText.value.isEmpty)
-//            } else {
-//                self.confirmButtonState.accept(!selectedItems.isEmpty)
-//            }
-//        }
         if selectedItems.isEmpty {
             self.confirmButtonState.accept(false)
         } else {

@@ -18,8 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
-//        window?.rootViewController = SplashViewController()
-        window?.rootViewController = SecessionViewController(viewModel: SecessionViewModel())
+        window?.rootViewController = SplashViewController()
         window?.makeKeyAndVisible()
     }
     

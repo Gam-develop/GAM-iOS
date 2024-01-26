@@ -18,14 +18,6 @@ final class SecessionViewController: BaseViewController {
     private let disposeBag = DisposeBag()
     private let tapGesture = UITapGestureRecognizer()
     private let reasonCellHeight: CGFloat = 54.0
-    
-    private let reasons = [
-        "매거진 컨텐츠가 유익하지 않아요.",
-        "매거진 발행 주기가 늦어요.",
-        "포트폴리오에서 영감을 얻지 못했어요.",
-        "앱 오류가 자주 발생해요.",
-        "직접 입력할게요."
-    ]
     private let reasonTextVeiwPlaceholder = "다른 이유가 있으시면 말씀해주세요."
     
     // MARK: UI Component
@@ -100,7 +92,7 @@ final class SecessionViewController: BaseViewController {
 extension SecessionViewController {
     
     private func setTableView() {
-        let reasonsObservable: Observable<[String]> = Observable.of(self.reasons)
+        let reasonsObservable: Observable<[String]> = Observable.of(self.viewModel.reasons)
         
         reasonsObservable
             .bind(to: self.reasonTableView.rx.items(cellIdentifier: SecessionTableViewCell.className, cellType: SecessionTableViewCell.self)) { (index: Int, element: String, cell: SecessionTableViewCell) in
@@ -110,14 +102,12 @@ extension SecessionViewController {
                     .asDriver()
                     .drive(with: self, onNext: { owner, _ in
                         let isSelected = cell.setSelectedState()
-                        owner.viewModel.checkConfirmButtonState(index: index, isSelected: isSelected)
                         
-                        // 직접 입력할게요 선택 시
-                        if index == owner.reasons.index(before: owner.reasons.endIndex) {
+                        if index == owner.viewModel.reasons.index(before: owner.viewModel.reasons.endIndex) {
                             owner.reasonTextView.isHidden = !isSelected
-                        } else {
-                            
                         }
+                        
+                        owner.viewModel.checkConfirmButtonState(index: index, isSelected: isSelected)
                     })
                     .disposed(by: cell.disposeBag)
             }
@@ -151,10 +141,8 @@ extension SecessionViewController {
             .map { $0?.trimmingCharacters(in: .whitespaces) ?? "" }
             .distinctUntilChanged()
             .bind(with: self, onNext: { owner, text in
-                if owner.reasonTextView.textColor == .gamGray3 || text.isEmpty {
-                    owner.viewModel.confirmButtonState.accept(false)
-                } else {
-                    owner.viewModel.confirmButtonState.accept(true)
+                if owner.reasonTextView.textColor != .gamGray3 {
+                    owner.viewModel.reasonText.accept(text)
                 }
             })
             .disposed(by: self.disposeBag)
@@ -236,7 +224,7 @@ extension SecessionViewController {
         self.reasonTableView.snp.makeConstraints { make in
             make.top.equalTo(self.navigationView.snp.bottom).offset(70)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(self.reasons.count * Int(reasonCellHeight))
+            make.height.equalTo(self.viewModel.reasons.count * Int(reasonCellHeight))
         }
         
         self.reasonTextView.snp.makeConstraints { make in

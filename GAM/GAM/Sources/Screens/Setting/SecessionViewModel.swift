@@ -15,13 +15,36 @@ final class SecessionViewModel {
     
     private let disposeBag = DisposeBag()
     
+    let reasons = [
+        "매거진 컨텐츠가 유익하지 않아요.",
+        "매거진 발행 주기가 늦어요.",
+        "포트폴리오에서 영감을 얻지 못했어요.",
+        "앱 오류가 자주 발생해요.",
+        "직접 입력할게요."
+    ]
+    
     private var selectedItems: [Int] = []
     let confirmButtonState: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    let reasonText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    
+    init() {
+        self.setBinding()
+    }
 }
 
-// MARK: - Network
+// MARK: - Methods
 
 extension SecessionViewModel {
+    
+    func setBinding() {
+        self.reasonText
+            .map { $0.isEmpty }
+            .distinctUntilChanged()
+            .subscribe(with: self, onNext: { owner, isEmpty in
+                owner.confirmButtonState.accept(!isEmpty)
+            })
+            .disposed(by: self.disposeBag)
+    }
     
     func checkConfirmButtonState(index: Int, isSelected: Bool) {
         if isSelected {
@@ -30,12 +53,22 @@ extension SecessionViewModel {
             self.selectedItems.removeAll { $0 == index }
         }
         
-        // 만약 직접 입력 선택을 누른 상태라면 일단 false 반환
-        if selectedItems.contains(4) {
+//        if selectedItems.isEmpty {
+//            self.confirmButtonState.accept(false)
+//        } else {
+//            if selectedItems.contains(reasons.count - 1) {
+//                self.confirmButtonState.accept(!self.reasonText.value.isEmpty)
+//            } else {
+//                self.confirmButtonState.accept(!selectedItems.isEmpty)
+//            }
+//        }
+        if selectedItems.isEmpty {
             self.confirmButtonState.accept(false)
         } else {
-            self.confirmButtonState.accept(!selectedItems.isEmpty)
+            let isLastItemSelected = selectedItems.contains(reasons.count - 1)
+            self.confirmButtonState.accept(isLastItemSelected ? !self.reasonText.value.isEmpty : true)
         }
+
     }
     
     func deleteAccount() {

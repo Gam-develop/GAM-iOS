@@ -1655,6 +1655,14 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		847AA70F2B63422E00E5B55C /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		FFA706E42A4F318F003DF6A0 /* XCRemoteSwiftPackageReference "RxSwiftExt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxSwiftExt";
@@ -1826,6 +1834,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FF6BBEA12B60DC71002196B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfigSwift;
+		};
+		847AA7102B63422E00E5B55C /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 847AA70F2B63422E00E5B55C /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 		FFA706E52A4F318F003DF6A0 /* RxSwiftExt */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -55,6 +55,7 @@ final class BrowseScrapViewController: BaseViewController {
         
         self.setLayout()
         self.setCollectionView()
+        self.setRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +80,19 @@ final class BrowseScrapViewController: BaseViewController {
         self.getScrapDesigner { designers in
             self.designers = designers
             self.collectionView.reloadData()
+        }
+    }
+    
+    private func setRefreshControl() {
+        self.collectionView.refreshControl = UIRefreshControl()
+        self.collectionView.refreshControl?.addTarget(target, action: #selector(self.handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        self.fetchData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
 }

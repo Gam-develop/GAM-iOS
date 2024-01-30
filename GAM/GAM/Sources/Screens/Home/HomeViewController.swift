@@ -61,6 +61,7 @@ final class HomeViewController: BaseViewController {
         self.setTableView()
         self.setCollectionView()
         self.setLayout()
+        self.setRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +82,19 @@ final class HomeViewController: BaseViewController {
         self.designerCollectionView.dataSource = self
         
         self.designerCollectionView.register(cell: PopularDesignerCollectionViewCell.self)
+    }
+    
+    private func setRefreshControl() {
+        self.scrollView.refreshControl = UIRefreshControl()
+        self.scrollView.refreshControl?.addTarget(target, action: #selector(self.handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        self.fetchData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.scrollView.refreshControl?.endRefreshing()
+        }
     }
 }
 

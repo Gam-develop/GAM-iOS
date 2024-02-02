@@ -35,6 +35,7 @@ final class BrowseDiscoverViewController: BaseViewController {
     private var superViewController: BrowseViewController?
     
     private var designers: [BrowseDesignerEntity] = []
+    private var selectedTags: [TagEntity] = []
     
     // MARK: Initializer
     
@@ -61,7 +62,7 @@ final class BrowseDiscoverViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.fetchData()
+        self.fetchData(selectedTags: self.selectedTags)
     }
     
     // MARK: Methods
@@ -85,8 +86,13 @@ final class BrowseDiscoverViewController: BaseViewController {
         self.collectionView.register(cell: BrowseDiscoverCollectionViewCell.self)
     }
     
-    private func fetchData() {
-        self.getBrowseDesigner { designers in
+    func fetchData(selectedTags: [TagEntity]) {
+        self.selectedTags = selectedTags
+        
+        let selectedTagsNumber = selectedTags.map { tag in
+            tag.id
+        }
+        self.getBrowseDesigner(data: selectedTagsNumber) { designers in
             self.designers = designers
             self.collectionView.reloadData()
         }
@@ -142,9 +148,9 @@ extension BrowseDiscoverViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Network
 
 extension BrowseDiscoverViewController {
-    private func getBrowseDesigner(completion: @escaping ([BrowseDesignerEntity]) -> ()) {
+    private func getBrowseDesigner(data: [Int], completion: @escaping ([BrowseDesignerEntity]) -> ()) {
         self.startActivityIndicator()
-        UserService.shared.getBrowseDesigner { networkResult in
+        UserService.shared.getBrowseDesigner(data: data) { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? GetBrowseDesignerResponseDTO {

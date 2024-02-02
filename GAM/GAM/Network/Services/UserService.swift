@@ -13,7 +13,7 @@ internal protocol UserServiceProtocol {
     func checkUsernameDuplicated(data: String, completion: @escaping (NetworkResult<Any>) -> (Void))
     func getPopularDesigner(completion: @escaping (NetworkResult<Any>) -> (Void))
     func requestScrapDesigner(data: ScrapDesignerRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
-    func getBrowseDesigner(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getBrowseDesigner(data: [Int], completion: @escaping (NetworkResult<Any>) -> (Void))
     func getScrapDesigner(completion: @escaping (NetworkResult<Any>) -> (Void))
     func searchDesigner(data: String, completion: @escaping (NetworkResult<Any>) -> (Void))
     func getUserProfile(data: GetUserProfileRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
@@ -104,8 +104,8 @@ extension UserService: UserServiceProtocol {
     
     // [GET] 발견 - 디자이너
     
-    func getBrowseDesigner(completion: @escaping (NetworkResult<Any>) -> (Void)) {
-        self.provider.request(.getBrowseDesigner) { result in
+    func getBrowseDesigner(data: [Int], completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.getBrowseDesigner(data: data)) { result in
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode

@@ -13,7 +13,7 @@ enum UserRouter {
     case checkUsernameDuplicated(data: String)
     case getPopularDesigner
     case requestScrapDesigner(data: ScrapDesignerRequestDTO)
-    case getBrowseDesigner
+    case getBrowseDesigner(data: [Int])
     case getScrapDesigner
     case searchDesigner(data: String)
     case getUserProfile(data: GetUserProfileRequestDTO)
@@ -33,7 +33,22 @@ enum UserRouter {
 extension UserRouter: TargetType {
     
     var baseURL: URL {
-        return URL(string: APIConstants.baseURL)!
+        switch self {
+        case .getBrowseDesigner(let data):
+            var path = APIConstants.baseURL + "/user"
+            if data.count == 0 {
+                return URL(string: path)!
+            } else {
+                var queryPath = "?"
+                for i in data {
+                    queryPath += "tags=\(i)&"
+                }
+                queryPath.removeLast()
+                return URL(string: URL(string: path)!.appendingPathComponent(queryPath).absoluteString.removingPercentEncoding ?? path)!
+            }
+        default:
+            return URL(string: APIConstants.baseURL)!
+        }
     }
     
     var path: String {
@@ -47,7 +62,7 @@ extension UserRouter: TargetType {
         case .requestScrapDesigner:
             return "/user/scrap"
         case .getBrowseDesigner:
-            return "/user"
+            return ""
         case .getScrapDesigner:
             return "/user/scraps"
         case .searchDesigner:

@@ -109,6 +109,9 @@ extension BrowseViewController: SendUpdateDelegate {
         
         self.selectedFilterTagView.setTag(tags: selectedTags)
         self.navigationView.filterButton.isSelected = selectedTags.count != 0
+        if let viewController = self.contentViewControllers[0] as? BrowseDiscoverViewController {
+            viewController.fetchData(selectedTags: selectedTags)
+        }
     }
 }
 

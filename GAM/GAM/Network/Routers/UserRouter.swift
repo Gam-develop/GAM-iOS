@@ -36,16 +36,12 @@ extension UserRouter: TargetType {
         switch self {
         case .getBrowseDesigner(let data):
             var path = APIConstants.baseURL + "/user"
-            if data.count == 0 {
-                return URL(string: path)!
-            } else {
-                var queryPath = "?"
-                for i in data {
-                    queryPath += "tags=\(i)&"
-                }
-                queryPath.removeLast()
-                return URL(string: URL(string: path)!.appendingPathComponent(queryPath).absoluteString.removingPercentEncoding ?? path)!
+            var queryPath = "?"
+            for i in data {
+                queryPath += "tags=\(i)&"
             }
+            queryPath.removeLast()
+            return URL(string: URL(string: path)!.appendingPathComponent(queryPath).absoluteString.removingPercentEncoding ?? path)!
         default:
             return URL(string: APIConstants.baseURL)!
         }

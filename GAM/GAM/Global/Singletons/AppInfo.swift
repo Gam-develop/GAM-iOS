@@ -12,8 +12,6 @@ final class AppInfo {
     
     init() { }
     
-    var latestVersion: String = ""
-    
     var url: GamURLEntity = .init(
         intro: "",
         privacyPolicy: "",

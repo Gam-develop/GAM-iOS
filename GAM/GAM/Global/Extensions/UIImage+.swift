@@ -63,8 +63,6 @@ extension UIImage {
     
     static let icnCircleMore: UIImage = (UIImage(named: "icnCircleMore") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
-    static let imgEmpty: UIImage = (UIImage(named: "imgEmpty") ?? UIImage()).withRenderingMode(.alwaysOriginal)
-    
     static let icnUploadImage: UIImage = (UIImage(named: "icnUploadImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let icnPhoto: UIImage = (UIImage(named: "icnPhoto") ?? UIImage()).withRenderingMode(.alwaysOriginal)

@@ -12,7 +12,7 @@ final class BrowseScrapCollectionViewCell: UICollectionViewCell {
     
     // MARK: UIComponents
     
-    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImageBlack)
+    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImage)
     
     private let authorLabel: UILabel = {
         let label: UILabel = UILabel()

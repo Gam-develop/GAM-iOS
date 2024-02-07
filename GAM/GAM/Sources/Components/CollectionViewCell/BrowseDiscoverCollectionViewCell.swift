@@ -12,7 +12,7 @@ final class BrowseDiscoverCollectionViewCell: UICollectionViewCell {
     
     // MARK: UIComponents
     
-    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImageBlack)
+    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImage)
     
     private let visibilityStackView: UIStackView = {
         let stackView: UIStackView = UIStackView()

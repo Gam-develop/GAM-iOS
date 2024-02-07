@@ -57,7 +57,7 @@ final class GamPopupViewController: BaseViewController {
         button.setTitle(Text.write, for: .normal)
         button.setTitleColor(.gamBlack, for: .normal)
         button.titleLabel?.font = .subhead2SemiBold
-        button.setBackgroundColor(.gamYellow, for: .normal)
+        button.setBackgroundColor(.gamPink, for: .normal)
         return button
     }()
     

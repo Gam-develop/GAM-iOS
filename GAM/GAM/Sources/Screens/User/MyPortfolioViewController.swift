@@ -347,7 +347,7 @@ extension MyPortfolioViewController {
         self.emptyView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(48)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(279)
+            make.height.equalTo(140)
         }
     }
     

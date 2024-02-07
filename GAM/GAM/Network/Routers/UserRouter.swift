@@ -35,7 +35,7 @@ extension UserRouter: TargetType {
     var baseURL: URL {
         switch self {
         case .getBrowseDesigner(let data):
-            var path = APIConstants.baseURL + "/user"
+            let path = APIConstants.baseURL + "/user"
             var queryPath = "?"
             for i in data {
                 queryPath += "tags=\(i)&"

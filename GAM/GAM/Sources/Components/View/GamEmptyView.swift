@@ -24,8 +24,6 @@ final class GamEmptyView: UIView {
     
     // MARK: UIComponents
     
-    private let emptyImageView: UIImageView = UIImageView(image: .imgEmpty)
-    
     private let infoLabel: UILabel = {
         let label: UILabel = UILabel()
         label.font = .caption3Medium
@@ -72,18 +70,12 @@ final class GamEmptyView: UIView {
     }
     
     private func setLayout(type: EmptyType) {
-        self.addSubviews([emptyImageView, infoLabel])
-        
-        self.emptyImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(24)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(120)
-        }
+        self.addSubviews([infoLabel])
         
         self.infoLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.emptyImageView.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
+            make.verticalEdges.equalToSuperview().inset(40)
             make.horizontalEdges.equalToSuperview().inset(20)
+            make.centerX.equalToSuperview()
         }
         
         switch type {

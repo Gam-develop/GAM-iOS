@@ -35,7 +35,7 @@ final class SplashViewController: BaseViewController {
     // MARK: Methods
     
     private func setUI() {
-        self.view.backgroundColor = .gamBlack
+        self.view.backgroundColor = .gamBlackLogo
     }
     
     private func autoSignIn() {
@@ -104,7 +104,7 @@ extension SplashViewController {
         self.logoImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.width.equalTo(110)
-            make.height.equalTo(75.74)
+            make.height.equalTo(127)
         }
     }
 }

@@ -12,7 +12,7 @@ final class NoScrapMagazineTableViewCell: UITableViewCell {
     
     // MARK: UIComponents
     
-    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImageBlack)
+    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImage)
     
     private let titleLabel: UILabel = {
         let label: UILabel = UILabel()

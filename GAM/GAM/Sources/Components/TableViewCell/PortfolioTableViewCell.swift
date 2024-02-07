@@ -12,7 +12,7 @@ class PortfolioTableViewCell: UITableViewCell {
     
     // MARK: UIComponents
     
-    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImageBlack)
+    private let thumbnailImageView: UIImageView = UIImageView(image: .defaultImage)
     
     private let titleLabel: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .headline2SemiBold)
     

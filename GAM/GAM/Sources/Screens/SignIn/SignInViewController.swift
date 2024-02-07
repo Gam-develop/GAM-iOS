@@ -215,7 +215,7 @@ extension SignInViewController {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().inset(272.adjustedH)
             make.width.equalTo(110)
-            make.height.equalTo(75.74)
+            make.height.equalTo(127)
         }
         
         self.infoLabel.snp.makeConstraints { make in

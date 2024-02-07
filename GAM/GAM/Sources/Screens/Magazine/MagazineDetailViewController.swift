@@ -58,7 +58,8 @@ final class MagazineDetailViewController: BaseViewController {
         self.webView.navigationDelegate = self
         guard let url = URL(string: self.url) else { return }
         
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.setValue(UserInfo.shared.accessToken, forHTTPHeaderField: "Authorization")
         self.webView.load(request)
     }
     

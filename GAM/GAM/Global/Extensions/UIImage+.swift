@@ -19,9 +19,7 @@ extension UIImage {
     
     static let chevronLeft: UIImage = (UIImage(named: "typeChevronLeft") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
-//    static let defaultImage: UIImage = (UIImage(named: "defaultImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
-    
-    static let defaultImageBlack: UIImage = (UIImage(named: "defaultImageBlack") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    static let defaultImage: UIImage = (UIImage(named: "defaultImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let scrapOn: UIImage = (UIImage(named: "icon_Scrap_on") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     

@@ -8,8 +8,8 @@
 import UIKit
 
 extension UIColor {
-    @nonobjc class var gamYellow: UIColor {
-        return UIColor(red: 225.0 / 255.0, green: 1.0, blue: 41.0 / 255.0, alpha: 1.0)
+    @nonobjc class var gamPink: UIColor {
+        return UIColor(red: 255.0 / 255.0, green: 0.0, blue: 134.0 / 255.0, alpha: 1.0)
     }
     
     @nonobjc class var gamGray1: UIColor {

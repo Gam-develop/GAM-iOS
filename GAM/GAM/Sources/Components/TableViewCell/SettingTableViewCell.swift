@@ -51,7 +51,7 @@ extension SettingTableViewCell {
         self.menuLabel.text = label
         
         if label == "버전 정보" {
-            self.versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+            self.versionLabel.text = AppInfo.shared.currentAppVersion()
         }
     }
 }

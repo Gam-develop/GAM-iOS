@@ -78,7 +78,15 @@ final class GamUpdatePopupViewController: BaseViewController {
     // MARK: Methods
     
     private func setUpdateButtonAction() {
-        self.updateButton.setAction { [weak self] in
+        self.updateButton.setAction {
+            if let url = URL(string: "itms-apps://itunes.apple.com/app/\(AppInfo.shared.appID)"),
+               UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
         }
     }
 }

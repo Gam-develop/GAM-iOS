@@ -56,4 +56,8 @@ extension String {
         }
         return false
     }
+    
+    func indexing(_ index: Int) -> String {
+        return String(self[self.index(self.startIndex, offsetBy: index)])
+    }
 }

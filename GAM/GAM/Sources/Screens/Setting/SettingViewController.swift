@@ -123,8 +123,7 @@ extension SettingViewController: UITableViewDelegate {
         case "문의하기":
             self.sendContactMail()
         case "리뷰 남기기":
-            // TODO: - 앱 아이디 필요
-            let url = "itms-apps://itunes.apple.com/app/";
+            let url = "itms-apps://itunes.apple.com/app/\(AppInfo.shared.appID)";
             if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }

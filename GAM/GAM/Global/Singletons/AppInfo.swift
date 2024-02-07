@@ -18,4 +18,7 @@ final class AppInfo {
         agreement: "",
         makers: ""
     )
+    
+    let appID: String = "6477517719"
+    
 }

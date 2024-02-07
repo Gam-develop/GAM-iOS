@@ -24,7 +24,7 @@ struct ScrapMagazineResponseDTO: Codable {
                     title: magazineDTO.title,
                     author: magazineDTO.interviewPerson,
                     isScrap: magazineDTO.isScraped,
-                    url: "",
+                    url: magazineDTO.magazineUrl,
                     visibilityCount: magazineDTO.view
                 )
             )

@@ -21,4 +21,8 @@ final class AppInfo {
     
     let appID: String = "6477517719"
     
+    func currentAppVersion() -> String {
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+    }
+    
 }

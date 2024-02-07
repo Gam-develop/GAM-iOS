@@ -25,4 +25,15 @@ final class AppInfo {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
     }
     
+    func isUpdateNeeded(latest: String) -> Bool {
+        let current: String = self.currentAppVersion()
+        
+        let latestFirst: Int = Int(latest.indexing(0)) ?? 0
+        let currentFirst: Int = Int(current.indexing(0)) ?? 0
+        
+        let latestSeceond: Int = Int(latest.indexing(2)) ?? 0
+        let currentSecond: Int = Int(current.indexing(2)) ?? 0
+        
+        return latestFirst > currentFirst || latestSeceond > currentSecond
+    }
 }

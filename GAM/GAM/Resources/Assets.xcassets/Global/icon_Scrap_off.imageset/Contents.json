@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icon_Scrap_off.svg",
+      "filename" : "active=off.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },

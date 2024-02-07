@@ -224,7 +224,7 @@ GAM 앱에서 보냈습니다.
 
 ——————————————————————————
 User: \(String(describing: UserInfo.shared.userID))
-App Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+App Version: \(AppInfo.shared.currentAppVersion())
 Device: \(self.deviceModelName())
 OS Version: \(UIDevice.current.systemVersion)
 """

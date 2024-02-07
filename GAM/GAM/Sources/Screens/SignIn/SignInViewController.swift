@@ -63,7 +63,7 @@ final class SignInViewController: BaseViewController {
     // MARK: Methods
     
     private func setUI() {
-        self.view.backgroundColor = .gamBlack
+        self.view.backgroundColor = .gamBlackLogo
     }
     
     private func setKakaoButtonAction() {

@@ -32,7 +32,7 @@ final class SplashViewController: BaseViewController {
     // MARK: Methods
     
     private func setUI() {
-        self.view.backgroundColor = .gamBlack
+        self.view.backgroundColor = .gamBlackLogo
     }
     
     private func autoSignIn() {

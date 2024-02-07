@@ -28,12 +28,12 @@ final class AppInfo {
     func isUpdateNeeded(latest: String) -> Bool {
         let current: String = self.currentAppVersion()
         
-        let latestFirst: Int = Int(latest.indexing(0)) ?? 0
-        let currentFirst: Int = Int(current.indexing(0)) ?? 0
+        let latestMajor: Int = Int(latest.indexing(0)) ?? 0
+        let currentMajor: Int = Int(current.indexing(0)) ?? 0
         
-        let latestSeceond: Int = Int(latest.indexing(2)) ?? 0
-        let currentSecond: Int = Int(current.indexing(2)) ?? 0
+        let latestMinor: Int = Int(latest.indexing(2)) ?? 0
+        let currentMinor: Int = Int(current.indexing(2)) ?? 0
         
-        return latestFirst > currentFirst || latestSeceond > currentSecond
+        return latestMajor > currentMajor || latestMinor > currentMinor
     }
 }

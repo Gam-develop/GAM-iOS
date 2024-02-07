@@ -73,7 +73,7 @@ final class GamEmptyView: UIView {
         self.addSubviews([infoLabel])
         
         self.infoLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.verticalEdges.equalToSuperview().inset(40)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.centerX.equalToSuperview()
         }

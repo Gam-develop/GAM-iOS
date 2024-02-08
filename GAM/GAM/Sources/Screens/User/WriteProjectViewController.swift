@@ -64,6 +64,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     private let projectTitleLabel: GamStarLabel = GamStarLabel(text: Text.projectTitle, font: .subhead4Bold)
     private let projectTitleTextField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .none)
+        textField.font = .caption3Medium
         textField.setGamPlaceholder(Text.projectPlaceholder)
         return textField
     }()

@@ -85,6 +85,15 @@ extension MagazineDetailViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.stopActivityIndicator()
     }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        let errorCode = (error as NSError).code
+        debugPrint(errorCode, separator: "", terminator: #function + "웹뷰 호출 에러")
+        
+        if errorCode >= 400 {
+            self.showNetworkErrorAlert()
+        }
+    }
 }
 
 // MARK: - UI

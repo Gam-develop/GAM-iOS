@@ -93,6 +93,7 @@ final class GamPopupViewController: BaseViewController {
         self.setLayout()
         self.setUI()
         self.setCancelButtonAction()
+        self.setWriteButtonAction()
     }
     
     // MARK: Methods
@@ -100,6 +101,12 @@ final class GamPopupViewController: BaseViewController {
     private func setCancelButtonAction() {
         self.cancelButton.setAction { [weak self] in
             self?.dismiss(animated: true)
+        }
+    }
+    
+    private func setWriteButtonAction() {
+        self.writeButton.setAction { [weak self] in
+            self?.presentingViewController?.tabBarController?.selectedIndex = 3
         }
     }
 }

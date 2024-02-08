@@ -24,7 +24,7 @@ struct MagazineResponseDTO: Codable {
                     title: magazineDTO.title,
                     author: magazineDTO.interviewPerson,
                     isScrap: magazineDTO.isScraped,
-                    url: "",
+                    url: magazineDTO.magazineUrl,
                     visibilityCount: magazineDTO.view
                 )
             )
@@ -41,13 +41,10 @@ struct MagazineDTO: Codable {
     let interviewPerson: String
     let view: Int
     let isScraped: Bool
+    let magazineUrl: String
 
     enum CodingKeys: String, CodingKey {
         case magazineID = "magazineId"
-        case thumbNail = "thumbNail"
-        case title = "title"
-        case interviewPerson = "interviewPerson"
-        case view = "view"
-        case isScraped = "isScraped"
+        case magazineUrl, isScraped, view, interviewPerson, title, thumbNail
     }
 }

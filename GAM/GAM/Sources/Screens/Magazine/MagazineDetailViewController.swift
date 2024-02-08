@@ -59,7 +59,6 @@ final class MagazineDetailViewController: BaseViewController {
         guard let url = URL(string: self.url) else { return }
         
         var request = URLRequest(url: url)
-        request.setValue(UserInfo.shared.accessToken, forHTTPHeaderField: "Authorization")
         self.webView.load(request)
     }
     
@@ -85,6 +84,15 @@ extension MagazineDetailViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.stopActivityIndicator()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        let errorCode = (error as NSError).code
+        debugPrint(errorCode, separator: "", terminator: #function + "웹뷰 호출 에러")
+        
+        if errorCode >= 400 {
+            self.showNetworkErrorAlert()
+        }
     }
 }
 

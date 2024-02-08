@@ -54,22 +54,14 @@ class PortfolioTableViewCell: UITableViewCell {
         self.titleLabel.text = data.title
         self.detailLabel.text = data.detail
         
-        self.underlineView.isHidden = data.detail.count == 0
+        self.underlineView.isHidden = data.detail.isEmpty
         
-//        if data.detail.count == 0 {
-//            self.detailLabel.snp.remakeConstraints { make in
-//                make.top.equalTo(self.repView.snp.bottom)
-//                make.left.right.equalToSuperview().inset(16)
-//                make.height.equalTo(0)
-//                make.bottom.equalToSuperview().inset(24)
-//            }
-//        } else {
-//            self.detailLabel.snp.remakeConstraints { make in
-//                make.top.equalTo(self.underlineView.snp.bottom).offset(8)
-//                make.left.right.equalToSuperview().inset(16)
-//                make.bottom.equalToSuperview().inset(24)
-//            }
-//        }
+        if data.detail.isEmpty {
+            self.detailLabel.snp.updateConstraints { make in
+                make.top.equalTo(self.underlineView.snp.bottom).offset(0)
+                make.bottom.equalToSuperview().inset(0)
+            }
+        }
     }
     
     private func setUI() {

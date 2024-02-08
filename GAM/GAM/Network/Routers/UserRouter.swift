@@ -42,6 +42,8 @@ extension UserRouter: TargetType {
             }
             queryPath.removeLast()
             return URL(string: URL(string: path)!.appendingPathComponent(queryPath).absoluteString.removingPercentEncoding ?? path)!
+        case .uploadImage(let data):
+            return URL(string: data.uploadUrl)!
         default:
             return URL(string: APIConstants.baseURL)!
         }

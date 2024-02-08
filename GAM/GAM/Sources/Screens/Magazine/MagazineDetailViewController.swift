@@ -58,7 +58,7 @@ final class MagazineDetailViewController: BaseViewController {
         self.webView.navigationDelegate = self
         guard let url = URL(string: self.url) else { return }
         
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         self.webView.load(request)
     }
     

@@ -64,6 +64,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     private let projectTitleLabel: GamStarLabel = GamStarLabel(text: Text.projectTitle, font: .subhead4Bold)
     private let projectTitleTextField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .none)
+        textField.font = .caption3Medium
         textField.setGamPlaceholder(Text.projectPlaceholder)
         return textField
     }()
@@ -135,7 +136,6 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         super.viewDidLoad()
         
         self.setLayout()
-        self.dismissKeyboard()
         self.setImagePickerController()
         self.setBackButtonAction(self.navigationView.backButton)
         self.setProjectTitleInfoLabel()
@@ -252,23 +252,21 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         self.projectDetailTextView.textColor = .gamGray3
     }
     
-    
     @objc
     func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            self.keyboardHeight = keyboardRectangle.height
-            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentOffset.y + self.keyboardHeight - 40.adjustedH), animated: true)
+            
+            if !(self.keyboardHeight > 0) {
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: self.projectTitleLabel.frame.minY - 10), animated: true)
+            }
+            self.keyboardHeight = keyboardFrame.cgRectValue.height
         }
     }
     
     @objc
     func keyboardWillHide(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            self.keyboardHeight = keyboardRectangle.height
-            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
-        }
+        self.keyboardHeight = 0
+        self.scrollView.setContentOffset(.zero, animated: true)
     }
     
     private func setAddProjectData(completion: @escaping (String) -> ()) {

@@ -19,9 +19,7 @@ extension UIImage {
     
     static let chevronLeft: UIImage = (UIImage(named: "typeChevronLeft") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
-//    static let defaultImage: UIImage = (UIImage(named: "defaultImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
-    
-    static let defaultImageBlack: UIImage = (UIImage(named: "defaultImageBlack") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    static let defaultImage: UIImage = (UIImage(named: "defaultImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let scrapOn: UIImage = (UIImage(named: "icon_Scrap_on") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
@@ -64,8 +62,6 @@ extension UIImage {
     static let icnSetting: UIImage = (UIImage(named: "icnSetting") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let icnCircleMore: UIImage = (UIImage(named: "icnCircleMore") ?? UIImage()).withRenderingMode(.alwaysOriginal)
-    
-    static let imgEmpty: UIImage = (UIImage(named: "imgEmpty") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let icnUploadImage: UIImage = (UIImage(named: "icnUploadImage") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     

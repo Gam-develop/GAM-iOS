@@ -35,13 +35,15 @@ extension UserRouter: TargetType {
     var baseURL: URL {
         switch self {
         case .getBrowseDesigner(let data):
-            var path = APIConstants.baseURL + "/user"
+            let path = APIConstants.baseURL + "/user"
             var queryPath = "?"
             for i in data {
                 queryPath += "tags=\(i)&"
             }
             queryPath.removeLast()
             return URL(string: URL(string: path)!.appendingPathComponent(queryPath).absoluteString.removingPercentEncoding ?? path)!
+        case .uploadImage(let data):
+            return URL(string: data.uploadUrl)!
         default:
             return URL(string: APIConstants.baseURL)!
         }

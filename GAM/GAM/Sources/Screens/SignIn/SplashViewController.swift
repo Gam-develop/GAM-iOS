@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseRemoteConfig
 
 final class SplashViewController: BaseViewController {
     
@@ -17,6 +18,10 @@ final class SplashViewController: BaseViewController {
         return imageView
     }()
     
+    // MARK: Properties
+    
+    var remoteConfig: RemoteConfig?
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -24,15 +29,13 @@ final class SplashViewController: BaseViewController {
         
         self.setUI()
         self.setLayout()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
-            self.autoSignIn()
-        }
+        self.checkUpdate()
     }
     
     // MARK: Methods
     
     private func setUI() {
-        self.view.backgroundColor = .gamBlack
+        self.view.backgroundColor = .gamBlackLogo
     }
     
     private func autoSignIn() {
@@ -56,6 +59,40 @@ final class SplashViewController: BaseViewController {
             self.present(BaseNavigationController(rootViewController: SignUpUsernameViewController()), animated: true)
         }
     }
+    
+    private func checkUpdate() {
+        self.remoteConfig = RemoteConfig.remoteConfig()
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 60 * 60 * 12
+        self.remoteConfig?.configSettings = settings
+        
+        self.remoteConfig?.fetch { (status, error) -> Void in
+            if status == .success {
+                debugPrint("Config fetched!")
+                self.remoteConfig?.activate { _, error in
+                    let latestVersion: String = self.remoteConfig?.configValue(forKey: "latestVersion").stringValue ?? "0.0.0"
+                    if AppInfo.shared.isUpdateNeeded(latest: latestVersion) {
+                        DispatchQueue.main.async { [weak self] in
+                            self?.present(GamUpdatePopupViewController(), animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async { [weak self] in
+                            self?.autoSignIn()
+                        }
+                    }
+                }
+            } else {
+                debugPrint("Config not fetched")
+                debugPrint("Error: \(error?.localizedDescription ?? "No error available.")")
+                DispatchQueue.main.async { [weak self] in
+                    self?.autoSignIn()
+                }
+            }
+            
+        }
+    }
+    
+
 }
 
 // MARK: - UI
@@ -67,7 +104,7 @@ extension SplashViewController {
         self.logoImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.width.equalTo(110)
-            make.height.equalTo(75.74)
+            make.height.equalTo(127)
         }
     }
 }

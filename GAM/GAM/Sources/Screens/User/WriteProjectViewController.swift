@@ -171,10 +171,10 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         self.projectImageEditButton.isHidden = false
     
         self.projectTitleTextField.text = projectData.title
-        self.projectDetailTextView.text = projectData.detail
+        self.projectDetailTextView.text = projectData.detail.isEmpty ? Text.projectDetailPlaceholder : projectData.detail
         self.projectTitleTextField.sendActions(for: .editingChanged)
         
-        if self.projectData.detail == Text.projectDetailPlaceholder {
+        if self.projectData.detail.isEmpty {
             self.projectDetailTextView.textColor = .gamGray3
         } else {
             self.projectDetailTextView.textColor = .gamBlack
@@ -277,7 +277,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
                 id: self.projectData.id,
                 thumbnailImageURL: String(data.fileName.dropFirst(5)),
                 title: self.projectTitleTextField.text ?? "",
-                detail: self.projectDetailTextView.text
+                detail: self.projectDetailTextView.text == Text.projectDetailPlaceholder ? "" : self.projectDetailTextView.text
             )
             completion(data.preSignedUrl)
         }

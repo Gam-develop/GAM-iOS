@@ -257,9 +257,11 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     @objc
     func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            self.keyboardHeight = keyboardRectangle.height
-            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentOffset.y + self.keyboardHeight - 40.adjustedH), animated: true)
+            
+            if !(self.keyboardHeight > 0) {
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: self.projectTitleLabel.frame.minY - 10), animated: true)
+            }
+            self.keyboardHeight = keyboardFrame.cgRectValue.height
         }
     }
     

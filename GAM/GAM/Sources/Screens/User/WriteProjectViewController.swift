@@ -136,7 +136,6 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         super.viewDidLoad()
         
         self.setLayout()
-        self.dismissKeyboard()
         self.setImagePickerController()
         self.setBackButtonAction(self.navigationView.backButton)
         self.setProjectTitleInfoLabel()
@@ -252,7 +251,6 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         self.projectDetailTextView.text = Text.projectDetailPlaceholder
         self.projectDetailTextView.textColor = .gamGray3
     }
-    
     
     @objc
     func keyboardWillShow(_ notification: NSNotification) {

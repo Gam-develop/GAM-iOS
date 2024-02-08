@@ -267,11 +267,8 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     
     @objc
     func keyboardWillHide(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            self.keyboardHeight = keyboardRectangle.height
-            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
-        }
+        self.keyboardHeight = 0
+        self.scrollView.setContentOffset(.zero, animated: true)
     }
     
     private func setAddProjectData(completion: @escaping (String) -> ()) {

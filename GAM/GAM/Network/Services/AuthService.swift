@@ -12,6 +12,7 @@ internal protocol AuthServiceProtocol {
     func requestSocialLogin(data: SocialLoginRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
     func requestRefreshToken(data: RefreshTokenRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
     func requestLogout(data: LogoutRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func requestSecession(data: SecessionRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class AuthService: BaseService {
@@ -59,6 +60,21 @@ extension AuthService: AuthServiceProtocol {
     
     func requestLogout(data: LogoutRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         self.provider.request(.requestLogout(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = self.judgeStatus(by: statusCode, data, String.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [DELETE] 탈퇴
+    func requestSecession(data: SecessionRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.requestSecession(data: data)) { result in
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode

@@ -17,6 +17,7 @@ enum AuthRouter {
     case requestSocialLogin(data: SocialLoginRequestDTO)
     case requestRefreshToken(data: RefreshTokenRequestDTO)
     case requestLogout(data: LogoutRequestDTO)
+    case requestSecession(data: SecessionRequestDTO)
 }
 
 extension AuthRouter: TargetType {
@@ -33,6 +34,8 @@ extension AuthRouter: TargetType {
             return "/social/refresh"
         case .requestLogout:
             return "social/logout"
+        case .requestSecession:
+            return "/user/my/account"
         }
     }
     
@@ -40,6 +43,8 @@ extension AuthRouter: TargetType {
         switch self {
         case .requestSocialLogin, .requestRefreshToken, .requestLogout:
             return .post
+        case .requestSecession:
+            return .delete
         }
     }
     
@@ -56,11 +61,18 @@ extension AuthRouter: TargetType {
             return .requestJSONEncodable(data)
         case .requestLogout(let data):
             return .requestJSONEncodable(data)
+        case .requestSecession(let data):
+            return .requestJSONEncodable(data)
         }
     }
     
     var headers: [String: String]? {
         switch self {
+        case .requestSecession:
+            return [
+                "Content-Type": "application/json",
+                "Authorization": UserInfo.shared.accessToken
+            ]
         default:
             return ["Content-Type": "application/json"]
         }

@@ -13,6 +13,7 @@ final class SecessionViewModel {
     
     // MARK: Properties
     
+    private let networkService: AuthService
     private let disposeBag = DisposeBag()
     
     let reasons = [
@@ -23,11 +24,23 @@ final class SecessionViewModel {
         "직접 입력할게요."
     ]
     
-    private var selectedItems: [Int] = []
-    let confirmButtonState: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    let reasonText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    struct State {
+        var selectedItems: [Int] = []
+        let confirmButtonState: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+        let reasonText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    }
     
-    init() {
+    struct Action {
+        let deleteAccount = PublishSubject<Void>()
+        let showNetworkErrorAlert = PublishRelay<Void>()
+        let popViewController = PublishRelay<Void>()
+    }
+
+    var state = State()
+    let action = Action()
+    
+    init(networkService: AuthService = AuthService.shared) {
+        self.networkService = networkService
         self.setBinding()
     }
 }
@@ -36,33 +49,57 @@ final class SecessionViewModel {
 
 extension SecessionViewModel {
     
-    func setBinding() {
-        self.reasonText
+    private func setBinding() {
+        self.state.reasonText
             .map { $0.isEmpty }
             .distinctUntilChanged()
             .subscribe(with: self, onNext: { owner, isEmpty in
-                owner.confirmButtonState.accept(!isEmpty)
+                owner.state.confirmButtonState.accept(!isEmpty)
             })
             .disposed(by: self.disposeBag)
+        
+        self.action.deleteAccount
+            .subscribe(onNext: { [weak self] in
+                self?.deleteAccount() {
+                    self?.removeUserInfo()
+                    self?.action.popViewController.accept(())
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func checkConfirmButtonState(index: Int, isSelected: Bool) {
         if isSelected {
-            self.selectedItems.append(index)
+            self.state.selectedItems.append(index)
         } else {
-            self.selectedItems.removeAll { $0 == index }
+            self.state.selectedItems.removeAll { $0 == index }
         }
         
-        if selectedItems.isEmpty {
-            self.confirmButtonState.accept(false)
+        if self.state.selectedItems.isEmpty {
+            self.state.confirmButtonState.accept(false)
         } else {
-            let isLastItemSelected = selectedItems.contains(reasons.count - 1)
-            self.confirmButtonState.accept(isLastItemSelected ? !self.reasonText.value.isEmpty : true)
+            let isLastItemSelected = self.state.selectedItems.contains(reasons.count - 1)
+            self.state.confirmButtonState.accept(isLastItemSelected ? !self.state.reasonText.value.isEmpty : true)
         }
 
     }
     
-    func deleteAccount() {
-        // TODO: 서버 나오면 api 연결
+    private func deleteAccount(completion: @escaping () -> ()) {
+        debugPrint("❤️‍🔥", self.state.selectedItems, self.state.reasonText.value)
+        self.networkService.requestSecession(data: SecessionRequestDTO(deleteAccountReasons: self.state.selectedItems,
+                                                                       directInput: self.state.reasonText.value)) { networkResult in
+            switch networkResult {
+            case .success(_):
+                completion()
+            default:
+                self.action.showNetworkErrorAlert.accept(())
+            }
+        }
+    }
+    
+    func removeUserInfo() {
+        UserDefaultsManager.userID = nil
+        UserDefaultsManager.accessToken = nil
+        UserDefaultsManager.refreshToken = nil
     }
 }

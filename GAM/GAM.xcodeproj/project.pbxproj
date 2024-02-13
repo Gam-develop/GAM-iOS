@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840BFFAC2B7B23CF00DF31C3 /* SecessionRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */; };
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */; };
 		847349912B58D794001DE9E1 /* GetUserProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */; };
@@ -229,6 +230,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionRequestDTO.swift; sourceTree = "<group>"; };
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPortfolioRequestDTO.swift; sourceTree = "<group>"; };
 		847349902B58D794001DE9E1 /* GetUserProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequestDTO.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 		FF6CC0392A951FA400B24C94 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */,
 				FFEB5CAC2B4F9B5000953362 /* RefreshTokenRequestDTO.swift */,
 				FF6CC03A2A951FB400B24C94 /* SocialLoginRequestDTO.swift */,
 				FF6CC0422A963E5F00B24C94 /* SignUpRequestDTO.swift */,
@@ -1270,6 +1273,7 @@
 				FFEB5CA92B4E60BA00953362 /* ScrapDesignerResponseDTO.swift in Sources */,
 				FFC733992A79002E008B5054 /* GamContactButton.swift in Sources */,
 				FFA94D2C2A4F1E93009B034F /* SignInViewController.swift in Sources */,
+				840BFFAC2B7B23CF00DF31C3 /* SecessionRequestDTO.swift in Sources */,
 				FFA94CB82A4EF8CD009B034F /* AppDelegate.swift in Sources */,
 				FFA94D052A4F1B77009B034F /* CALayer+.swift in Sources */,
 				FFA94CBA2A4EF8CD009B034F /* SceneDelegate.swift in Sources */,

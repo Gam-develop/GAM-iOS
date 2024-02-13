@@ -60,7 +60,7 @@ final class SettingViewController: BaseViewController {
     }
     
     private func setBinding() {
-        viewModel.action.popViewController
+        self.viewModel.action.popViewController
             .asDriver(onErrorJustReturn: ())
             .drive(with: self, onNext: { owner, _ in
                 owner.navigationController?.popToRootViewController(animated: true)
@@ -71,7 +71,7 @@ final class SettingViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.action.showNetworkErrorAlert
+        self.viewModel.action.showNetworkErrorAlert
             .asDriver(onErrorJustReturn: ())
             .drive(with: self, onNext: { owner, _ in
                 owner.showNetworkErrorAlert()

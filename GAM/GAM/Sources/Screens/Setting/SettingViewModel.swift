@@ -34,7 +34,6 @@ final class SettingViewModel {
     
     struct Action {
         let logout = PublishSubject<Void>()
-        let deleteAccount = PublishSubject<Void>()
         let showNetworkErrorAlert = PublishRelay<Void>()
         let popViewController = PublishRelay<Void>()
     }
@@ -60,9 +59,6 @@ final class SettingViewModel {
             })
             .disposed(by: disposeBag)
     }
-    
-    // TODO: - 탈퇴 api 연결 (아직 서버 배포 안됨)
-    func deleteAccount() {}
     
     func removeUserInfo() {
         UserDefaultsManager.userID = nil

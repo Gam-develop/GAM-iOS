@@ -120,7 +120,7 @@ extension SecessionViewController {
     }
     
     private func bind() {
-        self.viewModel.confirmButtonState
+        self.viewModel.state.confirmButtonState
             .distinctUntilChanged()
             .asDriver(onErrorJustReturn: false)
             .drive(with: self, onNext: { owner, buttonEnable in
@@ -143,7 +143,7 @@ extension SecessionViewController {
             .distinctUntilChanged()
             .bind(with: self, onNext: { owner, text in
                 if owner.reasonTextView.textColor != .gamGray3 {
-                    owner.viewModel.reasonText.accept(text)
+                    owner.viewModel.state.reasonText.accept(text)
                 }
             })
             .disposed(by: self.disposeBag)
@@ -171,6 +171,28 @@ extension SecessionViewController {
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
             .bind(with: self, onNext: { owner, notification in
                 owner.adjustViewForKeyboard(didKeyboardShow: false)
+            })
+            .disposed(by: disposeBag)
+        
+        self.confirmButton.rx.tap
+            .bind(to: self.viewModel.action.deleteAccount)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.action.popViewController
+            .asDriver(onErrorJustReturn: ())
+            .drive(with: self, onNext: { owner, _ in
+                owner.navigationController?.popToRootViewController(animated: true)
+                let signInViewController: BaseViewController = SignInViewController()
+                signInViewController.modalTransitionStyle = .crossDissolve
+                signInViewController.modalPresentationStyle = .fullScreen
+                owner.present(signInViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        self.viewModel.action.showNetworkErrorAlert
+            .asDriver(onErrorJustReturn: ())
+            .drive(with: self, onNext: { owner, _ in
+                owner.showNetworkErrorAlert()
             })
             .disposed(by: disposeBag)
     }

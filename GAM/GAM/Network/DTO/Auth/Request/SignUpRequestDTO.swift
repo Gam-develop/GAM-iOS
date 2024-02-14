@@ -11,4 +11,9 @@ struct SignUpRequestDTO: Encodable {
     let tags: [Int]
     let username: String
     let info: String
+    
+    enum CodingKeys: String, CodingKey {
+        case username = "userName"
+        case tags, info
+    }
 }

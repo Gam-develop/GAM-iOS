@@ -66,6 +66,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         let textField: GamTextField = GamTextField(type: .none)
         textField.font = .caption3Medium
         textField.setGamPlaceholder(Text.projectPlaceholder)
+        textField.returnKeyType = .done
         return textField
     }()
     private let projectTitleInfoLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.projectInfo, font: .caption1Regular, color: .gamRed)
@@ -84,6 +85,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         textView.contentInset = .zero
         textView.textContainerInset = .init(top: 12, left: 16, bottom: 12, right: 16)
         textView.textContainer.lineFragmentPadding = .zero
+        textView.returnKeyType = .done
         return textView
     }()
     private let projectDetailCountLabel: GamSingleLineLabel = {

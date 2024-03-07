@@ -22,6 +22,8 @@ final class SearchViewController: BaseViewController {
     enum Text {
         static let recentSearchTitle = "최근 검색"
         static let recentClear = "전체 삭제"
+        static let magazinePlaceholder = "매거진 제목을 입력해 주세요."
+        static let portfolioPlaceholder = "디자이너나 작품명을 입력해 주세요."
     }
     
     enum Number {
@@ -117,6 +119,12 @@ final class SearchViewController: BaseViewController {
     
     private func setSearchTextField() {
         self.searchTextField.delegate = self
+        switch self.searchType {
+        case .magazine:
+            self.searchTextField.setGamPlaceholder(Text.magazinePlaceholder)
+        case .portfolio:
+            self.searchTextField.setGamPlaceholder(Text.portfolioPlaceholder)
+        }
     }
     
     private func setRecentClearButtonAction() {

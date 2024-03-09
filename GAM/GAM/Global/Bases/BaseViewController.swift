@@ -309,8 +309,13 @@ extension BaseViewController {
         self.startActivityIndicator()
         MagazineService.shared.requestScrapMagazine(data: data) { networkResult in
             switch networkResult {
-            case .success:
-                completion()
+            case .success(let response):
+                if let result = response as? ScrapMagazineRequestDTO {
+                    if result.currentScrapStatus {
+                        self.showToastMessage(type: .completedScrap)
+                    }
+                    completion()
+                }
             default:
                 self.showNetworkErrorAlert()
             }

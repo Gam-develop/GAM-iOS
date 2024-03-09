@@ -12,6 +12,7 @@ enum ToastMessageType {
     case completedUserBlock
     case completedUserReport
     case completedRemove
+    case completedScrap
 }
 
 extension ToastMessageType {
@@ -26,6 +27,8 @@ extension ToastMessageType {
             return "🚨 신고되었어요"
         case .completedRemove:
             return "🗑️ 삭제되었어요"
+        case .completedScrap:
+            return "👀 스크랩에 넣었어요"
         }
     }
 }

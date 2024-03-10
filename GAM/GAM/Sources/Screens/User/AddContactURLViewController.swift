@@ -49,10 +49,13 @@ final class AddContactURLViewController: BaseViewController {
     private var contactURLType: ContactURLType = .behance
     private let disposeBag: DisposeBag = DisposeBag()
     private var keyboardHeight: CGFloat = 0
+    private var originURL: String
     
     // MARK: Initializer
     
     init(type: ContactURLType, url: String) {
+        self.originURL = url
+        
         super.init(nibName: nil, bundle: nil)
         
         self.contactURLType = type
@@ -110,7 +113,7 @@ final class AddContactURLViewController: BaseViewController {
                     }
                 } else {
                     owner.infoLabel.isHidden = true
-                    owner.doneButton.isEnabled = true
+                    owner.doneButton.isEnabled = !owner.originURL.isEmpty
                 }
             })
             .disposed(by: disposeBag)
@@ -119,7 +122,7 @@ final class AddContactURLViewController: BaseViewController {
             .withUnretained(self)
             .bind { (owner, _) in
                 owner.infoLabel.isHidden = true
-                owner.doneButton.isEnabled = true
+                owner.doneButton.isEnabled = !owner.originURL.isEmpty
             }
             .disposed(by: disposeBag)
     }

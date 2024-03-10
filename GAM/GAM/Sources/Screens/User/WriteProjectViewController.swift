@@ -24,7 +24,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     }
     
     private enum Number {
-        static let projectTitleLimit = 12
+        static let projectTitleLimit = 18
         static let projectDetailLimit = 150
     }
     
@@ -66,6 +66,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         let textField: GamTextField = GamTextField(type: .none)
         textField.font = .caption3Medium
         textField.setGamPlaceholder(Text.projectPlaceholder)
+        textField.returnKeyType = .done
         return textField
     }()
     private let projectTitleInfoLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.projectInfo, font: .caption1Regular, color: .gamRed)
@@ -84,6 +85,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         textView.contentInset = .zero
         textView.textContainerInset = .init(top: 12, left: 16, bottom: 12, right: 16)
         textView.textContainer.lineFragmentPadding = .zero
+        textView.returnKeyType = .done
         return textView
     }()
     private let projectDetailCountLabel: GamSingleLineLabel = {
@@ -102,7 +104,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         imagePickerController.allowsEditing = true
         return imagePickerController
     }()
-    private var keyboardHeight: CGFloat = 0
+    private var didKeyboardShow: Bool = false
     
     private var projectData: ProjectEntity = .init(id: .init(), thumbnailImageURL: .init(), title: .init(), detail: .init())
     private var viewType: WriteProjectViewType = .create
@@ -192,7 +194,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
                 .asDriver(onErrorJustReturn: "")
                 .drive(with: self, onNext: { owner, changedText in
                     owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
-                    if changedText.count > 12 {
+                    if changedText.count > 18 {
                         owner.projectTitleTextField.deleteBackward()
                     }
                     let trimText = changedText.trimmingCharacters(in: .whitespaces)
@@ -256,17 +258,20 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             
-            if !(self.keyboardHeight > 0) {
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: self.projectTitleLabel.frame.minY - 10), animated: true)
+            let keyboardHeight: CGFloat = keyboardFrame.cgRectValue.height
+            let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.height ?? 0
+            
+            if !self.didKeyboardShow {
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentOffset.y + keyboardHeight - tabBarHeight), animated: true)
+                self.didKeyboardShow = true
             }
-            self.keyboardHeight = keyboardFrame.cgRectValue.height
         }
     }
     
     @objc
     func keyboardWillHide(_ notification: Notification) {
-        self.keyboardHeight = 0
-        self.scrollView.setContentOffset(.zero, animated: true)
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.frame.height), animated: true)
+        self.didKeyboardShow = false
     }
     
     private func setAddProjectData(completion: @escaping (String) -> ()) {

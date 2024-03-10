@@ -12,10 +12,6 @@ import RxCocoa
 
 final class GamSearchTextField: UITextField {
     
-    enum Text {
-        static let placeholder = "검색 플레이스홀더 있으면 좋음"
-    }
-    
     // MARK: UIComponents
     
     private let leadingView: UIView = UIView(frame: CGRect(x: 4, y: 0, width: 46, height: 44))
@@ -77,7 +73,6 @@ extension GamSearchTextField {
     private func setUI() {
         self.backgroundColor = .gamWhite
         self.makeRounded(cornerRadius: 8)
-        self.setGamPlaceholder(Text.placeholder)
         self.font = .body2Medium
         self.leftViewMode = .always
         self.tintColor = .gamBlack

@@ -194,7 +194,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
                 .asDriver(onErrorJustReturn: "")
                 .drive(with: self, onNext: { owner, changedText in
                     owner.projectTitleCountLabel.text = "\(changedText.count)/\(Number.projectTitleLimit)"
-                    if changedText.count > 12 {
+                    if changedText.count > 18 {
                         owner.projectTitleTextField.deleteBackward()
                     }
                     let trimText = changedText.trimmingCharacters(in: .whitespaces)

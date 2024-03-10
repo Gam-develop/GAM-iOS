@@ -56,7 +56,7 @@ final class SettingTableHeaderView: UITableViewHeaderFooterView {
 
         self.categoryLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().inset(20)
         }
     }
     

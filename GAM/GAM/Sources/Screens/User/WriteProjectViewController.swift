@@ -24,7 +24,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     }
     
     private enum Number {
-        static let projectTitleLimit = 12
+        static let projectTitleLimit = 18
         static let projectDetailLimit = 150
     }
     

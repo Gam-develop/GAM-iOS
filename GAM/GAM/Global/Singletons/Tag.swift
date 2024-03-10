@@ -19,7 +19,7 @@ final class Tag {
         .init(id: 4, name: "3D 디자인"),
         .init(id: 5, name: "그래픽 디자인"),
         .init(id: 6, name: "패키지 디자인"),
-        .init(id: 7, name: "영상, 모션 디자인"),
+        .init(id: 7, name: "영상 디자인"),
         .init(id: 8, name: "일러스트"),
         .init(id: 9, name: "편집 디자인"),
         .init(id: 10, name: "패션 디자인"),

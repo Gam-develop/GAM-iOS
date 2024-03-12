@@ -52,7 +52,7 @@ final class SignUpUsernameViewController: BaseViewController {
     
     private let countLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/5"
+        label.text = "0/15"
         label.font = .caption2Regular
         label.textColor = .gamBlack
         label.textAlignment = .right
@@ -110,10 +110,10 @@ final class SignUpUsernameViewController: BaseViewController {
             .skip(1)
             .distinctUntilChanged()
             .subscribe(onNext: { changedText in
-                self.countLabel.text = "\(changedText.count)/5"
+                self.countLabel.text = "\(changedText.count)/15"
                 self.infoLabel.text = Text.wrongUsername
                 if changedText.count > 0 {
-                    let regex = "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9]{0,5}"
+                    let regex = "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9]{0,15}"
                     if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: changedText) && changedText.trimmingCharacters(in: .whitespaces).count >= 1 {
                         self.textField.setUnderlineColor(isCorrect: true)
                         self.infoLabel.isHidden = true
@@ -139,8 +139,8 @@ final class SignUpUsernameViewController: BaseViewController {
             .distinctUntilChanged()
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { changedText in
-                if changedText.count > 5 {
-                    let index = changedText.index(changedText.startIndex, offsetBy: 5)
+                if changedText.count > 15 {
+                    let index = changedText.index(changedText.startIndex, offsetBy: 15)
                     self.textField.text = String(changedText[..<index])
                     self.textField.resignFirstResponder()
                 }

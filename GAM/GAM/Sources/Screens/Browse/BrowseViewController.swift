@@ -97,6 +97,13 @@ final class BrowseViewController: BaseViewController {
         self.navigationView.filterButton.setAction { [weak self] in
             self?.present(filterViewController, animated: true)
         }
+        
+        self.selectedFilterTagView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                self.present(filterViewController, animated: true)
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 

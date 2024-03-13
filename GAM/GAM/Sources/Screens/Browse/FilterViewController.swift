@@ -134,12 +134,30 @@ extension FilterViewController: UICollectionViewDelegateFlowLayout {
             }
         }
         
+        if self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 == 3 {
+            for item in 0..<self.tagCollectionView.numberOfItems(inSection: 0) {
+                let indexPath = IndexPath(item: item, section: 0)
+                guard let cell = self.tagCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
+                
+                if !cell.isSelected {
+                    cell.isEnable = false
+                }
+            }
+        }
+
         self.doneButton.isEnabled = self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 > 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionViewCell {
             cell.isSelected = false
+        }
+        
+        for item in 0..<self.tagCollectionView.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: item, section: 0)
+            guard let cell = self.tagCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
+            
+            cell.isEnable = true
         }
     }
 }

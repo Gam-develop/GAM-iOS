@@ -29,12 +29,12 @@ final class SecessionViewController: BaseViewController {
     }()
     
     // TODO: - 닉네임 넣어야됨
-    private let titleLabel = GamSingleLineLabel(text: "님 좋은 영감을 주셔서 감사했어요",
-                                                font: .subhead4Bold,
+    private let titleLabel = GamSingleLineLabel(text: "좋은 영감을 주셔서 감사했어요",
+                                                font: .headline1SemiBold,
                                                 color: .black)
     
     private let subTitleLabel = GamSingleLineLabel(text: "감을 떠나시는 이유가 궁금해요.",
-                                               font: .caption2Regular,
+                                               font: .body1Regular,
                                                 color: .gamBlack)
     
     private let reasonTableView: UITableView = {
@@ -235,17 +235,17 @@ extension SecessionViewController {
         }
         
         self.titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.navigationView.snp.bottom).offset(20)
+            make.top.equalTo(self.navigationView.snp.bottom).offset(40)
             make.left.equalToSuperview().inset(23)
         }
         
         self.subTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.titleLabel.snp.bottom).offset(4)
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(6)
             make.left.equalToSuperview().inset(23)
         }
         
         self.reasonTableView.snp.makeConstraints { make in
-            make.top.equalTo(self.navigationView.snp.bottom).offset(70)
+            make.top.equalTo(self.subTitleLabel.snp.bottom).offset(25)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(self.viewModel.reasons.count * Int(reasonCellHeight))
         }
@@ -259,7 +259,7 @@ extension SecessionViewController {
         
         self.buttonInfoLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.confirmButton.snp.top).offset(-10)
+            make.bottom.equalTo(self.confirmButton.snp.top).offset(-15)
         }
         
         self.confirmButton.snp.makeConstraints { make in

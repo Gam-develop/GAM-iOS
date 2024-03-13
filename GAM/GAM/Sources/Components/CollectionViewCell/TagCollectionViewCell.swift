@@ -13,7 +13,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     
     let contentLabel: UILabel = {
-        let label: UILabel = UILabel()
+        let label = UILabel()
         label.textAlignment = .center
         label.font = .caption2Regular
         label.textColor = .gamBlack
@@ -22,21 +22,20 @@ final class TagCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            if isSelected {
-                contentView.backgroundColor = .gamBlack
-                contentLabel.textColor = .gamWhite
-            } else {
-                contentView.backgroundColor = .clear
-                contentLabel.textColor = .gamBlack
-            }
+            self.updateUI()
         }
     }
     
-    // MARK: Initializer
+    var isEnable: Bool = true {
+        didSet {
+            self.updateUI()
+        }
+    }
+    
+    // MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.setLayout()
         self.setUI()
     }
@@ -48,8 +47,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
     // MARK: Methods
     
     private func setLayout() {
-        self.contentView.addSubviews([contentLabel])
-        
+        self.contentView.addSubview(contentLabel)
         self.contentLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -60,8 +58,27 @@ final class TagCollectionViewCell: UICollectionViewCell {
         self.contentView.makeRounded(cornerRadius: 4)
         self.contentView.layer.borderWidth = 1
         self.contentView.layer.borderColor = UIColor.gamBlack.cgColor
+        self.updateUI()
     }
     
+    private func updateUI() {
+        if self.isSelected {
+            self.contentView.backgroundColor = .gamBlack
+            self.contentLabel.textColor = .gamWhite
+            self.contentView.layer.borderColor = UIColor.gamBlack.cgColor
+        } else {
+            if self.isEnable {
+                self.contentView.backgroundColor = .clear
+                self.contentLabel.textColor = .gamBlack
+                self.contentView.layer.borderColor = UIColor.gamBlack.cgColor
+            } else {
+                self.contentView.backgroundColor = .clear
+                self.contentView.layer.borderColor = UIColor.gamGray2.cgColor
+                self.contentLabel.textColor = .gamGray2
+            }
+        }
+    }
+
     func setData(data: String) {
         self.contentLabel.text = data
     }

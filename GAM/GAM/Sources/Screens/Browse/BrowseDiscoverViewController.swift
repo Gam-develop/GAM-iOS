@@ -35,7 +35,7 @@ final class BrowseDiscoverViewController: BaseViewController {
     private var superViewController: BrowseViewController?
     
     private var designers: [BrowseDesignerEntity] = []
-    private var selectedTags: [TagEntity] = []
+    var selectedTags: [TagEntity] = []
     
     // MARK: Initializer
     

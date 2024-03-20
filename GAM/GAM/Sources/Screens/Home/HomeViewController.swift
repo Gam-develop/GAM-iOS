@@ -24,10 +24,7 @@ final class HomeViewController: BaseViewController {
     
     // MARK: UIComponents
     
-    private let scrollView: UIScrollView = {
-        let scrollView: UIScrollView = UIScrollView()
-        return scrollView
-    }()
+    private let scrollView = UIScrollView()
     
     private let contentView: UIView = UIView()
     private let magazineTitleLabel: Headline1Label = Headline1Label(text: Text.magazineTitle)

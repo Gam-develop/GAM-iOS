@@ -24,7 +24,7 @@ final class MagazineTableViewCell: UITableViewCell {
         let label: UILabel = UILabel()
         label.font = .caption1Regular
         label.textColor = .gamBlack
-        label.numberOfLines = 3
+        label.lineBreakMode = .byTruncatingTail
         return label
     }()
     
@@ -47,7 +47,7 @@ final class MagazineTableViewCell: UITableViewCell {
         label.textAlignment = .left
         return label
     }()
-
+    
     // MARK: Initializer
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -109,6 +109,7 @@ extension MagazineTableViewCell {
         self.authorLabel.snp.makeConstraints { make in
             make.left.equalTo(self.titleLabel)
             make.bottom.equalToSuperview().inset(10)
+            make.width.equalTo(114)
         }
         
         self.visibilityStackView.snp.makeConstraints { make in

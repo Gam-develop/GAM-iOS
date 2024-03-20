@@ -22,7 +22,7 @@ class PortfolioTableViewCell: UITableViewCell {
         return view
     }()
     
-    private let detailLabel: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .caption2Regular)
+    private let detailLabel: GamSingleLineLabel = GamSingleLineLabel(text: "", font: .caption3Medium)
     
     let repView: RepView = RepView()
     
@@ -52,7 +52,7 @@ class PortfolioTableViewCell: UITableViewCell {
     func setData(data: ProjectEntity) {
         self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
         self.titleLabel.text = data.title
-        self.detailLabel.text = data.detail
+        self.detailLabel.setTextWithStyle(to: data.detail, style: .caption3Medium, color: .gamBlack)
         
         self.underlineView.isHidden = data.detail.isEmpty
         
@@ -60,6 +60,11 @@ class PortfolioTableViewCell: UITableViewCell {
             self.detailLabel.snp.updateConstraints { make in
                 make.top.equalTo(self.underlineView.snp.bottom).offset(0)
                 make.bottom.equalToSuperview().inset(0)
+            }
+        } else {
+            let labelSize = self.detailLabel.sizeThatFits(CGSize(width: self.frame.width, height: CGFloat.greatestFiniteMagnitude))
+            self.detailLabel.snp.updateConstraints { make in
+                make.height.equalTo(labelSize.height)
             }
         }
     }
@@ -77,7 +82,11 @@ class PortfolioTableViewCell: UITableViewCell {
     }
     
     private func setLayout() {
-        self.contentView.addSubviews([thumbnailImageView, repView, titleLabel, underlineView, detailLabel])
+        self.contentView.addSubviews([self.thumbnailImageView,
+                                      self.repView,
+                                      self.titleLabel,
+                                      self.underlineView,
+                                      self.detailLabel])
         
         self.thumbnailImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -103,9 +112,10 @@ class PortfolioTableViewCell: UITableViewCell {
         }
         
         self.detailLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.underlineView.snp.bottom).offset(8)
+            make.top.equalTo(self.underlineView.snp.bottom).offset(8 + UIFont.caption3Medium.pointSize * 0.24)
             make.left.right.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().inset(24)
+            make.height.equalTo(0)
         }
     }
 }

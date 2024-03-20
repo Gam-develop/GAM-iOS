@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22E670502BAB0AA7005028BC /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704F2BAB0AA7005028BC /* UITextView+.swift */; };
 		840BFFAC2B7B23CF00DF31C3 /* SecessionRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */; };
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */; };
@@ -230,6 +231,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22E6704F2BAB0AA7005028BC /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionRequestDTO.swift; sourceTree = "<group>"; };
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPortfolioRequestDTO.swift; sourceTree = "<group>"; };
@@ -820,6 +822,7 @@
 				FFA94D022A4F1B6C009B034F /* UITabBar+.swift */,
 				FFA94D042A4F1B77009B034F /* CALayer+.swift */,
 				FFA707182A59A390003DF6A0 /* Adjusted+.swift */,
+				22E6704F2BAB0AA7005028BC /* UITextView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1266,6 +1269,7 @@
 				847349932B58D828001DE9E1 /* GetUserProfileResponseDTO.swift in Sources */,
 				FFA94D0A2A4F1BC4009B034F /* ImageCacheManager.swift in Sources */,
 				845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */,
+				22E670502BAB0AA7005028BC /* UITextView+.swift in Sources */,
 				FFA706EE2A4F39F3003DF6A0 /* MyViewController.swift in Sources */,
 				FFCDF8682A5AF37D00C731A3 /* SearchButton.swift in Sources */,
 				FFCDF8602A5A98BD00C731A3 /* PopularDesignerEntity.swift in Sources */,

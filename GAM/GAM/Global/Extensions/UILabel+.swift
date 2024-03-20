@@ -87,12 +87,13 @@ extension UILabel {
         
         switch style {
         case .headline4Bold:
-            paragraphStyle.lineSpacing = style.pointSize * 0.3
+            paragraphStyle.lineSpacing = style.pointSize * 0.15
         default:
-            paragraphStyle.lineSpacing = style.pointSize * 0.48
+            paragraphStyle.lineSpacing = style.pointSize * 0.24
         }
         
         paragraphStyle.lineBreakMode = .byTruncatingTail
+        
         attributedString.addAttribute(
             .paragraphStyle,
             value: paragraphStyle,

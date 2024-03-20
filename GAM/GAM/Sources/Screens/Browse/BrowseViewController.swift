@@ -116,8 +116,9 @@ extension BrowseViewController: SendUpdateDelegate {
         
         self.selectedFilterTagView.setTag(tags: selectedTags)
         self.navigationView.filterButton.isSelected = selectedTags.count != 0
-        if let viewController = self.contentViewControllers[0] as? BrowseDiscoverViewController {
-            viewController.fetchData(selectedTags: selectedTags)
+        self.selectedFilterTagView.isHidden = selectedTags.count == 0
+        if let browseDiscoverViewController = self.contentViewControllers[0] as? BrowseDiscoverViewController {
+            browseDiscoverViewController.fetchData(selectedTags: selectedTags)
         }
     }
 }
@@ -207,8 +208,12 @@ extension BrowseViewController {
         self.pageViewController.setViewControllers([viewController], direction: direction, animated: true)
         if index == 0 {
             self.navigationView.filterButton.isHidden = false
+            if let browseDiscoverViewController = self.contentViewControllers[0] as? BrowseDiscoverViewController {
+                self.selectedFilterTagView.isHidden = browseDiscoverViewController.selectedTags.isEmpty
+            }
         } else {
             self.navigationView.filterButton.isHidden = true
+            self.selectedFilterTagView.isHidden = true
         }
     }
 }

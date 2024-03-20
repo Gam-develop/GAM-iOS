@@ -29,7 +29,7 @@ final class SelectedFilterTagView: UIView {
     // MARK: Methods
     
     private func setUI() {
-        self.backgroundColor = .gamBlack
+        self.backgroundColor = .gamBlack.withAlphaComponent(self.titleLabel.text?.count == 0 ? 0.0 : 1.0)
         self.makeRounded(cornerRadius: 36 / 2)
         self.isHidden = true
     }
@@ -39,17 +39,19 @@ final class SelectedFilterTagView: UIView {
         
         switch tags.count {
         case 1:
-            self.isHidden = false
             result = tags[0].name
         case 2, 3:
-            self.isHidden = false
             result = "\(tags[0].name) 외 \(tags.count - 1)"
         default:
-            self.isHidden = true
+            result = ""
             return
         }
         
-        self.titleLabel.text = result
+        
+        DispatchQueue.main.async {
+            self.titleLabel.text = result
+        }
+        self.backgroundColor = .gamBlack.withAlphaComponent(result.count == 0 ? 0.0 : 1.0)
         self.sizeToFit()
     }
     

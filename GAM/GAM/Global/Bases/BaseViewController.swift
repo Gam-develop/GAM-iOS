@@ -306,7 +306,6 @@ extension BaseViewController {
     }
     
     func requestScrapMagazine(data: ScrapMagazineRequestDTO, completion: @escaping () -> ()) {
-        self.startActivityIndicator()
         MagazineService.shared.requestScrapMagazine(data: data) { networkResult in
             switch networkResult {
             case .success(let response):
@@ -319,12 +318,10 @@ extension BaseViewController {
             default:
                 self.showNetworkErrorAlert()
             }
-            self.stopActivityIndicator()
         }
     }
     
     func requestScrapDesigner(data: ScrapDesignerRequestDTO, completion: @escaping () -> ()) {
-        self.startActivityIndicator()
         UserService.shared.requestScrapDesigner(data: data) { networkResult in
             switch networkResult {
             case .success:
@@ -332,7 +329,6 @@ extension BaseViewController {
             default:
                 self.showNetworkErrorAlert()
             }
-            self.stopActivityIndicator()
         }
     }
     

@@ -48,9 +48,7 @@ final class SelectedFilterTagView: UIView {
         }
         
         
-        DispatchQueue.main.async {
-            self.titleLabel.text = result
-        }
+        self.titleLabel.text = result
         self.backgroundColor = .gamBlack.withAlphaComponent(result.count == 0 ? 0.0 : 1.0)
         self.sizeToFit()
     }

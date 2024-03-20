@@ -80,7 +80,7 @@ final class MagazineTableViewCell: UITableViewCell {
         self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
         self.titleLabel.setTextWithStyle(to: data.title, style: .caption3Medium, color: .gamBlack)
         self.authorLabel.text = data.author
-        self.visibilityCountLabel.text = "\(data.visibilityCount)"
+        self.visibilityCountLabel.text = data.visibilityCount.formatToViews()
         self.scrapButton.isSelected = data.isScrap
     }
 }

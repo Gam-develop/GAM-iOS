@@ -112,7 +112,7 @@ class PortfolioTableViewCell: UITableViewCell {
         }
         
         self.detailLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.underlineView.snp.bottom).offset(8 + UIFont.caption3Medium.pointSize * 0.24)
+            make.top.equalTo(self.underlineView.snp.bottom).offset(8 + self.detailLabel.font.pointSize * 0.24)
             make.left.right.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().inset(24)
             make.height.equalTo(0)

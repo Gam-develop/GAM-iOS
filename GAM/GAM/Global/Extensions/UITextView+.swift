@@ -34,8 +34,7 @@ extension UITextView {
             paragraphStyle.lineSpacing = style.pointSize * 0.24
         }
         
-        paragraphStyle.lineBreakMode = .byWordWrapping
-        paragraphStyle.lineBreakStrategy = .hangulWordPriority
+        paragraphStyle.lineBreakMode = .byCharWrapping
         
         attributedString.addAttribute(
             .paragraphStyle,

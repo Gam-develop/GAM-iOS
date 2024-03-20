@@ -87,9 +87,11 @@ extension UILabel {
         
         switch style {
         case .headline4Bold:
-            paragraphStyle.lineSpacing = style.pointSize * 0.15
+            paragraphStyle.minimumLineHeight = style.pointSize * 1.3
+            paragraphStyle.maximumLineHeight = style.pointSize * 1.3
         default:
-            paragraphStyle.lineSpacing = style.pointSize * 0.24
+            paragraphStyle.minimumLineHeight = style.pointSize * 1.48
+            paragraphStyle.maximumLineHeight = style.pointSize * 1.48
         }
         
         paragraphStyle.lineBreakMode = .byTruncatingTail
@@ -99,6 +101,13 @@ extension UILabel {
             value: paragraphStyle,
             range: NSRange(location: 0, length: attributedString.length)
         )
+        
+        switch style {
+        case .headline4Bold:
+            attributedString.addAttribute(.baselineOffset, value: (style.pointSize * 1.3 - style.lineHeight) / 4, range: NSRange(location: 0, length: attributedString.length))
+        default:
+            attributedString.addAttribute(.baselineOffset, value: (style.pointSize * 1.48 - style.lineHeight) / 4, range: NSRange(location: 0, length: attributedString.length))
+        }
         
         self.attributedText = attributedString
     }

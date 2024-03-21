@@ -212,8 +212,7 @@ extension SecessionViewController {
     }
     
     private func setReasonTextViewUI() {
-        self.reasonTextView.text = self.reasonTextVeiwPlaceholder
-        self.reasonTextView.textColor = .gamGray3
+        self.reasonTextView.setTextWithStyle(to: self.reasonTextVeiwPlaceholder, style: .caption2Regular, color: .gamGray3)
     }
 }
 

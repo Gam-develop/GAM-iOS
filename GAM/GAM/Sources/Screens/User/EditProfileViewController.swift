@@ -147,6 +147,7 @@ final class EditProfileViewController: BaseViewController {
     func setData(profile: UserProfileEntity) {
         self.profile = profile
         self.profileInfoView.setData(
+            type: .editProfile,
             info: profile.info,
             detail: profile.infoDetail
         )
@@ -227,8 +228,7 @@ final class EditProfileViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         if profileInfoView.detailTextView.text.count == 0 {
-            self.profileInfoView.detailTextView.text =  Text.detailPlaceholder
-            self.profileInfoView.detailTextView.textColor = .gamGray3
+            self.profileInfoView.detailTextView.setTextWithStyle(to: Text.detailPlaceholder, style: .caption2Regular, color: .gamGray3)
         }
     }
     
@@ -311,8 +311,7 @@ extension EditProfileViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.endEditing(true)
         if self.profileInfoView.detailTextView.text.isEmpty {
-            self.profileInfoView.detailTextView.text =  Text.detailPlaceholder
-            self.profileInfoView.detailTextView.textColor = .gamGray3
+            self.profileInfoView.detailTextView.setTextWithStyle(to: Text.detailPlaceholder, style: .caption2Regular, color: .gamGray3)
         }
     }
 }

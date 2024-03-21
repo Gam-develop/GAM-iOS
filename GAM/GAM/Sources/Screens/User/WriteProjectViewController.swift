@@ -173,14 +173,9 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         self.projectImageEditButton.isHidden = false
     
         self.projectTitleTextField.text = projectData.title
-        self.projectDetailTextView.text = projectData.detail.isEmpty ? Text.projectDetailPlaceholder : projectData.detail
-        self.projectTitleTextField.sendActions(for: .editingChanged)
+        self.projectDetailTextView.setTextWithStyle(to: projectData.detail.isEmpty ? Text.projectDetailPlaceholder : projectData.detail, style: .caption3Medium, color: projectData.detail.isEmpty ? .gamGray3 : .gamBlack)
         
-        if self.projectData.detail.isEmpty {
-            self.projectDetailTextView.textColor = .gamGray3
-        } else {
-            self.projectDetailTextView.textColor = .gamBlack
-        }
+        self.projectTitleTextField.sendActions(for: .editingChanged)
     }
     
     private func setImagePickerController() {
@@ -250,8 +245,7 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
     
     private func setDetailTextView() {
         self.projectDetailTextView.delegate = self
-        self.projectDetailTextView.text = Text.projectDetailPlaceholder
-        self.projectDetailTextView.textColor = .gamGray3
+        self.projectDetailTextView.setTextWithStyle(to: Text.projectDetailPlaceholder, style: .caption3Medium, color: .gamGray3)
     }
     
     @objc
@@ -336,8 +330,7 @@ extension WriteProjectViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.endEditing(true)
         if self.projectDetailTextView.text.isEmpty {
-            self.projectDetailTextView.text =  Text.projectDetailPlaceholder
-            self.projectDetailTextView.textColor = .gamGray3
+            self.projectDetailTextView.setTextWithStyle(to: Text.projectDetailPlaceholder, style: .caption3Medium, color: .gamGray3)
         }
     }
 }

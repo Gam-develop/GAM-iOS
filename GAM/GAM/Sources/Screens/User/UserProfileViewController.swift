@@ -76,6 +76,7 @@ final class UserProfileViewController: BaseViewController {
     func setData(profile: UserProfileEntity) {
         self.profile = profile
         self.profileInfoView.setData(
+            type: .userProfile,
             info: profile.info,
             detail: profile.infoDetail
         )

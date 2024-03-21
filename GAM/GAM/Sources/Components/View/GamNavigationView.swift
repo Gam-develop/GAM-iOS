@@ -206,7 +206,7 @@ extension GamNavigationView {
     private func setRightButtonLayout(button: UIButton) {
         button.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().inset(4)
+            make.trailing.equalToSuperview().inset(12)
             make.width.height.equalTo(44)
         }
     }

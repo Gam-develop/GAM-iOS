@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22E670502BAB0AA7005028BC /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704F2BAB0AA7005028BC /* UITextView+.swift */; };
+		22E6704E2BAAF628005028BC /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704D2BAAF628005028BC /* Int+.swift */; };
 		840BFFAC2B7B23CF00DF31C3 /* SecessionRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */; };
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */; };
@@ -232,6 +233,7 @@
 
 /* Begin PBXFileReference section */
 		22E6704F2BAB0AA7005028BC /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		22E6704D2BAAF628005028BC /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionRequestDTO.swift; sourceTree = "<group>"; };
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPortfolioRequestDTO.swift; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 				FFA94D042A4F1B77009B034F /* CALayer+.swift */,
 				FFA707182A59A390003DF6A0 /* Adjusted+.swift */,
 				22E6704F2BAB0AA7005028BC /* UITextView+.swift */,
+				22E6704D2BAAF628005028BC /* Int+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1304,6 +1307,7 @@
 				FFEB5CA72B4E5F4F00953362 /* ScrapDesignerRequestDTO.swift in Sources */,
 				FFD9DB052A7A6C420085B965 /* GamRoundedButton.swift in Sources */,
 				84975BE52B5FFF5A00F903E7 /* SecessionViewModel.swift in Sources */,
+				22E6704E2BAAF628005028BC /* Int+.swift in Sources */,
 				FFA94CDF2A4F099C009B034F /* UIColor+.swift in Sources */,
 				FFF605C22A657CC400A1EEC6 /* BrowseDesignerEntity.swift in Sources */,
 				FFCDF86F2A5B0C4D00C731A3 /* AllMagazineTableHeaderView.swift in Sources */,

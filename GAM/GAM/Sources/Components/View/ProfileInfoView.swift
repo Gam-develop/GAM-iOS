@@ -13,6 +13,12 @@ final class ProfileInfoView: UIView {
     // MARK: Properties
     private let detailPlaceholder = "경험 위주 자기소개 부탁드립니다."
     
+    enum ViewType {
+        case userProfile
+        case myProfile
+        case editProfile
+    }
+    
     // MARK: UIComponents
     
     let infoTextField: UITextField = {
@@ -30,8 +36,6 @@ final class ProfileInfoView: UIView {
     
     let detailTextView: UITextView = {
         let textView: UITextView = UITextView()
-        textView.font = .caption2Regular
-        textView.textColor = .gamBlack
         textView.textContainerInset = .zero
         textView.contentInset = .zero
         return textView
@@ -52,15 +56,15 @@ final class ProfileInfoView: UIView {
     
     // MARK: Methods
     
-    func setData(info: String, detail: String) {
+    func setData(type: ViewType, info: String, detail: String) {
         self.infoTextField.text = info
         
         if detail.isEmpty {
-            self.detailTextView.text = detailPlaceholder
-            self.detailTextView.textColor = .gamGray3
+            if type != .userProfile {
+                self.detailTextView.setTextWithStyle(to: detailPlaceholder, style: .caption2Regular, color: .gamGray3)
+            }
         } else {
-            self.detailTextView.text = detail
-            self.detailTextView.textColor = .gamBlack
+            self.detailTextView.setTextWithStyle(to: detail, style: .caption2Regular, color: .gamBlack)
         }
     }
     

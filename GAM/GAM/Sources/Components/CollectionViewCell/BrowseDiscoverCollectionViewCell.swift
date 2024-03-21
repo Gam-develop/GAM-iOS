@@ -121,7 +121,7 @@ extension BrowseDiscoverCollectionViewCell {
         self.titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(self.scrapButton)
             make.left.equalToSuperview().inset(16)
-            make.right.equalTo(self.scrapButton.snp.left)
+            make.right.equalTo(self.scrapButton.snp.left).offset(-4)
             make.height.equalTo(33.adjustedH)
         }
         

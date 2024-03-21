@@ -14,6 +14,7 @@ final class SignUpInfoViewController: BaseViewController {
     enum Text {
         static let done = "감 잡으러 가기"
         static let wrongUsername = "한글, 영문, 숫자만 입력 가능합니다."
+        static let placeholder = "사용자의 행복을 추구하는 디자이너"
     }
     
     // MARK: UIComponents
@@ -31,7 +32,11 @@ final class SignUpInfoViewController: BaseViewController {
         return label
     }()
     
-    private let textField: SignUpTextField = SignUpTextField()
+    private let textField: SignUpTextField = {
+        let textField: SignUpTextField = SignUpTextField()
+        textField.setGamPlaceholder(Text.placeholder)
+        return textField
+    }()
     
     private let infoLabel: UILabel = {
         let label = UILabel()
